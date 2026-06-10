@@ -1,7 +1,17 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from solo.admin import SingletonModelAdmin
-from .models import SiteConfig, Strip, Hero
+from .models import SiteConfig, Strip, Hero, Email, Phone
+
+
+class EmailInline(admin.TabularInline):
+    model = Email
+    extra = 0
+
+
+class PhoneInline(admin.TabularInline):
+    model = Phone
+    extra = 0
 
 
 @admin.register(SiteConfig)
@@ -19,6 +29,7 @@ class SiteConfigAdmin(SingletonModelAdmin):
         ("Логотип", {"fields": ["thumbnail", "logo"]}),
     ]
     readonly_fields = ["created", "updated", "thumbnail"]
+    inlines = [EmailInline, PhoneInline]
 
 
 @admin.register(Strip)
