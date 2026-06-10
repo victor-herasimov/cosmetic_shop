@@ -1,0 +1,25 @@
+<html lang="uk" class="bg-background">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#5f6d49">
+    <meta name="description" content="ROBEAUTY — українська косметика для догляду за шкірою. Сироватки, креми, скраби та засоби під очі за вигідними цінами.">
+    <title>ROBEAUTY — догляд за шкірою, що працює</title>
+
+    {% include "includes/_styles.html" %}
+</head>
+
+<body>
+    {% include "includes/_header.html" %}
+
+   {% block content %}
+   {% endblock content %}
+
+    {% include "includes/_footer.html" %}
+    {% include "includes/_cart_modal.html" %}
+    {% include "includes/_categories_modal.html" %}
+
+    {% block scripts %}{% endblock scripts %}
+</body>
+
+</html>

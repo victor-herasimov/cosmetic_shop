@@ -1,0 +1,295 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+ <!-- Hero -->
+<section class="hero">
+    <div class="wrap hero__inner">
+        <div>
+            <span class="eyebrow">Краса доступна кожному</span>
+            <h1 class="hero__title">Догляд, що повертає шкірі сяйво</h1>
+            <p class="hero__text">
+                Ефективні формули з пептидами, кислотами та рослинними активами.
+                Створено в Україні для помітного результату без ін'єкцій.
+            </p>
+            <div class="hero__actions">
+                <a class="btn btn--primary" href="/catalog_fix.html">Перейти в каталог</a>
+                <button class="btn btn--ghost" data-open-categories="">Обрати категорію</button>
+            </div>
+        </div>
+        <div class="hero__media">
+            <img src="/images/hero.png" alt="Косметичні засоби ROBEAUTY">
+            <div class="hero__badge">SPRING BEAUTY FEST<b>−50%</b></div>
+        </div>
+    </div>
+</section>
+
+<!-- Strip -->
+<div class="strip">
+    <div class="wrap strip__inner">
+        <span class="strip__item">Без жорстокості · Vegan friendly</span>
+        <span class="strip__item">Дерматологічно протестовано</span>
+        <span class="strip__item">Доставка по всій Україні</span>
+        <span class="strip__item">Натуральні активні компоненти</span>
+    </div>
+</div>
+
+<!-- Categories -->
+<section class="section">
+    <div class="wrap">
+        <div class="section__head">
+            <div>
+                <span class="eyebrow">Категорії</span>
+                <h2 class="section-title">Оберіть свій догляд</h2>
+            </div>
+            <button class="link-more" data-open-categories="">Всі категорії →</button>
+        </div>
+        <div class="cat-grid" id="homeCategories">
+            <a class="cat-card" href="/catalog_fix.html?cat=serum">
+                <span class="cat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z">
+                        </path>
+                        <path d="M2 21c0-3 1.85-5.36 5.08-6"></path>
+                    </svg></span>
+                <span class="cat-card__name">Сироватки</span>
+                <span class="cat-card__desc">Концентрований догляд</span>
+            </a>
+            <a class="cat-card" href="/catalog_fix.html?cat=cream">
+                <span class="cat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z">
+                        </path>
+                        <path d="M2 21c0-3 1.85-5.36 5.08-6"></path>
+                    </svg></span>
+                <span class="cat-card__name">Креми</span>
+                <span class="cat-card__desc">Зволоження та живлення</span>
+            </a>
+            <a class="cat-card" href="/catalog_fix.html?cat=eye">
+                <span class="cat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z">
+                        </path>
+                        <path d="M2 21c0-3 1.85-5.36 5.08-6"></path>
+                    </svg></span>
+                <span class="cat-card__name">Під очі</span>
+                <span class="cat-card__desc">Делікатна зона</span>
+            </a>
+            <a class="cat-card" href="/catalog_fix.html?cat=scrub">
+                <span class="cat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z">
+                        </path>
+                        <path d="M2 21c0-3 1.85-5.36 5.08-6"></path>
+                    </svg></span>
+                <span class="cat-card__name">Скраби</span>
+                <span class="cat-card__desc">Оновлення шкіри</span>
+            </a>
+            <a class="cat-card" href="/catalog_fix.html?cat=body">
+                <span class="cat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z">
+                        </path>
+                        <path d="M2 21c0-3 1.85-5.36 5.08-6"></path>
+                    </svg></span>
+                <span class="cat-card__name">Тіло</span>
+                <span class="cat-card__desc">Догляд за тілом</span>
+            </a>
+            <a class="cat-card" href="/catalog_fix.html?cat=cleanse">
+                <span class="cat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z">
+                        </path>
+                        <path d="M2 21c0-3 1.85-5.36 5.08-6"></path>
+                    </svg></span>
+                <span class="cat-card__name">Очищення</span>
+                <span class="cat-card__desc">Тонізація та чистота</span>
+            </a>
+            <a class="cat-card" href="/catalog_fix.html?cat=hydration">
+                <span class="cat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z">
+                        </path>
+                        <path d="M2 21c0-3 1.85-5.36 5.08-6"></path>
+                    </svg></span>
+                <span class="cat-card__name">Зволоження</span>
+                <span class="cat-card__desc">Зволожувальні засоби</span>
+            </a>
+            <a class="cat-card" href="/catalog_fix.html?cat=sets">
+                <span class="cat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z">
+                        </path>
+                        <path d="M2 21c0-3 1.85-5.36 5.08-6"></path>
+                    </svg></span>
+                <span class="cat-card__name">Набори</span>
+                <span class="cat-card__desc">Готові комплекси</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Bestsellers -->
+<section class="section" style="padding-top: 0">
+    <div class="wrap">
+        <div class="section__head">
+            <div>
+                <span class="eyebrow">Бестселери</span>
+                <h2 class="section-title">Улюбленці покупців</h2>
+                <p>Найпопулярніші засоби, які обирають знову і знову.</p>
+            </div>
+            <a class="link-more" href="/catalog.html">Весь каталог →</a>
+        </div>
+        <div class="product-grid" id="bestsellers">
+            <article class="card">
+                <a class="card__media" href="/product.html?id=argireline-2">
+                    <span class="card__tag ">Хіт</span>
+                    <img src="/images/product-1.png" alt="Сироватка-замінник ботоксу 2% — ARGIRELINE®">
+                </a>
+                <div class="card__body">
+                    <span class="card__cat">Сироватки</span>
+                    <a class="card__name" href="/product.html?id=argireline-2">Сироватка-замінник ботоксу 2% —
+                        ARGIRELINE®</a>
+                    <div class="card__price"><b>490 ₴</b></div>
+                    <div class="card__actions">
+                        <button class="btn btn--primary card__add card__btn" data-add="argireline-2">До кошику</button>
+                        <a class="btn btn--ghost card__btn" href="/product.html?id=argireline-2">Детальніше</a>
+                    </div>
+                </div>
+            </article>
+            <article class="card">
+                <a class="card__media" href="/product.html?id=meccano-scrub">
+                    <span class="card__tag ">Хіт</span>
+                    <img src="/images/product-3.png" alt="Meccano Scrub — кавовий скраб для тіла">
+                </a>
+                <div class="card__body">
+                    <span class="card__cat">Скраби</span>
+                    <a class="card__name" href="/product.html?id=meccano-scrub">Meccano Scrub — кавовий скраб для
+                        тіла</a>
+                    <div class="card__price"><b>350 ₴</b></div>
+                    <div class="card__actions">
+                        <button class="btn btn--primary card__add card__btn" data-add="meccano-scrub">До кошику</button>
+                        <a class="btn btn--ghost card__btn" href="/product.html?id=meccano-scrub">Детальніше</a>
+                    </div>
+                </div>
+            </article>
+            <article class="card">
+                <a class="card__media" href="/product.html?id=neck-cream">
+                    <span class="card__tag ">Хіт</span>
+                    <img src="/images/product-2.png" alt="Ремоделюючий крем для шиї та підборіддя">
+                </a>
+                <div class="card__body">
+                    <span class="card__cat">Креми</span>
+                    <a class="card__name" href="/product.html?id=neck-cream">Ремоделюючий крем для шиї та
+                        підборіддя</a>
+                    <div class="card__price"><b>690 ₴</b></div>
+                    <div class="card__actions">
+                        <button class="btn btn--primary card__add card__btn" data-add="neck-cream">До кошику</button>
+                        <a class="btn btn--ghost card__btn" href="/product.html?id=neck-cream">Детальніше</a>
+                    </div>
+                </div>
+            </article>
+            <article class="card">
+                <a class="card__media" href="/product.html?id=hydra-gel">
+                    <span class="card__tag ">Хіт</span>
+                    <img src="/images/product-2.png" alt="Зволожувальний аква-гель з гіалуроном">
+                </a>
+                <div class="card__body">
+                    <span class="card__cat">Зволоження</span>
+                    <a class="card__name" href="/product.html?id=hydra-gel">Зволожувальний аква-гель з
+                        гіалуроном</a>
+                    <div class="card__price"><b>450 ₴</b></div>
+                    <div class="card__actions">
+                        <button class="btn btn--primary card__add card__btn" data-add="hydra-gel">До кошику</button>
+                        <a class="btn btn--ghost card__btn" href="/product.html?id=hydra-gel">Детальніше</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- New arrivals -->
+<section class="section" style="padding-top: 0">
+    <div class="wrap">
+        <div class="section__head">
+            <div>
+                <span class="eyebrow">Новинки</span>
+                <h2 class="section-title">Щойно з'явилися</h2>
+            </div>
+            <a class="link-more" href="/catalog.html">Дивитись усе →</a>
+        </div>
+        <div class="product-grid" id="newArrivals">
+            <article class="card">
+                <a class="card__media" href="/product.html?id=eye-dark-circles">
+                    <span class="card__tag ">Новинка</span>
+                    <img src="/images/product-4.png" alt="Крем проти темних кіл та набряків під очима">
+                </a>
+                <div class="card__body">
+                    <span class="card__cat">Під очі</span>
+                    <a class="card__name" href="/product.html?id=eye-dark-circles">Крем проти темних кіл та набряків
+                        під очима</a>
+                    <div class="card__price"><b>790 ₴</b></div>
+                    <div class="card__actions">
+                        <button class="btn btn--primary card__add card__btn" data-add="eye-dark-circles">До кошику</button>
+                        <a class="btn btn--ghost card__btn" href="/product.html?id=eye-dark-circles">Детальніше</a>
+                    </div>
+                </div>
+            </article>
+            <article class="card">
+                <a class="card__media" href="/product.html?id=milky-toner">
+                    <span class="card__tag ">Новинка</span>
+                    <img src="/images/product-2.png" alt="Відновлювальний milky-тонер для обличчя">
+                </a>
+                <div class="card__body">
+                    <span class="card__cat">Очищення</span>
+                    <a class="card__name" href="/product.html?id=milky-toner">Відновлювальний milky-тонер для
+                        обличчя</a>
+                    <div class="card__price"><b>390 ₴</b></div>
+                    <div class="card__actions">
+                        <button class="btn btn--primary card__add card__btn" data-add="milky-toner">До кошику</button>
+                        <a class="btn btn--ghost card__btn" href="/product.html?id=milky-toner">Детальніше</a>
+                    </div>
+                </div>
+            </article>
+            <article class="card">
+                <a class="card__media" href="/product.html?id=argireline-2">
+                    <span class="card__tag ">Хіт</span>
+                    <img src="/images/product-1.png" alt="Сироватка-замінник ботоксу 2% — ARGIRELINE®">
+                </a>
+                <div class="card__body">
+                    <span class="card__cat">Сироватки</span>
+                    <a class="card__name" href="/product.html?id=argireline-2">Сироватка-замінник ботоксу 2% —
+                        ARGIRELINE®</a>
+                    <div class="card__price"><b>490 ₴</b></div>
+                    <div class="card__actions">
+                        <button class="btn btn--primary card__add card__btn" data-add="argireline-2">До кошику</button>
+                        <a class="btn btn--ghost card__btn" href="/product.html?id=argireline-2">Детальніше</a>
+                    </div>
+                </div>
+            </article>
+            <article class="card">
+                <a class="card__media" href="/product.html?id=better-butter">
+                    <span class="card__tag card__tag--sale">Акція</span>
+                    <img src="/images/product-2.png" alt="Better Butter — поживний крем для обличчя">
+                </a>
+                <div class="card__body">
+                    <span class="card__cat">Креми</span>
+                    <a class="card__name" href="/product.html?id=better-butter">Better Butter — поживний крем для
+                        обличчя</a>
+                    <div class="card__price"><b>390 ₴</b><s>450 ₴</s></div>
+                    <div class="card__actions">
+                        <button class="btn btn--primary card__add card__btn" data-add="better-butter">До кошику</button>
+                        <a class="btn btn--ghost card__btn" href="/product.html?id=better-butter">Детальніше</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block scripts %}
+    <script type="module" src="{% static "/js/main-home.js" %} "></script>
+{% endblock scripts %}
