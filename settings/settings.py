@@ -36,7 +36,7 @@ INTERNAL_APPS: list[str] = [
 
 OUTHER_APPS: list[str] = ["solo"]
 
-CREATED_APPS: list[str] = ["main.apps.MainConfig"]
+CREATED_APPS: list[str] = ["main.apps.MainConfig", "goods.apps.GoodsConfig"]
 
 INSTALLED_APPS: list[str] = INTERNAL_APPS + OUTHER_APPS + CREATED_APPS
 
