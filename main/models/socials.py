@@ -3,7 +3,7 @@ from . import SiteConfig
 
 
 class Social(models.Model):
-    title = models.EmailField(verbose_name="Соціальна мережа")
+    title = models.CharField(max_length=125, verbose_name="Соціальна мережа")
     url = models.URLField(max_length=255, verbose_name="URL")
     in_footer = models.BooleanField(default=True, verbose_name="Показувати в футері")
     active = models.BooleanField(default=True, verbose_name="Активний")
@@ -21,5 +21,5 @@ class Social(models.Model):
 
     class Meta:
         app_label = "main"
-        verbose_name = "Соціальна мережа"
+        verbose_name = "Соціальну мережу"
         verbose_name_plural = "Соціальні мережі"
