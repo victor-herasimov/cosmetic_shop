@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load strips %}
 
 {% block content %}
  <!-- Hero -->
@@ -25,14 +26,16 @@
 </section>
 
 <!-- Strip -->
+{% get_strips as strips %}
+{% if strips %}
 <div class="strip">
     <div class="wrap strip__inner">
-        <span class="strip__item">Без жорстокості · Vegan friendly</span>
-        <span class="strip__item">Дерматологічно протестовано</span>
-        <span class="strip__item">Доставка по всій Україні</span>
-        <span class="strip__item">Натуральні активні компоненти</span>
+        {% for strip in strips %}
+        <span class="strip__item">{{ strip }}</span>
+        {% endfor %}
     </div>
 </div>
+{% endif %}
 
 <!-- Categories -->
 <section class="section">
