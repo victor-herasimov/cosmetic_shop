@@ -1,3 +1,4 @@
+import os
 from django.db import models
 from solo.models import SingletonModel
 
@@ -28,3 +29,15 @@ class SiteConfig(SingletonModel):
 
     def __str__(self) -> str:
         return f"{self.title}"
+
+    def save(self, *args, **kwargs):
+        if self.pk:
+            try:
+                old_config = SiteConfig.objects.get(pk=self.pk)
+                if old_config.logo and old_config.logo != self.logo:
+                    if os.path.isfile(old_config.logo.path):
+                        os.remove(old_config.logo.path)
+            except SiteConfig.DoesNotExist:
+                pass
+
+        super().save(*args, **kwargs)

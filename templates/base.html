@@ -1,9 +1,12 @@
+{% load solo_tags %}
+{% get_solo 'main.SiteConfig' as site_config %}
+
 <html lang="uk" class="bg-background">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#5f6d49">
-    <meta name="description" content="ROBEAUTY — українська косметика для догляду за шкірою. Сироватки, креми, скраби та засоби під очі за вигідними цінами.">
+    <meta name="description" content="{{ site_config.short_description }}">
     <title>ROBEAUTY — догляд за шкірою, що працює</title>
 
     {% include "includes/_styles.html" %}

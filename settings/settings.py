@@ -121,6 +121,7 @@ USE_TZ: bool = True
 STATIC_URL: str = "static/"
 
 MEDIA_URL: str = "media/"
+MEDIA_ROOT: Path = BASE_DIR / MEDIA_URL
 
 if DEBUG:
     STATICFILES_DIRS: list[Path] = [BASE_DIR / STATIC_URL]

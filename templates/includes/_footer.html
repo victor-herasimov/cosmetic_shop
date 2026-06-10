@@ -1,12 +1,13 @@
+{% load solo_tags %}
+{% get_solo 'main.SiteConfig' as site_config %} 
  <!-- Footer -->
 <footer class="footer">
     <div class="wrap">
         <div class="footer__grid">
             <div class="footer__about">
-                <a href="/index.html" class="logo">RO<span>BEAUTY</span></a>
+                <a href="{% url "main:index" %}" class="logo"><img src="{{site_config.logo.url}}" alt="logo"> </a>
                 <p>
-                    Українська косметика з ефективними формулами для здорової та
-                    доглянутої шкіри. Краса доступна кожному.
+                    {{ site_config.slogan }}
                 </p>
             </div>
             <div>
