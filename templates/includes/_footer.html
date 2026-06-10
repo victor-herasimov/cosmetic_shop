@@ -1,5 +1,7 @@
 {% load solo_tags %}
 {% load site_config %}
+{% load visible_categories %}
+
 {% get_solo 'main.SiteConfig' as site_config %} 
  <!-- Footer -->
 <footer class="footer">
@@ -15,8 +17,11 @@
                 <h4>Магазин</h4>
                 <ul class="footer__links">
                     <li><a href="/catalog.html">Каталог</a></li>
-                    <li><a href="/catalog.html?cat=serum">Сироватки</a></li>
-                    <li><a href="/catalog.html?cat=sets">Набори</a></li>
+
+                    {% get_visible_categories as visible_categories %}
+                    {% for category in visible_categories %}
+                        <li><a href="/catalog.html?cat=serum">{{ category.name }}</a></li>
+                    {% endfor %}
                     <li><button class="footer__cat" data-open-categories=""
                             style="color: inherit; font: inherit">Категорії</button></li>
                 </ul>

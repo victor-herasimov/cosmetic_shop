@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class GoodsConfig(AppConfig):
-    name = 'goods'
+    name = "goods"
+    verbose_name = "Укравління товарами"

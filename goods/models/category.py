@@ -5,6 +5,9 @@ from mixins import SlugMixin, DateMixin
 
 class Category(SlugMixin, DateMixin):
     name = models.CharField(max_length=256, unique=True, verbose_name="Назва категорії")
+    visible = models.BooleanField(
+        default=False, verbose_name="Показувати в хедері і футері"
+    )
     short_description = models.CharField(max_length=25, verbose_name="Опис")
 
     class Meta:

@@ -52,6 +52,7 @@
             <button class="link-more" data-open-categories="">Всі категорії →</button>
         </div>
         <div class="cat-grid" id="homeCategories">
+            {% for category in all_categories|slice:":8" %}
             <a class="cat-card" href="/catalog_fix.html?cat=serum">
                 <span class="cat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -59,79 +60,12 @@
                         </path>
                         <path d="M2 21c0-3 1.85-5.36 5.08-6"></path>
                     </svg></span>
-                <span class="cat-card__name">Сироватки</span>
-                <span class="cat-card__desc">Концентрований догляд</span>
+                <span class="cat-card__name">{{ category.name }}</span>
+                <span class="cat-card__desc">{{ category.short_description }}</span>
             </a>
-            <a class="cat-card" href="/catalog_fix.html?cat=cream">
-                <span class="cat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z">
-                        </path>
-                        <path d="M2 21c0-3 1.85-5.36 5.08-6"></path>
-                    </svg></span>
-                <span class="cat-card__name">Креми</span>
-                <span class="cat-card__desc">Зволоження та живлення</span>
-            </a>
-            <a class="cat-card" href="/catalog_fix.html?cat=eye">
-                <span class="cat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z">
-                        </path>
-                        <path d="M2 21c0-3 1.85-5.36 5.08-6"></path>
-                    </svg></span>
-                <span class="cat-card__name">Під очі</span>
-                <span class="cat-card__desc">Делікатна зона</span>
-            </a>
-            <a class="cat-card" href="/catalog_fix.html?cat=scrub">
-                <span class="cat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z">
-                        </path>
-                        <path d="M2 21c0-3 1.85-5.36 5.08-6"></path>
-                    </svg></span>
-                <span class="cat-card__name">Скраби</span>
-                <span class="cat-card__desc">Оновлення шкіри</span>
-            </a>
-            <a class="cat-card" href="/catalog_fix.html?cat=body">
-                <span class="cat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z">
-                        </path>
-                        <path d="M2 21c0-3 1.85-5.36 5.08-6"></path>
-                    </svg></span>
-                <span class="cat-card__name">Тіло</span>
-                <span class="cat-card__desc">Догляд за тілом</span>
-            </a>
-            <a class="cat-card" href="/catalog_fix.html?cat=cleanse">
-                <span class="cat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z">
-                        </path>
-                        <path d="M2 21c0-3 1.85-5.36 5.08-6"></path>
-                    </svg></span>
-                <span class="cat-card__name">Очищення</span>
-                <span class="cat-card__desc">Тонізація та чистота</span>
-            </a>
-            <a class="cat-card" href="/catalog_fix.html?cat=hydration">
-                <span class="cat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z">
-                        </path>
-                        <path d="M2 21c0-3 1.85-5.36 5.08-6"></path>
-                    </svg></span>
-                <span class="cat-card__name">Зволоження</span>
-                <span class="cat-card__desc">Зволожувальні засоби</span>
-            </a>
-            <a class="cat-card" href="/catalog_fix.html?cat=sets">
-                <span class="cat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z">
-                        </path>
-                        <path d="M2 21c0-3 1.85-5.36 5.08-6"></path>
-                    </svg></span>
-                <span class="cat-card__name">Набори</span>
-                <span class="cat-card__desc">Готові комплекси</span>
-            </a>
+            {% empty %}
+            <p>Категорії відсутні</p>
+            {% endfor %}
         </div>
     </div>
 </section>

@@ -1,4 +1,5 @@
 {% load solo_tags %}
+{% load visible_categories %}
 {% get_solo 'main.SiteConfig' as site_config %}
 
 <!-- Header -->
@@ -14,8 +15,11 @@
             <nav class="nav">
                 <button class="nav__link" data-open-categories="">Категорії</button>
                 <a class="nav__link" href="/catalog.html">Каталог</a>
-                <a class="nav__link" href="/catalog.html?cat=serum">Сироватки</a>
-                <a class="nav__link" href="/catalog.html?cat=sets">Набори</a>
+                
+                {% get_visible_categories as visible_categories %}
+                {% for category in visible_categories %}
+                    <a class="nav__link" href="/catalog.html?cat=serum">{{ category.name }}</a>
+                {% endfor %}
             </nav>
             <div class="header__actions">
                 <button class="icon-btn" aria-label="Пошук" data-icon="search"><svg viewBox="0 0 24 24" fill="none"
