@@ -22,7 +22,7 @@ class Hero(SingletonModel):
         verbose_name="Короткий опис",
     )
     image = models.ImageField(
-        blank=True, null=True, upload_to="logo", verbose_name="Картинка"
+        blank=True, null=True, upload_to="hero", verbose_name="Картинка"
     )
 
     badge_title = models.CharField(
@@ -54,9 +54,9 @@ class Hero(SingletonModel):
         if self.pk:
             try:
                 old_config = Hero.objects.get(pk=self.pk)
-                if old_config.logo and old_config.logo != self.logo:
-                    if os.path.isfile(old_config.logo.path):
-                        os.remove(old_config.logo.path)
+                if old_config.image and old_config.image != self.image:
+                    if os.path.isfile(old_config.image.path):
+                        os.remove(old_config.image.path)
             except Hero.DoesNotExist:
                 pass
 

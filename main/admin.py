@@ -36,7 +36,7 @@ class HeroAdmin(SingletonModelAdmin):
 
         return (
             mark_safe(f'<img src="{obj.image.url}" width="60" height="60"')
-            if obj.logo
+            if obj.image
             else "-"
         )
 
