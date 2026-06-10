@@ -25,6 +25,7 @@ class SiteConfig(SingletonModel):
     updated = models.DateTimeField(auto_now=True, verbose_name="Дата оновлення")
 
     class Meta:
+        app_label = "main"
         verbose_name: str = "Конфігурація сайту"
 
     def __str__(self) -> str:
