@@ -1,10 +1,4 @@
-from .models import Strip
-from .models import SiteConfig, Email, Phone, Social
-
-
-class StripService:
-    def get_all(self) -> list[Strip]:
-        return Strip.objects.all()
+from main.models import SiteConfig, Email, Phone, Social
 
 
 class SiteConfigService:
