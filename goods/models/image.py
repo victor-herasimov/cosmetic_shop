@@ -48,3 +48,5 @@ class Foto(DateMixin):
             )
 
         super().save(*args, **kwargs)
+
+

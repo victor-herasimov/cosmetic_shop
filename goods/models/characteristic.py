@@ -13,8 +13,8 @@ class Characteristic(models.Model):
 
     class Meta:
         ordering = ["item"]
-        verbose_name = "Додаткову характеристика"
-        verbose_name_plural = "Додаткові характеристики"
+        verbose_name = "Характеристика"
+        verbose_name_plural = "Характеристики"
         constraints = [
             models.UniqueConstraint(fields=("item", "value"), name="unique_item_value")
         ]

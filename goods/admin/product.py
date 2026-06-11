@@ -3,6 +3,28 @@ from django.utils.safestring import mark_safe
 
 from goods.models import Product
 from goods.models import Foto
+from goods.models import Characteristic
+from goods.models.characteristic_item import CharacteristicItem
+
+
+@admin.register(CharacteristicItem)
+class OtherCharacteristicItemAdmin(admin.ModelAdmin):
+    list_display = ["name"]
+    list_display_links = ["name"]
+    fields = ["name"]
+
+
+@admin.register(Characteristic)
+class OtherCharacteristicAdmin(admin.ModelAdmin):
+    list_display = ["item", "value"]
+    list_display_links = ["item", "value"]
+    fields = ["item", "value"]
+
+
+class CharacteristicInline(admin.TabularInline):
+    model = Product.characteristics.through
+    # fields = ["value"]
+    extra = 0
 
 
 class FotoInline(admin.TabularInline):
@@ -27,7 +49,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = [
         "cateogry",
     ]
-    inlines = [FotoInline]
+    inlines = [FotoInline, CharacteristicInline]
     fieldsets = [
         (
             None,
@@ -52,10 +74,12 @@ class ProductAdmin(admin.ModelAdmin):
                 ]
             },
         ),
+        ("Склад", {"fields": ["composition"]}),
         (
             "Опис",
             {"fields": ["description"]},
         ),
+        ("Спосіб застосування", {"fields": ["method_apply"]}),
         ("Дати", {"fields": ["created", "updated"]}),
     ]
     prepopulated_fields = {"slug": ["title"]}

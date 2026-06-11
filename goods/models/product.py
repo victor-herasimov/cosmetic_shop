@@ -18,6 +18,17 @@ class Product(DateMixin, SlugMixin):
     )
 
     description = CKEditor5Field("Опис", config_name="extends")
+    method_apply = CKEditor5Field(
+        "Спосіб застосування",
+        config_name="extends",
+        blank=True,
+        null=True,
+        default=None,
+    )
+
+    composition = models.TextField(
+        verbose_name="Склад", null=True, blank=True, default=None
+    )
 
     count = models.IntegerField(
         validators=[MinValueValidator(0)], verbose_name="Залишок", default=0

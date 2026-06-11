@@ -1,10 +1,10 @@
 import os
-from django.db.models.signals import pre_delete
+from django.db.models.signals import post_delete
 from django.dispatch import receiver
 from .models import Foto
 
 
-@receiver(pre_delete, sender=Foto)
+@receiver(post_delete, sender=Foto)
 def delete_image_on_delete(sender, instance, **kwargs) -> None:
     """
     Видаляє фотографію з диска, якщо запис видаляється.
