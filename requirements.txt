@@ -1,6 +1,8 @@
 asgiref==3.11.1
 Django==6.0.6
+django-ckeditor-5==0.2.20
 django-solo==2.5.1
+pillow==12.2.0
 psycopg2-binary==2.9.12
 python-dotenv==1.2.2
 sqlparse==0.5.5
