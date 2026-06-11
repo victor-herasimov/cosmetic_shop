@@ -17,6 +17,10 @@ class SiteConfig(SingletonModel):
     logo = models.ImageField(
         blank=True, null=True, upload_to="logo", verbose_name="Логотип"
     )
+
+    favicon = models.ImageField(
+        blank=True, null=True, upload_to="favicon", verbose_name="Фавіконка"
+    )
     slogan = models.CharField(
         max_length=512, null=True, blank=True, default=None, verbose_name="Гасло"
     )
@@ -38,6 +42,9 @@ class SiteConfig(SingletonModel):
                 if old_config.logo and old_config.logo != self.logo:
                     if os.path.isfile(old_config.logo.path):
                         os.remove(old_config.logo.path)
+                if old_config.favicon and old_config.favicon != self.favicon:
+                    if os.path.isfile(old_config.favicon.path):
+                        os.remove(old_config.favicon.path)
             except SiteConfig.DoesNotExist:
                 pass
 

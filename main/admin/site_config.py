@@ -27,11 +27,22 @@ class SiteConfigAdmin(SingletonModelAdmin):
 
     thumbnail.short_description = "Мініатюрка"
 
+    def thumbnail_favicon(self, obj):
+
+        return (
+            mark_safe(f'<img src="{obj.favicon.url}" width="40"')
+            if obj.favicon
+            else "-"
+        )
+
+    thumbnail_favicon.short_description = "Мініатюрка фавіконки"
+
     list_display = ["title", "short_description"]
     list_display_links = ["title"]
     fieldsets = [
         (None, {"fields": ["title", "short_description", "slogan"]}),
         ("Логотип", {"fields": ["thumbnail", "logo"]}),
+        ("Фавіконка", {"fields": ["thumbnail_favicon", "favicon"]}),
     ]
-    readonly_fields = ["created", "updated", "thumbnail"]
+    readonly_fields = ["created", "updated", "thumbnail", "thumbnail_favicon"]
     inlines = [EmailInline, PhoneInline, SocialInline]
