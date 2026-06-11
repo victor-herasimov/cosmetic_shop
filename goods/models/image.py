@@ -22,14 +22,20 @@ class Foto(DateMixin):
     )
 
     class Meta:
-        ordering = ["is_main", "-updated"]
+        app_label = "goods"
+        ordering = ["-is_main", "-updated"]
         verbose_name = "Фото"
         verbose_name_plural = "Фото"
+
+    def __str__(self) -> str:
+        return f"Foto {self.pk}"
 
     def clean(self):
         if self.is_main:
             dupes = Foto.objects.filter(product=self.product).exclude(pk=self.pk)
-            if dupes.filter(is_primary=True).exists():
+            print(dupes)
+            if dupes.filter(is_main=True).exists():
+                print(dupes)
                 raise ValidationError(
                     "Для цього батьківського об'єкта вже існує основний запис."
                 )
@@ -38,7 +44,7 @@ class Foto(DateMixin):
         self.clean()
         if self.is_main:
             Foto.objects.filter(product=self.product).exclude(pk=self.pk).update(
-                is_primary=False
+                is_main=False
             )
 
         super().save(*args, **kwargs)

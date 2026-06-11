@@ -1,6 +1,7 @@
 from .category import Category
 from .image import Foto
 from .product import Product
-from .information import Information
+from .characteristic import Characteristic
+from .characteristic_item import CharacteristicItem
 
-__all__ = ["Category", "Foto", "Product", "Information"]
+__all__ = ["Category", "Foto", "Product", "Characteristic", "CharacteristicItem"]

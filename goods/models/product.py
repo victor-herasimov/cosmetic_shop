@@ -5,6 +5,7 @@ from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
 from mixins import DateMixin, SlugMixin
 from .category import Category
+from .characteristic import Characteristic
 
 
 class Product(DateMixin, SlugMixin):
@@ -30,7 +31,16 @@ class Product(DateMixin, SlugMixin):
         default=0,
     )
 
+    characteristics = models.ManyToManyField(
+        Characteristic,
+        blank=True,
+        default=None,
+        related_name="books",
+        verbose_name="Характеристики",
+    )
+
     class Meta:
+        app_label = "goods"
         ordering = ["title"]
         indexes = [
             models.Index(fields=["id", "slug"]),
