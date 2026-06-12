@@ -6,6 +6,8 @@ from goods.models import Foto
 from goods.models import Characteristic
 from goods.models.characteristic_item import CharacteristicItem
 
+from .actions import duplicate_product_action
+
 
 @admin.register(CharacteristicItem)
 class OtherCharacteristicItemAdmin(admin.ModelAdmin):
@@ -42,7 +44,8 @@ class FotoInline(admin.TabularInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    save_as = True
+    actions = [duplicate_product_action]
+    save_as = False
     save_on_top = True
     list_display = ["id", "title"]
     list_display_links = ["id", "title"]

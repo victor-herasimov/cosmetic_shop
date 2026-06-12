@@ -13,6 +13,7 @@ services:
   dbbrowser:
     image: adminer
     container_name: adminer
+    restart: always
     ports:
       - 8082:8080
     depends_on:

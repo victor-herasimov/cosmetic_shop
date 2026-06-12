@@ -29,24 +29,3 @@ class Foto(DateMixin):
 
     def __str__(self) -> str:
         return f"Foto {self.pk}"
-
-    def clean(self):
-        if self.is_main:
-            dupes = Foto.objects.filter(product=self.product).exclude(pk=self.pk)
-            print(dupes)
-            if dupes.filter(is_main=True).exists():
-                print(dupes)
-                raise ValidationError(
-                    "Для цього батьківського об'єкта вже існує основний запис."
-                )
-
-    def save(self, *args, **kwargs):
-        self.clean()
-        if self.is_main:
-            Foto.objects.filter(product=self.product).exclude(pk=self.pk).update(
-                is_main=False
-            )
-
-        super().save(*args, **kwargs)
-
-

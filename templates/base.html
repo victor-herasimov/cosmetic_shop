@@ -11,8 +11,8 @@
     {% if site_config and site_config.favicon %}
         <link rel="icon" type="image/x-icon" href="{{ site_config.favicon.url }}">
     {% endif %}
-
-    <title>{{ site_config.title }} — догляд за шкірою, що працює</title>
+    
+    <title>{{ site_config.title }} {% block title %} {% if site_config.slogan_top %} — {{ site_config.slogan_top }} {% endif %} {% endblock title %} </title>
 
     {% include "includes/_styles.html" %}
 </head>

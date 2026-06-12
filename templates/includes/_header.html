@@ -14,11 +14,11 @@
             <a href="{% url "main:index" %}" class="logo"><img src="{{site_config.logo.url}}" alt="logo"> </a>
             <nav class="nav">
                 <button class="nav__link" data-open-categories="">Категорії</button>
-                <a class="nav__link" href="/catalog.html">Каталог</a>
+                <a class="nav__link" href="{% url "goods:catalog" %}">Каталог</a>
                 
                 {% get_visible_categories as visible_categories %}
                 {% for category in visible_categories %}
-                    <a class="nav__link" href="/catalog.html?cat=serum">{{ category.name }}</a>
+                    <a class="nav__link" href="{% url "goods:catalog" %}?cat={{ category.slug }}">{{ category.name }}</a>
                 {% endfor %}
             </nav>
             <div class="header__actions">
