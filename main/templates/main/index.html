@@ -2,6 +2,7 @@
 {% load static %}
 {% load strips %}
 {% load solo_tags %}
+{% load products %}
 
 
 {% block content %}
@@ -72,86 +73,30 @@
 </section>
 
 <!-- Bestsellers -->
-<section class="section" style="padding-top: 0">
-    <div class="wrap">
-        <div class="section__head">
-            <div>
-                <span class="eyebrow">Бестселери</span>
-                <h2 class="section-title">Улюбленці покупців</h2>
-                <p>Найпопулярніші засоби, які обирають знову і знову.</p>
+{% get_product_bestsellers as product_bestsellers %}
+{% if product_bestsellers %}
+    <section class="section" style="padding-top: 0">
+        <div class="wrap">
+            <div class="section__head">
+                <div>
+                    <span class="eyebrow">Бестселери</span>
+                    <h2 class="section-title">Улюбленці покупців</h2>
+                    <p>Найпопулярніші засоби, які обирають знову і знову.</p>
+                </div>
+                <a class="link-more" href="{% url "goods:catalog" %}">Весь каталог →</a>
             </div>
-            <a class="link-more" href="/catalog.html">Весь каталог →</a>
+            <div class="product-grid" id="bestsellers">
+                {% for product in product_bestsellers %}
+                    {% include "includes/_product_card.html" with product=product %}
+                {% endfor %}
+            </div>
         </div>
-        <div class="product-grid" id="bestsellers">
-            <article class="card">
-                <a class="card__media" href="/product.html?id=argireline-2">
-                    <span class="card__tag ">Хіт</span>
-                    <img src="/images/product-1.png" alt="Сироватка-замінник ботоксу 2% — ARGIRELINE®">
-                </a>
-                <div class="card__body">
-                    <span class="card__cat">Сироватки</span>
-                    <a class="card__name" href="/product.html?id=argireline-2">Сироватка-замінник ботоксу 2% —
-                        ARGIRELINE®</a>
-                    <div class="card__price"><b>490 ₴</b></div>
-                    <div class="card__actions">
-                        <button class="btn btn--primary card__add card__btn" data-add="argireline-2">До кошику</button>
-                        <a class="btn btn--ghost card__btn" href="/product.html?id=argireline-2">Детальніше</a>
-                    </div>
-                </div>
-            </article>
-            <article class="card">
-                <a class="card__media" href="/product.html?id=meccano-scrub">
-                    <span class="card__tag ">Хіт</span>
-                    <img src="/images/product-3.png" alt="Meccano Scrub — кавовий скраб для тіла">
-                </a>
-                <div class="card__body">
-                    <span class="card__cat">Скраби</span>
-                    <a class="card__name" href="/product.html?id=meccano-scrub">Meccano Scrub — кавовий скраб для
-                        тіла</a>
-                    <div class="card__price"><b>350 ₴</b></div>
-                    <div class="card__actions">
-                        <button class="btn btn--primary card__add card__btn" data-add="meccano-scrub">До кошику</button>
-                        <a class="btn btn--ghost card__btn" href="/product.html?id=meccano-scrub">Детальніше</a>
-                    </div>
-                </div>
-            </article>
-            <article class="card">
-                <a class="card__media" href="/product.html?id=neck-cream">
-                    <span class="card__tag ">Хіт</span>
-                    <img src="/images/product-2.png" alt="Ремоделюючий крем для шиї та підборіддя">
-                </a>
-                <div class="card__body">
-                    <span class="card__cat">Креми</span>
-                    <a class="card__name" href="/product.html?id=neck-cream">Ремоделюючий крем для шиї та
-                        підборіддя</a>
-                    <div class="card__price"><b>690 ₴</b></div>
-                    <div class="card__actions">
-                        <button class="btn btn--primary card__add card__btn" data-add="neck-cream">До кошику</button>
-                        <a class="btn btn--ghost card__btn" href="/product.html?id=neck-cream">Детальніше</a>
-                    </div>
-                </div>
-            </article>
-            <article class="card">
-                <a class="card__media" href="/product.html?id=hydra-gel">
-                    <span class="card__tag ">Хіт</span>
-                    <img src="/images/product-2.png" alt="Зволожувальний аква-гель з гіалуроном">
-                </a>
-                <div class="card__body">
-                    <span class="card__cat">Зволоження</span>
-                    <a class="card__name" href="/product.html?id=hydra-gel">Зволожувальний аква-гель з
-                        гіалуроном</a>
-                    <div class="card__price"><b>450 ₴</b></div>
-                    <div class="card__actions">
-                        <button class="btn btn--primary card__add card__btn" data-add="hydra-gel">До кошику</button>
-                        <a class="btn btn--ghost card__btn" href="/product.html?id=hydra-gel">Детальніше</a>
-                    </div>
-                </div>
-            </article>
-        </div>
-    </div>
-</section>
+    </section>
+{% endif %}
 
 <!-- New arrivals -->
+{% get_product_news as product_news %}
+{% if product_news %}
 <section class="section" style="padding-top: 0">
     <div class="wrap">
         <div class="section__head">
@@ -159,76 +104,16 @@
                 <span class="eyebrow">Новинки</span>
                 <h2 class="section-title">Щойно з'явилися</h2>
             </div>
-            <a class="link-more" href="/catalog.html">Дивитись усе →</a>
+            <a class="link-more" href="{% url "goods:catalog" %}">Дивитись усе →</a>
         </div>
         <div class="product-grid" id="newArrivals">
-            <article class="card">
-                <a class="card__media" href="/product.html?id=eye-dark-circles">
-                    <span class="card__tag ">Новинка</span>
-                    <img src="/images/product-4.png" alt="Крем проти темних кіл та набряків під очима">
-                </a>
-                <div class="card__body">
-                    <span class="card__cat">Під очі</span>
-                    <a class="card__name" href="/product.html?id=eye-dark-circles">Крем проти темних кіл та набряків
-                        під очима</a>
-                    <div class="card__price"><b>790 ₴</b></div>
-                    <div class="card__actions">
-                        <button class="btn btn--primary card__add card__btn" data-add="eye-dark-circles">До кошику</button>
-                        <a class="btn btn--ghost card__btn" href="/product.html?id=eye-dark-circles">Детальніше</a>
-                    </div>
-                </div>
-            </article>
-            <article class="card">
-                <a class="card__media" href="/product.html?id=milky-toner">
-                    <span class="card__tag ">Новинка</span>
-                    <img src="/images/product-2.png" alt="Відновлювальний milky-тонер для обличчя">
-                </a>
-                <div class="card__body">
-                    <span class="card__cat">Очищення</span>
-                    <a class="card__name" href="/product.html?id=milky-toner">Відновлювальний milky-тонер для
-                        обличчя</a>
-                    <div class="card__price"><b>390 ₴</b></div>
-                    <div class="card__actions">
-                        <button class="btn btn--primary card__add card__btn" data-add="milky-toner">До кошику</button>
-                        <a class="btn btn--ghost card__btn" href="/product.html?id=milky-toner">Детальніше</a>
-                    </div>
-                </div>
-            </article>
-            <article class="card">
-                <a class="card__media" href="/product.html?id=argireline-2">
-                    <span class="card__tag ">Хіт</span>
-                    <img src="/images/product-1.png" alt="Сироватка-замінник ботоксу 2% — ARGIRELINE®">
-                </a>
-                <div class="card__body">
-                    <span class="card__cat">Сироватки</span>
-                    <a class="card__name" href="/product.html?id=argireline-2">Сироватка-замінник ботоксу 2% —
-                        ARGIRELINE®</a>
-                    <div class="card__price"><b>490 ₴</b></div>
-                    <div class="card__actions">
-                        <button class="btn btn--primary card__add card__btn" data-add="argireline-2">До кошику</button>
-                        <a class="btn btn--ghost card__btn" href="/product.html?id=argireline-2">Детальніше</a>
-                    </div>
-                </div>
-            </article>
-            <article class="card">
-                <a class="card__media" href="/product.html?id=better-butter">
-                    <span class="card__tag card__tag--sale">Акція</span>
-                    <img src="/images/product-2.png" alt="Better Butter — поживний крем для обличчя">
-                </a>
-                <div class="card__body">
-                    <span class="card__cat">Креми</span>
-                    <a class="card__name" href="/product.html?id=better-butter">Better Butter — поживний крем для
-                        обличчя</a>
-                    <div class="card__price"><b>390 ₴</b><s>450 ₴</s></div>
-                    <div class="card__actions">
-                        <button class="btn btn--primary card__add card__btn" data-add="better-butter">До кошику</button>
-                        <a class="btn btn--ghost card__btn" href="/product.html?id=better-butter">Детальніше</a>
-                    </div>
-                </div>
-            </article>
+            {% for product in product_news %}
+                {% include "includes/_product_card.html" with product=product %}
+            {% endfor %}
         </div>
     </div>
 </section>
+{% endif %}
 
 {% endblock content %}
 

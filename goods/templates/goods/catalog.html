@@ -63,37 +63,7 @@
             <div>
                 <div class="product-grid product-grid--catalog" id="catalogGrid">
                     {% for product in products %}
-                    <article class="card">
-                        <a class="card__media" href="/product.html?id=argireline-2">
-                            <div class="card__tags">
-                                <span class="card__tag ">Хіт</span>
-                                <span class="card__tag card__tag--sale">Акція</span>
-                                <span class="card__tag ">Новинка</span>
-                            </div>
-                            
-                            {% with image=product.fotos.first %}
-                                {% if image %}
-
-                                    <img src="{{ image.image.url }}" alt="{{ product.title }}">
-                                {% endif %}
-                            {% endwith %}
-                        </a>
-                        <div class="card__body">
-                            <span class="card__cat">{{ product.cateogry }}</span>
-                            <a class="card__name" href="/product.html?id=argireline-2">{{ product.title|truncatechars:50 }}</a>
-                            {% if product.is_discount %}
-                                <div class="card__price"><b>{{ product.get_price_with_discount|floatformat:2 }} ₴</b><s>{{ product.price|floatformat:2 }} ₴</s></div>
-                            {% else %}
-                                <div class="card__price"><b>{{ product.price|floatformat:2 }} ₴</b></div>
-                            {% endif %}
-                            
-                            
-                            <div class="card__actions">
-                                <button class="btn btn--primary card__add card__btn" data-add="argireline-2">До кошику</button>
-                                <a class="btn btn--ghost card__btn" href="/product.html?id=argireline-2">Детальніше</a>
-                            </div>
-                        </div>
-                    </article>
+                        {% include "includes/_product_card.html" with product=product %}
                     {% endfor %}
 
                 </div>

@@ -29,3 +29,24 @@ class ProductService:
         Повертає кількість усіх товарів.
         """
         return Product.objects.count()
+
+    def get_bestsellers(self) -> QuerySet[Product]:
+        """
+        Повертає кверісет з першими 4-ма продуктами, що є хітом продаж. Якщо таких менше 4-х
+        то добавляє іншими продуктами.
+        """
+        return (
+            Product.objects.select_related("cateogry")
+            .prefetch_related("fotos")
+            .order_by("-is_bestseller", "-updated")[:4]
+        )
+
+    def get_news(self) -> QuerySet[Product]:
+        """
+        Повертає кверісет з першими 4-ма новими продуктами.
+        """
+        return (
+            Product.objects.select_related("cateogry")
+            .prefetch_related("fotos")
+            .order_by("-is_new", "-created")[:4]
+        )
