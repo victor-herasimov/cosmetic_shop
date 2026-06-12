@@ -9,13 +9,20 @@ class ProductService:
         """
         Повертає кверісет з усіма продуктами
         """
-        return Product.objects.all()
+        return (
+            Product.objects.select_related("cateogry").prefetch_related("fotos").all()
+        )
 
     def get_products_by_category(self, category: Category) -> QuerySet[Product]:
         """
         Повертає кверісет з усіма продуктами за категорією.
         """
-        return Product.objects.filter(cateogry=category).order_by("-updated")
+        return (
+            Product.objects.select_related("cateogry")
+            .prefetch_related("fotos")
+            .filter(cateogry=category)
+            .order_by("-updated")
+        )
 
     def get_products_count(self) -> int:
         """

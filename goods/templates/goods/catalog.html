@@ -62,204 +62,40 @@
             </aside>
             <div>
                 <div class="product-grid product-grid--catalog" id="catalogGrid">
+                    {% for product in products %}
                     <article class="card">
                         <a class="card__media" href="/product.html?id=argireline-2">
-                            <span class="card__tag ">Хіт</span>
-                            <img src="/images/product-1.png" alt="Сироватка-замінник ботоксу 2% — ARGIRELINE®">
+                            <div class="card__tags">
+                                <span class="card__tag ">Хіт</span>
+                                <span class="card__tag card__tag--sale">Акція</span>
+                                <span class="card__tag ">Новинка</span>
+                            </div>
+                            
+                            {% with image=product.fotos.first %}
+                                {% if image %}
+
+                                    <img src="{{ image.image.url }}" alt="{{ product.title }}">
+                                {% endif %}
+                            {% endwith %}
                         </a>
                         <div class="card__body">
-                            <span class="card__cat">Сироватки</span>
-                            <a class="card__name" href="/product.html?id=argireline-2">Сироватка-замінник ботоксу 2%
-                                — ARGIRELINE®</a>
-                            <div class="card__price"><b>490 ₴</b></div>
+                            <span class="card__cat">{{ product.cateogry }}</span>
+                            <a class="card__name" href="/product.html?id=argireline-2">{{ product.title|truncatechars:50 }}</a>
+                            {% if product.is_discount %}
+                                <div class="card__price"><b>{{ product.get_price_with_discount|floatformat:2 }} ₴</b><s>{{ product.price|floatformat:2 }} ₴</s></div>
+                            {% else %}
+                                <div class="card__price"><b>{{ product.price|floatformat:2 }} ₴</b></div>
+                            {% endif %}
+                            
+                            
                             <div class="card__actions">
                                 <button class="btn btn--primary card__add card__btn" data-add="argireline-2">До кошику</button>
                                 <a class="btn btn--ghost card__btn" href="/product.html?id=argireline-2">Детальніше</a>
                             </div>
                         </div>
                     </article>
-                    <article class="card">
-                        <a class="card__media" href="/product.html?id=argireline-5">
-                            <span class="card__tag card__tag--sale">Акція</span>
-                            <img src="/images/product-1.png"
-                                alt="Посилена сироватка-замінник ботоксу 5% — ARGIRELINE®">
-                        </a>
-                        <div class="card__body">
-                            <span class="card__cat">Сироватки</span>
-                            <a class="card__name" href="/product.html?id=argireline-5">Посилена сироватка-замінник
-                                ботоксу 5% — ARGIRELINE®</a>
-                            <div class="card__price"><b>590 ₴</b><s>690 ₴</s></div>
-                            <div class="card__actions">
-                                <button class="btn btn--primary card__add card__btn" data-add="argireline-5">До
-                                    кошику</button>
-                                <a class="btn btn--ghost card__btn" href="/product.html?id=argireline-5">Детальніше</a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="card">
-                        <a class="card__media" href="/product.html?id=meccano-scrub">
-                            <span class="card__tag ">Хіт</span>
-                            <img src="/images/product-3.png" alt="Meccano Scrub — кавовий скраб для тіла">
-                        </a>
-                        <div class="card__body">
-                            <span class="card__cat">Скраби</span>
-                            <a class="card__name" href="/product.html?id=meccano-scrub">Meccano Scrub — кавовий
-                                скраб для тіла</a>
-                            <div class="card__price"><b>350 ₴</b></div>
-                            <div class="card__actions">
-                                <button class="btn btn--primary card__add card__btn" data-add="meccano-scrub">До
-                                    кошику</button>
-                                <a class="btn btn--ghost card__btn" href="/product.html?id=meccano-scrub">Детальніше</a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="card">
-                        <a class="card__media" href="/product.html?id=hydra-gel">
-                            <span class="card__tag ">Хіт</span>
-                            <img src="/images/product-2.png" alt="Зволожувальний аква-гель з гіалуроном">
-                        </a>
-                        <div class="card__body">
-                            <span class="card__cat">Зволоження</span>
-                            <a class="card__name" href="/product.html?id=hydra-gel">Зволожувальний аква-гель з
-                                гіалуроном</a>
-                            <div class="card__price"><b>450 ₴</b></div>
-                            <div class="card__actions">
-                                <button class="btn btn--primary card__add card__btn" data-add="hydra-gel">До кошику</button>
-                                <a class="btn btn--ghost card__btn" href="/product.html?id=hydra-gel">Детальніше</a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="card">
-                        <a class="card__media" href="/product.html?id=better-butter">
-                            <span class="card__tag card__tag--sale">Акція</span>
-                            <img src="/images/product-2.png" alt="Better Butter — поживний крем для обличчя">
-                        </a>
-                        <div class="card__body">
-                            <span class="card__cat">Креми</span>
-                            <a class="card__name" href="/product.html?id=better-butter">Better Butter — поживний
-                                крем для обличчя</a>
-                            <div class="card__price"><b>390 ₴</b><s>450 ₴</s></div>
-                            <div class="card__actions">
-                                <button class="btn btn--primary card__add" data-add="better-butter">До
-                                    кошику</button>
-                                <a class="btn btn--ghost" href="/product.html?id=better-butter">Детальніше</a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="card">
-                        <a class="card__media" href="/product.html?id=milky-toner">
-                            <span class="card__tag ">Новинка</span>
-                            <img src="/images/product-2.png" alt="Відновлювальний milky-тонер для обличчя">
-                        </a>
-                        <div class="card__body">
-                            <span class="card__cat">Очищення</span>
-                            <a class="card__name" href="/product.html?id=milky-toner">Відновлювальний milky-тонер
-                                для обличчя</a>
-                            <div class="card__price"><b>390 ₴</b></div>
-                            <div class="card__actions">
-                                <button class="btn btn--primary card__add" data-add="milky-toner">До кошику</button>
-                                <a class="btn btn--ghost" href="/product.html?id=milky-toner">Детальніше</a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="card">
-                        <a class="card__media" href="/product.html?id=silk-fluid">
+                    {% endfor %}
 
-                            <img src="/images/product-3.png" alt="Флюїд для тіла з ефектом шовку">
-                        </a>
-                        <div class="card__body">
-                            <span class="card__cat">Тіло</span>
-                            <a class="card__name" href="/product.html?id=silk-fluid">Флюїд для тіла з ефектом
-                                шовку</a>
-                            <div class="card__price"><b>550 ₴</b></div>
-                            <div class="card__actions">
-                                <button class="btn btn--primary card__add" data-add="silk-fluid">До кошику</button>
-                                <a class="btn btn--ghost" href="/product.html?id=silk-fluid">Детальніше</a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="card">
-                        <a class="card__media" href="/product.html?id=eye-dark-circles">
-                            <span class="card__tag ">Новинка</span>
-                            <img src="/images/product-4.png" alt="Крем проти темних кіл та набряків під очима">
-                        </a>
-                        <div class="card__body">
-                            <span class="card__cat">Під очі</span>
-                            <a class="card__name" href="/product.html?id=eye-dark-circles">Крем проти темних кіл та
-                                набряків під очима</a>
-                            <div class="card__price"><b>790 ₴</b></div>
-                            <div class="card__actions">
-                                <button class="btn btn--primary card__add" data-add="eye-dark-circles">До
-                                    кошику</button>
-                                <a class="btn btn--ghost" href="/product.html?id=eye-dark-circles">Детальніше</a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="card">
-                        <a class="card__media" href="/product.html?id=peeling-aha">
-
-                            <img src="/images/product-3.png" alt="Professional Exfoliating Peeling | AHA+BHA">
-                        </a>
-                        <div class="card__body">
-                            <span class="card__cat">Очищення</span>
-                            <a class="card__name" href="/product.html?id=peeling-aha">Professional Exfoliating
-                                Peeling | AHA+BHA</a>
-                            <div class="card__price"><b>590 ₴</b></div>
-                            <div class="card__actions">
-                                <button class="btn btn--primary card__add" data-add="peeling-aha">До кошику</button>
-                                <a class="btn btn--ghost" href="/product.html?id=peeling-aha">Детальніше</a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="card">
-                        <a class="card__media" href="/product.html?id=bakuchiol-serum">
-
-                            <img src="/images/product-1.png" alt="Антивікова сироватка з бакучіолом">
-                        </a>
-                        <div class="card__body">
-                            <span class="card__cat">Сироватки</span>
-                            <a class="card__name" href="/product.html?id=bakuchiol-serum">Антивікова сироватка з
-                                бакучіолом</a>
-                            <div class="card__price"><b>390 ₴</b></div>
-                            <div class="card__actions">
-                                <button class="btn btn--primary card__add" data-add="bakuchiol-serum">До
-                                    кошику</button>
-                                <a class="btn btn--ghost" href="/product.html?id=bakuchiol-serum">Детальніше</a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="card">
-                        <a class="card__media" href="/product.html?id=neck-cream">
-                            <span class="card__tag ">Хіт</span>
-                            <img src="/images/product-2.png" alt="Ремоделюючий крем для шиї та підборіддя">
-                        </a>
-                        <div class="card__body">
-                            <span class="card__cat">Креми</span>
-                            <a class="card__name" href="/product.html?id=neck-cream">Ремоделюючий крем для шиї та
-                                підборіддя</a>
-                            <div class="card__price"><b>690 ₴</b></div>
-                            <div class="card__actions">
-                                <button class="btn btn--primary card__add" data-add="neck-cream">До кошику</button>
-                                <a class="btn btn--ghost" href="/product.html?id=neck-cream">Детальніше</a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="card">
-                        <a class="card__media" href="/product.html?id=lifting-set">
-                            <span class="card__tag card__tag--sale">Акція</span>
-                            <img src="/images/product-4.png" alt="Триступеневий підтягувальний комплекс">
-                        </a>
-                        <div class="card__body">
-                            <span class="card__cat">Набори</span>
-                            <a class="card__name" href="/product.html?id=lifting-set">Триступеневий підтягувальний
-                                комплекс</a>
-                            <div class="card__price"><b>1&nbsp;290 ₴</b><s>1&nbsp;590 ₴</s></div>
-                            <div class="card__actions">
-                                <button class="btn btn--primary card__add" data-add="lifting-set">До кошику</button>
-                                <a class="btn btn--ghost" href="/product.html?id=lifting-set">Детальніше</a>
-                            </div>
-                        </div>
-                    </article>
                 </div>
                 <div class="catalog-empty" id="catalogEmpty" style="display:none">
                     <p>За цією категорією товарів поки немає.</p>

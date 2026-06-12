@@ -42,6 +42,17 @@ class Product(DateMixin, SlugMixin):
         default=0,
     )
 
+    is_bestseller = models.BooleanField(
+        default=False,
+        verbose_name="Хіт продаж",
+        help_text='Відображаються на головній сторінці в розділі "Улюбленці покупців" і позначаються бейджом "Хіт".',
+    )
+    is_new = models.BooleanField(
+        default=True,
+        verbose_name="Новинка",
+        help_text='Відображаються на головній сторінці в розділі "Щойно з`явилися" і позначаються бейджом "Новинка".',
+    )
+
     characteristics = models.ManyToManyField(
         Characteristic,
         blank=True,
