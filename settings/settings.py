@@ -34,13 +34,18 @@ INTERNAL_APPS: list[str] = [
     "django.contrib.staticfiles",
 ]
 
-OUTHER_APPS: list[str] = ["solo", "django_ckeditor_5"]
+OUTHER_APPS: list[str] = [
+    "solo",
+    "django_ckeditor_5",
+    "debug_toolbar",
+]
 
 CREATED_APPS: list[str] = ["main.apps.MainConfig", "goods.apps.GoodsConfig"]
 
 INSTALLED_APPS: list[str] = INTERNAL_APPS + OUTHER_APPS + CREATED_APPS
 
 MIDDLEWARE: list[str] = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -63,6 +68,7 @@ TEMPLATES: list[dict[str, Any]] = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "goods.context_processors.all_categories",
+                "main.context_processors.site_settings",
             ],
         },
     },
@@ -123,6 +129,12 @@ STATIC_URL: str = "static/"
 
 MEDIA_URL: str = "media/"
 MEDIA_ROOT: Path = BASE_DIR / MEDIA_URL
+
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
 
 if DEBUG:
     STATICFILES_DIRS: list[Path] = [BASE_DIR / STATIC_URL]

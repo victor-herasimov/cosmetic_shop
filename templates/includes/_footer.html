@@ -1,8 +1,4 @@
-{% load solo_tags %}
-{% load site_config %}
-{% load visible_categories %}
 
-{% get_solo 'main.SiteConfig' as site_config %} 
  <!-- Footer -->
 <footer class="footer">
     <div class="wrap">
@@ -17,10 +13,10 @@
                 <h4>Магазин</h4>
                 <ul class="footer__links">
                     <li><a href="{% url "goods:catalog" %}">Каталог</a></li>
-
-                    {% get_visible_categories as visible_categories %}
-                    {% for category in visible_categories %}
-                        <li><a href="{% url "goods:catalog" %}?cat={{ category.slug }}">{{ category.name }}</a></li>
+                    {% for category in all_categories %}
+                        {% if category.visible %}
+                            <li><a href="{% url "goods:catalog" %}?cat={{ category.slug }}">{{ category.name }}</a></li>
+                        {% endif %}
                     {% endfor %}
                     <li><button class="footer__cat" data-open-categories=""
                             style="color: inherit; font: inherit">Категорії</button></li>
@@ -38,26 +34,30 @@
             <div>
                 <h4>Контакти</h4>
                 <ul class="footer__links">
-                    {% get_phones_in_footer as phones %}
-                    {% if phones %}
-                        {% for phone in phones %}
-                            <li><a href="tel:{{ phone.clean_number }}">{{ phone }}</a></li>
-                        {% endfor %}
-                    {% endif %}
 
-                    {% get_emails_in_footer as emails %}
-                    {% if emails %}
-                        {% for email in emails %}
-                            <li><a href="mailto:{{ email }}">{{ email }}</a></li>
-                        {% endfor %}
-                    {% endif %}
+                    {% with phones=site_config.phones.all %}
+                        {% if phones %}
+                            {% for phone in phones %}
+                                <li><a href="tel:{{ phone.clean_number }}">{{ phone }}</a></li>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+
+                    {% with emails=site_config.emails.all %}
+                        {% if emails %}
+                            {% for email in emails %}
+                                <li><a href="mailto:{{ email }}">{{ email }}</a></li>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
                     
-                    {% get_socials_in_footer as socials %}
-                    {% if socials %}
-                        {% for social in socials %}
-                            <li><a href="{{ social.url }}" target="_blank">{{ social.title }} </a></li>
-                        {% endfor %}
-                    {% endif %}
+                    {% with socials=site_config.socials.all %}
+                        {% if socials %}
+                            {% for social in socials %}
+                                <li><a href="{{ social.url }}" target="_blank">{{ social.title }} </a></li>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
                 </ul>
             </div>
         </div>
