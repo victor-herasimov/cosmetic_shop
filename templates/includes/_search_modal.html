@@ -22,6 +22,23 @@
             class="search-drawer__input"
             placeholder="Шукати косметику (наприклад, сироватка, крем)..."
             autocomplete="off"
+            name="search"
+            hx-get={% url "goods:live_search" %}
+            hx-indicator="#searchSpinner"
+            hx-trigger="keyup[this.value.length >= 3] changed delay:500ms"
+            hx-target="#searchAnswer"
+            hx-on::before-request="const searchAnswer = document.getElementById('searchAnswer');
+            searchAnswer.innerHTML = '';
+            this.value.length > 2 ? searchAnswer.classList.remove('hidden') : searchAnswer.classList.add('hidden');
+            "
+            hx-on:input="const suggest = document.querySelector('.search-suggest');
+            this.value.length > 0 ? suggest.classList.add('hidden') : suggest.classList.remove('hidden');
+            const searchAnswer = document.getElementById('searchAnswer');
+            if (this.value.length < 3) searchAnswer.classList.add('hidden');
+            const query = this.value.trim();
+            const clearBtn = document.getElementById('searchClear');
+            clearBtn.style.display = query.length > 0 ? 'flex' : 'none';
+            "
           />
           <button
             id="searchClear"
@@ -65,6 +82,12 @@
         </button>
       </div>
       <div class="search-drawer__results" id="searchResults">
+        <div class="search-result-container">
+          <div class="search-spinner" id="searchSpinner">
+          <div class="loader"></div>
+        </div>
+         <div class="search-answer hidden" id="searchAnswer"></div>
+        </div>
         <div class="search-suggest">
           <div class="search-suggest__column">
             <h4>Популярні товари</h4>
@@ -88,10 +111,9 @@
                     {% else %}
                         <div class="search-suggest-prod__price"><b>{{ product.price|floatformat:2 }} ₴</b></div>
                     {% endif %}
-
-                    
                     </div>
                 </a>
+
                 {% endfor %}
             </div>
           </div>

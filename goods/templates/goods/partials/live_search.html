@@ -1,0 +1,28 @@
+<!-- Search product cards -->
+<div class="search-results-grid">
+        {% if products %}
+            {% for product in products %}
+            <a href="/product.html?id=meccano-scrub" class="search-prod">
+                <div class="search-prod__img-wrap">
+                    {% with image=product.fotos.first %}
+                            {% if image %}
+                                <img src="{{ image.image.url }}" alt="product.title">
+                            {% endif %}
+                        {% endwith %}
+                </div>
+                <div class="search-prod__content">
+                    <span class="search-prod__cat">{{ product.category }}</span>
+                    <span class="search-prod__name">{{ product.title|truncatechars:40 }}</span>
+                    <div class="search-prod__price"><b>350 ₴</b></div>
+                    {% if product.is_discount %}
+                        <div class="search-prod__price"><b>{{ product.get_price_with_discount|floatformat:2 }} ₴</b><s>{{ product.price|floatformat:2 }} ₴</s></div>
+                    {% else %}
+                        <div class="search-prod__price"><b>{{ product.price|floatformat:2 }} ₴</b></div>
+                    {% endif %}
+                </div>
+            </a>
+          {% endfor %}
+          {% else %}
+            <p>Нічого не знайдено.</p>
+          {% endif %}
+    </div>

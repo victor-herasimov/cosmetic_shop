@@ -50,3 +50,15 @@ class ProductService:
             .prefetch_related("fotos")
             .order_by("-is_new", "-created")[:4]
         )
+
+    def search(self, search_text) -> QuerySet[Product]:
+        if len(search_text) > 0:
+            return (
+                Product.objects.select_related("cateogry")
+                .prefetch_related("fotos")
+                .filter(title__icontains=search_text)
+                .order_by("-is_bestseller", "-updated")
+                .distinct()
+            )
+
+        return Product.objects.none()

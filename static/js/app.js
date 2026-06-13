@@ -184,7 +184,6 @@ function bindGlobalEvents() {
         const clearBtn = document.getElementById("searchClear");
         if (clearBtn) clearBtn.style.display = "none";
         setTimeout(() => input.focus(), 150);
-        renderSearchSuggestions();
       }
       return;
     }
@@ -212,7 +211,8 @@ function bindGlobalEvents() {
         input.value = "";
         input.focus();
         clearSearch.style.display = "none";
-        renderSearchSuggestions();
+        document.querySelector(".search-suggest").classList.remove("hidden");
+        document.getElementById("searchAnswer").classList.add("hidden");
       }
       return;
     }
