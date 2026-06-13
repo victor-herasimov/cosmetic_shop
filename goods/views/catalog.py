@@ -1,7 +1,10 @@
 from typing import Any
 
+from django.core.paginator import Page, Paginator
 from django.http import Http404
 from django.views.generic import ListView
+from django.conf import settings
+
 from goods.models.category import Category
 from goods.services import CategoryService, ProductService
 
@@ -13,6 +16,7 @@ class CatalogView(ListView):
 
     template_name = "goods/catalog.html"
     context_object_name = "products"
+    paginate_by = settings.ITEMS_PER_PAGE
 
     def _get_active_category(self, slug: str) -> Category:
         """
@@ -60,4 +64,9 @@ class CatalogView(ListView):
             else None
         )
         context["total_products"] = ProductService().get_products_count()
+        paginator: Paginator = context["paginator"]
+        page_obj: Page = context["page_obj"]
+        context["elided_page_range"] = paginator.get_elided_page_range(
+            number=page_obj.number, on_each_side=1, on_ends=1
+        )
         return context

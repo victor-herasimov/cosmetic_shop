@@ -141,6 +141,9 @@ if DEBUG:
 else:
     STATIC_ROOT: Path = BASE_DIR / STATIC_URL
 
+# Paginate settings
+ITEMS_PER_PAGE = 4
+
 
 # CK EDITOR 5 START --------------------------------------------------------------------------------------------------
 customColorPalette = [
