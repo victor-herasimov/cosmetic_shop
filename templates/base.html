@@ -18,14 +18,16 @@
 </head>
 
 <body>
+    {% include "includes/_cart_modal.html" %}
+    {% include "includes/_categories_modal.html" %}
+    {% include "includes/_search_modal.html" %}
     {% include "includes/_header.html" %}
 
    {% block content %}
    {% endblock content %}
 
     {% include "includes/_footer.html" %}
-    {% include "includes/_cart_modal.html" %}
-    {% include "includes/_categories_modal.html" %}
+
 
     {% block scripts %}{% endblock scripts %}
 </body>

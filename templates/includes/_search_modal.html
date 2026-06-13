@@ -1,0 +1,102 @@
+<div class="modal search-modal" id="searchModal">
+  <div class="modal__overlay" data-close-modal=""></div>
+  <div class="search-drawer" role="dialog" aria-modal="true" aria-label="Пошук">
+    <div class="wrap search-drawer__inner">
+      <div class="search-drawer__bar">
+        <div class="search-drawer__field">
+          <span class="search-drawer__icon"
+            ><svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg
+          ></span>
+          <input
+            type="text"
+            id="searchInput"
+            class="search-drawer__input"
+            placeholder="Шукати косметику (наприклад, сироватка, крем)..."
+            autocomplete="off"
+          />
+          <button
+            id="searchClear"
+            class="search-drawer__clear"
+            aria-label="Очистити"
+            style="display: none"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <button
+          class="btn btn--primary search-drawer__submit"
+          id="searchSubmitBtn"
+        >
+          Знайти
+        </button>
+        <button
+          class="modal__close search-drawer__close"
+          data-close-modal=""
+          aria-label="Закрити"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="search-drawer__results" id="searchResults">
+        <div class="search-suggest">
+          <div class="search-suggest__column">
+            <h4>Популярні товари</h4>
+            <div class="search-suggest__products">
+                {% for product in product_bestsellers %}
+                <a href="/product.html?id=argireline-2" class="search-suggest-prod" >
+                    <div class="search-suggest-prod__img">
+                        {% with image=product.fotos.first %}
+                            {% if image %}
+                                <img
+                                    src="{{ image.image.url }}"
+                                    alt="product.title"
+                                />
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                    <div class="search-suggest-prod__info">
+                    <span class="search-suggest-prod__name">{{ product.title|truncatechars:40 }}</span>
+                    {% if product.is_discount %}
+                        <div class="search-suggest-prod__price"><b>{{ product.get_price_with_discount|floatformat:2 }} ₴</b><s>{{ product.price|floatformat:2 }} ₴</s></div>
+                    {% else %}
+                        <div class="search-suggest-prod__price"><b>{{ product.price|floatformat:2 }} ₴</b></div>
+                    {% endif %}
+
+                    
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

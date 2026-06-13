@@ -174,6 +174,49 @@ function bindGlobalEvents() {
       return;
     }
 
+    const openSearch = t.closest("[data-open-search]");
+    if (openSearch) {
+      e.preventDefault();
+      openModal("searchModal");
+      const input = document.getElementById("searchInput");
+      if (input) {
+        input.value = "";
+        const clearBtn = document.getElementById("searchClear");
+        if (clearBtn) clearBtn.style.display = "none";
+        setTimeout(() => input.focus(), 150);
+        renderSearchSuggestions();
+      }
+      return;
+    }
+
+    const tagBtn = t.closest("[data-search-term]");
+    if (tagBtn) {
+      e.preventDefault();
+      const term = tagBtn.getAttribute("data-search-term");
+      const input = document.getElementById("searchInput");
+      if (input) {
+        input.value = term;
+        const clearBtn = document.getElementById("searchClear");
+        if (clearBtn) clearBtn.style.display = "flex";
+        input.focus();
+        input.dispatchEvent(new Event("input"));
+      }
+      return;
+    }
+
+    const clearSearch = t.closest("#searchClear");
+    if (clearSearch) {
+      e.preventDefault();
+      const input = document.getElementById("searchInput");
+      if (input) {
+        input.value = "";
+        input.focus();
+        clearSearch.style.display = "none";
+        renderSearchSuggestions();
+      }
+      return;
+    }
+
     const addBtn = t.closest("[data-add]");
     if (addBtn) {
       e.preventDefault();
