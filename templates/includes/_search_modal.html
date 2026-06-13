@@ -34,7 +34,7 @@
             hx-on:input="const suggest = document.querySelector('.search-suggest');
             this.value.length > 0 ? suggest.classList.add('hidden') : suggest.classList.remove('hidden');
             const searchAnswer = document.getElementById('searchAnswer');
-            if (this.value.length < 3) searchAnswer.classList.add('hidden');
+            if (this.value.length < 3) {searchAnswer.classList.add('hidden'); document.getElementById('searchSpinner').classList.remove('htmx-request')};
             const query = this.value.trim();
             const clearBtn = document.getElementById('searchClear');
             clearBtn.style.display = query.length > 0 ? 'flex' : 'none';
