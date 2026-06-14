@@ -110,6 +110,10 @@ class Product(DateMixin, SlugMixin):
         return self.count > 0
 
     @property
+    def has_benefits(self) -> bool:
+        return self.vegan_frendly or self.derma or self.delivery or self.active
+
+    @property
     def is_discount(self) -> bool:
         return self.discount > 0
 
@@ -118,7 +122,7 @@ class Product(DateMixin, SlugMixin):
         return self.price * Decimal((1 - self.discount / 100))
 
     def get_absolute_url(self):
-        return reverse("shop:book_detail", kwargs={"slug": self.slug})
+        return reverse("goods:product", kwargs={"slug": self.slug})
 
     def __str__(self) -> str:
         return f"{self.title}"
