@@ -9,7 +9,7 @@ class LiveSearchView(ListView):
     Представлення для відображення живого пошуку.
     """
 
-    template_name = "goods/partials/live_search.html"
+    template_name = "goods/includes/live_search.html"
     context_object_name = "products"
 
     def dispatch(self, request, *args, **kwargs):

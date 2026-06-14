@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% load uk_pluralize %}
+
 
 {% block title %}
  - {% if not active_category %} Всі товари {% else %} {{ active_category.name }} {% endif %}
@@ -13,68 +13,20 @@
 <!-- Catalog -->
 <section class="section section--catalog">
     <div class="wrap">
-        <div class="catalog-head">
-            <div>
-                <h1 class="section-title" id="catalogTitle">{% if not active_category %} Всі товари {% else %} {{ active_category.name }} {% endif %}</h1>
-                {% with p_count=active_category.products.count %}
-                    {% if active_category %}
-                        <p id="catalogCount">{{ p_count }} {{ p_count|uk_pluralize }}</p>
-                    {% else %}
-                        <p id="catalogCount">{{ total_products }} {{ total_products|uk_pluralize }}</p>
-                    {% endif %}
-                {% endwith %}
-            </div>
-            <div class="catalog-tools">
-                <button class="btn btn--ghost" data-open-categories="">Категорії</button>
-                <label class="select">
-                    <span>Сортувати:</span>
-                    <select id="sortSelect">
-                        <option value="popular">За популярністю</option>
-                        <option value="price-asc">Спочатку дешевші</option>
-                        <option value="price-desc">Спочатку дорожчі</option>
-                        <option value="name">За назвою</option>
-                    </select>
-                </label>
-            </div>
-        </div>
-
+        {% include "goods/includes/_catalog_head.html" %}
         <div class="catalog-layout">
-            <aside class="filters">
-                <h4>Категорії</h4>
-                <ul class="filters__list" id="filterList">
-                    <li>
-                        <a class="filter-btn {% if not active_category %}is-active{% endif %}" href="{% url "goods:catalog" %}">
-                            <span>Всі товари</span><small>{{ total_products }}</small>
-                        </a>
-                    </li>
-                    {% for category in category_with_count_products %}
-                        <li>
-                            <a class="filter-btn {% if active_category.slug == category.slug %}is-active{% endif %}"
-                            href="{% url "goods:catalog" %}?cat={{ category.slug }}"
-                            >
-                                <span>{{ category.name }}</span><small>{{ category.product_count }}</small>
-                            </a>
-                        </li>
-                    {% endfor %}
-                   
-                   
-                </ul>
-            </aside>
-            <div>
-                {% if products %}
-                    <div class="product-grid product-grid--catalog" id="catalogGrid">
-                        {% for product in products %}
-                            {% include "includes/_product_card.html" with product=product %}
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    <div class="catalog-empty" id="catalogEmpty">
-                        <p>За цією категорією товарів поки немає.</p>
-                        <a class="btn btn--primary" href="{% url "goods:catalog" %}">Показати всі товари</a>
-                    </div>
-                {% endif %}
-                {% include "includes/_pagination.html" %}
+            {% include "goods/includes/_filters.html" %}
+            <div class="products-container" style="position: relative; min-height: 200px;">
+                
+                <div class="products-spinner" id="productsSpinner">
+                    <div class="loader"></div>
+                </div>
+
+                <div id="products" >
+                {% include "goods/includes/products.html" %}
+                </div>
             </div>
+            
         </div>
     </div>
 </section>

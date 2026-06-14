@@ -1,0 +1,19 @@
+<aside class="filters">
+    <h4>Категорії</h4>
+    <ul class="filters__list" id="filterList">
+        <li>
+            <a class="filter-btn {% if not active_category %}is-active{% endif %}" href="{% url "goods:catalog" %}">
+                <span>Всі товари</span><small>{{ total_products }}</small>
+            </a>
+        </li>
+        {% for category in category_with_count_products %}
+            <li>
+                <a class="filter-btn {% if active_category.slug == category.slug %}is-active{% endif %}"
+                href="{% url "goods:catalog" %}?cat={{ category.slug }}"
+                >
+                    <span>{{ category.name }}</span><small>{{ category.product_count }}</small>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</aside>

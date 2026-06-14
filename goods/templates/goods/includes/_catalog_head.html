@@ -1,0 +1,38 @@
+{% load uk_pluralize %}
+<div class="catalog-head">
+  <div>
+    <h1 class="section-title" id="catalogTitle">
+      {% if not active_category %} Всі товари {% else %} {{ active_category.name }} {% endif %}
+    </h1>
+    {% with p_count=active_category.products.count %} {% if active_category %}
+    <p id="catalogCount">{{ p_count }} {{ p_count|uk_pluralize }}</p>
+    {% else %}
+    <p id="catalogCount">
+      {{ total_products }} {{ total_products|uk_pluralize }}
+    </p>
+    {% endif %} {% endwith %}
+  </div>
+  <div class="catalog-tools">
+    <button class="btn btn--ghost" data-open-categories="">Категорії</button>
+    <form
+      hx-get="{% url 'goods:catalog' %}" 
+      hx-trigger="change" 
+      hx-target="#products" 
+      hx-push-url="true"
+      hx-indicator="#productsSpinner">
+    >
+        {% if request.GET.cat %}
+            <input type="hidden" name="cat" value="{{ request.GET.cat }}">
+        {% endif %}
+        <label class="select">
+        <span>{{order_form.sort.label}}</span>
+        <select id="sortSelect" name="{{order_form.sort.name}}">
+          {% for value, text in order_form.sort.field.choices %}
+              <option value="{{ value }}" {% if order_form.sort.value == value %}selected{% endif %}>{{ text }}</option>
+          {% endfor %}
+        </select>
+        </label>
+        
+    </form>
+  </div>
+</div>

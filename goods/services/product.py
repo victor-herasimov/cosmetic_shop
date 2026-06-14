@@ -5,24 +5,31 @@ from goods.models.category import Category
 
 
 class ProductService:
-    def get_all(self) -> QuerySet[Product]:
+    def get_all(self, order: str | None = None) -> QuerySet[Product]:
         """
         Повертає кверісет з усіма продуктами
         """
-        return (
+        result = (
             Product.objects.select_related("cateogry").prefetch_related("fotos").all()
         )
+        if order:
+            result = result.order_by(order)
+        return result
 
-    def get_products_by_category(self, category: Category) -> QuerySet[Product]:
+    def get_products_by_category(
+        self, category: Category, order: str | None = None
+    ) -> QuerySet[Product]:
         """
         Повертає кверісет з усіма продуктами за категорією.
         """
-        return (
+        result = (
             Product.objects.select_related("cateogry")
             .prefetch_related("fotos")
             .filter(cateogry=category)
-            .order_by("-updated")
         )
+        if order:
+            result = result.order_by(order)
+        return result
 
     def get_products_count(self) -> int:
         """

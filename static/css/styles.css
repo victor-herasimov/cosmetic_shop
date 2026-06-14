@@ -2141,6 +2141,15 @@ body.no-scroll {
   border-color: var(--accent);
 }
 
+.products-spinner {
+  display: none;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
 .search-spinner {
   display: none;
   width: 100%;
@@ -2149,7 +2158,8 @@ body.no-scroll {
   justify-content: center;
 }
 
-.search-spinner.htmx-request {
+.search-spinner.htmx-request,
+.products-spinner.htmx-request {
   display: flex;
 }
 
