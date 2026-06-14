@@ -21,7 +21,7 @@ SECRET_KEY: str = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG: bool = bool(int(os.environ.get("DEBUG", 1)))
 
-ALLOWED_HOSTS: list[str] = []
+ALLOWED_HOSTS: list[str] = ["*"]
 
 
 # Application definition

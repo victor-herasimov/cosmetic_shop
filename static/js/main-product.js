@@ -7,7 +7,7 @@ const params = new URLSearchParams(location.search);
 const id = params.get("id");
 const product = PRODUCTS.find((p) => p.id === id) || PRODUCTS[0];
 
-document.title = `${product.name} — ROBEAUTY`;
+// document.title = `${product.name} — ROBEAUTY`;
 
 // document.getElementById("productRoot").innerHTML = `
 //   <div class="pdp">

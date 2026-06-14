@@ -1,8 +1,8 @@
-from django.db.models import TextField, Value
+from django.db.models import Count, TextField, Value
 from django.db.models.functions import Concat
 from django.contrib.postgres.search import TrigramSimilarity
 from django.db.models import QuerySet
-from django.contrib.postgres.search import SearchVector, SearchRank, SearchQuery
+from django.shortcuts import get_object_or_404
 
 from goods.models import Product
 from goods.models.category import Category
@@ -62,7 +62,20 @@ class ProductService:
             .order_by("-is_new", "-created")[:4]
         )
 
+    def get_by_slug(self, slug: str) -> Product:
+        """
+        Повертає Продукт, що відповідє слагу. Якщо такого не має то викидає виключення Product.DoesNotExist.
+        """
+        return (
+            Product.objects.select_related("cateogry")
+            .prefetch_related("fotos", "characteristics__item")
+            .get(slug=slug)
+        )
+
     def search(self, query, order: str | None = None) -> QuerySet[Product]:
+        """
+        Повертає прдукти, що містять запит query в заголовку або описі.
+        """
         if len(query) > 0:
             results = (
                 Product.objects.annotate(
@@ -74,25 +87,25 @@ class ProductService:
                 .filter(similarity__gt=0.007)
                 .order_by("-similarity")
             )
-            print(results)
             if order:
                 results = results.order_by(order)
             return results
 
         return Product.objects.none()
 
-    # def search(self, search_text, order: str | None = None) -> QuerySet[Product]:
-    #     if len(search_text) > 0:
-    #         result = (
-    #             Product.objects.select_related("cateogry")
-    #             .prefetch_related("fotos")
-    #             .filter(title__icontains=search_text)
-    #             .distinct()
-    #         )
-    #         if order:
-    #             result = result.order_by(order)
-    #         else:
-    #             result = result.order_by("-is_bestseller", "-updated")
-    #         return result
+    def get_similar_products(self, product_slug: str) -> QuerySet[Product]:
+        """
+        Повертає продукти, що подібні до продукта в якого слаг дорівнює product_slug.
+        """
+        product = get_object_or_404(Product, slug=product_slug)
+        current_char_ids = product.characteristics.values_list("id", flat=True)
 
-    #     return Product.objects.none()
+        similar_products = (
+            Product.objects.filter(characteristics__in=current_char_ids)
+            .exclude(id=product.id)
+            .annotate(same_chars_count=Count("characteristics"))
+            .order_by("-same_chars_count", "?")
+            .select_related("cateogry")
+            .prefetch_related("characteristics__item", "fotos")[:4]
+        )
+        return similar_products

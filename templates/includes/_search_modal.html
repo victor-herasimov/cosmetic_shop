@@ -97,7 +97,7 @@
             <h4>Популярні товари</h4>
             <div class="search-suggest__products">
                 {% for product in product_bestsellers %}
-                <a href="/product.html?id=argireline-2" class="search-suggest-prod" >
+                <a href="{% url "goods:product" slug=product.slug %}" class="search-suggest-prod" >
                     <div class="search-suggest-prod__img">
                         {% with image=product.fotos.first %}
                             {% if image %}
