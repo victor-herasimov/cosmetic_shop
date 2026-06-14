@@ -32,6 +32,7 @@ INTERNAL_APPS: list[str] = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.postgres",
 ]
 
 OUTHER_APPS: list[str] = [

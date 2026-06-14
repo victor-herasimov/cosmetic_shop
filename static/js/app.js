@@ -209,6 +209,7 @@ function bindGlobalEvents() {
       const input = document.getElementById("searchInput");
       if (input) {
         input.value = "";
+        console.log("claer");
         input.focus();
         clearSearch.style.display = "none";
         document.querySelector(".search-suggest").classList.remove("hidden");

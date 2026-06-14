@@ -2,6 +2,7 @@ from decimal import Decimal
 
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.contrib.postgres.indexes import GinIndex
 from django_ckeditor_5.fields import CKEditor5Field
 from mixins import DateMixin, SlugMixin
 from .category import Category
@@ -66,8 +67,17 @@ class Product(DateMixin, SlugMixin):
         ordering = ["title"]
         indexes = [
             models.Index(fields=["id", "slug"]),
-            models.Index(fields=["title"]),
             models.Index(fields=["-created"]),
+            GinIndex(
+                name="product_title_trgm_idx",
+                fields=["title"],
+                opclasses=["gin_trgm_ops"],
+            ),
+            GinIndex(
+                name="product_desc_trgm_idx",
+                fields=["description"],
+                opclasses=["gin_trgm_ops"],
+            ),
         ]
         verbose_name = "Продукт"
         verbose_name_plural = "Продукти"

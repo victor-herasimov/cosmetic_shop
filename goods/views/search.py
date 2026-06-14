@@ -16,8 +16,8 @@ class SearchView(ListView):
     context_object_name = "products"
     paginate_by = settings.ITEMS_PER_PAGE
 
-    SORT_MAPPING = {
-        "default": "-updated",
+    SORT_MAPPING: dict[str, str | None] = {
+        "default": None,
         "name_asc": "title",
         "name_desc": "-title",
         "price_asc": "price",
@@ -39,9 +39,9 @@ class SearchView(ListView):
 
         if self.form.is_valid():
             sort_by = self.form.cleaned_data.get("sort")
-            order_field = self.SORT_MAPPING.get(sort_by, "-updated")
+            order_field = self.SORT_MAPPING.get(sort_by, None)
         else:
-            order_field = "-updated"
+            order_field = None
 
         search_text: str | None = self.request.GET.get("search", "")
         return ProductService().search(search_text, order=order_field)

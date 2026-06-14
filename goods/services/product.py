@@ -1,4 +1,8 @@
+from django.db.models import TextField, Value
+from django.db.models.functions import Concat
+from django.contrib.postgres.search import TrigramSimilarity
 from django.db.models import QuerySet
+from django.contrib.postgres.search import SearchVector, SearchRank, SearchQuery
 
 from goods.models import Product
 from goods.models.category import Category
@@ -58,18 +62,37 @@ class ProductService:
             .order_by("-is_new", "-created")[:4]
         )
 
-    def search(self, search_text, order: str | None = None) -> QuerySet[Product]:
-        if len(search_text) > 0:
-            result = (
-                Product.objects.select_related("cateogry")
-                .prefetch_related("fotos")
-                .filter(title__icontains=search_text)
-                .distinct()
+    def search(self, query, order: str | None = None) -> QuerySet[Product]:
+        if len(query) > 0:
+            results = (
+                Product.objects.annotate(
+                    search_text=Concat(
+                        "title", Value(" "), "description", output_field=TextField()
+                    )
+                )
+                .annotate(similarity=TrigramSimilarity("search_text", query))
+                .filter(similarity__gt=0.007)
+                .order_by("-similarity")
             )
+            print(results)
             if order:
-                result = result.order_by(order)
-            else:
-                result = result.order_by("-is_bestseller", "-updated")
-            return result
+                results = results.order_by(order)
+            return results
 
         return Product.objects.none()
+
+    # def search(self, search_text, order: str | None = None) -> QuerySet[Product]:
+    #     if len(search_text) > 0:
+    #         result = (
+    #             Product.objects.select_related("cateogry")
+    #             .prefetch_related("fotos")
+    #             .filter(title__icontains=search_text)
+    #             .distinct()
+    #         )
+    #         if order:
+    #             result = result.order_by(order)
+    #         else:
+    #             result = result.order_by("-is_bestseller", "-updated")
+    #         return result
+
+    #     return Product.objects.none()
