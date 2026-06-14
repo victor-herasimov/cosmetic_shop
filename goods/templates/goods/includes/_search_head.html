@@ -1,0 +1,14 @@
+{% load uk_pluralize %}
+
+<div class="catalog-head">
+  <div>
+    <h1 class="section-title" id="catalogTitle">
+      Результати пошуку
+    </h1>
+    {% if products %}
+        <p id="catalogCount">За вашим запитом знайдено <b>{{ paginator.count }}</b> {{ paginator.count|uk_pluralize }}.</p>
+    {% endif %}
+  </div>
+  {% url "goods:search" as url_search %}
+  {% include "goods/includes/_catalog_tools.html" with url=url_search %}
+</div>

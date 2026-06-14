@@ -1,0 +1,14 @@
+
+{% if products %}
+    <div class="search-grid" id="catalogGrid">
+        {% for product in products %}
+            {% include "includes/_product_card.html" with product=product %}
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="catalog-empty" id="catalogEmpty">
+        <p>За вашим запитом результатів не знайдено.</p>
+        <a class="btn btn--primary" href="{% url "goods:catalog" %}">Показати всі товари</a>
+    </div>
+{% endif %}
+{% include "includes/_pagination.html" %}

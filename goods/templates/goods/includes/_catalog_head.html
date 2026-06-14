@@ -12,27 +12,6 @@
     </p>
     {% endif %} {% endwith %}
   </div>
-  <div class="catalog-tools">
-    <button class="btn btn--ghost" data-open-categories="">Категорії</button>
-    <form
-      hx-get="{% url 'goods:catalog' %}" 
-      hx-trigger="change" 
-      hx-target="#products" 
-      hx-push-url="true"
-      hx-indicator="#productsSpinner">
-    >
-        {% if request.GET.cat %}
-            <input type="hidden" name="cat" value="{{ request.GET.cat }}">
-        {% endif %}
-        <label class="select">
-        <span>{{order_form.sort.label}}</span>
-        <select id="sortSelect" name="{{order_form.sort.name}}">
-          {% for value, text in order_form.sort.field.choices %}
-              <option value="{{ value }}" {% if order_form.sort.value == value %}selected{% endif %}>{{ text }}</option>
-          {% endfor %}
-        </select>
-        </label>
-        
-    </form>
-  </div>
+  {% url "goods:catalog" as url_catalog %}
+  {% include "goods/includes/_catalog_tools.html" with url=url_catalog %}
 </div>

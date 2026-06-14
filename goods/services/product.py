@@ -58,14 +58,18 @@ class ProductService:
             .order_by("-is_new", "-created")[:4]
         )
 
-    def search(self, search_text) -> QuerySet[Product]:
+    def search(self, search_text, order: str | None = None) -> QuerySet[Product]:
         if len(search_text) > 0:
-            return (
+            result = (
                 Product.objects.select_related("cateogry")
                 .prefetch_related("fotos")
                 .filter(title__icontains=search_text)
-                .order_by("-is_bestseller", "-updated")
                 .distinct()
             )
+            if order:
+                result = result.order_by(order)
+            else:
+                result = result.order_by("-is_bestseller", "-updated")
+            return result
 
         return Product.objects.none()

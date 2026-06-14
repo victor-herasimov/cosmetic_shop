@@ -27,5 +27,4 @@ class LiveSearchView(ListView):
         Повертає відфільтрований список товарів для каталогу.
         """
         search_text: str | None = self.request.GET.get("search", "")
-        print(search_text)
         return ProductService().search(search_text)[:10]

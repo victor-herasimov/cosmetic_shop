@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+ - Пошук
+{% endblock title %}
+
+
+{% block content %}
+
+{% include "includes/_breadcrumbs.html" %}
+
+<!-- Search -->
+<section class="section section--catalog">
+    <div class="wrap">
+        {% include "goods/includes/_search_head.html" %}
+        <div class="search-layout">
+            <div class="products-container" style="position: relative; min-height: 200px;">
+                <div class="products-spinner" id="productsSpinner">
+                    <div class="loader"></div>
+                </div>
+                <div id="products" >
+                    {% include "goods/includes/search_products.html" %}
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block scripts %}
+    <script type="module" src="{% static "js/main-search.js" %} "></script>
+{% endblock scripts %}

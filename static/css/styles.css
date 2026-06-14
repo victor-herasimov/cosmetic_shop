@@ -416,6 +416,12 @@ ul {
   gap: 22px;
 }
 
+.search-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 22px;
+}
+
 .card {
   background: var(--surface);
   border: 1px solid var(--line);
@@ -1241,6 +1247,13 @@ body.no-scroll {
   align-items: start;
 }
 
+.search-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
 .filters {
   position: sticky;
   top: 96px;
@@ -1512,12 +1525,17 @@ body.no-scroll {
 }
 
 /* ===== Responsive ===== */
+@media (max-width: 1220px) {
+  .search-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+
 @media (max-width: 1130px) {
   .product-grid { grid-template-columns: repeat(3, 1fr); }
+  .search-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 1024px) {
   .cat-grid { grid-template-columns: repeat(2, 1fr); }
-  /* .product-grid { grid-template-columns: repeat(3, 1fr); } */
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .catalog-layout { grid-template-columns: 1fr; }
   .filters { position: static; }
@@ -1537,6 +1555,7 @@ body.no-scroll {
   .product__inner { grid-template-columns: 1fr; gap: 28px; }
   .pdp { grid-template-columns: 1fr; gap: 28px; }
   .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .search-grid { grid-template-columns: repeat(2, 1fr); }
   .promo { grid-template-columns: 1fr; padding: 32px; }
   .cat-modal-grid { grid-template-columns: repeat(2, 1fr); }
   .footer__grid { grid-template-columns: 1fr; gap: 24px; }
@@ -1545,6 +1564,7 @@ body.no-scroll {
 
 @media (max-width: 460px) {
   .product-grid { grid-template-columns: 1fr; gap: 14px; }
+  .search-grid { grid-template-columns: 1fr; gap: 14px; }
   /* .product-grid { grid-template-columns: 1fr 1fr; gap: 14px; } */
   .cat-grid { grid-template-columns: 1fr; }
   .cat-modal-grid { grid-template-columns: 1fr; }
@@ -1687,6 +1707,13 @@ body.no-scroll {
   align-items: center;
   gap: 16px;
   margin-bottom: 20px;
+}
+
+.search-drawer__form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
 }
 
 .search-drawer__field {

@@ -25,8 +25,8 @@ class CatalogView(ListView):
         "name_desc": "-title",
         "price_asc": "price",
         "price_desc": "-price",
-        "bestsellers_asc": "-is_bestseller",
-        "bestsellers_desc": "is_bestseller",
+        "bestsellers_asc": "is_bestseller",
+        "bestsellers_desc": "-is_bestseller",
     }
 
     def get_template_names(self) -> list[str]:

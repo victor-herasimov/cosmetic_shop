@@ -3,6 +3,7 @@
   <div class="search-drawer" role="dialog" aria-modal="true" aria-label="Пошук">
     <div class="wrap search-drawer__inner">
       <div class="search-drawer__bar">
+        <form action="{% url "goods:search" %}" class="search-drawer__form">
         <div class="search-drawer__field">
           <span class="search-drawer__icon"
             ><svg
@@ -64,6 +65,7 @@
         >
           Знайти
         </button>
+        </form>
         <button
           class="modal__close search-drawer__close"
           data-close-modal=""
