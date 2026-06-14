@@ -70,6 +70,7 @@ class ProductAdmin(admin.ModelAdmin):
                 ]
             },
         ),
+        ("Переваги", {"fields": [("vegan_frendly", "derma"), ("delivery", "active")]}),
         ("Склад", {"fields": ["composition"]}),
         (
             "Опис",

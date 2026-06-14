@@ -3,6 +3,7 @@ from decimal import Decimal
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.contrib.postgres.indexes import GinIndex
+from django.urls import reverse
 from django_ckeditor_5.fields import CKEditor5Field
 from mixins import DateMixin, SlugMixin
 from .category import Category
@@ -62,6 +63,28 @@ class Product(DateMixin, SlugMixin):
         verbose_name="Характеристики",
     )
 
+    vegan_frendly = models.BooleanField(
+        default=False,
+        verbose_name="Vegan friendly, без жорстокості",
+        help_text="Відображається на сторінці детальної інформації в розділі 'Переваги.'",
+    )
+    derma = models.BooleanField(
+        default=False,
+        verbose_name="Дерматологічно протестовано",
+        help_text="Відображається на сторінці детальної інформації в розділі 'Переваги.'",
+    )
+    delivery = models.BooleanField(
+        default=False,
+        verbose_name="Доставка по всій Україні 1–3 дні",
+        help_text="Відображається на сторінці детальної інформації в розділі 'Переваги.'",
+    )
+
+    active = models.BooleanField(
+        default=False,
+        verbose_name="Активні рослинні компоненти",
+        help_text="Відображається на сторінці детальної інформації в розділі 'Переваги.'",
+    )
+
     class Meta:
         app_label = "goods"
         ordering = ["title"]
@@ -93,6 +116,9 @@ class Product(DateMixin, SlugMixin):
     @property
     def get_price_with_discount(self) -> Decimal:
         return self.price * Decimal((1 - self.discount / 100))
+
+    def get_absolute_url(self):
+        return reverse("shop:book_detail", kwargs={"slug": self.slug})
 
     def __str__(self) -> str:
         return f"{self.title}"
