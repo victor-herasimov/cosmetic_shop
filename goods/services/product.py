@@ -1,3 +1,5 @@
+from collections.abc import Iterable
+
 from django.db.models import Count, TextField, Value
 from django.db.models.functions import Concat
 from django.contrib.postgres.search import TrigramSimilarity
@@ -109,3 +111,9 @@ class ProductService:
             .prefetch_related("characteristics__item", "fotos")[:4]
         )
         return similar_products
+
+    def get_products_by_ids(self, ids: Iterable[int]) -> QuerySet[Product]:
+        """
+        Повертає кверісет з продуктів id яких міститься в списку ids.
+        """
+        return Product.objects.filter(id__int=ids)
