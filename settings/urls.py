@@ -10,6 +10,7 @@ urlpatterns: list[URLResolver] = [
     path("ckeditor5/", include("django_ckeditor_5.urls")),
     path("", include("main.urls", namespace="main")),
     path("catalog/", include("goods.urls", namespace="goods")),
+    path("cart/", include("cart.urls", namespace="cart")),
 ]
 
 
