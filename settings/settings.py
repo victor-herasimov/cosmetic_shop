@@ -41,7 +41,11 @@ OUTHER_APPS: list[str] = [
     "debug_toolbar",
 ]
 
-CREATED_APPS: list[str] = ["main.apps.MainConfig", "goods.apps.GoodsConfig"]
+CREATED_APPS: list[str] = [
+    "main.apps.MainConfig",
+    "goods.apps.GoodsConfig",
+    "cart.apps.CartConfig",
+]
 
 INSTALLED_APPS: list[str] = INTERNAL_APPS + OUTHER_APPS + CREATED_APPS
 
@@ -144,7 +148,11 @@ else:
     STATIC_ROOT: Path = BASE_DIR / STATIC_URL
 
 # Paginate settings
-ITEMS_PER_PAGE = 4
+ITEMS_PER_PAGE: int = 4
+
+# Cart
+
+CART_SESSION_ID: str = "cart"
 
 
 # CK EDITOR 5 START --------------------------------------------------------------------------------------------------
