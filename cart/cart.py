@@ -80,6 +80,15 @@ class Cart:
         """
         return sum(item["quantity"] for item in self.cart.values())
 
+    def __bool__(self) -> bool:
+        """
+        Повертає True якщо в кошику є товари, інакше False.
+        """
+        return bool(self.cart)
+
+    def __contains__(self, item) -> bool:
+        return item in self.cart
+
     def get_total_price(self) -> Decimal:
         """
         Повертає загальну суму кошика.

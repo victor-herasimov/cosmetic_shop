@@ -1,0 +1,5 @@
+<div class="cart__foot" id="cartFoot" style="display: block">
+  <div class="cart__row"><span>Сума</span><span>{{ cart.get_total_price|floatformat:2 }} ₴</span></div>
+  <div class="cart__total"><span>До сплати</span><span>{{ cart.get_total_price|floatformat:2 }} ₴</span></div>
+  <button class="btn btn--primary btn--block">Оформити замовлення</button>
+</div>

@@ -1,0 +1,11 @@
+{% if cart %}
+    {% include "includes/_cart_items.html" %}
+{% else %}
+    {% include "includes/cart_empty.html" %}
+{% endif %}
+
+{% if toast %}
+    {% include "includes/_toast.html" %}
+{% endif %}
+
+{% include "includes/_cart_count.html" %}

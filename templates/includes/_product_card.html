@@ -22,7 +22,18 @@
             <div class="card__price"><b>{{ product.price|floatformat:2 }} ₴</b></div>
         {% endif %}
         <div class="card__actions">
-            <button class="btn btn--primary card__add card__btn" data-add="argireline-2">До кошику</button>
+            <form
+                hx-post="{% url 'cart:cart_add' %}" 
+                hx-target="#cartItems" 
+                hx-swap="innerHTML"
+            >
+                {% csrf_token %}
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+                
+                <input type="hidden" name="quantity" value="1">
+                <input type="hidden" name="override" value="false">
+                <button class="btn btn--primary card__add card__btn">До кошику</button>
+            </form>
             <a class="btn btn--ghost card__btn" href="{% url "goods:product" slug=product.slug %}">Детальніше</a>
         </div>
     </div>

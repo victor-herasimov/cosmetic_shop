@@ -22,6 +22,12 @@ class ProductService:
             result = result.order_by(order)
         return result
 
+    def get_by_id(self, product_id: int) -> Product:
+        """
+        Повертає товар по йго ID.
+        """
+        return Product.objects.get(id=product_id)
+
     def get_products_by_category(
         self, category: Category, order: str | None = None
     ) -> QuerySet[Product]:
@@ -116,4 +122,4 @@ class ProductService:
         """
         Повертає кверісет з продуктів id яких міститься в списку ids.
         """
-        return Product.objects.filter(id__int=ids)
+        return Product.objects.prefetch_related("fotos").filter(id__in=ids)

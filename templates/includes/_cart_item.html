@@ -1,0 +1,38 @@
+<div class="cart-item">
+  <div class="cart-item__img">
+    {% with first_foto=cart_item.product.fotos.first %}
+      <img
+        src="{{first_foto.image.url}}"
+        alt="{{cart_item.product.title}}"
+      />
+    {% endwith %}
+  </div>
+  <div>
+    <div class="cart-item__name">{{ cart_item.product.title|truncatechars:60 }}</div>
+    <div class="cart-item__price">Ціна: {{cart_item.total_price|floatformat:2 }} ₴</div>
+    <div class="cart-item__qty">
+      <button data-dec="hydra-gel" aria-label="Менше">−</button>
+      <span>{{cart_item.quantity}}</span>
+      <button data-inc="hydra-gel" aria-label="Більше">+</button>
+    </div>
+  </div>
+  <button
+    class="cart-item__remove"
+    data-remove="hydra-gel"
+    aria-label="Видалити"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.7"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <polyline points="3 6 5 6 21 6"></polyline>
+      <path
+        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+      ></path>
+    </svg>
+  </button>
+</div>

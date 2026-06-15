@@ -90,19 +90,19 @@ function renderCart() {
       const p = PRODUCTS.find((x) => x.id === item.id);
       if (!p) return "";
       return `
-      <div class="cart-item">
-        <div class="cart-item__img"><img src="${p.img}" alt="${p.name}"></div>
-        <div>
-          <div class="cart-item__name">${p.name}</div>
-          <div class="cart-item__price">${formatPrice(p.price)}</div>
-          <div class="cart-item__qty">
-            <button data-dec="${p.id}" aria-label="Менше">−</button>
-            <span>${item.qty}</span>
-            <button data-inc="${p.id}" aria-label="Більше">+</button>
-          </div>
+    <div class="cart-item">
+      <div class="cart-item__img"><img src="${p.img}" alt="${p.name}"></div>
+      <div>
+        <div class="cart-item__name">${p.name}</div>
+        <div class="cart-item__price">${formatPrice(p.price)}</div>
+        <div class="cart-item__qty">
+          <button data-dec="${p.id}" aria-label="Менше">−</button>
+          <span>${item.qty}</span>
+          <button data-inc="${p.id}" aria-label="Більше">+</button>
         </div>
-        <button class="cart-item__remove" data-remove="${p.id}" aria-label="Видалити">${icons.trash}</button>
-      </div>`;
+      </div>
+      <button class="cart-item__remove" data-remove="${p.id}" aria-label="Видалити">${icons.trash}</button>
+    </div>`;
     })
     .join("");
 
@@ -111,10 +111,10 @@ function renderCart() {
     const total = cartTotal();
     const discount = Math.round(total * 0.1);
     footEl.innerHTML = `
-      <div class="cart__row"><span>Сума</span><span>${formatPrice(total)}</span></div>
-      <div class="cart__row"><span>Знижка за промокодом BEAUTY10</span><span>−${formatPrice(discount)}</span></div>
-      <div class="cart__total"><span>До сплати</span><span>${formatPrice(total - discount)}</span></div>
-      <button class="btn btn--primary btn--block">Оформити замовлення</button>`;
+    <div class="cart__row"><span>Сума</span><span>${formatPrice(total)}</span></div>
+    <div class="cart__row"><span>Знижка за промокодом BEAUTY10</span><span>−${formatPrice(discount)}</span></div>
+    <div class="cart__total"><span>До сплати</span><span>${formatPrice(total - discount)}</span></div>
+    <button class="btn btn--primary btn--block">Оформити замовлення</button>`;
   }
 }
 
@@ -162,7 +162,7 @@ function bindGlobalEvents() {
     const openCart = t.closest("[data-open-cart]");
     if (openCart) {
       e.preventDefault();
-      renderCart();
+      // renderCart();
       openModal("cartModal");
       return;
     }
@@ -254,5 +254,5 @@ export function initChrome() {
   // injectChrome();
   bindGlobalEvents();
   updateCartCount();
-  renderCart();
+  // renderCart();
 }

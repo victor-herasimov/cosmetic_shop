@@ -19,6 +19,7 @@
 </head>
 
 <body>
+    
     {% include "includes/_cart_modal.html" %}
     {% include "includes/_categories_modal.html" %}
     {% include "includes/_search_modal.html" %}
@@ -30,6 +31,9 @@
     {% include "includes/_footer.html" %}
     <script type="module" src="{% static "js/htmx.min.js" %} "></script>
     {% block scripts %}{% endblock scripts %}
+    <div id="toast-container">
+        {% comment %} {% include "includes/_toast.html" %} {% endcomment %}
+    </div>
 </body>
 
 </html>
