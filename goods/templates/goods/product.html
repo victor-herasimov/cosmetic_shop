@@ -50,16 +50,29 @@
                     <span>4.7 · 189 відгуків</span>
                 </div>
                 <p class="pdp__desc">{{ product.description|safe|truncatechars:140 }}</p>
-                <div class="pdp__price"><b>{{ product.get_price_with_discount|floatformat:2 }} ₴</b><s>{{ product.price|floatformat:2 }} ₴</s></div>
-
-                <div class="pdp__buy">
-                    <div class="qty" id="qty">
-                        <button data-q="-1" aria-label="Менше">−</button>
-                        <span id="qtyVal">1</span>
-                        <button data-q="1" aria-label="Більше">+</button>
+                {% if product.is_discount %}
+                    <div class="pdp__price"><b>{{ product.get_price_with_discount|floatformat:2 }} ₴</b><s>{{ product.price|floatformat:2 }} ₴</s></div>
+                {% else %}
+                    <div class="pdp__price"><b>{{ product.price|floatformat:2 }} ₴</b></div>
+                {% endif %}
+                <form
+                    hx-post="{% url 'cart:cart_add' %}" 
+                    hx-target="#cartItems" 
+                    hx-swap="innerHTML"
+                >
+                    <div class="pdp__buy">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <input type="hidden" name="override" value="false">
+                        <input type="hidden" name="quantity" id="qtyInput" value="1">
+                        <div class="qty" id="qty">
+                            <button data-q="-1" aria-label="Менше" type="button">−</button>
+                            <span id="qtyVal">1</span>
+                            <button data-q="1" aria-label="Більше" type="button">+</button>
+                        </div>
+                        <button class="btn btn--primary btn--lg" id="addBtn">Додати в кошик</button>
                     </div>
-                    <button class="btn btn--primary btn--lg" id="addBtn">Додати в кошик</button>
-                </div>
+                </form>
                 {% if product.has_benefits %}
                 <ul class="pdp__benefits">
                     {% if product.vegan_frendly %}

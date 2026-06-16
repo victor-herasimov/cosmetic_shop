@@ -9,7 +9,7 @@
   </div>
   <div>
     <div class="cart-item__name">{{ cart_item.product.title|truncatechars:60 }}</div>
-    <div class="cart-item__price">Ціна: {{cart_item.total_price|floatformat:2 }} ₴</div>
+    <div class="cart-item__price">Вартість: {{cart_item.total_price|floatformat:2 }} ₴</div>
     <div class="cart-item__qty">
       <button data-dec="hydra-gel" aria-label="Менше">−</button>
       <span>{{cart_item.quantity}}</span>

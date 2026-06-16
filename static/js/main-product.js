@@ -1,15 +1,26 @@
-import { initChrome } from "./app.js";
+import { init } from "./app.js";
 
-initChrome();
+init();
 
 // Кількість
+// let qty = 1;
+// const qtyVal = document.getElementById("qtyVal");
+// document.getElementById("qty").addEventListener("click", (e) => {
+//   const btn = e.target.closest("[data-q]");
+//   if (!btn) return;
+//   qty = Math.max(1, qty + Number(btn.getAttribute("data-q")));
+//   qtyVal.textContent = qty;
+// });
+
 let qty = 1;
 const qtyVal = document.getElementById("qtyVal");
+const qtyInput = document.getElementById("qtyInput");
 document.getElementById("qty").addEventListener("click", (e) => {
   const btn = e.target.closest("[data-q]");
   if (!btn) return;
   qty = Math.max(1, qty + Number(btn.getAttribute("data-q")));
   qtyVal.textContent = qty;
+  qtyInput.value = qty;
 });
 
 // Галерея — перемикання активної мініатюри

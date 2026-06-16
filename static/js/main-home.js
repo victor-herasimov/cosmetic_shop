@@ -1,3 +1,2 @@
-import { initChrome } from "./app.js";
-
-initChrome();
+import { init } from "./app.js";
+init();
