@@ -1,11 +1,10 @@
 from typing import Any
-from django.http import HttpResponse
 from django.http import Http404, HttpRequest, HttpResponseBadRequest
 from django.views.generic import View
 from django.shortcuts import render
 
 from cart.cart import Cart
-from cart.forms.cart_add import CartAddForm
+from cart.forms import CartAddForm
 from goods.models.product import Product
 from goods.services.product import ProductService
 
@@ -33,11 +32,18 @@ class CartAddView(View):
                 quantity=cd["quantity"],
                 override_quantity=cd["override"],
             )
+            toast_text: str = f"{product.title} додано в кошик."
             return render(
                 request,
                 template_name=self.template_name,
-                context={"cart": cart, "toast": True, "product": product},
+                context={
+                    "cart": cart,
+                    "toast": True,
+                    "toast_text": toast_text,
+                    "footer": True,
+                    "product": product,
+                    "htmx_query": True,
+                },
             )
-            # return HttpResponse(f"Продукт {product.title} додано до кошику")
         else:
             HttpResponseBadRequest("Форма не валідна.")

@@ -1,4 +1,4 @@
-<div class="cart-item">
+<div class="cart-item" id="cart-item-{{ cart_item.product.id }}">
   <div class="cart-item__img">
     {% with first_foto=cart_item.product.fotos.first %}
       <img
@@ -16,23 +16,31 @@
       <button data-inc="hydra-gel" aria-label="Більше">+</button>
     </div>
   </div>
-  <button
-    class="cart-item__remove"
-    data-remove="hydra-gel"
-    aria-label="Видалити"
+  <form
+    hx-post="{% url 'cart:cart_remove' %}" 
+    hx-target="#cart-item-{{ cart_item.product.id }}" 
+    hx-swap="outerHTML"
   >
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="1.7"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+    {% csrf_token %}
+    <input type="hidden" name="product_id" value="{{ cart_item.product.id }}">
+    <button
+      class="cart-item__remove"
+      data-remove="hydra-gel"
+      aria-label="Видалити"
     >
-      <polyline points="3 6 5 6 21 6"></polyline>
-      <path
-        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
-      ></path>
-    </svg>
-  </button>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.7"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="3 6 5 6 21 6"></polyline>
+        <path
+          d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+        ></path>
+      </svg>
+    </button>
+  </form>
 </div>

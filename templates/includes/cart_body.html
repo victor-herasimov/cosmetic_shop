@@ -8,4 +8,10 @@
     {% include "includes/_toast.html" %}
 {% endif %}
 
-{% include "includes/_cart_count.html" %}
+{% if htmx_query %}
+    {% include "includes/_cart_count.html" %}
+{% endif %}
+
+{% if footer %}
+    {% include "includes/_cart_footer_oob.html" %}
+{% endif %}
