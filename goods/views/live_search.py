@@ -1,26 +1,16 @@
-from django.http import HttpResponseBadRequest
 from django.views.generic import ListView
 
 from goods.services import ProductService
+from mixins.only_htmx_mixin import OnlyHtmxMixin
 
 
-class LiveSearchView(ListView):
+class LiveSearchView(OnlyHtmxMixin, ListView):
     """
     Представлення для відображення живого пошуку.
     """
 
     template_name = "goods/includes/live_search.html"
     context_object_name = "products"
-
-    def dispatch(self, request, *args, **kwargs):
-        """
-        Перевіряємо, чи запит прийшов саме від HTMX
-        """
-        if not request.headers.get("HX-Request"):
-            return HttpResponseBadRequest(
-                "Цей URL доступний лише для AJAX/HTMX запитів"
-            )
-        return super().dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
         """

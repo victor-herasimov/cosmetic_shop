@@ -7,9 +7,10 @@ from cart.cart import Cart
 from cart.forms import CartAddForm
 from goods.models.product import Product
 from goods.services.product import ProductService
+from mixins.only_htmx_mixin import OnlyHtmxMixin
 
 
-class CartAddView(View):
+class CartAddView(OnlyHtmxMixin, View):
     """
     Представлення для додавання продукту в кошик.
     """

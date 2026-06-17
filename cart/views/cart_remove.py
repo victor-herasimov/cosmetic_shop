@@ -7,14 +7,13 @@ from cart.cart import Cart
 from cart.forms import CartRemoveForm
 from goods.models.product import Product
 from goods.services.product import ProductService
+from mixins.only_htmx_mixin import OnlyHtmxMixin
 
 
-class CartRemoveView(View):
+class CartRemoveView(OnlyHtmxMixin, View):
     """
     Представлення для видалення продукту з кошика.
     """
-
-    # template_name = "includes/cart_delete.html"
 
     def post(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
         return self.delete(request, args, kwargs)
