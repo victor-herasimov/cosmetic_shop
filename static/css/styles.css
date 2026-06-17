@@ -1032,6 +1032,7 @@ ul {
   border: 1px solid var(--line);
   border-radius: 999px;
   background: var(--surface);
+  overflow: hidden;
 }
 
 .cart-item__qty button {
@@ -1039,6 +1040,11 @@ ul {
   height: 28px;
   font-size: 15px;
   color: var(--ink);
+}
+
+.cart-item__qty button:disabled {
+  pointer-events: none;
+  background: var(--bg-soft);
 }
 
 .cart-item__qty span {
