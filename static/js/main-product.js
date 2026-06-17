@@ -12,10 +12,11 @@ init();
 //   qtyVal.textContent = qty;
 // });
 
-let qty = 1;
+let qty;
 const qtyVal = document.getElementById("qtyVal");
 const qtyInput = document.getElementById("qtyInput");
 document.getElementById("qty").addEventListener("click", (e) => {
+  qty = Number(qtyVal.innerHTML);
   const btn = e.target.closest("[data-q]");
   if (!btn) return;
   qty = Math.max(1, qty + Number(btn.getAttribute("data-q")));
