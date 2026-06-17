@@ -1,6 +1,5 @@
 from typing import Any
 from django.http import Http404, HttpRequest, HttpResponseBadRequest, HttpResponse
-from django.template.loader import render_to_string
 from django.views.generic import View
 from django.shortcuts import render
 
@@ -15,7 +14,7 @@ class CartRemoveView(View):
     Представлення для видалення продукту з кошика.
     """
 
-    template_name = "includes/cart_delete.html"
+    # template_name = "includes/cart_delete.html"
 
     def post(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
         return self.delete(request, args, kwargs)
@@ -57,9 +56,6 @@ class CartRemoveView(View):
                         "htmx_query": True,
                     },
                 )
-                # response["HX-Retarget"] = "#cartItems"
-                # response["HX-Swap"] = "innerHTML"
-                # print(" cart empty")
                 return response
         else:
             HttpResponseBadRequest("Форма не валідна.")

@@ -27,6 +27,18 @@ class Cart:
 
         self.cart: CartType = cart
 
+    def get_item_by_product(
+        self, product: Product
+    ) -> dict[str, int | str | Product | Decimal]:
+        cart: CartType = copy.deepcopy(self.cart)
+        cart_item = cart.get(str(product.id))
+        if cart_item is None:
+            return None
+        cart_item["product"] = product
+        cart_item["price"] = Decimal(cart_item["price"])
+        cart_item["total_price"] = cart_item["price"] * cart_item["quantity"]
+        return cart_item
+
     def add(
         self, product: Product, quantity: int = 1, override_quantity: bool = False
     ) -> None:

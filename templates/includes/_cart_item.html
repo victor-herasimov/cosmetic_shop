@@ -10,11 +10,31 @@
   <div>
     <div class="cart-item__name">{{ cart_item.product.title|truncatechars:60 }}</div>
     <div class="cart-item__price">Вартість: {{cart_item.total_price|floatformat:2 }} ₴</div>
-    <div class="cart-item__qty">
-      <button data-dec="hydra-gel" aria-label="Менше">−</button>
-      <span>{{cart_item.quantity}}</span>
-      <button data-inc="hydra-gel" aria-label="Більше">+</button>
-    </div>
+    <form 
+      hx-post="{% url 'cart:cart_update' %}" 
+      hx-target="#cart-item-{{ cart_item.product.id }}" 
+      hx-swap="outerHTML"
+    >
+      <div class="cart-item__qty">
+        {% csrf_token %}
+        <input type="hidden" name="product_id" value="{{ cart_item.product.id }}">
+        <input type="hidden" name="override" value="true">
+        <input type="hidden" name="quantity" value="{{cart_item.quantity}}">
+        <button
+        type="submit"
+        name="action"
+        value="subtract"
+        {% if cart_item.quantity == 1 %}disabled{% endif %}
+        aria-label="Менше">−</button>
+        <span>{{cart_item.quantity}}</span>
+        <button 
+        type="submit"
+        name="action"
+        value="add"
+        aria-label="Більше"
+        >+</button>
+      </div>
+    </form>
   </div>
   <form
     hx-post="{% url 'cart:cart_remove' %}" 

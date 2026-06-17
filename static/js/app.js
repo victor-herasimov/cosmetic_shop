@@ -86,10 +86,10 @@ function bindGlobalEvents() {
       return;
     }
 
-    const inc = t.closest("[data-inc]");
-    if (inc) return changeQty(inc.getAttribute("data-inc"), 1);
-    const dec = t.closest("[data-dec]");
-    if (dec) return changeQty(dec.getAttribute("data-dec"), -1);
+    // const inc = t.closest("[data-inc]");
+    // if (inc) return changeQty(inc.getAttribute("data-inc"), 1);
+    // const dec = t.closest("[data-dec]");
+    // if (dec) return changeQty(dec.getAttribute("data-dec"), -1);
   });
 
   document.addEventListener("keydown", (e) => {
