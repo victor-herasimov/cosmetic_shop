@@ -59,6 +59,7 @@
                     hx-post="{% url 'cart:cart_add' %}" 
                     hx-target="#cartItems" 
                     hx-swap="innerHTML"
+                    hx-on::after-request="document.getElementById('qtyVal').innerHTML = '1';document.getElementById('qtyInput').value = '1';"
                 >
                     <div class="pdp__buy">
                         {% csrf_token %}
