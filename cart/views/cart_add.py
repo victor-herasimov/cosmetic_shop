@@ -14,7 +14,7 @@ class CartAddView(View):
     Представлення для додавання продукту в кошик.
     """
 
-    template_name = "includes/cart_body.html"
+    template_name = "cart/includes/cart_body.html"
 
     def post(self, request: HttpRequest, *args, **kwargs):
         cart: Cart = Cart(request)
@@ -40,9 +40,9 @@ class CartAddView(View):
                     "cart": cart,
                     "toast": True,
                     "toast_text": toast_text,
-                    "footer": True,
+                    "footer_oob": True,
                     "product": product,
-                    "htmx_query": True,
+                    "update_cart_count": True,
                 },
             )
         else:

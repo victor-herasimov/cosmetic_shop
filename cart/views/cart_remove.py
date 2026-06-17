@@ -31,31 +31,22 @@ class CartRemoveView(View):
                 product: Product = ProductService().get_by_id(cd["product_id"])
             except Product.DoesNotExist as exc:
                 raise Http404("Товару не знайдено") from exc
+
             cart.remove(product=product)
-            toast_text: str = f"{product.title} видалено з кошика."
-            if cart:
-                return render(
-                    request,
-                    "includes/_cart_remove_item.html",
-                    context={
-                        "cart": cart,
-                        "toast": True,
-                        "toast_text": toast_text,
-                        "htmx_query": True,
-                    },
-                )
-            else:
-                response = render(
-                    request,
-                    "includes/cart_body.html",
-                    context={
-                        "cart": cart,
-                        "toast": True,
-                        "toast_text": toast_text,
-                        "footer": True,
-                        "htmx_query": True,
-                    },
-                )
-                return response
+
+            template_name: str = "cart/includes/_cart_remove_item.html"
+            context = {
+                "cart": cart,
+                "toast": True,
+                "toast_text": f"{product.title} видалено з кошика.",
+                "update_cart_count": True,
+            }
+            if not cart:
+                template_name = "cart/includes/cart_body.html"
+                context["footer_oob"] = True
+
+            return render(request, template_name, context)
+
         else:
-            HttpResponseBadRequest("Форма не валідна.")
+
+            return HttpResponseBadRequest("Форма не валідна.")

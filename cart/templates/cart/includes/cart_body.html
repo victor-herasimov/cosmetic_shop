@@ -1,0 +1,17 @@
+{% if cart %}
+    {% include "cart/includes/_cart_items.html" %}
+{% else %}
+    {% include "cart/includes/cart_empty.html" %}
+{% endif %}
+
+{% if toast %}
+    {% include "cart/includes/_toast.html" %}
+{% endif %}
+
+{% if update_cart_count %}
+    {% include "cart/includes/_cart_count.html" %}
+{% endif %}
+
+{% if footer_oob %}
+    {% include "cart/includes/_cart_footer_oob.html" %}
+{% endif %}

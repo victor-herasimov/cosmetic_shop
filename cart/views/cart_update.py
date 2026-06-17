@@ -14,11 +14,13 @@ class CartUpdateView(View):
     Оновлення кількості продуктів в кошику.
     """
 
-    template_name = "includes/_cart_update_item.html"
+    template_name = "cart/includes/_cart_update_item.html"
 
     def post(self, request: HttpRequest, *args, **kwargs):
+        """
+        Повертає оновлену верстку картки продукту в кошику.
+        """
         cart: Cart = Cart(request)
-
         form: CartAddForm = CartAddForm(request.POST)
 
         if form.is_valid():
@@ -46,9 +48,7 @@ class CartUpdateView(View):
                 context={
                     "cart": cart,
                     "cart_item": cart.get_item_by_product(product),
-                    "footer": True,
-                    "htmx_query": True,
                 },
             )
         else:
-            HttpResponseBadRequest("Форма не валідна.")
+            return HttpResponseBadRequest("Форма не валідна.")
