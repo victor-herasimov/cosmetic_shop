@@ -4,7 +4,6 @@ from django.db.models import Count, TextField, Value
 from django.db.models.functions import Concat
 from django.contrib.postgres.search import TrigramSimilarity
 from django.db.models import QuerySet
-from django.shortcuts import get_object_or_404
 
 from goods.models import Product
 from goods.models.category import Category
@@ -88,7 +87,7 @@ class ProductService:
         )
 
     @classmethod
-    def search(cls, query, order: str | None = None) -> QuerySet[Product]:
+    def search(cls, query: str, order: str | None = None) -> QuerySet[Product]:
         """
         Повертає прдукти, що містять запит query в заголовку або описі.
         """
@@ -110,13 +109,11 @@ class ProductService:
         return Product.objects.none()
 
     @classmethod
-    def get_similar_products(cls, product_slug: str) -> QuerySet[Product]:
+    def get_similar_products(cls, product: Product) -> QuerySet[Product]:
         """
         Повертає продукти, що подібні до продукта в якого слаг дорівнює product_slug.
         """
-        product = get_object_or_404(Product, slug=product_slug)
         current_char_ids = product.characteristics.values_list("id", flat=True)
-
         similar_products = (
             Product.objects.filter(characteristics__in=current_char_ids)
             .exclude(id=product.id)
@@ -128,7 +125,7 @@ class ProductService:
         return similar_products
 
     @classmethod
-    def get_products_by_ids(self, ids: Iterable[int]) -> QuerySet[Product]:
+    def get_products_by_ids(cls, ids: Iterable[int]) -> QuerySet[Product]:
         """
         Повертає кверісет з продуктів id яких міститься в списку ids.
         """

@@ -1,5 +1,5 @@
 from typing import Any
-from django.http import Http404, HttpRequest, HttpResponseBadRequest
+from django.http import Http404, HttpRequest, HttpResponse
 from django.views.generic import View
 from django.shortcuts import render
 
@@ -17,39 +17,48 @@ class CartUpdateView(OnlyHtmxMixin, View):
 
     template_name = "cart/includes/_cart_update_item.html"
 
-    def post(self, request: HttpRequest, *args, **kwargs):
+    def post(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
         """
         Повертає оновлену верстку картки продукту в кошику.
         """
         cart: Cart = Cart(request)
         form: CartAddForm = CartAddForm(request.POST)
 
-        if form.is_valid():
-            cd: dict[str, Any] = form.cleaned_data
-            try:
-                product: Product = ProductService.get_by_id(cd["product_id"])
-            except Product.DoesNotExist as exc:
-                raise Http404("Товару не знайдено") from exc
-
-            action: str = cd["action"]
-
-            quantity = cd["quantity"]
-            if action:
-                quantity = quantity + 1 if action == "add" else quantity - 1
-
-            cart.add(
-                product=product,
-                quantity=quantity,
-                override_quantity=cd["override"],
-            )
-
+        if not form.is_valid():
             return render(
                 request,
-                template_name=self.template_name,
+                template_name="cart/includes/_toast.html",
                 context={
-                    "cart": cart,
-                    "cart_item": cart.get_item_by_product(product),
+                    "toast_text": "Сталася помилка. Не вдалося оновити кількість в кошику!"
                 },
             )
-        else:
-            return HttpResponseBadRequest("Форма не валідна.")
+
+        cd: dict[str, Any] = form.cleaned_data
+        try:
+            product: Product = ProductService.get_by_id(cd["product_id"])
+        except Product.DoesNotExist as exc:
+            raise Http404("Товару не знайдено") from exc
+
+        action: str = cd["action"]
+        quantity = cd["quantity"]
+
+        if action:
+            quantity = quantity + 1 if action == "add" else quantity - 1
+
+        if quantity < 1:
+            quantity = 1
+
+        cart.add(
+            product=product,
+            quantity=quantity,
+            override_quantity=cd["override"],
+        )
+
+        return render(
+            request,
+            template_name=self.template_name,
+            context={
+                "cart": cart,
+                "cart_item": cart.get_item_by_product(product),
+            },
+        )

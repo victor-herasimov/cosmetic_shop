@@ -1,3 +1,5 @@
+from typing import Any
+
 from django.http import Http404
 from django.views.generic import DetailView
 from goods.models.product import Product
@@ -11,8 +13,9 @@ class ProductDetailView(DetailView):
 
     template_name = "goods/product.html"
     context_object_name = "product"
+    slug_url_kwarg = "slug"
 
-    def get_object(self, queryset=...):
+    def get_object(self, queryset=None) -> Product:
         """
         Повертає об`єкт Продукта, якщо такий існує.
         """
@@ -23,7 +26,7 @@ class ProductDetailView(DetailView):
             raise Http404(f"Продукт з слагом {slug} не знайдено") from exc
         return obj
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs) -> dict[str, Any]:
         """
         Повертає словник контексту для рендерингу шаблону.
         Доповнює базовий контекст наступними даними даними: similar_products,
@@ -31,6 +34,6 @@ class ProductDetailView(DetailView):
         """
         context = super().get_context_data(**kwargs)
         context["similar_products"] = ProductService.get_similar_products(
-            product_slug=self.kwargs.get(self.slug_url_kwarg)
+            product=self.object
         )
         return context

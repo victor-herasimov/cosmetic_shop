@@ -1,5 +1,5 @@
 from typing import Any
-from django.http import Http404, HttpRequest, HttpResponseBadRequest
+from django.http import Http404, HttpRequest
 from django.views.generic import View
 from django.shortcuts import render
 

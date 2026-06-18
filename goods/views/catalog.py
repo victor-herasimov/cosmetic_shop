@@ -36,8 +36,8 @@ class CatalogView(ListView):
 
     def _get_active_category(self, slug: str) -> Category:
         """
-        При першому виклику отримує категорія з бази даних по слагуі кешує її в пам`ять.
-        При на ступних викликах в межах одного http запиту повертає закешоване значення.
+        При першому виклику отримує категорія з бази даних по слагу і кешує її в пам`ять.
+        При наступних викликах в межах одного http запиту повертає закешоване значення.
         """
         if not hasattr(self, "_data_by_slug_cache"):
             self._data_by_slug_cache: dict[str, Category] = {}
@@ -56,10 +56,10 @@ class CatalogView(ListView):
         """
         Повертає відфільтрований список товарів для каталогу.
         """
-        self.form = ProductSortForm(self.request.GET)
+        form = ProductSortForm(self.request.GET)
 
-        if self.form.is_valid():
-            sort_by = self.form.cleaned_data.get("sort")
+        if form.is_valid():
+            sort_by = form.cleaned_data.get("sort")
             order_field = self.SORT_MAPPING.get(sort_by, "-updated")
         else:
             order_field = "-updated"
@@ -81,6 +81,9 @@ class CatalogView(ListView):
         які будуть доступні в HTML-шаблоні.
         """
         context: dict[str, Any] = super().get_context_data(**kwargs)
+        paginator: Paginator = context["paginator"]
+        page_obj: Page = context["page_obj"]
+
         context["category_with_count_products"] = (
             CategoryService().get_all_with_count_products()
         )
@@ -90,10 +93,9 @@ class CatalogView(ListView):
             else None
         )
         context["total_products"] = ProductService.get_products_count()
-        paginator: Paginator = context["paginator"]
-        page_obj: Page = context["page_obj"]
+
         context["elided_page_range"] = paginator.get_elided_page_range(
             number=page_obj.number, on_each_side=1, on_ends=1
         )
-        context["order_form"] = self.form
+        context["order_form"] = ProductSortForm(self.request.GET)
         return context
