@@ -10,7 +10,7 @@ register = template.Library()
 
 @register.simple_tag
 def get_product_news() -> QuerySet[Product]:
-    return ProductService().get_news()
+    return ProductService.get_news()
 
 
 @register.simple_tag(takes_context=True)

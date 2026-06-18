@@ -44,7 +44,7 @@ class SearchView(ListView):
             order_field = None
 
         search_text: str | None = self.request.GET.get("search", "")
-        return ProductService().search(search_text, order=order_field)
+        return ProductService.search(search_text, order=order_field)
 
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         """

@@ -16,36 +16,31 @@ class CartRemoveView(OnlyHtmxMixin, View):
     """
 
     def post(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
-        return self.delete(request, args, kwargs)
-
-    def delete(self, request: HttpRequest, *args, **kwargs):
-        "Видаляє продукт з кошика за його ID переданим в тілі запиту."
-
+        """
+        Видаляє продукт з кошика за його ID переданим в тілі запиту.
+        """
         cart: Cart = Cart(request)
         form: CartRemoveForm = CartRemoveForm(request.POST)
-
-        if form.is_valid():
-            cd: dict[str, Any] = form.cleaned_data
-            try:
-                product: Product = ProductService().get_by_id(cd["product_id"])
-            except Product.DoesNotExist as exc:
-                raise Http404("Товару не знайдено") from exc
-
-            cart.remove(product=product)
-
-            template_name: str = "cart/includes/_cart_remove_item.html"
-            context = {
-                "cart": cart,
-                "toast": True,
-                "toast_text": f"{product.title} видалено з кошика.",
-                "update_cart_count": True,
-            }
-            if not cart:
-                template_name = "cart/includes/cart_body.html"
-                context["footer_oob"] = True
-
-            return render(request, template_name, context)
-
-        else:
-
+        if not form.is_valid():
             return HttpResponseBadRequest("Форма не валідна.")
+
+        cd: dict[str, Any] = form.cleaned_data
+        try:
+            product: Product = ProductService().get_by_id(cd["product_id"])
+        except Product.DoesNotExist as exc:
+            raise Http404("Товару не знайдено") from exc
+
+        cart.remove(product=product)
+
+        template_name: str = "cart/includes/_cart_remove_item.html"
+        context: dict[str, Any] = {
+            "cart": cart,
+            "toast": True,
+            "toast_text": f"{product.title} видалено з кошика.",
+            "update_cart_count": True,
+        }
+        if not cart:
+            template_name = "cart/includes/cart_body.html"
+            context["footer_oob"] = True
+
+        return render(request, template_name, context)

@@ -17,4 +17,4 @@ class LiveSearchView(OnlyHtmxMixin, ListView):
         Повертає відфільтрований список товарів для каталогу.
         """
         search_text: str | None = self.request.GET.get("search", "")
-        return ProductService().search(search_text)[:10]
+        return ProductService.search(search_text)[:10]

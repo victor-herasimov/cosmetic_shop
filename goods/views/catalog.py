@@ -66,11 +66,11 @@ class CatalogView(ListView):
 
         cat_slug: str | None = self.request.GET.get("cat")
         if not cat_slug:
-            return ProductService().get_all(order=order_field)
+            return ProductService.get_all(order=order_field)
 
         active_category = self._get_active_category(cat_slug)
 
-        return ProductService().get_products_by_category(
+        return ProductService.get_products_by_category(
             active_category, order=order_field
         )
 
@@ -89,7 +89,7 @@ class CatalogView(ListView):
             if self.request.GET.get("cat")
             else None
         )
-        context["total_products"] = ProductService().get_products_count()
+        context["total_products"] = ProductService.get_products_count()
         paginator: Paginator = context["paginator"]
         page_obj: Page = context["page_obj"]
         context["elided_page_range"] = paginator.get_elided_page_range(

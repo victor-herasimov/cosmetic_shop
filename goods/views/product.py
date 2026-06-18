@@ -18,7 +18,7 @@ class ProductDetailView(DetailView):
         """
         slug: str = self.kwargs.get(self.slug_url_kwarg)
         try:
-            obj: Product = ProductService().get_by_slug(slug)
+            obj: Product = ProductService.get_by_slug(slug)
         except Product.DoesNotExist as exc:
             raise Http404(f"Продукт з слагом {slug} не знайдено") from exc
         return obj
@@ -30,7 +30,7 @@ class ProductDetailView(DetailView):
         які будуть доступні в HTML-шаблоні.
         """
         context = super().get_context_data(**kwargs)
-        context["similar_products"] = ProductService().get_similar_products(
+        context["similar_products"] = ProductService.get_similar_products(
             product_slug=self.kwargs.get(self.slug_url_kwarg)
         )
         return context

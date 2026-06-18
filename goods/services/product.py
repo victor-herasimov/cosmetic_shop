@@ -11,7 +11,8 @@ from goods.models.category import Category
 
 
 class ProductService:
-    def get_all(self, order: str | None = None) -> QuerySet[Product]:
+    @classmethod
+    def get_all(cls, order: str | None = None) -> QuerySet[Product]:
         """
         Повертає кверісет з усіма продуктами
         """
@@ -22,14 +23,16 @@ class ProductService:
             result = result.order_by(order)
         return result
 
-    def get_by_id(self, product_id: int) -> Product:
+    @classmethod
+    def get_by_id(cls, product_id: int) -> Product:
         """
         Повертає товар по йго ID.
         """
         return Product.objects.get(id=product_id)
 
+    @classmethod
     def get_products_by_category(
-        self, category: Category, order: str | None = None
+        cls, category: Category, order: str | None = None
     ) -> QuerySet[Product]:
         """
         Повертає кверісет з усіма продуктами за категорією.
@@ -43,13 +46,15 @@ class ProductService:
             result = result.order_by(order)
         return result
 
-    def get_products_count(self) -> int:
+    @classmethod
+    def get_products_count(cls) -> int:
         """
         Повертає кількість усіх товарів.
         """
         return Product.objects.count()
 
-    def get_bestsellers(self) -> QuerySet[Product]:
+    @classmethod
+    def get_bestsellers(cls) -> QuerySet[Product]:
         """
         Повертає кверісет з першими 4-ма продуктами, що є хітом продаж. Якщо таких менше 4-х
         то добавляє іншими продуктами.
@@ -60,7 +65,8 @@ class ProductService:
             .order_by("-is_bestseller", "-updated")[:4]
         )
 
-    def get_news(self) -> QuerySet[Product]:
+    @classmethod
+    def get_news(cls) -> QuerySet[Product]:
         """
         Повертає кверісет з першими 4-ма новими продуктами.
         """
@@ -70,7 +76,8 @@ class ProductService:
             .order_by("-is_new", "-created")[:4]
         )
 
-    def get_by_slug(self, slug: str) -> Product:
+    @classmethod
+    def get_by_slug(cls, slug: str) -> Product:
         """
         Повертає Продукт, що відповідє слагу. Якщо такого не має то викидає виключення Product.DoesNotExist.
         """
@@ -80,7 +87,8 @@ class ProductService:
             .get(slug=slug)
         )
 
-    def search(self, query, order: str | None = None) -> QuerySet[Product]:
+    @classmethod
+    def search(cls, query, order: str | None = None) -> QuerySet[Product]:
         """
         Повертає прдукти, що містять запит query в заголовку або описі.
         """
@@ -101,7 +109,8 @@ class ProductService:
 
         return Product.objects.none()
 
-    def get_similar_products(self, product_slug: str) -> QuerySet[Product]:
+    @classmethod
+    def get_similar_products(cls, product_slug: str) -> QuerySet[Product]:
         """
         Повертає продукти, що подібні до продукта в якого слаг дорівнює product_slug.
         """
@@ -118,6 +127,7 @@ class ProductService:
         )
         return similar_products
 
+    @classmethod
     def get_products_by_ids(self, ids: Iterable[int]) -> QuerySet[Product]:
         """
         Повертає кверісет з продуктів id яких міститься в списку ids.
