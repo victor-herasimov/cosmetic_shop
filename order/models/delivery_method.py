@@ -13,6 +13,7 @@ class DeliveryMethod(models.Model):
     """
 
     title = models.CharField(max_length=100, verbose_name="Назва способу доставки")
+    short_description = models.CharField(max_length=256, verbose_name="Короткий опис")
     is_active = models.BooleanField(default=True, verbose_name="Активний")
 
     def __str__(self):
@@ -22,5 +23,5 @@ class DeliveryMethod(models.Model):
     class Meta:
         app_label = "order"
         ordering = ["title"]
-        verbose_name = "Замовлення"
-        verbose_name_plural = "Замовлення"
+        verbose_name = "Спосіб доставки"
+        verbose_name_plural = "Способи доставки"
