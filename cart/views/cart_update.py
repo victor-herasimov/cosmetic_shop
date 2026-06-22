@@ -15,7 +15,21 @@ class CartUpdateView(OnlyHtmxMixin, View):
     Оновлення кількості продуктів в кошику.
     """
 
-    template_name = "cart/includes/_cart_update_item.html"
+    # template_name = "cart/includes/_cart_update_item.html"
+    checkout_path: str = "checkout"
+
+    def _get_template_name(self) -> str:
+        """
+        Повертає шаблон в залежності від того з якої сторінки було надіслано запит.
+        """
+        current_url: str = self.request.headers.get("HX_Current-Url", "")
+
+        if self.checkout_path in current_url:
+            # Повернення шаблону кошика на сторінці оформлення замовлення
+            return "order/includes/_cart_update_item.html"
+
+        # Повернення шаблону для модального вікна кошика
+        return "cart/includes/_cart_update_item.html"
 
     def post(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
         """
@@ -45,9 +59,6 @@ class CartUpdateView(OnlyHtmxMixin, View):
         if action:
             quantity = quantity + 1 if action == "add" else quantity - 1
 
-        if quantity < 1:
-            quantity = 1
-
         cart.add(
             product=product,
             quantity=quantity,
@@ -56,7 +67,7 @@ class CartUpdateView(OnlyHtmxMixin, View):
 
         return render(
             request,
-            template_name=self.template_name,
+            template_name=self._get_template_name(),
             context={
                 "cart": cart,
                 "cart_item": cart.get_item_by_product(product),
