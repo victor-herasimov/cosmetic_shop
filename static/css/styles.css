@@ -2457,14 +2457,14 @@ body.no-scroll {
   height: 56px;
   border-radius: 8px;
   overflow: hidden;
-  background: var(--bg-soft);
+  background: var(var(--surface));
   border: 1px solid var(--line);
 }
 
 .order-item__img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .order-item__info {
@@ -2510,6 +2510,10 @@ body.no-scroll {
   color: var(--ink-soft);
   border-radius: 50%;
   transition: all 0.2s ease;
+}
+
+.order-item__qty button:disabled {
+  pointer-events: none;
 }
 
 .order-item__qty button:hover {

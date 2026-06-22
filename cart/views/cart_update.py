@@ -26,7 +26,7 @@ class CartUpdateView(OnlyHtmxMixin, View):
 
         if self.checkout_path in current_url:
             # Повернення шаблону кошика на сторінці оформлення замовлення
-            return "order/includes/_cart_update_item.html"
+            return "order/includes/_order_update_item.html"
 
         # Повернення шаблону для модального вікна кошика
         return "cart/includes/_cart_update_item.html"
@@ -64,7 +64,7 @@ class CartUpdateView(OnlyHtmxMixin, View):
             quantity=quantity,
             override_quantity=cd["override"],
         )
-
+        print(self._get_template_name())
         return render(
             request,
             template_name=self._get_template_name(),

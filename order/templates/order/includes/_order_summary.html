@@ -1,0 +1,14 @@
+<div class="order-summary" id="orderSummary" hx-swap-oob="true">
+  <div class="order-summary__row">
+    <span>Сума за товари</span>
+    <span>{{ cart.get_total_price|floatformat:2 }} ₴</span>
+  </div>
+  <div class="order-summary__row">
+    <span>Доставка</span>
+    <span style="color: var(--accent)">За тарифом перевізника</span>
+  </div>
+  <div class="order-summary__total">
+    <span>Всього до сплати</span>
+    <span>{{ cart.get_total_price|floatformat:2 }} ₴</span>
+  </div>
+</div>

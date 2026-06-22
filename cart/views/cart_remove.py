@@ -24,7 +24,7 @@ class CartRemoveView(OnlyHtmxMixin, View):
     checkout_path: str = "checkout"
 
     def _render_cart_in_checkout_page(
-        self, request: HttpRequest, cart: Cart
+        self, request: HttpRequest, cart: Cart, product: Product
     ) -> HttpResponse:
         """
         Рендер елементів кошика на сторінці замовлення
@@ -34,7 +34,14 @@ class CartRemoveView(OnlyHtmxMixin, View):
             response["HX-Redirect"] = reverse("goods:catalog")
             return response
 
-        # Тут буде код для відображення елементів кошику без видаленого елементу
+        template_name: str = "order/includes/_order_remove_item.html"
+        context: dict[str, Any] = {
+            "cart": cart,
+            "toast": True,
+            "toast_text": f"{product.title} видалено з кошика.",
+        }
+
+        return render(request, template_name, context)
 
     def _render_cart_in_cart_modal(
         self, request: HttpRequest, cart: Cart, product: Product
@@ -76,6 +83,6 @@ class CartRemoveView(OnlyHtmxMixin, View):
 
         if self.checkout_path in current_url:
             # Рендер елементів кошика на сторінці замовлення
-            return self._render_cart_in_checkout_page(request, cart)
+            return self._render_cart_in_checkout_page(request, cart, product)
         # Рендер елементів кошика в модальному вікні кошика
         return self._render_cart_in_cart_modal(request, cart, product)

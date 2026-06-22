@@ -1,0 +1,73 @@
+<div class="order-item" id="order-item-{{ cart_item.product.id }}">
+  <div class="order-item__img">
+    {% with first_foto=cart_item.product.fotos.first %}
+        <img
+        src="{{ first_foto.image.url }}"
+        alt="{{cart_item.product.title}}"
+        />
+    {% endwith %}
+  </div>
+  <div class="order-item__info">
+    <span class="order-item__name">{{ cart_item.product.title|truncatechars:60 }}</span>
+    <div class="order-item__controls">
+      <form
+      class="order-item__qty"
+      hx-post="{% url 'cart:cart_update' %}" 
+      hx-target="#order-item-{{ cart_item.product.id }}" 
+      hx-swap="outerHTML"
+      >
+        {% csrf_token %}
+        <input type="hidden" name="product_id" value="{{ cart_item.product.id }}">
+        <input type="hidden" name="override" value="true">
+        <input type="hidden" name="quantity" value="{{cart_item.quantity}}">
+
+        <button 
+            type="submit"
+            name="action"
+            value="subtract"
+            {% if cart_item.quantity == 1 %}disabled{% endif %}
+            aria-label="Зменшити"
+        >
+          −
+        </button>
+        <span>{{cart_item.quantity}}</span>
+        <button
+        type="submit"
+        name="action"
+        value="add"
+        aria-label="Більше"
+        aria-label="Збільшити"
+        >
+          +
+        </button>
+      </form>
+      <form 
+        hx-post="{% url 'cart:cart_remove' %}" 
+        hx-target="#order-item-{{ cart_item.product.id }}" 
+        hx-swap="outerHTML"
+      >
+      {% csrf_token %}
+        <input type="hidden" name="product_id" value="{{ cart_item.product.id }}">
+        <button
+            class="order-item__remove"
+            aria-label="Видалити"
+        >
+            <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            >
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path
+                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+            ></path>
+            </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="order-item__price">{{cart_item.total_price|floatformat:2 }} ₴</div>
+</div>
