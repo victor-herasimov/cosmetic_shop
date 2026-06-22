@@ -1,3 +1,7 @@
+"""
+Модуль для продукта.
+"""
+
 from decimal import Decimal
 
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -11,6 +15,10 @@ from .characteristic import Characteristic
 
 
 class Product(DateMixin, SlugMixin):
+    """
+    Модель продукта
+    """
+
     title = models.CharField(max_length=512, verbose_name="Заголовок")
     cateogry = models.ForeignKey(
         Category,
@@ -107,22 +115,40 @@ class Product(DateMixin, SlugMixin):
 
     @property
     def available(self) -> bool:
+        """
+        Повертає True, якщо продукт є в наявності.
+        """
         return self.count > 0
 
     @property
     def has_benefits(self) -> bool:
+        """
+        Повертає True, якщо продукт має переваги.
+        """
         return self.vegan_frendly or self.derma or self.delivery or self.active
 
     @property
     def is_discount(self) -> bool:
+        """
+        Повертає True, якщо продукт має знижку.
+        """
         return self.discount > 0
 
     @property
     def get_price_with_discount(self) -> Decimal:
+        """
+        Повертає ціну продукту з урахуванням знижки.
+        """
         return self.price * Decimal((1 - self.discount / 100))
 
     def get_absolute_url(self):
+        """
+        Повертає url для продукту.
+        """
         return reverse("goods:product", kwargs={"slug": self.slug})
 
     def __str__(self) -> str:
+        """
+        Повертає текстове представлення продукту.
+        """
         return f"{self.title}"

@@ -45,6 +45,7 @@ CREATED_APPS: list[str] = [
     "main.apps.MainConfig",
     "goods.apps.GoodsConfig",
     "cart.apps.CartConfig",
+    "order.apps.OrderConfig",
 ]
 
 INSTALLED_APPS: list[str] = INTERNAL_APPS + OUTHER_APPS + CREATED_APPS
