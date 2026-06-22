@@ -1,3 +1,191 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% comment %} Оформлення замовлення {% endcomment %}
+{% block title %}
+ - Оформлення замовлення
+{% endblock title %}
+
+{% block content %}
+{% include "includes/_breadcrumbs.html" %}
+<main>
+      <!-- Page Head -->
+      <div class="page-head">
+        <div class="wrap">
+          <h1>Оформлення замовлення</h1>
+        </div>
+      </div>
+
+      <!-- Checkout Content -->
+      <section class="section">
+        <div class="wrap">
+          <div class="checkout" id="checkoutRoot" style="display: block;">
+            <div class="checkout__grid">
+              <!-- Form Column -->
+              <div class="checkout__main">
+                <form id="checkoutForm" class="checkout-form">
+                  <div class="form-section">
+                    <h3 class="form-section__title">1. Контактні дані</h3>
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label for="first_name">Ваше ім'я*</label>
+                        <input type="text" id="first_name" name="first_name">
+                      </div>
+                      <div class="form-group">
+                        <label for="last_name">Ваше прізвище*</label>
+                        <input type="text" id="last_name" name="last_name">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email (для отримання інформації про замовлення)*</label>
+                      <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Номер телефону*</label>
+                        <input type="text" id="phone" name="phone" placeholder="+38 (0__) ___-__-__">
+                      </div>
+                  </div>
+
+                  <div class="form-section">
+                    <h3 class="form-section__title">2. Доставка</h3>
+                    <div class="form-group">
+                      <label>Спосіб доставки</label>
+                      <div class="radio-group">
+                        <label class="radio-label">
+                          <input type="radio" name="delivery" value="nova" checked="">
+                          <span class="radio-custom"></span>
+                          <span class="radio-text">
+                            <b>Нова Пошта</b>
+                            <small>У відділення або поштомат</small>
+                          </span>
+                        </label>
+                        <label class="radio-label">
+                          <input type="radio" name="delivery" value="ukr">
+                          <span class="radio-custom"></span>
+                          <span class="radio-text">
+                            <b>Укрпошта</b>
+                            <small>Доставка по всій Україні</small>
+                          </span>
+                        </label>
+                        <label class="radio-label">
+                          <input type="radio" name="delivery" value="courier">
+                          <span class="radio-custom"></span>
+                          <span class="radio-text">
+                            <b>Кур'єр ROBEAUTY</b>
+                            <small>Лише по Києву</small>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="city">Місто</label>
+                      <input type="text" id="city" name="city" placeholder="Київ" required="">
+                    </div>
+                    <div class="form-group">
+                      <label for="address">Відділення або адреса</label>
+                      <input type="text" id="address" name="address" placeholder="Відділення №1" required="">
+                    </div>
+                  </div>
+
+                  <div class="form-section">
+                    <h3 class="form-section__title">3. Оплата</h3>
+                    <div class="radio-group">
+                      <label class="radio-label">
+                        <input type="radio" name="payment" value="card" checked="">
+                        <span class="radio-custom"></span>
+                        <span class="radio-text">
+                          <b>Оплата карткою на сайті</b>
+                          <small>Visa, Mastercard, Google Pay, Apple Pay</small>
+                        </span>
+                      </label>
+                      <label class="radio-label">
+                        <input type="radio" name="payment" value="post">
+                        <span class="radio-custom"></span>
+                        <span class="radio-text">
+                          <b>Післяплата (накладений платіж)</b>
+                          <small>Оплата при отриманні у відділенні</small>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="form-section">
+                    <h3 class="form-section__title">Коментар до замовлення</h3>
+                    <div class="form-group">
+                      <textarea id="comment" name="comment" rows="3" placeholder="Ваші побажання..."></textarea>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn btn--primary btn--block btn--lg checkout-submit">
+                    Підтвердити замовлення
+                  </button>
+                </form>
+              </div>
+
+              <!-- Summary Column -->
+              <aside class="checkout__side">
+                <div class="checkout-card">
+                  <h3 class="checkout-card__title">Ваше замовлення</h3>
+                  <div class="order-items" id="orderItems">
+        <div class="order-item">
+          <div class="order-item__img"><img src="/images/product-1.png" alt="Сироватка-замінник ботоксу 2% — ARGIRELINE®"></div>
+          <div class="order-item__info">
+            <span class="order-item__name">Сироватка-замінник ботоксу 2% — ARGIRELINE®</span>
+            <div class="order-item__controls">
+              <div class="order-item__qty">
+                <button data-checkout-dec="argireline-2" aria-label="Зменшити">−</button>
+                <span>1</span>
+                <button data-checkout-inc="argireline-2" aria-label="Збільшити">+</button>
+              </div>
+              <button class="order-item__remove" data-checkout-remove="argireline-2" aria-label="Видалити">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              </button>
+            </div>
+          </div>
+          <div class="order-item__price">490 ₴</div>
+        </div></div>
+                  <div class="order-summary" id="orderSummary">
+      <div class="order-summary__row">
+        <span>Сума за товари</span>
+        <span>490 ₴</span>
+      </div>
+      <div class="order-summary__row">
+        <span>Доставка</span>
+        <span style="color: var(--accent)">За тарифом перевізника</span>
+      </div>
+      <div class="order-summary__total">
+        <span>Всього до сплати</span>
+        <span>441 ₴</span>
+      </div>
+    </div>
+                </div>
+                
+                <div class="checkout-info">
+                  <div class="feature">
+                    <span data-icon="truck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg></span>
+                    <div>
+                      <b>Безкоштовна доставка</b>
+                      <span>Для замовлень від 1000 ₴</span>
+                    </div>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+
+          <div id="checkoutEmpty" style="display: none;">
+             <div class="catalog-empty">
+                <p>Ваш кошик порожній. Щоб оформити замовлення, додайте товари до кошика.</p>
+                <a href="/catalog.html" class="btn btn--primary">Перейти до каталогу</a>
+             </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+{% endblock content %}
+
+{% block scripts %}
+    <script src="{% static "js/imask.js" %}"></script>
+    <script type="module" src="{% static "js/main-checkout.js" %} "></script>
+    
+{% endblock scripts %}
