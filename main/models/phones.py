@@ -1,13 +1,14 @@
 import re
 from django.db import models
 
+from validators import PhoneNumberValidator
+
 from . import SiteConfig
-from main.validators import PhoneNumberValidator
 
 
 class Phone(models.Model):
     phone = models.CharField(
-        max_length=17, verbose_name="Телефон", validators=[PhoneNumberValidator()]
+        max_length=19, verbose_name="Телефон", validators=[PhoneNumberValidator()]
     )
     in_footer = models.BooleanField(default=True, verbose_name="Показувати в футері")
     active = models.BooleanField(default=True, verbose_name="Активний")
