@@ -655,7 +655,7 @@ ul {
 
 .page-head h1 {
   font-family: var(--font-serif);
-  font-size: clamp(30px, 5vw, 48px);
+  font-size: clamp(24px, 5vw, 48px);
   margin-top: 12px;
 }
 
@@ -2605,10 +2605,38 @@ body.no-scroll {
   }
 }
 
+@media (max-width: 576px) {
+}
+
 @media (max-width: 640px) {
   .form-row {
     grid-template-columns: 1fr;
   }
+  .order-summary__total {
+    font-size: 14px;
+  }
+
+  .order-summary__row {
+    font-size: 12px;
+  }
+
+  .order-item {
+    gap: 5px;
+  }
+
+  .order-item__price {
+    font-size: 12px;
+  }
+
+  .order-item__controls {
+    gap: 5px;
+  }
+
+  .order-item__remove {
+    padding: 2px;
+  }
+ 
+  
   
   .form-section {
     padding: 20px;
