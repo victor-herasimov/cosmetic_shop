@@ -1,3 +1,7 @@
+"""
+Пакет налаштування адмін-панелі для модуля замовлень (Order).
+"""
+
 from .order import OrderAdmin
 from .delivery_method import DeliveryMethodAdmin
 

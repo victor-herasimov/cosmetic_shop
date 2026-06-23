@@ -25,13 +25,17 @@ class OrderItem(models.Model):
         Order, on_delete=models.CASCADE, related_name="items", verbose_name="Замовлення"
     )
     product = models.ForeignKey(
-        Product(),
+        Product,
         on_delete=models.CASCADE,
         related_name="order_items",
         verbose_name="Продукт",
     )
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Ціна")
     quantity = models.PositiveIntegerField(default=1, verbose_name="Кількість")
+
+    class Meta:
+        verbose_name = "Замовлений продукт"
+        verbose_name_plural = "Замовлені продукти"
 
     def __str__(self) -> str:
         """Повертає рядкове представлення елемента замовлення."""
@@ -40,10 +44,6 @@ class OrderItem(models.Model):
     def get_cost(self) -> Decimal:
         """Обчислює загальну вартість цієї позиції в замовленні."""
         return self.price * self.quantity
-
-    class Meta:
-        verbose_name = "Заказаний продукт"
-        verbose_name_plural = "Заказані продукти"
 
     def save(self, *args, **kwargs) -> None:
         """Зберігає об'єкт у базі даних."""

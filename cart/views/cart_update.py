@@ -15,7 +15,6 @@ class CartUpdateView(OnlyHtmxMixin, View):
     Оновлення кількості продуктів в кошику.
     """
 
-    # template_name = "cart/includes/_cart_update_item.html"
     checkout_path: str = "checkout"
 
     def _get_template_name(self) -> str:
@@ -64,7 +63,6 @@ class CartUpdateView(OnlyHtmxMixin, View):
             quantity=quantity,
             override_quantity=cd["override"],
         )
-        print(self._get_template_name())
         return render(
             request,
             template_name=self._get_template_name(),

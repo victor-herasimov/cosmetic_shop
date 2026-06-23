@@ -96,7 +96,11 @@ class Order(DateMixin):
         """
         if self.pk:
             old_order: Order = Order.objects.get(pk=self.pk)
-            if old_order and old_order.status == "new" and self.status != "new":
+            if (
+                old_order
+                and old_order.status in ("new", "canceled")
+                and self.status not in ("new", "canceled")
+            ):
                 with transaction.atomic():
                     for item in self.items.select_related("product").all():
                         product: Product = item.product
@@ -105,7 +109,19 @@ class Order(DateMixin):
                                 f"Недостатньо товару {product.title} на складі! "
                                 f"Доступно: {product.count}, потрібно: {item.quantity}."
                             )
-                        product.count = models.F("count") - item.quantity
-                        product.save()
+                        Product.objects.filter(pk=product.pk).update(
+                            count=models.F("count") - item.quantity
+                        )
+            if (
+                old_order
+                and old_order.status not in ("new", "canceled")
+                and self.status in ("canceled", "new")
+            ):
+                with transaction.atomic():
+                    for item in self.items.select_related("product").all():
+                        product: Product = item.product
+                        Product.objects.filter(pk=product.pk).update(
+                            count=models.F("count") + item.quantity
+                        )
 
         return super().save(*args, **kwargs)
