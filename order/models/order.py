@@ -6,7 +6,11 @@
 обробки замовлення в системі.
 """
 
-from django.db import models
+from decimal import Decimal
+
+from django.db import models, transaction
+from django.core.validators import ValidationError
+from goods.models.product import Product
 from mixins import DateMixin
 from validators import PhoneNumberValidator
 from .delivery_method import DeliveryMethod
@@ -19,6 +23,8 @@ class Order(DateMixin):
     """
 
     class Status(models.TextChoices):
+        """Перелік можливих статусів замовлення в системі."""
+
         NEW = "new", "Новe"
         IN_PROGRESS = "in_progress", "В обробці"
         SHIPPED = "shipped", "Відправлено"
@@ -63,6 +69,8 @@ class Order(DateMixin):
     comment = models.TextField(blank=True, null=True, verbose_name="Коментар")
 
     class Meta:
+        """Мета-параметри моделі замовлення (назви в адмінці, сортування та індекси)."""
+
         verbose_name = "Заказ"
         verbose_name_plural = "Закази"
         ordering = ["-created"]
@@ -70,8 +78,34 @@ class Order(DateMixin):
             models.Index(fields=["-created"]),
         ]
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        Повертає рядкове представлення замовлення.
+        """
         return f"Заказ {self.id}"
 
-    def get_total_cost(self):
+    def get_total_cost(self) -> Decimal:
+        """
+        Обчислює загальну вартість замовлення.
+        """
         return sum(item.get_cost() for item in self.items.all())
+
+    def save(self, *args, **kwargs) -> None:
+        """
+        Зберігає замовлення в базу даних з перевіркою зміни статусу.
+        """
+        if self.pk:
+            old_order: Order = Order.objects.get(pk=self.pk)
+            if old_order and old_order.status == "new" and self.status != "new":
+                with transaction.atomic():
+                    for item in self.items.select_related("product").all():
+                        product: Product = item.product
+                        if product.count < item.quantity:
+                            raise ValidationError(
+                                f"Недостатньо товару {product.title} на складі! "
+                                f"Доступно: {product.count}, потрібно: {item.quantity}."
+                            )
+                        product.count = models.F("count") - item.quantity
+                        product.save()
+
+        return super().save(*args, **kwargs)

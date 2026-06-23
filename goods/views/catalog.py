@@ -46,7 +46,7 @@ class CatalogView(ListView):
             return self._data_by_slug_cache[slug]
 
         try:
-            result: Category = CategoryService().get_category_by_slug(slug)
+            result: Category = CategoryService.get_category_by_slug(slug)
             self._data_by_slug_cache[slug] = result
             return result
         except Category.DoesNotExist as exc:
@@ -85,7 +85,7 @@ class CatalogView(ListView):
         page_obj: Page = context["page_obj"]
 
         context["category_with_count_products"] = (
-            CategoryService().get_all_with_count_products()
+            CategoryService.get_all_with_count_products()
         )
         context["active_category"] = (
             self._get_active_category(self.request.GET.get("cat"))

@@ -5,6 +5,8 @@
 а також зберігає інформацію про їхню кількість та ціну на момент купівлі.
 """
 
+from decimal import Decimal
+
 from django.db import models
 
 from goods.models import Product
@@ -31,11 +33,11 @@ class OrderItem(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Ціна")
     quantity = models.PositiveIntegerField(default=1, verbose_name="Кількість")
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Повертає рядкове представлення елемента замовлення."""
         return f"{self.id}"
 
-    def get_cost(self):
+    def get_cost(self) -> Decimal:
         """Обчислює загальну вартість цієї позиції в замовленні."""
         return self.price * self.quantity
 
@@ -43,8 +45,8 @@ class OrderItem(models.Model):
         verbose_name = "Заказаний продукт"
         verbose_name_plural = "Заказані продукти"
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs) -> None:
         """Зберігає об'єкт у базі даних."""
         if not self.price:
-            self.price = self.product.price
+            self.price = self.product.get_price_with_discount
         return super().save(*args, **kwargs)

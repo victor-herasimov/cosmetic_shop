@@ -1,5 +1,4 @@
-from django.db.models import QuerySet
-from main.models import SiteConfig, Email, Phone, Social
+from main.models import SiteConfig
 
 
 class SiteConfigService:

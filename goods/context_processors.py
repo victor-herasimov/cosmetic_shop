@@ -9,7 +9,7 @@ from .services import CategoryService
 
 
 def all_categories(request: HttpRequest) -> dict[str, QuerySet[Category]]:
-    return {"all_categories": CategoryService().get_all()}
+    return {"all_categories": CategoryService.get_all()}
 
 
 def product_bestsellers(request: HttpRequest) -> dict[str, QuerySet[Product]]:
