@@ -85,28 +85,32 @@
 
             <div class="form-section">
               <h3 class="form-section__title">2. Доставка</h3>
-              <div class="form-group">
-                <label>Спосіб доставки</label>
-                <div class="radio-group">
-                  {% for field in form.delivery_method.field.queryset %}
-                    <label class="radio-label">
-                      <input type="radio" id="id_delivery_method_{{ field.id }}" name="delivery_method" value="{{ field.id }}" {% if form.delivery_method.value == field.id %}checked{% endif %}>
-                      <span class="radio-custom"></span>
-                      <span class="radio-text">
-                        <b>{{ field.title }}</b>
-                        <small>{{ field.short_description }}</small>
-                      </span>
-                    </label>
-                  {% endfor %}
-                  {% if form.delivery_method.errors %}
-                      <ul class="form-error">
-                          {% for error in form.delivery_method.errors %}
-                              <li>{{ error }}</li>
-                          {% endfor %}
-                      </ul>
-                  {% endif %}
+              {% if form.delivery_method.field.queryset %}
+                <div class="form-group">
+                  <label>Спосіб доставки</label>
+                  <div class="radio-group">
+                    {% for field in form.delivery_method.field.queryset %}
+                      <label class="radio-label">
+                        <input type="radio" id="id_delivery_method_{{ field.id }}" name="delivery_method" value="{{ field.id }}" {% if form.delivery_method.value == field.id %}checked{% endif %}>
+                        <span class="radio-custom"></span>
+                        <span class="radio-text">
+                          <b>{{ field.title }}</b>
+                          {% if field.short_description %}
+                            <small>{{ field.short_description }}</small>
+                          {% endif %}
+                        </span>
+                      </label>
+                    {% endfor %}
+                    {% if form.delivery_method.errors %}
+                        <ul class="form-error">
+                            {% for error in form.delivery_method.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                  </div>
                 </div>
-              </div>
+              {% endif %}
               <div class="form-group">
                 <label for="id_city">Місто</label>
                 <input type="text" id="id_city" name="city" placeholder="Київ" value="{% if form.city.value %}{{ form.city.value }}{% endif %}">

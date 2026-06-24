@@ -6,6 +6,7 @@
 """
 
 from .order import OrderService
+from .delivery_method import DeliveryMethodService
 
 
-__all__ = ["OrderService"]
+__all__ = ["OrderService", "DeliveryMethodService"]

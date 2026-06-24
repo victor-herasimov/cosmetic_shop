@@ -12,7 +12,7 @@ function phoneNumberMask(selector, mask) {
   const phone_mask = IMask(element, maskOptions);
 }
 
-phoneNumberMask("#phone", "{+38 (\\0}00) 000-00-00");
+phoneNumberMask("#id_phone", "{+38 (\\0}00) 000-00-00");
 
 // Handle form submission
 // const form = document.getElementById("checkoutForm")

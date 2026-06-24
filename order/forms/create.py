@@ -4,7 +4,8 @@
 
 from django import forms
 from validators import PhoneNumberValidator
-from order.models import Order, DeliveryMethod, PaymentMethod
+from order.models import Order, PaymentMethod
+from order.services import DeliveryMethodService
 
 
 class CreateOrderForm(forms.ModelForm):
@@ -14,10 +15,9 @@ class CreateOrderForm(forms.ModelForm):
 
     phone = forms.CharField(validators=[PhoneNumberValidator()])
     delivery_method = forms.ModelChoiceField(
-        queryset=DeliveryMethod.objects.all(),
+        queryset=DeliveryMethodService.get_actives(),
         empty_label=True,
         widget=forms.RadioSelect,
-        initial=DeliveryMethod.objects.first(),
     )
     payment_method = forms.ModelChoiceField(
         queryset=PaymentMethod.objects.all(),
