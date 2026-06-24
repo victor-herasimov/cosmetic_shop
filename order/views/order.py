@@ -5,15 +5,18 @@
 замовлення.
 """
 
-from django.views.generic import TemplateView
+from django.views.generic import FormView
+from order.forms import CreateOrderForm
 
 
-class OrderView(TemplateView):
+class OrderView(FormView):
     """
     Представлення для відображення сторінки оформлення замовлення (Checkout).
 
     Завантажує та рендерить сторінку з формою, де користувач вказує
     свої персональні дані.
     """
+
+    form_class = CreateOrderForm
 
     template_name = "order/checkout.html"

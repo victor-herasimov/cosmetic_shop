@@ -2298,6 +2298,7 @@ body.no-scroll {
   color: var(--ink);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   outline: none;
+  resize: vertical;
 }
 
 .form-group input:focus,
@@ -2641,4 +2642,20 @@ body.no-scroll {
   .form-section {
     padding: 20px;
   }
+}
+
+/* Form errors */
+
+.form-error {
+  list-style-type: disc;
+  color: var(--sale);
+  font-weight: 600;
+  font-size: 12px;
+  padding-left: 22px;
+}
+
+.form-error-title {
+  color: var(--sale);
+  font-weight: 700;
+  font-size: 14px;
 }

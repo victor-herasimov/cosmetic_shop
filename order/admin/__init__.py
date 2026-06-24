@@ -7,4 +7,4 @@ from .delivery_method import DeliveryMethodAdmin
 
 from .payment_method import PaymentMethodAdmin
 
-__all__ = ["OrderAdmin", "DeliveryMethodAdmin", "PaymentMethodAdmin"]
+__all__: list[str] = ["OrderAdmin", "DeliveryMethodAdmin", "PaymentMethodAdmin"]
