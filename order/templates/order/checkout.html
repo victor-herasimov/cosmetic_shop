@@ -20,7 +20,9 @@
     <div class="checkout" id="checkoutRoot" style="display: block;">
       <div class="checkout__grid">
         <!-- Form Column -->
-        <div class="checkout__main">
+        <div class="checkout__main" id="checkoutMain" 
+        hx-on::after-request="this.scrollIntoView({ behavior: 'smooth' });"
+        >
           {% include "order/includes/_form_create.html" %}
         </div>
 

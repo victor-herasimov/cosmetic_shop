@@ -1,4 +1,7 @@
-<form id="checkoutForm" class="checkout-form" method="post" action="{% url "checkout:create" %}">
+<form id="checkoutForm" class="checkout-form"
+hx-post="{% url "checkout:create" %}"
+hx-swap="outerHTML">
+
     {% csrf_token %}
     {% include "includes/_form_non_field_error.html" %}
     <div class="form-section">

@@ -29,6 +29,11 @@ class OrderView(FormView):
 
     template_name = "order/checkout.html"
 
+    def get_template_names(self) -> list[str]:
+        if self.request.headers.get("HX-Request"):
+            return ["order/includes/_form_create.html"]
+        return [self.template_name]
+
     def get_initial(self) -> dict[str, Any]:
         """Встановлюємо початкові дані для форми, а саме метод доставки."""
         initial: dict[str, Any] = super().get_initial()
@@ -40,4 +45,9 @@ class OrderView(FormView):
     def form_valid(self, form) -> HttpResponse:
         """Якщо форма валідна то зберігає замовлення і редіректить на сторінку подяки."""
         order: Order = OrderService(self.request, form.cleaned_data).create_order()
-        return redirect(reverse("checkout:order_success", args=[order.id]))
+
+        response: HttpResponse = HttpResponse(status=200)
+        response["HX-Redirect"] = reverse("checkout:order_success", args=[order.id])
+        return response
+
+        # return redirect(reverse("checkout:order_success", args=[order.id]))
