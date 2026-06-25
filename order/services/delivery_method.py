@@ -22,6 +22,6 @@ class DeliveryMethodService:
     @classmethod
     def get_active_first(cls) -> DeliveryMethod | None:
         """
-        Повертає перший спосіб доставки.
+        Повертає перший активний спосіб доставки.
         """
         return DeliveryMethod.objects.filter(is_active=True).first()

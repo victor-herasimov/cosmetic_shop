@@ -53,6 +53,7 @@ class Order(DateMixin):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
+        default=None,
         verbose_name="Спосіб доставки",
     )
 
@@ -61,6 +62,7 @@ class Order(DateMixin):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
+        default=None,
         verbose_name="Спосіб оплати",
     )
 

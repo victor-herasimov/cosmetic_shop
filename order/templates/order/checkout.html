@@ -135,28 +135,30 @@
               </div>
             </div>
 
-            <div class="form-section">
-              <h3 class="form-section__title">3. Оплата</h3>
-              <div class="radio-group">
-                {% for field in form.payment_method.field.queryset %}
-                  <label class="radio-label">
-                    <input type="radio" name="payment_method" id="id_payment_method_{{ field.id }}" value="{{ field.id }}" {% if form.payment_method.value == field.id %}checked{% endif %}>
-                    <span class="radio-custom"></span>
-                    <span class="radio-text">
-                      <b>{{ field.title }}</b>
-                      <small>{{ field.short_description }}</small>
-                    </span>
-                  </label>
-                {% endfor %}
-                {% if form.payment_method.errors %}
-                      <ul class="form-error">
-                          {% for error in form.payment_method.errors %}
-                              <li>{{ error }}</li>
-                          {% endfor %}
-                      </ul>
-                  {% endif %}
+            {% if form.payment_method.field.queryset %}
+              <div class="form-section">
+                <h3 class="form-section__title">3. Оплата</h3>
+                <div class="radio-group">
+                  {% for field in form.payment_method.field.queryset %}
+                    <label class="radio-label">
+                      <input type="radio" name="payment_method" id="id_payment_method_{{ field.id }}" value="{{ field.id }}" {% if form.payment_method.value == field.id %}checked{% endif %}>
+                      <span class="radio-custom"></span>
+                      <span class="radio-text">
+                        <b>{{ field.title }}</b>
+                        <small>{{ field.short_description }}</small>
+                      </span>
+                    </label>
+                  {% endfor %}
+                  {% if form.payment_method.errors %}
+                        <ul class="form-error">
+                            {% for error in form.payment_method.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
               </div>
-            </div>
+            {% endif %}
 
             <div class="form-section">
               <h3 class="form-section__title">Коментар до замовлення</h3>

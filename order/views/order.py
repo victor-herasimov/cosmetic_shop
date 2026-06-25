@@ -9,7 +9,7 @@ from typing import Any
 
 from django.views.generic import FormView
 from order.forms import CreateOrderForm
-from order.services import DeliveryMethodService
+from order.services import DeliveryMethodService, PaymentMethodService
 
 
 class OrderView(FormView):
@@ -28,5 +28,6 @@ class OrderView(FormView):
         """Встановлюємо початкові дані для форми, а саме метод доставки."""
         initial: dict[str, Any] = super().get_initial()
         initial["delivery_method"] = DeliveryMethodService.get_active_first()
+        initial["payment_method"] = PaymentMethodService.get_active_first()
 
         return initial
