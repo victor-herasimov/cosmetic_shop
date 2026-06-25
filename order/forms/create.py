@@ -18,14 +18,16 @@ class CreateOrderForm(forms.ModelForm):
         queryset=DeliveryMethodService.get_actives(),
         empty_label=True,
         widget=forms.RadioSelect,
+        required=False,
     )
     payment_method = forms.ModelChoiceField(
         queryset=PaymentMethodService().get_actives(),
         empty_label=True,
         widget=forms.RadioSelect,
+        required=False,
     )
 
-    comment = forms.CharField(widget=forms.Textarea)
+    comment = forms.CharField(widget=forms.Textarea, required=False)
 
     class Meta:
         """Мета-параметри форми замовлення."""

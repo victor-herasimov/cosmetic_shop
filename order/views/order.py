@@ -7,9 +7,14 @@
 
 from typing import Any
 
+from django.http import HttpResponse
+from django.shortcuts import redirect
+from django.urls import reverse
 from django.views.generic import FormView
+
 from order.forms import CreateOrderForm
-from order.services import DeliveryMethodService, PaymentMethodService
+from order.models.order import Order
+from order.services import DeliveryMethodService, PaymentMethodService, OrderService
 
 
 class OrderView(FormView):
@@ -31,3 +36,8 @@ class OrderView(FormView):
         initial["payment_method"] = PaymentMethodService.get_active_first()
 
         return initial
+
+    def form_valid(self, form) -> HttpResponse:
+        """Якщо форма валідна то зберігає замовлення і редіректить на сторінку подяки."""
+        order: Order = OrderService(self.request, form.cleaned_data).create_order()
+        return redirect(reverse("checkout:order_success", args=[order.id]))

@@ -7,6 +7,7 @@
 """
 
 from .order import OrderView
+from .success import OrderSuccessView
 
 
-__all__ = ["OrderView"]
+__all__ = ["OrderView", "OrderSuccessView"]

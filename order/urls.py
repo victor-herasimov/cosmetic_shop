@@ -5,9 +5,12 @@
 """
 
 from django.urls import URLResolver, path
-from order.views import OrderView
+from order.views import OrderView, OrderSuccessView
 
 
 app_name: str = "checkout"
 
-urlpatterns: list[URLResolver] = [path("", OrderView.as_view(), name="create")]
+urlpatterns: list[URLResolver] = [
+    path("", OrderView.as_view(), name="create"),
+    path("success/<int:order_id>/", OrderSuccessView.as_view(), name="order_success"),
+]

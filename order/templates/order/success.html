@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+ - Дякуємо за замовлення
+{% endblock title %}
+
+{% block content %}
+  {% include "includes/_breadcrumbs.html" %}
+  <section class="section">
+    <div class="wrap">
+      <div class="checkout" id="checkoutRoot" style="display: block;">
+        <div class="catalog-empty" style="padding: 80px 20px; border: none; background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow);">
+          <div style="width: 80px; height: 80px; background: var(--accent-soft); color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <h2 style="font-family: var(--font-serif); font-size: 28px; font-weight: 500; margin-bottom: 12px;">Замовлення <strong>№{{ order_id }}</strong> успішно оформлено!</h2>
+          <p style="color: var(--ink-soft); max-width: 400px; margin: 0 auto 24px;">
+            Дякуємо, ми вже отримали вашу заявку. Наш менеджер зв'яжеться з вами найближчим часом для підтвердження деталей.
+          </p>
+          <a href="{% url "goods:catalog" %}" class="btn btn--primary">Перейти в каталог</a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
+
+{% block scripts %}
+    <script type="module" src="{% static "js/main-success.js" %} "></script>
+{% endblock scripts %}
