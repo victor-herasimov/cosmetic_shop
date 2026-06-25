@@ -1,9 +1,24 @@
+"""
+Моделі даних для головного додатка (main app).
+
+Цей модуль містить контентну модель, яка відповідає за
+динамічне наповнення першого екрана сайту (Hero секція).
+"""
+
 import os
 from django.db import models
 from solo.models import SingletonModel
 
 
 class Hero(SingletonModel):
+    """
+    Синглтон-модель для керування контентом головного банера (Hero секції) сайту.
+
+    Містить заголовки, описи, зображення та плашки (бейджи), які зазвичай
+    відображаються на першому екрані головної сторінки. Оскільки це SingletonModel,
+    у базі даних може існувати лише один екземпляр цього класу.
+    """
+
     title = models.CharField(
         max_length=50,
         default="Догляд, що повертає шкірі сяйво",
@@ -44,13 +59,20 @@ class Hero(SingletonModel):
     updated = models.DateTimeField(auto_now=True, verbose_name="Дата оновлення")
 
     class Meta:
+        """Мета-параметри для відображення моделі в адмін-панелі Django."""
+
         app_label = "main"
         verbose_name: str = "Hero секція"
 
     def __str__(self) -> str:
+        """Повертає текстове представлення — великий заголовок секції."""
         return f"{self.title}"
 
     def save(self, *args, **kwargs):
+        """
+        Зберігає зміни в моделі та автоматично видаляє старе зображення з диска,
+        якщо воно було замінене на нове.
+        """
         if self.pk:
             try:
                 old_config = Hero.objects.get(pk=self.pk)

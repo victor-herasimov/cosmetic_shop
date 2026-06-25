@@ -1,9 +1,21 @@
+"""
+Модуль для головної конфігурації сайту.
+"""
+
 import os
 from django.db import models
 from solo.models import SingletonModel
 
 
 class SiteConfig(SingletonModel):
+    """
+    Глобальна синглтон-модель для загальних налаштувань та контенту сайту.
+
+    Зберігає базову інформацію, таку як назва сайту, SEO-опис, слогани для різних
+    частин сторінки, а також статичні медіафайли (логотип та фавіконку).
+    Оскільки це SingletonModel, у системі завжди існує лише один екземпляр цих налаштувань.
+    """
+
     title = models.CharField(
         max_length=255,
         default="Назва сайту",
@@ -54,22 +66,37 @@ class SiteConfig(SingletonModel):
     updated = models.DateTimeField(auto_now=True, verbose_name="Дата оновлення")
 
     class Meta:
+        """Мета-параметри для відображення глобальних налаштувань в адмін-панелі Django."""
+
         app_label = "main"
         verbose_name: str = "Конфігурація сайту"
 
     def __str__(self) -> str:
+        """Повертає текстове представлення — поточну назву сайту."""
         return f"{self.title}"
 
-    def save(self, *args, **kwargs):
+    def _remove_media(
+        self, old_file: models.FieldFile, new_file: models.FieldFile
+    ) -> None:
+        """
+        Допоміжний метод для видалення старого медіафайлу з диска.
+        """
+        if old_file and old_file != new_file:
+            if os.path.isfile(old_file.path):
+                os.remove(old_file.path)
+
+    def save(self, *args, **kwargs) -> None:
+        """
+        Зберігає конфігурацію та автоматично видаляє застарілі файли.
+
+        Перевіряє, чи змінилися файли логотипу (`logo`) або фавіконки (`favicon`),
+        і якщо так — видаляє старі версії файлів з диска, щоб запобігти накопиченню сміття.
+        """
         if self.pk:
             try:
                 old_config = SiteConfig.objects.get(pk=self.pk)
-                if old_config.logo and old_config.logo != self.logo:
-                    if os.path.isfile(old_config.logo.path):
-                        os.remove(old_config.logo.path)
-                if old_config.favicon and old_config.favicon != self.favicon:
-                    if os.path.isfile(old_config.favicon.path):
-                        os.remove(old_config.favicon.path)
+                self._remove_media(old_config.logo, self.logo)
+                self._remove_media(old_config.favicon, self.favicon)
             except SiteConfig.DoesNotExist:
                 pass
 
