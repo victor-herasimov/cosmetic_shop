@@ -1,0 +1,148 @@
+<form id="checkoutForm" class="checkout-form" method="post" action="{% url "checkout:create" %}">
+    {% csrf_token %}
+    {% include "includes/_form_non_field_error.html" %}
+    <div class="form-section">
+        <h3 class="form-section__title">1. Контактні дані</h3>
+        <div class="form-row">
+        <div class="form-group">
+            <label for="id_first_name">Ваше ім'я*</label>
+            <input type="text" id="id_first_name" name="first_name" value="{% if form.first_name.value %}{{ form.first_name.value }}{% endif %}">
+            {% if form.first_name.errors %}
+                <ul class="form-error">
+                    {% for error in form.first_name.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="id_last_name">Ваше прізвище*</label>
+            <input type="text" id="id_last_name" name="last_name" value="{% if form.last_name.value %}{{ form.last_name.value }}{% endif %}">
+            {% if form.last_name.errors %}
+                <ul class="form-error">
+                    {% for error in form.last_name.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        </div>
+        <div class="form-group">
+        <label for="id_email">Email (для отримання інформації про замовлення)*</label>
+        <input type="text" id="id_email" name="email" value="{% if form.email.value %}{{ form.email.value }}{% endif %}">
+        {% if form.email.errors %}
+                <ul class="form-error">
+                    {% for error in form.email.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+        {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="id_phone">Номер телефону*</label>
+            <input type="text" id="id_phone" name="phone" placeholder="+38 (0__) ___-__-__" value="{% if form.phone.value %}{{ form.phone.value }}{% endif %}">
+            {% if form.phone.errors %}
+                <ul class="form-error">
+                    {% for error in form.phone.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h3 class="form-section__title">2. Доставка</h3>
+        {% if form.delivery_method.field.queryset %}
+        <div class="form-group">
+            <label>Спосіб доставки</label>
+            <div class="radio-group">
+            {% for field in form.delivery_method.field.queryset %}
+                <label class="radio-label">
+                <input type="radio" id="id_delivery_method_{{ field.id }}" name="delivery_method" value="{{ field.id }}" {% if form.delivery_method.value|stringformat:"s" == field.id|stringformat:"s" %}checked{% endif %}>
+                <span class="radio-custom"></span>
+                <span class="radio-text">
+                    <b>{{ field.title }}</b>
+                    {% if field.short_description %}
+                    <small>{{ field.short_description }}</small>
+                    {% endif %}
+                </span>
+                </label>
+            {% endfor %}
+            {% if form.delivery_method.errors %}
+                <ul class="form-error">
+                    {% for error in form.delivery_method.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            </div>
+        </div>
+        {% endif %}
+        <div class="form-group">
+        <label for="id_city">Місто</label>
+        <input type="text" id="id_city" name="city" placeholder="Київ" value="{% if form.city.value %}{{ form.city.value }}{% endif %}">
+        {% if form.city.errors %}
+                <ul class="form-error">
+                    {% for error in form.city.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="form-group">
+        <label for="id_delivery_address">Відділення або адреса</label>
+        <input type="text" id="id_delivery_address" name="delivery_address" placeholder="Відділення №1" value="{% if form.delivery_address.value %}{{ form.delivery_address.value }}{% endif %}">
+        {% if form.delivery_address.errors %}
+                <ul class="form-error">
+                    {% for error in form.delivery_address.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if form.payment_method.field.queryset %}
+        <div class="form-section">
+        <h3 class="form-section__title">3. Оплата</h3>
+        <div class="radio-group">
+            {% for field in form.payment_method.field.queryset %}
+            <label class="radio-label">
+                <input type="radio" name="payment_method" id="id_payment_method_{{ field.id }}" value="{{ field.id }}" {% if form.payment_method.value|stringformat:"s" == field.id|stringformat:"s" %}checked{% endif %}>
+                <span class="radio-custom"></span>
+                <span class="radio-text">
+                <b>{{ field.title }}</b>
+                <small>{{ field.short_description }}</small>
+                </span>
+            </label>
+            {% endfor %}
+            {% if form.payment_method.errors %}
+                <ul class="form-error">
+                    {% for error in form.payment_method.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        </div>
+    {% endif %}
+
+    <div class="form-section">
+        <h3 class="form-section__title">Коментар до замовлення</h3>
+        <div class="form-group">
+        <textarea id="id_comment" name="comment" rows="3" placeholder="Ваші побажання...">{% if form.comment.value %}{{ form.comment.value }}{% endif %}</textarea>
+        {% if form.comment.errors %}
+                <ul class="form-error">
+                    {% for error in form.comment.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn--primary btn--block btn--lg checkout-submit">
+        Підтвердити замовлення
+    </button>
+</form>
