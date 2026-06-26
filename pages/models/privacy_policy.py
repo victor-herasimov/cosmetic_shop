@@ -17,6 +17,7 @@ class PrivacyPolicy(BaseLegalDocument):
     class Meta:
         """Мета-параметри для відображення моделі в адмін-панелі Django."""
 
+        app_label = "pages"
         verbose_name = "Політика конфіденційності"
         verbose_name_plural = "Політика конфіденційності"
 

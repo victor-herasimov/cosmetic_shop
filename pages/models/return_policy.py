@@ -17,6 +17,7 @@ class ReturnPolicy(BaseLegalDocument):
     class Meta:
         """Мета-параметри для відображення моделі в адмін-панелі Django."""
 
+        app_label = "pages"
         verbose_name = "Повернення та обмін"
         verbose_name_plural = "Повернення та обмін"
 

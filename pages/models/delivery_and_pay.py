@@ -17,6 +17,7 @@ class DeliveryAndPayPolicy(BaseLegalDocument):
     class Meta:
         """Мета-параметри для відображення моделі в адмін-панелі Django."""
 
+        app_label = "pages"
         verbose_name = "Оплата та доствака"
         verbose_name_plural = "Оплата та доствака"
 
