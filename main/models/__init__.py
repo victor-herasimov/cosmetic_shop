@@ -11,9 +11,6 @@ from .hero import Hero
 from .email import Email
 from .phones import Phone
 from .socials import Social
-from .privacy_policy import PrivacyPolicy
-from .delivery_and_pay import DeliveryAndPayPolicy
-from .return_policy import ReturnPolicy
 
 __all__ = [
     "Strip",
@@ -22,7 +19,4 @@ __all__ = [
     "Email",
     "Phone",
     "Social",
-    "PrivacyPolicy",
-    "DeliveryAndPayPolicy",
-    "ReturnPolicy",
 ]
