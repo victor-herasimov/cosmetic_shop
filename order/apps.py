@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class OrderConfig(AppConfig):
-    name = 'order'
+    name = "order"
+    verbose_name = "Замовлення"

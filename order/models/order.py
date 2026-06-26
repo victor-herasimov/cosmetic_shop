@@ -73,8 +73,8 @@ class Order(DateMixin):
     class Meta:
         """Мета-параметри моделі замовлення (назви в адмінці, сортування та індекси)."""
 
-        verbose_name = "Заказ"
-        verbose_name_plural = "Закази"
+        verbose_name = "Замовлення"
+        verbose_name_plural = "Замовлення"
         ordering = ["-created"]
         indexes = [
             models.Index(fields=["-created"]),
@@ -84,7 +84,7 @@ class Order(DateMixin):
         """
         Повертає рядкове представлення замовлення.
         """
-        return f"Заказ {self.id}"
+        return f"Замовлення {self.id}"
 
     def get_total_cost(self) -> Decimal:
         """
