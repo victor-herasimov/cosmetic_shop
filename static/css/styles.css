@@ -36,6 +36,9 @@ body {
   color: var(--ink);
   background: var(--bg);
   line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -584,7 +587,8 @@ ul {
   background: var(--bg-soft);
   border-top: 1px solid var(--line);
   padding: 56px 0 28px;
-  margin-top: 24px;
+  margin-top: auto;
+  /* margin-top: 24px; */
 }
 
 .footer__grid {
@@ -2658,4 +2662,106 @@ body.no-scroll {
   color: var(--sale);
   font-weight: 700;
   font-size: 14px;
+}
+
+
+/* ===== Privacy Policy Page ===== */
+
+.document-page {
+  padding: 60px 0 80px;
+}
+
+.document-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 48px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: var(--shadow);
+}
+
+.document-card h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 3.5vw, 28px);
+  color: var(--ink);
+  margin-top: 36px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+}
+
+.document-card h2:first-of-type {
+  margin-top: 0;
+}
+
+.document-card h3 {
+  font-size: 16px;
+  color: var(--ink);
+  margin-top: 24px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.document-card p {
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.document-card ul {
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.document-card li {
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+  position: relative;
+  list-style: disc;
+}
+
+.document-card li::marker {
+  color: var(--accent);
+}
+
+.document-contact-box {
+  background: var(--bg-soft);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+  margin-top: 32px;
+  border: 1px dashed var(--line);
+}
+
+.document-contact-box p:last-child {
+  margin-bottom: 0;
+}
+
+.document-contact-box a {
+  color: var(--accent-deep);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.document-contact-box a:hover {
+  color: var(--ink);
+}
+
+.document-meta {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: 24px;
+  display: block;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .document-card {
+    padding: 24px;
+    border-radius: var(--radius-sm);
+  }
 }

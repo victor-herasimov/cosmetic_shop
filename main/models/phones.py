@@ -42,7 +42,7 @@ class Phone(models.Model):
 
         Корисно для генерації клікабельних посилань виду 'tel:+380...' в HTML-шаблонах.
         """
-        return re.sub(r"[/(/)/-]", "", self.phone)
+        return re.sub(r"[\s/(/)/-]", "", self.phone)
 
     class Meta:
         """Мета-параметри для відображення моделі в адмін-панелі Django."""

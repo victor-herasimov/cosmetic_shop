@@ -9,5 +9,11 @@
 from .delivery_and_pay import DeliveryAndPayPolicyAdmin
 from .privacy_policy import PrivacyPolicyAdmin
 from .return_policy import ReturnPolicyAdmin
+from .public_offer import PublicOfferAdmin
 
-__all__ = ["DeliveryAndPayPolicyAdmin", "PrivacyPolicyAdmin", "ReturnPolicyAdmin"]
+__all__ = [
+    "DeliveryAndPayPolicyAdmin",
+    "PrivacyPolicyAdmin",
+    "ReturnPolicyAdmin",
+    "PublicOfferAdmin",
+]

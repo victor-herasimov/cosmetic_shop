@@ -8,9 +8,6 @@
 from .privacy_policy import PrivacyPolicy
 from .delivery_and_pay import DeliveryAndPayPolicy
 from .return_policy import ReturnPolicy
+from .public_offer import PublicOffer
 
-__all__ = [
-    "PrivacyPolicy",
-    "DeliveryAndPayPolicy",
-    "ReturnPolicy",
-]
+__all__ = ["PrivacyPolicy", "DeliveryAndPayPolicy", "ReturnPolicy", "PublicOffer"]

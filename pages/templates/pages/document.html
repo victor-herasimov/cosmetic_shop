@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% load phones %}
+{% load emails %}
+
+{% block title %}
+- {{ document.title }}
+{% endblock title %}
+
+{% block content %}
+{% include "includes/_breadcrumbs.html" %}
+<!-- Page Head -->
+<div class="page-head">
+  <div class="wrap">
+    <h1>{{ document.title }}</h1>
+  </div>
+</div>
+<section class="document-page">
+  <div class="wrap">
+    <article class="document-card">
+      {{ document.content|safe }}
+    </article>
+  </div>
+</section>
+
+{% endblock content %}
+
+{% block scripts %}
+    <script type="module" src="{% static "js/main-document.js" %} "></script>
+{% endblock scripts %}

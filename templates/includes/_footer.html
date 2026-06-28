@@ -25,10 +25,12 @@
             <div>
                 <h4>Допомога</h4>
                 <ul class="footer__links">
-                    <li><a href="#">Доставка та оплата</a></li>
-                    <li><a href="#">Повернення</a></li>
+                    <li><a href="{% url "pages:document" doc_type="privacy" %}">Політика конфіденційності</a></li>
+                    <li><a href="{% url "pages:document" doc_type="delivery" %}">Доставка та оплата</a></li>
+                    <li><a href="{% url "pages:document" doc_type="public" %}">Публічна оферта</a></li>
+                    <li><a href="{% url "pages:document" doc_type="return" %}">Повернення</a></li>
                     <li><a href="#">Контакти</a></li>
-                    <li><a href="#">Блог про догляд</a></li>
+                    
                 </ul>
             </div>
             <div>
@@ -38,7 +40,9 @@
                     {% with phones=site_config.phones.all %}
                         {% if phones %}
                             {% for phone in phones %}
-                                <li><a href="tel:{{ phone.clean_number }}">{{ phone }}</a></li>
+                                {% if phone.active and phone.in_footer %}
+                                    <li><a href="tel:{{ phone.clean_number }}">{{ phone }}</a></li>
+                                {% endif %}
                             {% endfor %}
                         {% endif %}
                     {% endwith %}
@@ -46,7 +50,9 @@
                     {% with emails=site_config.emails.all %}
                         {% if emails %}
                             {% for email in emails %}
-                                <li><a href="mailto:{{ email }}">{{ email }}</a></li>
+                                {% if email.active and email.in_footer %}
+                                    <li><a href="mailto:{{ email }}">{{ email }}</a></li>
+                                {% endif %}
                             {% endfor %}
                         {% endif %}
                     {% endwith %}
@@ -54,7 +60,9 @@
                     {% with socials=site_config.socials.all %}
                         {% if socials %}
                             {% for social in socials %}
-                                <li><a href="{{ social.url }}" target="_blank">{{ social.title }} </a></li>
+                                {% if social.active and social.in_footer %}
+                                    <li><a href="{{ social.url }}" target="_blank">{{ social.title }} </a></li>
+                                {% endif %}
                             {% endfor %}
                         {% endif %}
                     {% endwith %}

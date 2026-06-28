@@ -22,7 +22,7 @@ class BaseLegalDocument(SingletonModel, DateMixin):
     дат створення/оновлення (DateMixin) та підтримку форматованого тексту (CKEditor5).
     """
 
-    title = models.CharField(max_length=256, verbose_name="Заголовок")
+    title = models.CharField(max_length=256, default="", verbose_name="Заголовок")
     content = CKEditor5Field(
         "Текст документа",
         config_name="extends",
