@@ -11,6 +11,8 @@ from .hero import Hero
 from .email import Email
 from .phones import Phone
 from .socials import Social
+from .address import Address
+from .work_schedule import WorkSchedule
 
 __all__ = [
     "Strip",
@@ -19,4 +21,6 @@ __all__ = [
     "Email",
     "Phone",
     "Social",
+    "Address",
+    "WorkSchedule",
 ]

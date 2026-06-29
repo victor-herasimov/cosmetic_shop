@@ -29,43 +29,36 @@
                     <li><a href="{% url "pages:document" doc_type="delivery" %}">Доставка та оплата</a></li>
                     <li><a href="{% url "pages:document" doc_type="public" %}">Публічна оферта</a></li>
                     <li><a href="{% url "pages:document" doc_type="return" %}">Повернення</a></li>
-                    <li><a href="#">Контакти</a></li>
+                    <li><a href="{% url "pages:contact" %}">Контакти</a></li>
                     
                 </ul>
             </div>
             <div>
                 <h4>Контакти</h4>
                 <ul class="footer__links">
+                    {% if phones %}
+                        {% for phone in phones %}
+                            {% if phone.in_footer %}
+                                <li><a href="tel:{{ phone.clean_number }}">{{ phone }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
 
-                    {% with phones=site_config.phones.all %}
-                        {% if phones %}
-                            {% for phone in phones %}
-                                {% if phone.active and phone.in_footer %}
-                                    <li><a href="tel:{{ phone.clean_number }}">{{ phone }}</a></li>
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
-                    {% endwith %}
+                    {% if emails %}
+                        {% for email in emails %}
+                            {% if email.in_footer %}
+                                <li><a href="mailto:">{{ email }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
 
-                    {% with emails=site_config.emails.all %}
-                        {% if emails %}
-                            {% for email in emails %}
-                                {% if email.active and email.in_footer %}
-                                    <li><a href="mailto:{{ email }}">{{ email }}</a></li>
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
-                    {% endwith %}
-                    
-                    {% with socials=site_config.socials.all %}
-                        {% if socials %}
-                            {% for social in socials %}
-                                {% if social.active and social.in_footer %}
-                                    <li><a href="{{ social.url }}" target="_blank">{{ social.get_social_display }} </a></li>
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
-                    {% endwith %}
+                    {% if socials %}
+                        {% for social in socials %}
+                            {% if social.in_footer %}
+                                <li><a href="{{ social.url }}" target="_blank">{{ social.get_social_display }} </a></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
                 </ul>
             </div>
         </div>

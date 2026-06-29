@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% load static %}
+{% load social_icons %}
+
+{% block title %}
+- {{ title}}
+{% endblock title %}
+
+{% block content %}
+{% include "includes/_breadcrumbs.html" %}
+<!-- Page Head -->
+<div class="page-head">
+  <div class="wrap">
+    <h1>{{ title }}</h1>
+  </div>
+</div>
+
+<section class="section">
+    <div class="wrap">
+        <div class="contacts-layout">
+            <!-- Left: Info -->
+            <div class="contacts-info-block">
+                <h2 class="contacts-info-block__title">Зв'яжіться з нами</h2>
+                <p class="contacts-info-block__text">
+                Маєте запитання щодо вибору доглядової косметики, статусу замовлення або пропозицій співпраці? 
+                Ми завжди раді допомогти! Оберіть будь-який зручний спосіб зв'язку або завітайте до нашого шоуруму.
+                </p>
+
+                <div class="contact-methods">
+                    <!-- Phones -->
+                    {% if phones %}
+                        <div class="contact-method-card">
+                            <div class="contact-method-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            </div>
+                            <div class="contact-method-content">
+                                <h4>Телефони клієнтської підтримки</h4>
+                                {% for phone in phones %}
+                                    <a href="tel:{{ phone.clean_number }}">{{ phone }}</a>
+                                {% endfor %}
+                                
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <!-- Email -->
+                    {% if emails %}
+                        <div class="contact-method-card">
+                            <div class="contact-method-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            </div>
+                            <div class="contact-method-content">
+                                <h4>Електронна пошта</h4>
+                                {% for email in emails %}
+                                    <a href="mailto:{{ email }}">{{ email }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <!-- Showroom Address -->
+                    <div class="contact-method-card">
+                        <div class="contact-method-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </div>
+                        <div class="contact-method-content">
+                            <h4>Наша адреса</h4>
+                            <p>м. Київ, вул. Хрещатик, 22, 2-й поверх</p>
+                        </div>
+                    </div>
+
+                    <!-- Working Hours -->
+                    <div class="contact-method-card">
+                        <div class="contact-method-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        </div>
+                        <div class="contact-method-content">
+                            <h4>Графік роботи</h4>
+                            <p>Понеділок — П'ятниця: 09:00 - 20:00</p>
+                            <p>Субота — Неділя: 10:00 - 18:00</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right: Form -->
+            <div class="contact-form-block">
+                <form id="contactForm" class="checkout-form form-section">
+                    <h3 class="form-section__title" style="margin-bottom: 8px;">Напишіть нам</h3>
+                    <p style="color: var(--ink-soft); font-size: 14px; margin-bottom: 24px;">
+                        Заповніть форму, і ми надамо відповідь протягом 30 хвилин.
+                    </p>
+
+                    <div class="form-group">
+                        <label for="name">Ваше ім'я</label>
+                        <input type="text" id="name" name="name" placeholder="Олена" required="">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="hello@example.com" required="">
+                        </div>
+                        <div class="form-group">
+                        <label for="phone">Номер телефону</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+38 (0__) ___-__-__">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Тема повідомлення</label>
+                        <label class="select btn--block" style="padding: 0; border: none;">
+                        <select id="subject" name="subject" class="btn--block" style="padding: 13px 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); font-family: inherit; font-size: 15px; color: var(--ink); width: 100%; box-sizing: border-box; appearance: none; -webkit-appearance: none;">
+                            <option value="consultation">Консультація щодо підбору догляду</option>
+                            <option value="order">Питання щодо замовлення чи доставки</option>
+                            <option value="cooperation">Пропозиція про співпрацю</option>
+                            <option value="other">Інше питання</option>
+                        </select>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Повідомлення</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Введіть ваше повідомлення тут..." required=""></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn--primary btn--block" style="margin-top: 12px; height: 50px; font-size: 15px;">
+                        Надіслати повідомлення
+                    </button>
+                </form>
+            </div>
+        </div>
+        <!-- Socials -->
+        <div class="contacts-socials">
+            <h4>Ми в соціальних мережах</h4>
+            <div class="social-links-grid">
+                {% for social in socials %}
+                    <a href="{{ social.url }}" target="_blank" class="social-btn">
+                    {{ social.social|social_icon}}
+                    {{social.get_social_display}}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+
+{% block scripts %}
+    <script type="module" src="{% static "js/main-contact.js" %} "></script>
+{% endblock scripts %}

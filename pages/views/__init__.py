@@ -6,5 +6,6 @@
 """
 
 from .document import DocumentView
+from .contact import ContactView
 
-__all__ = ["DocumentView"]
+__all__ = ["DocumentView", "ContactView"]
