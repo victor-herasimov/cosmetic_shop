@@ -15,7 +15,7 @@ register = template.Library()
 
 
 @register.simple_tag
-def get_first_active_phone() -> QuerySet[WorkSchedule]:
+def get_schedules() -> QuerySet[WorkSchedule]:
     """
     Шаблонний тег, що повертає всі графіки роботи.
     """

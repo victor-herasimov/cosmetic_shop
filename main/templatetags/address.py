@@ -15,7 +15,7 @@ register = template.Library()
 
 
 @register.simple_tag
-def get_first_active_phone() -> QuerySet[Address]:
+def get_addresses() -> QuerySet[Address]:
     """
     Шаблонний тег, що повертає всі адреси.
     """

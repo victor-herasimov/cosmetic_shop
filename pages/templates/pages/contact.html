@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 {% load social_icons %}
+{% load address %}
+{% load work_schedule %}
 
 {% block title %}
 - {{ title}}
@@ -59,27 +61,36 @@
                     {% endif %}
 
                     <!-- Showroom Address -->
-                    <div class="contact-method-card">
-                        <div class="contact-method-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    {% get_addresses as addresses %}
+                    {% if addresses %}
+                        <div class="contact-method-card">
+                            <div class="contact-method-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            </div>
+                            <div class="contact-method-content">
+                                <h4>Наша адреса</h4>
+                                {% for address in addresses %}
+                                    <p>{{ address }}</p>
+                                {% endfor %}
+                            </div>
                         </div>
-                        <div class="contact-method-content">
-                            <h4>Наша адреса</h4>
-                            <p>м. Київ, вул. Хрещатик, 22, 2-й поверх</p>
-                        </div>
-                    </div>
+                    {% endif %}
 
                     <!-- Working Hours -->
+                    {% get_schedules as schedules %}
+                    {% if schedules %}
                     <div class="contact-method-card">
                         <div class="contact-method-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                         </div>
                         <div class="contact-method-content">
                             <h4>Графік роботи</h4>
-                            <p>Понеділок — П'ятниця: 09:00 - 20:00</p>
-                            <p>Субота — Неділя: 10:00 - 18:00</p>
+                            {% for schedule in schedules %}
+                            <p>{{ schedule }}</p>
+                            {% endfor %}
                         </div>
                     </div>
+                    {% endif %}
                 </div>
 
             </div>

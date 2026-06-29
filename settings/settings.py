@@ -75,6 +75,7 @@ TEMPLATES: list[dict[str, Any]] = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "goods.context_processors.all_categories",
+                "goods.context_processors.product_bestsellers",
                 "main.context_processors.site_settings",
                 "cart.context_processors.cart",
             ],

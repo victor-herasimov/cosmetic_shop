@@ -14,13 +14,8 @@ def get_product_news() -> QuerySet[Product]:
     return ProductService.get_news()
 
 
-@register.simple_tag
-def get_product_bestsellers() -> QuerySet[Product]:
-    return ProductService.get_bestsellers()
-
-
 @register.simple_tag(takes_context=True)
-def change_params(context, **kwargs):
+def change_params(context, **kwargs) -> str:
     query = context["request"].GET.dict()
     query.update(kwargs)
     return urlencode(query)

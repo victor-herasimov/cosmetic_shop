@@ -1,7 +1,17 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from solo.admin import SingletonModelAdmin
-from main.models import SiteConfig, Email, Phone, Social
+from main.models import SiteConfig, Email, Phone, Social, Address, WorkSchedule
+
+
+class AddressInline(admin.TabularInline):
+    model = Address
+    extra = 0
+
+
+class WorkScheduleInline(admin.TabularInline):
+    model = WorkSchedule
+    extra = 0
 
 
 class EmailInline(admin.TabularInline):
@@ -45,4 +55,10 @@ class SiteConfigAdmin(SingletonModelAdmin):
         ("Фавіконка", {"fields": ["thumbnail_favicon", "favicon"]}),
     ]
     readonly_fields = ["created", "updated", "thumbnail", "thumbnail_favicon"]
-    inlines = [EmailInline, PhoneInline, SocialInline]
+    inlines = [
+        EmailInline,
+        PhoneInline,
+        SocialInline,
+        AddressInline,
+        WorkScheduleInline,
+    ]
