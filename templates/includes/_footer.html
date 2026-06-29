@@ -61,7 +61,7 @@
                         {% if socials %}
                             {% for social in socials %}
                                 {% if social.active and social.in_footer %}
-                                    <li><a href="{{ social.url }}" target="_blank">{{ social.title }} </a></li>
+                                    <li><a href="{{ social.url }}" target="_blank">{{ social.get_social_display }} </a></li>
                                 {% endif %}
                             {% endfor %}
                         {% endif %}

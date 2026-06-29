@@ -14,7 +14,19 @@ class Social(models.Model):
     у різних частинах сайту (наприклад, у футері) та керування їхньою активністю.
     """
 
-    title = models.CharField(max_length=125, verbose_name="Соціальна мережа")
+    class SocialChoices(models.TextChoices):
+        TELEGRAM = ("telegram", "Telegram")
+        VIBER = ("viber", "Viber")
+        INSTAGRAM = ("instagram", "Instagram")
+        FACEBOOK = ("facebook", "Facebook")
+
+    social = models.CharField(
+        max_length=10,
+        choices=SocialChoices,
+        default=SocialChoices.TELEGRAM,
+        blank=False,
+        verbose_name="Соціальна мережа",
+    )
     url = models.URLField(max_length=255, verbose_name="URL")
     in_footer = models.BooleanField(default=True, verbose_name="Показувати в футері")
     active = models.BooleanField(default=True, verbose_name="Активний")
@@ -29,7 +41,7 @@ class Social(models.Model):
 
     def __str__(self) -> str:
         """Повертає текстове представлення моделі (назву соціальної мережі)."""
-        return f"{self.title}"
+        return f"{self.get_social_display()}"
 
     class Meta:
         """Мета-параметри для відображення моделі в адмін-панелі Django."""
