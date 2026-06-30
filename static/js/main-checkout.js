@@ -1,16 +1,6 @@
-import { init } from "./app.js";
+import { init, phoneNumberMask } from "./app.js";
 
 init();
-
-// Маска для номера телефону
-function phoneNumberMask(selector, mask, parent = document) {
-  const element = parent.querySelector(selector);
-  if (!element) return;
-  const maskOptions = {
-    mask: mask,
-  };
-  IMask(element, maskOptions);
-}
 
 window.phoneNumberMask = phoneNumberMask;
 

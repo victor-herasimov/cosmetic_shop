@@ -85,11 +85,6 @@ function bindGlobalEvents() {
       if (modal) closeModal(modal);
       return;
     }
-
-    // const inc = t.closest("[data-inc]");
-    // if (inc) return changeQty(inc.getAttribute("data-inc"), 1);
-    // const dec = t.closest("[data-dec]");
-    // if (dec) return changeQty(dec.getAttribute("data-dec"), -1);
   });
 
   document.addEventListener("keydown", (e) => {
@@ -97,6 +92,16 @@ function bindGlobalEvents() {
       document.querySelectorAll(".modal.is-open").forEach(closeModal);
     }
   });
+}
+
+// Маска для номера телефону
+export function phoneNumberMask(selector, mask, parent = document) {
+  const element = parent.querySelector(selector);
+  if (!element) return;
+  const maskOptions = {
+    mask: mask,
+  };
+  IMask(element, maskOptions);
 }
 
 // ===== Ініціалізація =====
