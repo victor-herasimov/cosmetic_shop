@@ -58,7 +58,10 @@ class Feedback(DateMixin):
         verbose_name="Статус обробки",
     )
     subject = models.CharField(
-        max_length=12, choices=SubjectChoices.choices, verbose_name="Тема"
+        max_length=12,
+        choices=SubjectChoices.choices,
+        default=SubjectChoices.CONSULTATION,
+        verbose_name="Тема",
     )
     body = models.TextField(verbose_name="Повідомлення")
 

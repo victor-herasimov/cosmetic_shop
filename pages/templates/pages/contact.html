@@ -97,49 +97,7 @@
 
             <!-- Right: Form -->
             <div class="contact-form-block">
-                <form id="contactForm" class="checkout-form form-section">
-                    <h3 class="form-section__title" style="margin-bottom: 8px;">Напишіть нам</h3>
-                    <p style="color: var(--ink-soft); font-size: 14px; margin-bottom: 24px;">
-                        Заповніть форму, і ми надамо відповідь протягом 30 хвилин.
-                    </p>
-
-                    <div class="form-group">
-                        <label for="name">Ваше ім'я</label>
-                        <input type="text" id="name" name="name" placeholder="Олена" required="">
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="hello@example.com" required="">
-                        </div>
-                        <div class="form-group">
-                        <label for="phone">Номер телефону</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+38 (0__) ___-__-__">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject">Тема повідомлення</label>
-                        <label class="select btn--block" style="padding: 0; border: none;">
-                        <select id="subject" name="subject" class="btn--block" style="padding: 13px 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); font-family: inherit; font-size: 15px; color: var(--ink); width: 100%; box-sizing: border-box; appearance: none; -webkit-appearance: none;">
-                            <option value="consultation">Консультація щодо підбору догляду</option>
-                            <option value="order">Питання щодо замовлення чи доставки</option>
-                            <option value="cooperation">Пропозиція про співпрацю</option>
-                            <option value="other">Інше питання</option>
-                        </select>
-                        </label>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Повідомлення</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Введіть ваше повідомлення тут..." required=""></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn--primary btn--block" style="margin-top: 12px; height: 50px; font-size: 15px;">
-                        Надіслати повідомлення
-                    </button>
-                </form>
+                {% include "feedback/includes/feedback_form.html" %}
             </div>
         </div>
         <!-- Socials -->

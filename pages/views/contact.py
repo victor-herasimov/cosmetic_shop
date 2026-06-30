@@ -5,6 +5,7 @@
 from typing import Any
 
 from django.views.generic import TemplateView
+from feedback.forms import FeedbackForm
 
 
 class ContactView(TemplateView):
@@ -20,5 +21,6 @@ class ContactView(TemplateView):
         """
         context: dict[str, Any] = super().get_context_data(**kwargs)
         context["title"] = "Контакти"
+        context["feedback_form"] = FeedbackForm()
 
         return context
