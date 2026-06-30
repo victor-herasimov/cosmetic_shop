@@ -19,6 +19,7 @@ class Feedback(DateMixin):
     та оновлення запису.
 
     Attributes:
+        status (str): Статус обробки.
         name (str): Ім'я користувача, який залишив відгук.
         email (str): Електронна адреса для зв'язку.
         phone (str): Номер телефону (валідується через PhoneNumberValidator).
@@ -34,6 +35,14 @@ class Feedback(DateMixin):
         SUGGESTION = ("suggestion", "Пропозиція про співпрацю")
         OTHER = ("other", "Інше питання")
 
+    class StatusChoices(models.TextChoices):
+        NEW = ("new", "Новий")
+        IN_PROGRESS = ("in_progress", "В обробці")
+        WAITING = ("waiting", "Очікує відповіді клієнта")
+        RESOLVED = ("resolved", "Вирішено")
+        SPAM = ("spam", "Спам / Помилкове")
+        CLOSED = ("closed", "Закрито без вирішення")
+
     name = models.CharField(max_length=256, verbose_name="Ім`я")
     email = models.EmailField(verbose_name="Email")
     phone = models.CharField(
@@ -41,6 +50,12 @@ class Feedback(DateMixin):
         verbose_name="Телефон",
         unique=False,
         validators=[PhoneNumberValidator()],
+    )
+    status = models.CharField(
+        max_length=20,
+        choices=StatusChoices.choices,
+        default=StatusChoices.NEW,
+        verbose_name="Статус обробки",
     )
     subject = models.CharField(
         max_length=12, choices=SubjectChoices.choices, verbose_name="Тема"
