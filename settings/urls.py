@@ -13,6 +13,7 @@ urlpatterns: list[URLResolver] = [
     path("cart/", include("cart.urls", namespace="cart")),
     path("checkout/", include("order.urls", namespace="checkout")),
     path("pages/", include("pages.urls", namespace="pages")),
+    path("feedback/", include("feedback.urls", namespace="feedback")),
 ]
 
 

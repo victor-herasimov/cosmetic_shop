@@ -12,3 +12,10 @@ document.addEventListener("htmx:load", (event) => {
     phoneNumberMask("#id_phone", "{+38 (\\0}00) 000-00-00", target);
   }
 });
+
+document.addEventListener("successFeedback", () => {
+  const successModal = document.getElementById("successModal");
+  if (successModal) {
+    successModal.classList.toggle("is-open");
+  }
+});
