@@ -10,6 +10,13 @@ services:
       - ./.env
     volumes:
       - ./db_data:/var/lib/postgresql/18/docker/
+  rabbit_mq:
+    image: rabbitmq:4.2-management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
   dbbrowser:
     image: adminer
     container_name: adminer
