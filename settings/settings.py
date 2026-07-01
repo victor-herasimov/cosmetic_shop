@@ -156,8 +156,12 @@ else:
 ITEMS_PER_PAGE: int = 4
 
 # Cart
-
 CART_SESSION_ID: str = "cart"
+
+# Email
+EMAIL_HOST: str | None = os.environ.get("EMAIL_HOST")
+EMAIL_PORT: str | None = os.environ.get("EMAIL_PORT")
+DEFAULT_FROM_EMAIL: str | None = os.environ.get("DEFAULT_FROM_EMAIL")
 
 
 # CK EDITOR 5 START --------------------------------------------------------------------------------------------------
