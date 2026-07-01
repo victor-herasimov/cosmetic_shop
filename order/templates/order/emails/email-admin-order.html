@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
+  <title>НОВЕ ЗАМОВЛЕННЯ №{{ order.id }} — {{ config.title }} Admin</title>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; }
+    table { border-collapse: collapse !important; }
+    body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
+    a[x-apple-data-detectors] { color: inherit !important; text-decoration: none !important; }
+    div[style*="margin: 16px 0;"] { margin: 0 !important; }
+
+    body { background-color: #f3ede3; font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+
+    @media screen and (max-width: 600px) {
+      .email-container { width: 100% !important; }
+      .pad-x { padding-left: 20px !important; padding-right: 20px !important; }
+      .col-half { display: block !important; width: 100% !important; }
+      .hide-mobile { display: none !important; }
+      .hero-title { font-size: 28px !important; }
+    }
+  </style>
+</head>
+<body style="background-color:#f3ede3; margin:0; padding:20px 0;">
+<div style="background-color:#f3ede3; padding-bottom: 110px">
+
+  <!-- Email Container -->
+  <table role="presentation" class="email-container" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:640px; margin:0 auto;">
+
+    <!-- ==================== ADMIN ALERT BANNER ==================== -->
+    <tr>
+      <td style="background-color:#2e2a26; padding:14px 32px; text-align:center;">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td style="text-align:left;">
+              <span style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.45); font-weight:700;">
+                {{ config.title }} · Система сповіщень
+              </span>
+            </td>
+            <td style="text-align:right;">
+              <span style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:11px; color:rgba(255,255,255,0.3);">
+                {{ order.created }}
+              </span>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- ==================== HEADER LOGO + ADMIN BADGE ==================== -->
+    <tr>
+      <td style="background-color:#faf7f2; padding:24px 32px 20px; border-bottom:1px solid #e7ded1;">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td style="vertical-align:middle;">
+              <a href="{{ base_url }}" style="font-family:Georgia,'Times New Roman',serif; font-size:26px; font-weight:700; text-transform: uppercase; letter-spacing:0.06em; color:#7a8a5f; text-decoration:none;">
+                {{config.title}}
+              </a>
+            </td>
+            <td style="text-align:right; vertical-align:middle;">
+              <a href="{{ base_url }}{% url 'admin:index' %}" style="text-decoration: none; display:inline-block; background-color:#5f6d49; color:#ffffff; font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:5px 14px; border-radius:999px;">
+                Адмін-панель
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- ==================== URGENT ALERT HEADER ==================== -->
+    <tr>
+      <td style="background-color:#5f6d49; padding:28px 32px 24px;">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td style="vertical-align:middle; padding-right:20px;">
+              <!-- Bell icon area -->
+              <p style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.6); font-weight:700; margin:0 0 8px;">
+                🛒 &nbsp;Нове замовлення
+              </p>
+              <h1 style="font-family:Georgia,'Times New Roman',serif; font-size:30px; font-weight:700; color:#ffffff; line-height:1.1; margin:0 0 10px;">
+                Замовлення №{{ order.id }}
+              </h1>
+              <p style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13.5px; color:rgba(255,255,255,0.65); margin:0; line-height:1.55;">
+                Отримано нове замовлення. Очікує підтвердження та обробки.
+              </p>
+            </td>
+            <td class="hide-mobile" style="vertical-align:middle; text-align:right; white-space:nowrap; min-width:110px;">
+              <p style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.1em; margin:0 0 4px; font-weight:600;">
+                Сума замовлення
+              </p>
+              <p style="font-family:Georgia,'Times New Roman',serif; font-size:32px; font-weight:700; color:#d7e0c0; margin:0; line-height:1;">
+                {{ order.get_total_cost }}
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- ==================== QUICK ACTION BUTTONS ==================== -->
+    <tr>
+      <td style="background-color:#eef0e4; padding:16px 32px; border-bottom:1px solid #e7ded1;">
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td style="padding-right:10px;">
+              <a href="{{base_url}}{% url 'admin:order_order_change' order.id %}" style="display:inline-block; background-color:#5f6d49; color:#ffffff; text-decoration:none; font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; font-weight:700; padding:11px 24px; border-radius:999px; letter-spacing:0.03em;">
+                Відкрити замовлення →
+              </a>
+            </td>
+            <td>
+              <a href="{{base_url}}{% url 'admin:order_order_changelist' %}" style="display:inline-block; background-color:transparent; color:#6f675e; text-decoration:none; font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; font-weight:600; padding:11px 20px; border-radius:999px; letter-spacing:0.02em; border:1px solid #e7ded1;">
+                Всі замовлення
+              </a> 
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- ==================== STATUS INDICATORS ROW ==================== -->
+    <tr>
+      <td style="background-color:#ffffff; padding:20px 32px; border-bottom:1px solid #e7ded1;">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <!-- Payment Status -->
+            <td style="width:33%; text-align:center; padding:0 8px; border-right:1px solid #e7ded1;">
+              <p style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#6f675e; font-weight:700; margin:0 0 6px;">
+                Оплата
+              </p>
+              <span style="display:inline-block; background-color:#fff8e6; color:#c07a1a; font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:12px; font-weight:700; padding:4px 12px; border-radius:999px; border:1px solid #f0d08a;">
+                ⏳ {{ order.payment_method }}
+              </span>
+            </td>
+            <!-- Order Status -->
+            <td style="width:33%; text-align:center; padding:0 8px; border-right:1px solid #e7ded1;">
+              <p style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#6f675e; font-weight:700; margin:0 0 6px;">
+                Статус
+              </p>
+              <span style="display:inline-block; background-color:#fff3cd; color:#856404; font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:12px; font-weight:700; padding:4px 12px; border-radius:999px; border:1px solid #f5d478;">
+                🕐 {{order.get_status_display}}
+              </span>
+            </td>
+            <!-- Delivery -->
+            <td style="width:33%; text-align:center; padding:0 8px;">
+              <p style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#6f675e; font-weight:700; margin:0 0 6px;">
+                Доставка
+              </p>
+              <span style="display:inline-block; background-color:#eef0e4; color:#5f6d49; font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:12px; font-weight:700; padding:4px 12px; border-radius:999px; border:1px solid #c8d4a8;">
+                📦 {{ order.delivery_method }}
+              </span>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- ==================== CUSTOMER INFO + DELIVERY ==================== -->
+    <tr>
+      <td style="background-color:#ffffff; padding:28px 32px 0;">
+        <p style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#7a8a5f; font-weight:700; margin:0 0 16px;">
+          Дані покупця та доставка
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="background-color:#ffffff; padding:0 32px 24px;">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <!-- Customer Column -->
+            <td style="width:50%; vertical-align:top; padding-right:12px;">
+              <div style="background-color:#faf7f2; border:1px solid #e7ded1; border-radius:14px; padding:18px 20px;">
+                <p style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:#7a8a5f; font-weight:700; margin:0 0 14px;">
+                  👤 &nbsp;Покупець
+                </p>
+                <!-- Name -->
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin-bottom:10px; width:100%;">
+                  <tr>
+                    <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:11px; color:#6f675e; font-weight:600; width:60px; vertical-align:top; padding-top:1px;">
+                      Ім'я:
+                    </td>
+                    <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13.5px; color:#2e2a26; font-weight:700;">
+                      {{ order.first_name }} {{ order.last_name }}
+                    </td>
+                  </tr>
+                </table>
+                <!-- Phone -->
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin-bottom:10px; width:100%;">
+                  <tr>
+                    <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:11px; color:#6f675e; font-weight:600; width:60px; vertical-align:top; padding-top:1px;">
+                      Тел.:
+                    </td>
+                    <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13.5px; color:#2e2a26; font-weight:600;">
+                      <a href="tel:{{ order.get_clean_phone }}" style="color:#5f6d49; text-decoration:none;">{{ order.phone }}</a>
+                    </td>
+                  </tr>
+                </table>
+                <!-- Email -->
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin-bottom:10px; width:100%;">
+                  <tr>
+                    <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:11px; color:#6f675e; font-weight:600; width:60px; vertical-align:top; padding-top:1px;">
+                      Email:
+                    </td>
+                    <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:12.5px; color:#2e2a26; font-weight:600;">
+                      <a href="mailto:{{ order.email }}" style="color:#5f6d49; text-decoration:none;">{{ order.email }}</a>
+                    </td>
+                  </tr>
+                </table>
+                <!-- Comment -->
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="width:100%;">
+                  <tr>
+                    <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:11px; color:#6f675e; font-weight:600; width:60px; vertical-align:top; padding-top:1px;">
+                      Коментар:
+                    </td>
+                    <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:12.5px; color:#6f675e; font-style:italic;">
+                      {{ order.comment }}
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+
+            <!-- Delivery Column -->
+            <td style="width:50%; vertical-align:top; padding-left:12px;">
+              <div style="background-color:#faf7f2; border:1px solid #e7ded1; border-radius:14px; padding:18px 20px;">
+                <p style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:#7a8a5f; font-weight:700; margin:0 0 14px;">
+                  🚚 &nbsp;Доставка
+                </p>
+                <!-- Service -->
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin-bottom:10px; width:100%;">
+                  <tr>
+                    <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:11px; color:#6f675e; font-weight:600; width:60px; vertical-align:top; padding-top:1px;">
+                      Служба:
+                    </td>
+                    <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; color:#2e2a26; font-weight:700;">
+                      {{ order.delivery_method }}
+                    </td>
+                  </tr>
+                </table>
+                <!-- City -->
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin-bottom:10px; width:100%;">
+                  <tr>
+                    <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:11px; color:#6f675e; font-weight:600; width:60px; vertical-align:top; padding-top:1px;">
+                      Місто:
+                    </td>
+                    <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; color:#2e2a26; font-weight:600;">
+                      {{ order.city }}
+                    </td>
+                  </tr>
+                </table>
+                <!-- Branch -->
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin-bottom:10px; width:100%;">
+                  <tr>
+                    <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:11px; color:#6f675e; font-weight:600; width:60px; vertical-align:top; padding-top:1px;">
+                      Відділення:
+                    </td>
+                    <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; color:#2e2a26; font-weight:600;">
+                      {{ order.delivery_address }}
+                    </td>
+                  </tr>
+                </table>
+                <!-- Payment -->
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="width:100%;">
+                  <tr>
+                    <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:11px; color:#6f675e; font-weight:600; width:60px; vertical-align:top; padding-top:1px;">
+                      Оплата:
+                    </td>
+                    <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; color:#2e2a26; font-weight:600;">
+                      {{ order.payment_method }}
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- ==================== ORDER ITEMS TABLE ==================== -->
+    <tr>
+      <td style="background-color:#ffffff; padding:0 32px 0; border-top:1px solid #e7ded1;">
+        <p style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#7a8a5f; font-weight:700; margin:24px 0 16px;">
+          Перелік замовлених товарів
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="background-color:#ffffff; padding:0 32px;">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="border:1px solid #e7ded1; border-radius:14px; overflow:hidden;">
+
+          <!-- Table Head -->
+          <tr style="background-color:#f3ede3;">
+            <th style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#6f675e; font-weight:700; padding:10px 14px; text-align:left; border-bottom:1px solid #e7ded1;">
+              &nbsp;
+            </th>
+            <th style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#6f675e; font-weight:700; padding:10px 14px; text-align:left; border-bottom:1px solid #e7ded1;">
+              Назва товару
+            </th>
+            <th style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#6f675e; font-weight:700; padding:10px 14px; text-align:center; border-bottom:1px solid #e7ded1; white-space:nowrap;">
+              К-сть
+            </th>
+            <th style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#6f675e; font-weight:700; padding:10px 14px; text-align:right; border-bottom:1px solid #e7ded1; white-space:nowrap;">
+              Ціна/шт.
+            </th>
+            <th style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#6f675e; font-weight:700; padding:10px 14px; text-align:right; border-bottom:1px solid #e7ded1; white-space:nowrap;">
+              Сума
+            </th>
+          </tr>
+
+          <!-- Item 1 -->
+           {% for item in order.items.all %}
+          <tr>
+            <td style="padding:14px 14px; border-bottom:1px solid #e7ded1; vertical-align:top; width:68px;">
+                {% with first_foto=item.product.fotos.first %}
+                <img src="{{ base_url }}{{ first_foto.image.url }}" alt="{{ item.product.title }}" style="background-color:#f3ede3; width: 100%; height: 100%; object-fit: contain; display:block;" />
+                {% endwith %}
+              </td>
+            <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; color:#2e2a26; font-weight:600; padding:14px 14px; border-bottom:1px solid #e7ded1; vertical-align:top; line-height:1.4;">
+              {{item.product.title}}
+              <span style="display:block; font-size:11px; color:#7a8a5f; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; margin-top:3px;">Сироватки</span>
+            </td>
+            <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13.5px; color:#2e2a26; font-weight:700; padding:14px 14px; border-bottom:1px solid #e7ded1; vertical-align:top; text-align:center;">
+              {{ item.quantity }}
+            </td>
+            <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13.5px; color:#2e2a26; padding:14px 14px; border-bottom:1px solid #e7ded1; vertical-align:top; text-align:right; white-space:nowrap;">
+              {{ item.price }} ₴
+            </td>
+            <td style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13.5px; color:#2e2a26; font-weight:700; padding:14px 14px; border-bottom:1px solid #e7ded1; vertical-align:top; text-align:right; white-space:nowrap;">
+              {{ item.get_cost }} ₴
+            </td>
+          </tr>
+          {% endfor %}
+          <!-- Subtotal row -->
+          <tr style="background-color:#faf7f2;">
+            <td colspan="3" style="padding:10px 14px; text-align:right; vertical-align:middle; border-bottom:1px solid #e7ded1;">
+              <span style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:12.5px; color:#6f675e; font-weight:600;">
+                Сума товарів:
+              </span>
+            </td>
+            <td colspan="2" style="padding:10px 14px; text-align:right; vertical-align:middle; border-bottom:1px solid #e7ded1;">
+              <span style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:14px; color:#2e2a26; font-weight:700; white-space:nowrap;">
+                {{ order.get_total_cost }} ₴
+              </span>
+            </td>
+          </tr>
+
+          <!-- Delivery row -->
+          <tr style="background-color:#faf7f2;">
+            <td colspan="3" style="padding:6px 14px; text-align:right; vertical-align:middle; border-bottom:2px solid #2e2a26;">
+              <span style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:12.5px; color:#6f675e; font-weight:600;">
+                Доставка:
+              </span>
+            </td>
+            <td colspan="2" style="padding:6px 14px; text-align:right; vertical-align:middle; border-bottom:2px solid #2e2a26;">
+              <span style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; color:#7a8a5f; font-weight:700;">
+                За тарифами перевізника
+              </span>
+            </td>
+          </tr>
+
+          <!-- TOTAL row -->
+          <tr style="background-color:#5f6d49;">
+            <td colspan="3" style="padding:16px 14px; text-align:right; vertical-align:middle;">
+              <span style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:14px; color:rgba(255,255,255,0.75); font-weight:700; letter-spacing:0.04em; text-transform:uppercase;">
+                Разом до сплати:
+              </span>
+            </td>
+            <td colspan="2" style="padding:16px 14px; text-align:right; vertical-align:middle;">
+              <span style="font-family:Georgia,'Times New Roman',serif; font-size:22px; color:#d7e0c0; font-weight:700; white-space:nowrap;">
+                {{ order.get_total_cost }} ₴
+              </span>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- ==================== FOOTER ==================== -->
+    <tr>
+      <td style="background-color:#2e2a26; padding:22px 32px; text-align:center;">
+        <p style="font-family:Georgia,'Times New Roman',serif; font-size:18px; font-weight:700; color:#7a8a5f; letter-spacing:0.06em; margin:0 0 8px;">
+          <span style="text-transform: uppercase;" >{{ config.title }}</span>
+          <span style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:12px; color:rgba(255,255,255,0.35); font-weight:400; letter-spacing:0.1em; text-transform:uppercase; margin-left:10px;">Admin</span>
+        </p>
+        <p style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:11.5px; color:rgba(255,255,255,0.35); margin:0 0 10px;">
+          Автоматичне сповіщення — відповідати на цей лист не потрібно.
+        </p>
+        <p style="font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:11.5px; margin:0;">
+          <a href="{{ base_url }}{% url 'admin:index' %} " style="color:rgba(255,255,255,0.4); text-decoration:none; margin:0 8px;">Адмін-панель</a>
+          <a href="{{base_url}}{% url 'admin:order_order_changelist' %}" style="color:rgba(255,255,255,0.4); text-decoration:none; margin:0 8px;">Замовлення</a>
+        </p>
+      </td>
+    </tr>
+
+  </table>
+  <!-- End Email Container -->
+
+</div>
+</body>
+</html>

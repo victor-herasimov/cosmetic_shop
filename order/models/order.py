@@ -7,6 +7,7 @@
 """
 
 from decimal import Decimal
+import re
 
 from django.db import models, transaction
 from django.core.validators import ValidationError
@@ -66,7 +67,7 @@ class Order(DateMixin):
         verbose_name="Спосіб оплати",
     )
 
-    city = delivery_address = models.CharField(max_length=128, verbose_name="Місто")
+    city = models.CharField(max_length=128, verbose_name="Місто")
     delivery_address = models.CharField(max_length=512, verbose_name="Адреса доставки")
     comment = models.TextField(blank=True, null=True, verbose_name="Коментар")
 
@@ -91,6 +92,14 @@ class Order(DateMixin):
         Обчислює загальну вартість замовлення.
         """
         return sum(item.get_cost() for item in self.items.all())
+
+    def get_clean_phone(self) -> str:
+        """
+        Очищає номер телефону від форматування, видаляючи дужки, дефіси.
+
+        Корисно для генерації клікабельних посилань виду 'tel:+380...' в HTML-шаблонах.
+        """
+        return re.sub(r"[\s/(/)/-]", "", self.phone)
 
     def save(self, *args, **kwargs) -> None:
         """

@@ -1,0 +1,46 @@
+
+На сайті {{ config.title }} оформлено нове замовлення.
+
+НОВЕ ЗАМОВЛЕННЯ №{{ order.id }}
+Дата та час: {{ order.created }}
+
+👤 ДАНІ ПОКУПЦЯ
+
+Клієнт: {{order.first_name}} {{ order.last_name }}
+
+Телефон: {{ order.phone }}
+
+Email: {{ order.email }}
+
+
+📦 СКЛАД ЗАМОВЛЕННЯ
+{% for item in order.items.all %}
+{{ item.product.title }} (ID: {{ item.product.id }})
+    Кількість: {{item.quantity }} шт. | Ціна: {{ item.price }} грн | Сума: {{ item.get_cost }} грн
+{% endfor %}
+
+
+Вартість товарів: {{order.get_total_cost}} грн
+ЗАГАЛЬНА СУМА: {{ order.get_total_cost }} грн
+
+💳 ОПЛАТА ТА ДОСТАВКА
+
+Спосіб оплати: {{ order.payment_method }}
+
+Спосіб доставки: {{ order.delivery_method }}
+
+Адреса доставки: {{ order.city}}, {{ order.delivery_address }}
+
+Телефон отримувача: {{ order.phone }}
+
+💬 КОМЕНТАР КЛІЄНТА ДО ЗАМОВЛЕННЯ:
+{{ order.comment }}
+
+ДІЇ МЕНЕДЖЕРА
+Перевірити наявність товарів на складі.
+
+Переглянути та обробити замовлення в адмін-панелі: {{ base_url }}{% url 'admin:order_order_change' order.id %}
+
+Зв'язатися з клієнтом.
+
+Автоматичне сповіщення системи CRM {{ config.title }}.
