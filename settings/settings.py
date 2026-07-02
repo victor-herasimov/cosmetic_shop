@@ -39,6 +39,7 @@ OUTHER_APPS: list[str] = [
     "solo",
     "django_ckeditor_5",
     "debug_toolbar",
+    "meta",
 ]
 
 CREATED_APPS: list[str] = [
