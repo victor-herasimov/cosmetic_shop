@@ -61,6 +61,22 @@ class SiteConfig(SingletonModel):
         verbose_name="Гасло",
         help_text="Слоган відображаєсться в на головній в заголовку.",
     )
+    copyright = models.CharField(
+        max_length=512,
+        null=True,
+        blank=True,
+        default=None,
+        verbose_name="Копірайт",
+        help_text="Копірайт відображаєсться в футері.",
+    )
+    copyright_extend = models.CharField(
+        max_length=512,
+        null=True,
+        blank=True,
+        default=None,
+        verbose_name="Додатковий копірайт",
+        help_text="Додатковий копірайт відображаєсться в футері біля основного копірайта.",
+    )
 
     created = models.DateTimeField(auto_now_add=True, verbose_name="Дата створення")
     updated = models.DateTimeField(auto_now=True, verbose_name="Дата оновлення")

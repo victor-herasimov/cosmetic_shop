@@ -50,7 +50,19 @@ class SiteConfigAdmin(SingletonModelAdmin):
     list_display = ["title", "short_description"]
     list_display_links = ["title"]
     fieldsets = [
-        (None, {"fields": ["title", "short_description", "slogan_top", "slogan"]}),
+        (
+            None,
+            {
+                "fields": [
+                    "title",
+                    "short_description",
+                    "slogan_top",
+                    "slogan",
+                    "copyright",
+                    "copyright_extend",
+                ]
+            },
+        ),
         ("Логотип", {"fields": ["thumbnail", "logo"]}),
         ("Фавіконка", {"fields": ["thumbnail_favicon", "favicon"]}),
     ]
