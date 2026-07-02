@@ -78,7 +78,7 @@ def send_order_notification_task(self, order_id: int, base_url: str) -> None:
         "socials": config.socials.all(),
         "addresses": address_service.get_all(),
     }
-
+    # TODO add admin from db
     try:
         # Відправка клієнту
         notifications_service.notify(

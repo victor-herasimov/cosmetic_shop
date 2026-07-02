@@ -32,7 +32,7 @@ class FeedbackCreateView(View):
         form: FeedbackForm = FeedbackForm(request.POST)
 
         if form.is_valid():
-            feedback_service: FeedbackService = self.feedback_service_class()
+            feedback_service: FeedbackService = self.feedback_service_class(request)
             feedback_service.create(form.cleaned_data)
             response: HttpResponse = render(
                 request, self.template_name, {"feedback_form": FeedbackForm()}
@@ -44,5 +44,4 @@ class FeedbackCreateView(View):
             request,
             self.template_name,
             {"feedback_form": form},
-            # status=422,
         )
