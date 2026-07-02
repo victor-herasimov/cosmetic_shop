@@ -50,6 +50,7 @@ CREATED_APPS: list[str] = [
     "pages.apps.PagesConfig",
     "feedback.apps.FeedbackConfig",
     "notifications.apps.NotificationsConfig",
+    "seo.apps.SeoConfig",
 ]
 
 INSTALLED_APPS: list[str] = INTERNAL_APPS + OUTHER_APPS + CREATED_APPS
@@ -164,6 +165,16 @@ EMAIL_HOST: str | None = os.environ.get("EMAIL_HOST")
 EMAIL_PORT: str | None = os.environ.get("EMAIL_PORT")
 DEFAULT_FROM_EMAIL: str | None = os.environ.get("DEFAULT_FROM_EMAIL")
 
+# DJANGO-META OG TAGS
+META_SITE_PROTOCOL = os.environ.get("META_SITE_PROTOCOL")
+META_SITE_DOMAIN = os.environ.get("META_SITE_DOMAIN")
+META_SITE_NAME = os.environ.get("META_SITE_NAME")
+META_SITE_TYPE = os.environ.get("META_SITE_TYPE")
+META_INCLUDE_KEYWORDS = bool(int(os.environ.get("META_INCLUDE_KEYWORDS")))
+META_USE_OG_PROPERTIES = True
+META_DEFAULT_KEYWORDS = [
+    item.strip() for item in os.environ.get("META_DEFAULT_KEYWORDS").split(",")
+]
 
 # CK EDITOR 5 START --------------------------------------------------------------------------------------------------
 customColorPalette = [

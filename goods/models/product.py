@@ -9,12 +9,14 @@ from django.db import models
 from django.contrib.postgres.indexes import GinIndex
 from django.urls import reverse
 from django_ckeditor_5.fields import CKEditor5Field
+from django.utils.html import strip_tags
+from meta.models import ModelMeta
 from mixins import DateMixin, SlugMixin
 from .category import Category
 from .characteristic import Characteristic
 
 
-class Product(DateMixin, SlugMixin):
+class Product(ModelMeta, DateMixin, SlugMixin):
     """
     Модель продукта
     """
@@ -112,6 +114,25 @@ class Product(DateMixin, SlugMixin):
         ]
         verbose_name = "Продукт"
         verbose_name_plural = "Продукти"
+
+    _metadata = {
+        "title": "title",
+        "description": "get_seo_description",
+        "image": "get_image_url",
+        "og_type": "product",
+    }
+
+    def get_seo_description(self) -> str:
+        """Повертає перші 150 символів опису для SEO"""
+        if not self.description:
+            return ""
+        return strip_tags(str(self.description))[:150] + "..."
+
+    def get_image_url(self):
+        first_foto = self.fotos.first()
+        if first_foto:
+            return first_foto.image.url
+        return None
 
     @property
     def available(self) -> bool:

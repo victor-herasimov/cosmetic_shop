@@ -2,6 +2,7 @@ from typing import Any
 
 from django.http import Http404
 from django.views.generic import DetailView
+from meta.views import MetadataMixin
 from goods.models.product import Product
 from goods.services import ProductService
 
@@ -36,4 +37,6 @@ class ProductDetailView(DetailView):
         context["similar_products"] = ProductService.get_similar_products(
             product=self.object
         )
+        context["meta"] = self.object.as_meta(self.request)
+
         return context

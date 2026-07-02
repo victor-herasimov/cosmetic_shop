@@ -1,5 +1,6 @@
 {% load static %}
 {% load solo_tags %}
+{% load meta %}
 {% get_solo 'main.SiteConfig' as site_config %}
 
 <html lang="uk" class="bg-background">
@@ -8,6 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#5f6d49">
     <meta name="description" content="{{ site_config.short_description }}">
+
+    <!-- start os-->
+    {% include 'meta/meta.html' %}
+    <!-- end os-->
 
     {% if site_config and site_config.favicon %}
         <link rel="icon" type="image/x-icon" href="{{ site_config.favicon.url }}">
