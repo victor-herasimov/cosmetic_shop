@@ -48,6 +48,7 @@ class SiteConfigAdmin(SingletonModelAdmin):
     thumbnail_favicon.short_description = "Мініатюрка фавіконки"
 
     list_display = ["title", "short_description"]
+    save_on_top = True
     list_display_links = ["title"]
     fieldsets = [
         (
@@ -58,6 +59,7 @@ class SiteConfigAdmin(SingletonModelAdmin):
                     "short_description",
                     "slogan_top",
                     "slogan",
+                    "contact_email",
                     "copyright",
                     "copyright_extend",
                 ]

@@ -58,14 +58,13 @@ def send_feedback_notification_task(self, feedback_id: int, base_url: str) -> No
         "feedback": feedback,
         "base_url": base_url,
     }
-    # TODO add admin email from db
     try:
         # Відправка адміну
         notifications_service.notify(
             template_name_text="feedback/emails/email-admin-feedback.txt",
             context=context,
             template_name_html="feedback/emails/email-admin-feedback.html",
-            email="admin@mybeauty.com",
+            email=config.contact_email,
             subject=f"Нове повідомлення зворотного зв'язку №{ feedback.id }",
         )
 

@@ -78,7 +78,6 @@ def send_order_notification_task(self, order_id: int, base_url: str) -> None:
         "socials": config.socials.all(),
         "addresses": address_service.get_all(),
     }
-    # TODO add admin from db
     try:
         # Відправка клієнту
         notifications_service.notify(
@@ -93,7 +92,7 @@ def send_order_notification_task(self, order_id: int, base_url: str) -> None:
             template_name_text="order/emails/email-admin-order.txt",
             context=context,
             template_name_html="order/emails/email-admin-order.html",
-            email="admin@mybeauty.com",
+            email=config.contact_email,
             subject=f"НОВЕ ЗАМОВЛЕННЯ №{order.id} — {order.get_total_cost()} грн — {order.last_name}",
         )
     except Exception as exc:

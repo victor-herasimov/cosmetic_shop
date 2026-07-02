@@ -78,6 +78,12 @@ class SiteConfig(SingletonModel):
         help_text="Додатковий копірайт відображаєсться в футері біля основного копірайта.",
     )
 
+    contact_email = models.EmailField(
+        verbose_name="Email",
+        default="manage@example.com",
+        help_text="Email на який будуть присилатися листи з замовленнями та іншими повідомленями",
+    )
+
     created = models.DateTimeField(auto_now_add=True, verbose_name="Дата створення")
     updated = models.DateTimeField(auto_now=True, verbose_name="Дата оновлення")
 

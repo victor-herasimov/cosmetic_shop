@@ -62,9 +62,15 @@
                 </ul>
             </div>
         </div>
-        <div class="footer__bottom">
-            <span>© 2026 ROBEAUTY. Усі права захищені.</span>
-            <span>Зроблено з турботою про вашу шкіру</span>
-        </div>
+        {% if site_config.copyright and site_config.copyright_extend %}
+            <div class="footer__bottom">
+                {% if site_config.copyright %}
+                    <span>{{ site_config.copyright }}</span>
+                {% endif %}
+                {% if site_config.copyright_extend %}
+                <span>{{ site_config.copyright_extend }}</span>
+                {% endif %}
+            </div>
+        {% endif %}
     </div>
 </footer>
