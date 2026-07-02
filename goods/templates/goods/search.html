@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block seo_robots %}
+    <meta name="robots" content="noindex, nofollow, noarchive">
+{% endblock %}
+
 {% block title %}
  - Пошук
 {% endblock title %}

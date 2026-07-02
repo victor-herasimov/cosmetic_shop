@@ -22,14 +22,6 @@ class SiteConfig(SingletonModel):
         verbose_name="Назва сайту",
         help_text="Назва сайту",
     )
-    short_description = models.CharField(
-        max_length=512,
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name="Короткий опис",
-        help_text="Короткий опис для SEO",
-    )
     logo = models.ImageField(
         blank=True,
         null=True,

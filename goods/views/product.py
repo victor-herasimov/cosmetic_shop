@@ -2,7 +2,6 @@ from typing import Any
 
 from django.http import Http404
 from django.views.generic import DetailView
-from meta.views import MetadataMixin
 from goods.models.product import Product
 from goods.services import ProductService
 

@@ -32,6 +32,10 @@ class SEOPage(ModelMeta, models.Model):
         MAIN = ("/", "Головна сторінка")
         CATALOG = ("/catalog/", "Каталог")
         CONTACT = ("/pages/contact/", "Контакти")
+        PRIVACY = ("/pages/privacy/", "Політика конфіденційності")
+        RETURN = ("/pages/return/", "Обмін та повернення")
+        PUBLIC = ("/pages/public/", "Публічна оферта")
+        DELIVERY = ("/pages/delivery/", "Оплата і доставка")
 
     page_type = models.CharField(
         max_length=100,

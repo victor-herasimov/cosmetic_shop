@@ -8,10 +8,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#5f6d49">
-    <meta name="description" content="{{ site_config.short_description }}">
+
+    {% block seo_robots %}
+        <!-- За замовчуванням дозволяємо індексацію всього сайту -->
+        <meta name="robots" content="index, follow">
+    {% endblock %}
 
     <!-- start os-->
-    {% include 'meta/meta.html' %}
+    {% if global_seo_meta %}
+        {% include 'meta/meta.html' with meta=global_seo_meta %}
+    {% else %}
+        {% include 'meta/meta.html' %}
+    {% endif %}
     <!-- end os-->
 
     {% if site_config and site_config.favicon %}

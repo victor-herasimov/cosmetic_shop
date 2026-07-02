@@ -81,6 +81,7 @@ TEMPLATES: list[dict[str, Any]] = [
                 "goods.context_processors.all_categories",
                 "goods.context_processors.product_bestsellers",
                 "main.context_processors.site_settings",
+                "seo.context_processors.seo_metadata",
                 "cart.context_processors.cart",
             ],
         },
@@ -170,7 +171,6 @@ META_SITE_PROTOCOL = os.environ.get("META_SITE_PROTOCOL")
 META_SITE_DOMAIN = os.environ.get("META_SITE_DOMAIN")
 META_SITE_NAME = os.environ.get("META_SITE_NAME")
 META_SITE_TYPE = os.environ.get("META_SITE_TYPE")
-META_INCLUDE_KEYWORDS = bool(int(os.environ.get("META_INCLUDE_KEYWORDS")))
 META_USE_OG_PROPERTIES = True
 META_DEFAULT_KEYWORDS = [
     item.strip() for item in os.environ.get("META_DEFAULT_KEYWORDS").split(",")
