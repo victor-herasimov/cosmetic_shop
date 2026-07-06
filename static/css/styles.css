@@ -1130,6 +1130,63 @@ ul {
   border-radius: 24px;
   padding: 30px;
   animation: pop 0.22s ease;
+  clip-path: inset(0 round 24px);
+  /* Scrollbar style for Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+
+
+
+/* Custom scrollbar for modals, dialogs and drawers */
+.dialog::-webkit-scrollbar,
+.cart__items::-webkit-scrollbar,
+.search-drawer::-webkit-scrollbar,
+.search-results-grid::-webkit-scrollbar,
+.order-items::-webkit-scrollbar {
+  width: 5px;
+}
+
+.dialog::-webkit-scrollbar-button,
+.cart__items::-webkit-scrollbar-button,
+.search-drawer::-webkit-scrollbar-button,
+.search-results-grid::-webkit-scrollbar-button,
+.order-items::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+
+.dialog::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 16px 0; /* Keep scrollbar inside the rounded corners */
+}
+
+.cart__items::-webkit-scrollbar-track,
+.search-drawer::-webkit-scrollbar-track,
+.search-results-grid::-webkit-scrollbar-track,
+.order-items::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 8px 0;
+}
+
+.dialog::-webkit-scrollbar-thumb,
+.cart__items::-webkit-scrollbar-thumb,
+.search-drawer::-webkit-scrollbar-thumb,
+.search-results-grid::-webkit-scrollbar-thumb,
+.order-items::-webkit-scrollbar-thumb {
+  background-color: var(--line);
+  border-radius: 10px;
+}
+
+.dialog::-webkit-scrollbar-thumb:hover,
+.cart__items::-webkit-scrollbar-thumb:hover,
+.search-drawer::-webkit-scrollbar-thumb:hover,
+.search-results-grid::-webkit-scrollbar-thumb:hover,
+.order-items::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent);
 }
 
 @keyframes pop {
