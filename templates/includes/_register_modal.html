@@ -1,0 +1,36 @@
+<div class="modal auth-modal" id="registerModal">
+    <div class="modal__overlay" data-close-modal=""></div>
+    <div class="dialog" role="dialog" aria-modal="true" aria-label="Реєстрація">
+        <div class="dialog__head">
+            <h3>Реєстрація</h3>
+            <button class="modal__close" data-close-modal="" aria-label="Закрити">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <form class="auth-form" id="registerForm">
+            <div class="form-group">
+                <label for="registerName">Ваше ім'я</label>
+                <input type="text" id="registerName" placeholder="Іван Іванов" required="" autocomplete="name">
+            </div>
+            <div class="form-group">
+                <label for="registerEmail">Email</label>
+                <input type="email" id="registerEmail" placeholder="hello@example.com" required="" autocomplete="email">
+            </div>
+            <div class="form-group">
+                <label for="id_register_phone">Номер телефону</label>
+                <input type="tel" id="id_register_phone" placeholder="+38 (0__) ___-__-__" required="" autocomplete="tel">
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Пароль</label>
+                <input type="password" id="registerPassword" placeholder="••••••••" required="" autocomplete="new-password">
+            </div>
+            <button type="submit" class="btn btn--primary btn--block" style="margin-top: 10px;">Зареєструватися</button>
+            <div class="auth-switch">
+                Вже є акаунт? <button type="button" class="auth-switch-btn" data-switch-to-login="">Увійти</button>
+            </div>
+        </form>
+    </div>
+</div>

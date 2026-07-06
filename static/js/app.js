@@ -33,6 +33,37 @@ function bindGlobalEvents() {
       return;
     }
 
+    const openLogin = t.closest("[data-open-login]");
+    if (openLogin) {
+      e.preventDefault();
+      const loginForm = document.getElementById("loginForm");
+      if (loginForm) loginForm.reset();
+      openModal("loginModal");
+      return;
+    }
+
+    const switchToRegister = t.closest("[data-switch-to-register]");
+    if (switchToRegister) {
+      e.preventDefault();
+      const loginModal = document.getElementById("loginModal");
+      if (loginModal) closeModal(loginModal);
+      const registerForm = document.getElementById("registerForm");
+      if (registerForm) registerForm.reset();
+      openModal("registerModal");
+      return;
+    }
+
+    const switchToLogin = t.closest("[data-switch-to-login]");
+    if (switchToLogin) {
+      e.preventDefault();
+      const registerModal = document.getElementById("registerModal");
+      if (registerModal) closeModal(registerModal);
+      const loginForm = document.getElementById("loginForm");
+      if (loginForm) loginForm.reset();
+      openModal("loginModal");
+      return;
+    }
+
     const openSearch = t.closest("[data-open-search]");
     if (openSearch) {
       e.preventDefault();
@@ -103,6 +134,15 @@ export function phoneNumberMask(selector, mask, parent = document) {
   };
   IMask(element, maskOptions);
 }
+document.addEventListener("htmx:load", (event) => {
+  const target = event.detail.elt;
+  const phoneInput = target.querySelector
+    ? target.querySelector("#id_register_phone")
+    : null;
+  if (phoneInput) {
+    phoneNumberMask("#id_register_phone", "{+38 (\\0}00) 000-00-00", target);
+  }
+});
 
 // ===== Ініціалізація =====
 export function init() {
