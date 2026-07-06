@@ -7,7 +7,11 @@
                     <line x1="3" y1="12" x2="21" y2="12"></line>
                     <line x1="3" y1="18" x2="21" y2="18"></line>
                 </svg></button>
+            {% if site_config.logo %}
             <a href="{% url "main:index" %}" class="logo"><img src="{{site_config.logo.url}}" alt="logo"> </a>
+            {% else %}
+            <a href="{% url "main:index" %}" class="logo">Logo </a>
+            {% endif %}
             <nav class="nav">
                 <button class="nav__link" data-open-categories="">Категорії</button>
                 <a class="nav__link" href="{% url "goods:catalog" %}">Каталог</a>

@@ -159,6 +159,9 @@ else:
 # Paginate settings
 ITEMS_PER_PAGE: int = 4
 
+# Account
+AUTH_USER_MODEL = "account.User"
+
 # Cart
 CART_SESSION_ID: str = "cart"
 

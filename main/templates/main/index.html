@@ -23,7 +23,11 @@
             </div>
         </div>
         <div class="hero__media">
-            <img src="{{site_hero.image.url}}" alt="Hero">
+            {% if site_hero.image %}
+                <img src="{{site_hero.image.url}}" alt="Hero">
+            {% else %}
+                <img src="{% static "image/No-Image.png" %}" alt="Hero">
+            {% endif %}
             {% if site_hero.badge_title %}
                 <div class="hero__badge">{{ site_hero.badge_title}}<b>{{ site_hero.badge_value}}</b></div>
             {% endif %}

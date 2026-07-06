@@ -1,0 +1,2548 @@
+[
+{
+    "model": "main.strip",
+    "pk": 1,
+    "fields": {
+        "name": "Без жорстокості · Vegan friendly",
+        "created": "2026-06-10T10:55:01.636Z",
+        "updated": "2026-06-10T10:55:01.636Z"
+    }
+},
+{
+    "model": "main.strip",
+    "pk": 2,
+    "fields": {
+        "name": "Дерматологічно протестовано",
+        "created": "2026-06-10T10:55:11.382Z",
+        "updated": "2026-06-10T10:55:11.382Z"
+    }
+},
+{
+    "model": "main.strip",
+    "pk": 3,
+    "fields": {
+        "name": "Доставка по всій Україні",
+        "created": "2026-06-10T10:55:18.247Z",
+        "updated": "2026-06-10T10:55:18.247Z"
+    }
+},
+{
+    "model": "main.strip",
+    "pk": 4,
+    "fields": {
+        "name": "Натуральні активні компоненти",
+        "created": "2026-06-10T10:55:25.820Z",
+        "updated": "2026-06-10T10:55:25.820Z"
+    }
+},
+{
+    "model": "main.siteconfig",
+    "pk": 1,
+    "fields": {
+        "title": "My Beauty",
+        "logo": "logo/logo.png",
+        "favicon": "favicon/favicon.ico",
+        "slogan": "Українська косметика з ефективними формулами для здорової та доглянутої шкіри. Краса доступна кожному.",
+        "slogan_top": "Догляд за шкірою, що працює",
+        "copyright": "© 2026 MYBEAUTY. Усі права захищені.",
+        "copyright_extend": "Зроблено з турботою про вашу шкіру",
+        "contact_email": "manage@example.com",
+        "created": "2026-06-10T08:46:16.185Z",
+        "updated": "2026-07-02T09:22:39.936Z"
+    }
+},
+{
+    "model": "main.hero",
+    "pk": 1,
+    "fields": {
+        "title": "Догляд, що повертає шкірі сяйво",
+        "subtitle": "Краса доступна кожному",
+        "short_description": "Ефективні формули з пептидами, кислотами та рослинними активами. Створено в Україні для помітного результату без ін'єкцій.",
+        "image": "hero/hero.png",
+        "badge_title": "SPRING BEAUTY FEST",
+        "badge_value": "−50%",
+        "created": "2026-06-10T11:33:34.932Z",
+        "updated": "2026-06-10T12:01:49.579Z"
+    }
+},
+{
+    "model": "main.email",
+    "pk": 5,
+    "fields": {
+        "email": "my.beauty@beauty.ua",
+        "in_footer": true,
+        "active": true,
+        "config": 1
+    }
+},
+{
+    "model": "main.email",
+    "pk": 6,
+    "fields": {
+        "email": "my.test@gmail.com",
+        "in_footer": false,
+        "active": true,
+        "config": 1
+    }
+},
+{
+    "model": "main.phone",
+    "pk": 1,
+    "fields": {
+        "phone": "+38 (096) 999-99-98",
+        "in_footer": true,
+        "active": true,
+        "config": 1
+    }
+},
+{
+    "model": "main.social",
+    "pk": 1,
+    "fields": {
+        "social": "instagram",
+        "url": "https://www.instagram.com/",
+        "in_footer": true,
+        "active": true,
+        "config": 1
+    }
+},
+{
+    "model": "main.social",
+    "pk": 2,
+    "fields": {
+        "social": "telegram",
+        "url": "https://web.telegram.org/k/",
+        "in_footer": true,
+        "active": true,
+        "config": 1
+    }
+},
+{
+    "model": "main.social",
+    "pk": 3,
+    "fields": {
+        "social": "facebook",
+        "url": "https://www.facebook.com/",
+        "in_footer": false,
+        "active": true,
+        "config": 1
+    }
+},
+{
+    "model": "main.social",
+    "pk": 4,
+    "fields": {
+        "social": "viber",
+        "url": "https://www.viber.com/ua/",
+        "in_footer": false,
+        "active": true,
+        "config": 1
+    }
+},
+{
+    "model": "main.address",
+    "pk": 1,
+    "fields": {
+        "address": "м. Київ, вул. Хрещатик, 22, 2-й поверх",
+        "config": 1
+    }
+},
+{
+    "model": "main.workschedule",
+    "pk": 1,
+    "fields": {
+        "schedule": "Понеділок — П'ятниця: 09:00 - 20:00",
+        "config": 1
+    }
+},
+{
+    "model": "main.workschedule",
+    "pk": 2,
+    "fields": {
+        "schedule": "Субота — Неділя: 10:00 - 18:00",
+        "config": 1
+    }
+},
+{
+    "model": "goods.category",
+    "pk": 1,
+    "fields": {
+        "created": "2026-06-10T17:10:14.912Z",
+        "updated": "2026-06-10T17:17:30.773Z",
+        "slug": "sirovatki",
+        "name": "Сироватки",
+        "visible": true,
+        "short_description": "Концентрований догляд"
+    }
+},
+{
+    "model": "goods.category",
+    "pk": 2,
+    "fields": {
+        "created": "2026-06-10T17:11:02.180Z",
+        "updated": "2026-06-10T17:11:02.180Z",
+        "slug": "kremi",
+        "name": "Креми",
+        "visible": false,
+        "short_description": "Зволоження та живлення"
+    }
+},
+{
+    "model": "goods.category",
+    "pk": 3,
+    "fields": {
+        "created": "2026-06-10T17:11:25.891Z",
+        "updated": "2026-06-10T17:11:25.891Z",
+        "slug": "pid-ochi",
+        "name": "Під очі",
+        "visible": false,
+        "short_description": "Делікатна зона"
+    }
+},
+{
+    "model": "goods.category",
+    "pk": 4,
+    "fields": {
+        "created": "2026-06-10T17:11:44.742Z",
+        "updated": "2026-06-10T17:11:44.742Z",
+        "slug": "skrabi",
+        "name": "Скраби",
+        "visible": false,
+        "short_description": "Оновлення шкіри"
+    }
+},
+{
+    "model": "goods.category",
+    "pk": 5,
+    "fields": {
+        "created": "2026-06-10T17:12:07.778Z",
+        "updated": "2026-06-10T17:51:29.688Z",
+        "slug": "tilo",
+        "name": "Тіло",
+        "visible": false,
+        "short_description": "Догляд за тілом"
+    }
+},
+{
+    "model": "goods.category",
+    "pk": 6,
+    "fields": {
+        "created": "2026-06-10T17:12:23.859Z",
+        "updated": "2026-06-10T17:12:23.859Z",
+        "slug": "ochishennya",
+        "name": "Очищення",
+        "visible": false,
+        "short_description": "Тонізація та чистота"
+    }
+},
+{
+    "model": "goods.category",
+    "pk": 7,
+    "fields": {
+        "created": "2026-06-10T17:12:40.979Z",
+        "updated": "2026-06-10T17:12:40.979Z",
+        "slug": "zvolozhennya",
+        "name": "Зволоження",
+        "visible": false,
+        "short_description": "Зволожувальні засоби"
+    }
+},
+{
+    "model": "goods.category",
+    "pk": 8,
+    "fields": {
+        "created": "2026-06-10T17:13:06.960Z",
+        "updated": "2026-06-10T17:17:35.644Z",
+        "slug": "nabori",
+        "name": "Набори",
+        "visible": true,
+        "short_description": "Готові комплекси"
+    }
+},
+{
+    "model": "goods.characteristicitem",
+    "pk": 1,
+    "fields": {
+        "name": "Призначення"
+    }
+},
+{
+    "model": "goods.characteristicitem",
+    "pk": 2,
+    "fields": {
+        "name": "Вік"
+    }
+},
+{
+    "model": "goods.characteristicitem",
+    "pk": 3,
+    "fields": {
+        "name": "Об'єм"
+    }
+},
+{
+    "model": "goods.characteristic",
+    "pk": 1,
+    "fields": {
+        "item": 1,
+        "value": "Відбілювання, Очищення"
+    }
+},
+{
+    "model": "goods.characteristic",
+    "pk": 2,
+    "fields": {
+        "item": 2,
+        "value": "16+"
+    }
+},
+{
+    "model": "goods.characteristic",
+    "pk": 3,
+    "fields": {
+        "item": 3,
+        "value": "40ml, 75ml"
+    }
+},
+{
+    "model": "goods.product",
+    "pk": 7,
+    "fields": {
+        "created": "2026-06-11T17:33:50.940Z",
+        "updated": "2026-06-14T18:30:09.906Z",
+        "slug": "ochishuvalnij-gel-dlya-dushu-dlya-normalnoyi-ta-shilnoyi-do-suhosti-shkiri",
+        "title": "Очищувальний гель для душу для нормальної та схильної до сухості шкіри",
+        "cateogry": 5,
+        "description": "<p style=\"margin-left:0px;\">Очищувальний гель для душу Lipikar Gel розроблений фахівцями бренда La Roche-Posay для нормальної та схильної до сухості шкіри. Такий засіб із фізіологічним рівнем pH та збалансованою формулою без мила дбайливо змиває забруднення, робить шкірний покрив гладким і м'яким на дотик. Також б'юті-продукт вирізняється універсальністю, оскільки чудово підходить для делікатного очищення обличчя, тіла, шкіри голови та інтимної гігієни.&nbsp;</p><p style=\"margin-left:0px;\"><strong>Особливості La Roche-Posay Lipikar Gel:</strong></p><p style=\"margin-left:0px;\"><i>- проявляє очищувальні, захисні та заспокійливі властивості;</i><br><i>- оптимальний для немовлят, дітей та дорослих;</i><br><i>- сприяє нейтралізації негативного впливу жорсткої води;</i><br><i>- дбає про відновлення епідермального бар'єру;</i><br><i>- чинить пом'якшувальну дію;</i><br><i>- масло ши підтримує гідроліпідний баланс шкірного покриву;</i><br><i>- ніацинамід заспокоює подразнення епідермісу;</i><br><i>- гліцерин виконує зволожувальну функцію;</i><br><i>- має приємний витончений аромат.</i></p>",
+        "method_apply": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(33,33,33);\">рекомендують додавати 4-5 крапель гелю прямо в ванну. Нанести кілька крапель гелю на руку, охайно помити тіло і голову дитини. Потім обполоснути чистою водою.</span></p>",
+        "composition": "Aqua/Water, Glycerin, Disodium Cocoamphodiacetate, Coco-Betaine, PEG-7 Glyceryl Cocoate, Sodium Chloride, Sodium Laureth Sulfate, Glycol, Distearate, Sodium Glycolate, Acrylates Copolymer, Citric Acid, Niacinamide, PEG-55, Propylene Glycol Oleate, PEG-75 Shea Butter Glycerides, polyquaternium-7, PPG-5-Ceteth-20, Propylene Glycol, Sodium Benzoate, Sodium Hydroxide",
+        "count": 5,
+        "price": "100.00",
+        "discount": 0,
+        "is_bestseller": false,
+        "is_new": true,
+        "vegan_frendly": true,
+        "derma": true,
+        "delivery": true,
+        "active": true,
+        "characteristics": [
+            2,
+            3,
+            1
+        ]
+    }
+},
+{
+    "model": "goods.product",
+    "pk": 10,
+    "fields": {
+        "created": "2026-06-11T17:40:48.307Z",
+        "updated": "2026-06-14T18:37:08.081Z",
+        "slug": "vidnovlyuvalnij-cika-krem-iz-sechovinoyu-dlya-suhoyi-ogrubiloyi-shkiri-oblichchya-ruk-ta-tila",
+        "title": "Відновлювальний цика-крем із сечовиною для сухої, огрубілої шкіри обличчя, рук та тіла",
+        "cateogry": 4,
+        "description": "<p style=\"margin-left:0px;\">Косметика Mixa – це безпечні засоби для догляду за шкірою, що протестовані під медичним контролем і забезпечують ефективний результат. ВІдновлювальний цика-крем був створений спеціально для пом’якшення та регенерації дуже сухої, огрубілої та пошкодженої шкіри рук, тіла й обличчя. Засіб з гіпоалергенною формулою пройшов клінічні випробування, які показали, що вже через тиждень регулярного використання крем значно зменшує лущення та ороговілий шар на шкірі, а після першого використання – усуває відчуття стягнутості, дарує комфорт і тривале зволоження. Відновлювальний цика-крем з уреєю дерматологічно перевірений і підходить навіть для дуже чутливої шкіри.&nbsp;</p><p style=\"margin-left:0px;\"><strong>Особливості Mixa Urea Cica Repair+ Regenerating Cream:</strong></p><p style=\"margin-left:0px;\"><i>- формула на основі 10% комплексу з уреї (сечовини) та ніацинаміду;</i><br><i>- урея – натуральний компонент, який забезпечує відновлення шкіри, пом’якшує та зволожує її;</i><br><i>- ніацинамід надає заспокійливу, освітлювальну та антибактеріальну дії;</i><br><i>- миттєво та надовго прибирає шорсткість та лущення на шкірі;</i><br><i>- знімає відчуття зуду, стягнутості;</i><br><i>- бореться з почервоніннями;</i><br><i>- жирна текстура, яка глибоко живить шкіру та поглинається сухими ділянками, що значно покращує їхній стан;</i><br><i>- забезпечує 48 годин захисту від сухості;</i><br><i>- протестовано на 100% чутливій шкірі.</i></p>",
+        "method_apply": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(33,33,33);\">Наносити щодня на очищену шкіру обличчя, тіла та рук.</span></p>",
+        "composition": "AQUA / WATER, UREA, GLYCERIN, DIMETHICONE, PARAFFINUM LIQUIDUM / MINERAL OIL, PROPYLENE GLYCOL, BUTYROSPERMUM PARKII BUTTER / SHEA BUTTER, CETEARYL ALCOHOL, ALCOHOL DENAT., ZEA MAYS STARCH / CORN STARCH, HELIANTHUS ANNUUS SEED OIL / SUNFLOWER SEED OIL, GLYCERYL STEARATE, PEG-100 STEARATE, GLYCINE, HYDROXYETHYLPIPERAZINE ETHANE SULFONIC ACID, SODIUM HYDROXIDE, SODIUM LACTATE, TETRASODIUM GLUTAMATE DIACETATE, NIACINAMIDE, PANTHENOL, TOCOPHEROL, TOCOPHERYL ACETATE, CAPRYLYL GLYCOL, CARBOMER, CITRIC ACID, XANTHAN GUM, PHENOXYETHANOL, PARFUM / FRAGRANCE",
+        "count": 5,
+        "price": "300.00",
+        "discount": 0,
+        "is_bestseller": false,
+        "is_new": false,
+        "vegan_frendly": false,
+        "derma": false,
+        "delivery": false,
+        "active": true,
+        "characteristics": [
+            2,
+            3,
+            1
+        ]
+    }
+},
+{
+    "model": "goods.product",
+    "pk": 11,
+    "fields": {
+        "created": "2026-06-11T17:43:03.928Z",
+        "updated": "2026-06-23T13:52:17.937Z",
+        "slug": "lipidovidnovlyuvalnij-balzam-dlya-doglyadu-za-suhoyu-duzhe-suhoyu-ta-shilnoyu-do-atopiyi-shkiroyu-oblichchya-ta-tila-nemovlyat-ditej-ta-doroslih",
+        "title": "Ліпідовідновлювальний бальзам для догляду за сухою, дуже сухою та схильною до атопії шкірою обличчя та тіла немовлят, дітей та дорослих",
+        "cateogry": 5,
+        "description": "<p style=\"margin-left:0px;\">На жаль, у світі все більше дорослих та дітей страждають від атопічної шкіри. Особливо немовлята. Корочки з'являються по всьому тілу, сверблять і болять. У такі моменти найбільше у світі хочеться полегшити стан епідермісу. З цією проблемою може впоратися бальзам, що відновлює ліпід, для дуже сухої і схильної до атопії шкіри обличчя і тіла від відомого французького бренду La Roche-Posay. Він моментально заспокоює шкірний покрив і усуває свербіж. З таким засобом будь-яка суха шкіра почуватиметься комфортно та захищено.</p><p style=\"margin-left:0px;\"><strong>Особливості La Roche-Posay Lipikar Baume AP+Max:</strong></p><p style=\"margin-left:0px;\"><i>- підходить для немовлят, дітей та дорослих;</i><br><i>- Зволожує до 24 годин;</i><br><i>- для чутливої, схильної до атопії та дуже сухої шкіри;</i><br><i>- надає потрійну відновлюючу дію;</i><br><i>- при регулярному використанні періоди загострення дерматиту відбуваються рідше;</i><br><i>- 81% дітей з атопією сплять спокійніше після використання бальзаму;</i><br><i>- олія карите відновлює гідроліпідний шар епідермісу;</i><br><i>- ніацинамід знімає свербіж та надає відновлюючу дію на ліпідний бар'єр;</i><br><i>- АП+М технологія (аква позі філіформіс + мікрорезіл) - ексклюзивний активний комплекс, який допомагає мікробіому шкіри балансувати.</i></p>",
+        "method_apply": "<p style=\"margin-left:0px;\">Наносити один раз на день на обличчя та тіло. Бальзам швидко поглинається, майже одразу після нанесення можна вдягатися. Не містить парфумованих віддушок. Некомедогенний. Протестований на всіх тонах шкіри під дерматологічним та педіатричним контролем.</p><p style=\"margin-left:0px;\">Використовувати після очищення за допомогою ОЧИЩУВАЛЬНОГО КРЕМ-ГЕЛЮ ЛІПІКАР СИНДЕТ АП+ або ЛІПІДОВІДНОВЛЮВАЛЬНОГО ОЧИЩУВАЛЬНОГО ЗАСІБУ ЛІПІКАР ОЛІЯ АП+.</p>",
+        "composition": "AQUA / WATER / EAU • BUTYROSPERMUM PARKII BUTTER / SHEA BUTTER • GLYCERIN • DIMETHICONE • NIACINAMIDE • CETEARYL ALCOHOL • BRASSICA CAMPESTRIS SEED OIL / RAPESEED SEED OIL • GLYCERYL STEARATE • AMMONIUM POLYACRYLOYLDIMETHYL TAURATE • PEG-100 STEARATE • PROPANEDIOL • OPHIOPOGON JAPONICUS ROOT EXTRACT • PISUM SATIVUM EXTRACT / PEA EXTRACT • SORBITAN TRISTEARATE • DIMETHICONOL • PEG-20 METHYL GLUCOSE SESQUISTEARATE • SODIUM CHLORIDE • CYCLODEXTRIN • MANNOSE • COCO-BETAINE • DISODIUM EDTA • CAPRYLOYL GLYCINE • CAPRYLYL GLYCOL • VITREOSCILLA FERMENT • MALTODEXTRIN • XANTHAN GUM • TOCOPHEROL • PENTAERYTHRITYL TETRA-DI-T-BUTYL HYDROXYHYDROCINNAMATE. (CODE F.I.L.: N70067503/1)",
+        "count": 2,
+        "price": "400.00",
+        "discount": 0,
+        "is_bestseller": false,
+        "is_new": false,
+        "vegan_frendly": true,
+        "derma": true,
+        "delivery": true,
+        "active": false,
+        "characteristics": [
+            2,
+            3,
+            1
+        ]
+    }
+},
+{
+    "model": "goods.product",
+    "pk": 14,
+    "fields": {
+        "created": "2026-06-11T17:55:00.215Z",
+        "updated": "2026-06-23T15:26:56.119Z",
+        "slug": "antiperspirant-trivaloyi-diyi-dlya-normalnoyi-shkiri",
+        "title": "Антиперспірант тривалої дії для нормальної шкіри",
+        "cateogry": 5,
+        "description": "<p style=\"margin-left:0px;\">Антиперспірант збагачений компонентами, що мінімізують ризик подразнень і підтримують комфорт навіть під час тривалого використання. Це ідеальне рішення для тих, хто прагне впевненості в будь-яких умовах.</p><p style=\"margin-left:0px;\"><i><strong>Особливості Antiperspirant Treatment Normal Skin Armpits Roll-On від Etiaxil:</strong></i></p><p style=\"margin-left:0px;\"><i>- тривалий захист від потовиділення (до 5 днів);</i><br><i>- спеціальна формула для нормальної шкіри, зменшує ризик подразнень;</i><br><i>- підходить для будь-якої активності, включаючи спорт та стресові ситуації;</i><br><i>- не має запаху, дозволяючи використовувати разом із парфумами;</i><br><i>- економно використовується — наноситься 1-2 рази на тиждень;</i><br><i>- не залишає слідів на одязі та шкірі.</i></p>",
+        "method_apply": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(33,33,33);\">Призначений тільки для зовнішнього використання. Наноситься виключно на ніч. Не слід застосовувати Etiaxil вранці або протягом дня. Перед нанесенням необхідно помити пахви водою з милом і насухо їх витерти. Додатково можна просушити шкіру феном. Нанесіть невелику кількість засобу по центру сухих, чистих пахв декількома рухами ролика вгору-вниз тонким рівномірним шаром. Після цього дайте засобу висохнути 3-4 хвилини або скористайтеся феном. Після нанесення Etiaxil уникайте ситуацій, які можуть викликати активне потовиділення. До ранку оброблені місця не повинні бути в контакті з водою. Вранці помийте пахви водою з милом. У разі сильного потовиділення повторіть зазначену процедуру 2-3 вечори поспіль - для досягнення максимального ефекту сухості.</span></p>",
+        "composition": "Alcohol Denat., Aluminum Chloride, PEG-12 Dimethicone",
+        "count": 21,
+        "price": "340.00",
+        "discount": 0,
+        "is_bestseller": true,
+        "is_new": true,
+        "vegan_frendly": true,
+        "derma": true,
+        "delivery": true,
+        "active": true,
+        "characteristics": [
+            2,
+            3,
+            1
+        ]
+    }
+},
+{
+    "model": "goods.product",
+    "pk": 15,
+    "fields": {
+        "created": "2026-06-11T17:58:46.353Z",
+        "updated": "2026-06-11T17:59:22.047Z",
+        "slug": "nabir-antiperspirantiv-24-godini-zahist-ta-komfort",
+        "title": "Набір антиперспірантів \"24 години захист та комфорт\"",
+        "cateogry": 8,
+        "description": "<p style=\"margin-left:0px;\"><strong>Склад набору:</strong> Антиперспірант «24 години захист і комфорт» — Babe Laboratorios Roll-On Deodorant, 2 x 50 мл</p><p style=\"margin-left:0px;\">Набір антиперспірантів «24 години захист та комфорт» від бренда Babe Laboratorios поєднує одразу 2 однакових засоби для догляду. Продукт здатний одночасно працювати як дезодорант, захищаючи від запаху, та як антиперспірант, борючись із вологістю. Він ефективно нейтралізує різкий аромат поту, а гідрохлорид алюмінію контролює потовиділення. При активній дії формула засобу дуже ніжна. Вона збагачена бісабололом — справжнім заспокійливим для тендітної шкіри пахв. Цей компонент також пом’якшує шкірний покрив та підтримує його комфорт.</p><p style=\"margin-left:0px;\"><strong>Особливості Babe Laboratorios Roll-On Deodorant:</strong></p><p style=\"margin-left:0px;\">-<i> 0% спирту, тому запобігає подразненням;</i><br><i>- ефективно захищає від поту до 24 годин;</i><br><i>- не залишає плям на одязі;</i><br><i>- підходить для всіх типів шкіри;</i><br><i>- має м'який аромат, що підтримує відчуття чистоти;</i><br><i>- ніжний до чутливого шкірного покриву;</i><br><i>- призначений для щоденного використання;</i><br><i>- формула не тестується на тваринах, веганська.</i></p>",
+        "method_apply": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(33,33,33);\">нанесіть на суху, чисту шкіру.</span></p>",
+        "composition": "aqua, aluminum chlorohydrate, ppg-15 stearylether, steareth-2, steareth-21, c 12-13 alkyllactate, ethylhexylglycerin, parfum, 1.2-hexanediol, caprylyl glycol, bisabolol, butylhhenyl methylpropional, hexyl cinnamal, alpha-isomethyl ionone, tropolone, linalool, coumarin, limonene.",
+        "count": 0,
+        "price": "390.00",
+        "discount": 0,
+        "is_bestseller": false,
+        "is_new": false,
+        "vegan_frendly": false,
+        "derma": false,
+        "delivery": false,
+        "active": false,
+        "characteristics": [
+            2,
+            3,
+            1
+        ]
+    }
+},
+{
+    "model": "goods.product",
+    "pk": 24,
+    "fields": {
+        "created": "2026-06-11T18:26:52.210Z",
+        "updated": "2026-06-14T18:29:46.175Z",
+        "slug": "zvolozhuvalnij-krem-dlya-suhoyi-i-duzhe-suhoyi-shkiri-oblichchya-i-tila",
+        "title": "Зволожувальний крем для сухої і дуже сухої шкіри обличчя і тіла",
+        "cateogry": 2,
+        "description": "<p style=\"margin-left:0px;\">Іноді шкіра просто вимагає уваги – не блиску, не сяйва, а простого людського комфорту. Ось тут і рятує CeraVe Moisturising Cream. Він не робить гучних заяв, а просто працює: зволожує, заспокоює та допомагає шкірі знову стати м'якою. Після душу, вмивання чи холодного вітру – цей крем ніби повертає все на свої місця. Щільний, але легкий на відчуття, він вбирається швидко і залишає приємну гладкість, як після гарного догляду в салоні.</p><p style=\"margin-left:0px;\"><strong>Глибоке харчування та відновлення</strong></p><p style=\"margin-left:0px;\">Головний секрет CeraVe – це поєднання трьох видів цераміду та гіалуронової кислоти. Вони допомагають:</p><ul><li data-list-item-id=\"e92dcfea031f9c251d48dd1377d9f119f\"><p style=\"margin-left:0px;\">відновлювати захисний бар'єр шкіри;</p></li><li data-list-item-id=\"ee952c563ccb2c3c3d2dbd591e3f93263\"><p style=\"margin-left:0px;\">утримувати вологу всередині протягом дня;</p></li><li data-list-item-id=\"ef0e2e258997e489f702a21dada700d4a\"><p style=\"margin-left:0px;\">знімати відчуття сухості та стягнутості;</p></li><li data-list-item-id=\"e706b38a9e6b637cc6ecef7fa693ab40f\"><p style=\"margin-left:0px;\">пом'якшувати лущення та роздратування;</p></li><li data-list-item-id=\"ee5363089b9cad84050ea33b6b92f33b9\"><p style=\"margin-left:0px;\">робити шкіру більш гладкою та еластичною.</p></li></ul><p style=\"margin-left:0px;\">Крем не містить ароматизаторів та підходить навіть для дуже чутливої ​​шкіри. Його можна використовувати на обличчі та тілі, вранці чи ввечері – особливо після душу, коли шкірі потрібне максимальне харчування. Текстура щільна, але легко розподіляється і не залишає жирної плівки.</p><p style=\"margin-left:0px;\"><strong>Догляд, який відчувається</strong></p><p style=\"margin-left:0px;\">CeraVe Moisturising Cream – той випадок, коли простий засіб працює краще за складні формули. Він підходить всій родині, допомагає відновити шкіру після холоду, сонця чи пересушеного повітря. Вже за кілька днів шкіра стає м'якою, спокійною та захищеною. Це крем, до якого хочеться повертатися без зайвого блиску, без ароматів, просто чисте, комфортне зволоження щодня.</p>",
+        "method_apply": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(33,33,33);\">нанести необхідну кількість крему на шкіру та розподілити масажними рухами. Уникати зони навколо очей. При попаданні в очі негайно промийте їх водою.</span></p>",
+        "composition": "Aqua / water, glycerin, cetearyl alcohol, caprylic/capric triglyceride, cetyl alcohol, ceteareth-20, petrolatum, dimethicone, phenoxyethanol, behentrimonium methosulfate, potassium phosphate, ethylhexylglycerin, sodium lauroyl lactylate, disodium edta, dipotassium phosphate, ceramide np, ceramide ap, phytosphingosine, cholesterol, xanthan gum, carbomer, sodium hyaluronate, tocopherol, ceramide eop",
+        "count": 0,
+        "price": "234.00",
+        "discount": 0,
+        "is_bestseller": true,
+        "is_new": false,
+        "vegan_frendly": true,
+        "derma": true,
+        "delivery": true,
+        "active": true,
+        "characteristics": [
+            2,
+            3,
+            1
+        ]
+    }
+},
+{
+    "model": "goods.product",
+    "pk": 25,
+    "fields": {
+        "created": "2026-06-11T18:29:00.324Z",
+        "updated": "2026-06-11T18:29:00.324Z",
+        "slug": "tonik-stimulyator-vid-vipadinnya-i-dlya-intensivnogo-rostu-volossya",
+        "title": "Тонік-стимулятор від випадіння і для інтенсивного росту волосся",
+        "cateogry": 7,
+        "description": "<p style=\"margin-left:0px;\">Якщо волосся почало втрачати силу і стало ламким, час бити на сполох, адже це може призвести до його випадіння. Тонік-стимулятор для волосся бренду Weleda здатен наповнити локони енергією і здоровим блиском, стимулюючи їхній ріст. Створений за перевіреним рецептом ще у 1921 році, засіб дбає не тільки про пасма, а й шкіру голови. Натуральні екстракти хрону й очитка у комплексі з олією листя розмарину здатні нормалізувати обмінні процеси, значно прискорюючи ріст волосся, укріплюючи його структуру і запобігаючи пошкодженням.</p><p style=\"margin-left:0px;\"><strong>Особливості Weleda Revitalising Hair Tonic With Rosemary:</strong></p><p style=\"margin-left:0px;\"><i>- вирізняється яскравим ароматом розмарину з камфорно-м'ятними нотами;</i><br><i>- має повністю натуральний склад, веганський;</i><br><i>- дерматологічно протестований;</i><br><i>- не потребує змивання, діє без обтяження;</i><br><i>- чудово освіжає і тонізує;</i><br><i>- олія листя розмарину покращує мікроциркуляцію, пробуджує волосяні фолікули, що «сплять»;</i><br><i>- екстракт хрону звичайного, багатий на вітаміни та мінерали, зміцнює волосся від коренів до кінчиків;</i><br><i>- екстракт очитка сприяє утриманню вологу у клітинах, запобігаючи ламкості і посіченню пасм, повертає локонам здорове сяйво.</i></p>",
+        "method_apply": "<p style=\"margin-left:0px;\">Для досягнення найкращих результатів використовуйте&nbsp;тонік-стимулятор від випадіння і для інтенсивного росту волосся Weleda двічі на день – вранці та ввечері протягом 3-х місяців.</p><ol><li data-list-item-id=\"e92ea5605f16d8a8fd57f87f0fe746923\"><p style=\"margin-left:0px;\">Нанесіть невелику кількість тоніка безпосередньо на шкіру голови.</p></li><li data-list-item-id=\"ea846b537bf61fba70996ea788993a3ec\"><p style=\"margin-left:0px;\">Розподіліть рівномірно по всій поверхні шкіри голови, особливо приділяючи увагу проблемним зонам.</p></li><li data-list-item-id=\"ee01e90de021be85fb4fab06266ba6efa\"><p style=\"margin-left:0px;\">Ніжно помасажуйте шкіру голови кінчиками пальців протягом кількох хвилин. Це допоможе тоніку краще ввібратися та стимулює кровообіг.</p></li><li data-list-item-id=\"e907d91d15c0e8c9bb2213de4864686ef\"><p style=\"margin-left:0px;\">Не змивайте тонік.</p></li></ol><p style=\"margin-left:0px;\">Для зручнішого нанесення ви можете використовувати аплікатор або піпетку.</p><p style=\"margin-left:0px;\">Регулярне щоденне використання тоніка є ключем до помітних результатів у боротьбі з випадінням волосся та стимуляції його росту.</p><p style=\"margin-left:0px;\">Рекомендуємо використовувати повний курс догляду за волоссям з розмарином. Чотири продукти, що входять у лінійку, забезпечують комплексний догляд, що допомагає зміцнити волосся, зменшити випадіння та повернути йому здоровий вигляд.</p><p style=\"margin-left:0px;\">За 12 тижнів регулярного використання ви можете помітити значні зміни: волосся стає міцнішим, густішим та блискучим, а випадіння може зменшитися до 65%*.</p><p style=\"margin-left:0px;\">Лінійка включає:</p><p style=\"margin-left:0px;\">Олія-живлення для сухого та ламкого волосся<br>Шампунь відновлюючий з розмарином та гіалуроновою кислотою<br>Кондиціонер відновлюючий з розмарином та протеїнами<br>Тонік-стимулятор для активації росту та зменшення випадіння</p>",
+        "composition": "Water (AQUA), Alcohol, Cochlearia Armoracia Extract, Sedum Acre Extract, Rosmarinus Officinalis Leaf Oil, Potassium Carbonate, Fragrance (PARFUM), Limonene, Linalool, Geraniol",
+        "count": 5,
+        "price": "449.00",
+        "discount": 0,
+        "is_bestseller": false,
+        "is_new": false,
+        "vegan_frendly": false,
+        "derma": false,
+        "delivery": false,
+        "active": false,
+        "characteristics": [
+            2,
+            3,
+            1
+        ]
+    }
+},
+{
+    "model": "goods.product",
+    "pk": 26,
+    "fields": {
+        "created": "2026-06-11T18:31:00.015Z",
+        "updated": "2026-06-14T18:29:55.482Z",
+        "slug": "ochishuvalna-zvolozhuvalna-emulsiya-dlya-normalnoyi-ta-suhoyi-shkiri-oblichchya-i-tila",
+        "title": "Очищувальна зволожувальна емульсія для нормальної та сухої шкіри обличчя і тіла",
+        "cateogry": 6,
+        "description": "<p style=\"margin-left:0px;\">Видалити забруднення, надлишки себума та макіяж може кожен другий очищувальний засіб, але очищувальна зволожувальна емульсія CeraVe може зробити це, не порушивши бар'єрні властивості шкіри обличчя та тіла. Цей фактор особливо важливий для людей, чий шкірний покрив схильний до сухості, адже йому набагато складніше втримати дорогоцінну вологу. Формула засобу містить кераміди та гіалуронову кислоту, які забезпечують стійкий потік живлення клітин. Найкраще підходить для очищення нормальної та сухої шкіри обличчя та тіла.</p><p style=\"margin-left:0px;\"><i><strong>Особливості очищувальної зволожувальної емульсії для нормальної та сухої шкіри обличчя і тіла від бренду CeraVe:</strong></i></p><p style=\"margin-left:0px;\"><i>- підходить для нормальної і сухої шкіри обличчя і тіла;</i><br><i>- дбайливо видаляє забруднення, себум і залишки декоративних засобів;</i><br><i>- перешкоджає виникненню стягнутості та сухості;</i><br><i>- при виготовленні застосовується технологія MVE (запатентована система доставки зволожувальних інгредієнтів в клітини для збереження м’якості шкіри протягом усього дня);</i><br><i>- кераміди допомагають відновити та підтримувати цілісність захисного бар'єру;</i><br><i>- гіалуронова кислота допомагає підтримувати оптимальний рівень гідратації;</i><br><i>- некомедогенна формула;</i><br><i>- не викликає подразнень та почервоніння;</i><br><i>- розроблена дерматологами та схвалена National Eczema Association.</i></p>",
+        "method_apply": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(33,33,33);\">нанести емульсію на вологу шкіру круговими рухами. Змити водою. Уникати зони навколо очей. У разі потрапляння в очі негайно промийте їх водою.</span></p>",
+        "composition": "Aqua/water, Glycerin, Cetearyl Alcohol, Peg-40 Stearate, Stearyl Alcohol, Potassium Phosphate, Ceramide Np, Ceramide AP, Ceramide Eop, Carbomer, Glyceryl Stearate, Behentrimonium Methosulfate, Sodium Lauroyl Lactylate, Sodium Hyaluronate, Cholesterol, Phenoxyethanol, Disodium Edta, Dipotassium Phosphate, Tocopherol, Phytosphingosine, Xanthan Gum, Cetyl Alcohol, Polysorbate 20, Ethylhexylglycerin. (Code F.i.l. D214629/4)",
+        "count": 1,
+        "price": "239.00",
+        "discount": 0,
+        "is_bestseller": false,
+        "is_new": true,
+        "vegan_frendly": true,
+        "derma": true,
+        "delivery": false,
+        "active": true,
+        "characteristics": [
+            2,
+            3,
+            1
+        ]
+    }
+},
+{
+    "model": "goods.product",
+    "pk": 27,
+    "fields": {
+        "created": "2026-06-11T18:34:18.701Z",
+        "updated": "2026-06-14T18:30:14.956Z",
+        "slug": "nabir-dlya-doglyadu-za-volossyam",
+        "title": "Набір для догляду за волоссям",
+        "cateogry": 7,
+        "description": "<p style=\"margin-left:0px;\"><strong>Склад набору:</strong>&nbsp;Безсульфатний шампунь для нормального волосся - Joko Blend Truly Natural, 250 мл&nbsp; +&nbsp;Бальзам для всіх типів волосся - Joko Blend Deep Care, 250 мл</p><p style=\"margin-left:0px;\">Набір для догляду за волоссям Silky Touch – нове доповнення лінійки Joko Blend. Український бренд розпочинав у 2016 році з кавових скрабів для тіла. Асортимент постійно розширюється, але принципи залишаються незмінними. Засоби повністю безпечні, виготовляються згідно з міжнародними стандартами, з турботою про клієнтів та відповідно до трендів.</p><p style=\"margin-left:0px;\"><strong>Безсульфатний шампунь для нормального волосся Truly Natural - Joko Blend</strong><br><i>- ідеально підходить для щоденного використання;</i><br><i>- поєднує очищення зі зволоженням, живленням, відновленням та зміцненням;</i><br><i>- збагачений протеїнами пшениці, олією сафлори, екстрактами фукусу та ламінарії;</i><br><i>- містить ефірну олію розмарину;</i><br><i>- м'яко очищає та забезпечує комплексний догляд;</i><br><i>- полегшує розчісування, надає блиску та об'єму;</i><br><i>- наповнює життєвою силою і сприяє перетворенню по всій довжині.</i><br><br><strong>Бальзам для всіх типів волосся Deep Care - Joko Blend</strong><br><i>- багатофункціональний та універсальний засіб;</i><br><i>- на основі сквалану, протеїнів шовку та екстрактів морських водоростей;</i><br><i>- з натуральними оліями авокадо та мигдалю;</i><br><i>- створює тонкий захисний шар без обтяження;</i><br><i>- повертає локонам природну еластичність та гарне сяйво;</i><br><i>- вирішує проблему посічених кінчиків;</i><br><i>- ефективно бореться ламкістю та надмірним випаданням.</i></p>",
+        "method_apply": "<p style=\"margin-left:0px;\"><strong>Безсульфатний шампунь для нормального волосся - Joko Blend Truly Natural</strong></p><p style=\"margin-left:0px;\">Нанести шампунь на вологе волосся і ретельно масажувати до утворення піни від коренів до кінчиків. Промити водою. За необхідності повторити. Підходить для щоденного застосування.</p><p style=\"margin-left:0px;\"><strong>Бальзам для всіх типів волосся - Joko Blend Deep Care</strong></p><p style=\"margin-left:0px;\">Нанести бальзам на вологе волосся після миття шампунем Joko Blend™, залишити на 2-5 хвилин. Змити водою. Підходить для щоденного застосування.</p>",
+        "composition": "Joko Blend Truly Natural\r\n\r\nAqua (Water), Disodium Laureth Sulfosuccinate, Cocamidopropyl Betaine, Sodium Cocoyl Isethionate, Coco-Glucoside, Sorbitol, Glycerin, Glyceryl Oleate, Sodium Chloride, Hydrolyzed Wheat Protein, Cetrimonium Chloride, Amodimethicone, Trideceth-12, Polyquaternium-44, Polyquaternium-7, Laminaria Digitata (Horsetail Kelp) Extract, Fucus Vesiculosus (Bladderwrack) Extract, Coconut Oil Glycereth-8 Esters, Allantoin, Panthenol, PEG-150 Polyglyceryl-2 Tristearate, Laureth-3, Dipropylene Glycol, Parfum (Fragrance), Rosmarinus Officinalis (Rosemary) Leaf Oil, Methylchloroisothiazolinone, Methylisothiazolinone, Triethanolamin, Limonene.\r\n\r\nJoko Blend Deep Care\r\n\r\nAqua (Water), Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Behentrimonium Chloride, Behenamidopropyl Dimethylamine, Amodimethicone, Trideceth-12, Cetrimonium Chloride, Prunus Amygdalus Dulcis (Sweet Almond) Oil, Persea Gratissima (Avocado) Oil, Hydrolyzed Wheat Protein, Squalane, Laminaria Digitata (Horsetail Kelp) Extract, Fucus Vesiculosus (Bladderwrack) Extract, Crambe Abyssinica Seed Oil, Phytosterols, Oleyl Alcohol, Tocopheryl Acetate, Methylchloroisothiazolinone, Methylisothiazolinone, Parfum (Fragrance), BHT, Lactic Acid, Citric Acid, Sodium Benzoate, Limonene.",
+        "count": 0,
+        "price": "123.00",
+        "discount": 0,
+        "is_bestseller": true,
+        "is_new": false,
+        "vegan_frendly": true,
+        "derma": true,
+        "delivery": true,
+        "active": false,
+        "characteristics": [
+            2,
+            3,
+            1
+        ]
+    }
+},
+{
+    "model": "goods.product",
+    "pk": 28,
+    "fields": {
+        "created": "2026-06-11T18:36:03.774Z",
+        "updated": "2026-06-23T14:08:25.983Z",
+        "slug": "balzam-stik-dlya-gub-shvidka-dopomoga",
+        "title": "Бальзам стік для губ \"Швидка допомога\"",
+        "cateogry": 7,
+        "description": "<p style=\"margin-left:0px;\">Косметичний бренд Carmex є виробником косметики, що не тестується на тваринах. Особливої ​​популярності набув унікальний бальзам-стік «Швидка допомога», який призначений для ефективного зволоження, пом'якшення та захисту шкіри губ від агресивного впливу зовнішніх факторів. Формула Carmex Lip Balm миттєво усуває сухість, стягнутість та лущення, а також надає губкам візуального об'єму.</p><p style=\"margin-left:0px;\"><i><strong>Особливості бальзаму-стіку для губ «Швидка допомога» від Carmex:</strong></i></p><p style=\"margin-left:0px;\"><i>- містить у складі захисні фільтри;</i><br><i>- збагачений поживними оліями для пом'якшення шкіри губ;</i><br><i>- загоює тріщини та запобігає їх подальшій появі;</i><br><i>- зручний формат;</i><br><i>- не має запаху.</i></p>",
+        "method_apply": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(33,33,33);\">Нанесіть бальзам на шкіру губ.</span></p>",
+        "composition": "Petrolatum, Lanolin, Cera Alba, Cetyl Esters, Theobroma Cacao Seed Butter, Euphorbia Cerifera Cera, Ethylhexyl Methoxycinnamate, Benzophenone-3, Limnanthes Alba Seed Oil, Aroma, BHT, Camphor, Menthol, Salicylic Acid, Stevia Rebaudiana Extract, Tocopherol, Vanillin, Limonene, Linalool",
+        "count": 5,
+        "price": "109.00",
+        "discount": 5,
+        "is_bestseller": false,
+        "is_new": true,
+        "vegan_frendly": false,
+        "derma": true,
+        "delivery": true,
+        "active": false,
+        "characteristics": [
+            2,
+            3,
+            1
+        ]
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 23,
+    "fields": {
+        "created": "2026-06-11T17:33:50.955Z",
+        "updated": "2026-06-11T17:33:50.955Z",
+        "image": "products/kxw3cmt8jfrn_QRtIZN4.png",
+        "is_main": true,
+        "product": 7
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 24,
+    "fields": {
+        "created": "2026-06-11T17:33:50.960Z",
+        "updated": "2026-06-11T17:33:50.960Z",
+        "image": "products/8lxweuv8jmnw_etJbQOp.jpg",
+        "is_main": false,
+        "product": 7
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 25,
+    "fields": {
+        "created": "2026-06-11T17:33:50.964Z",
+        "updated": "2026-06-11T17:33:50.964Z",
+        "image": "products/fzm5qdmhkzch_8F3HaOO.jpg",
+        "is_main": false,
+        "product": 7
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 26,
+    "fields": {
+        "created": "2026-06-11T17:33:50.969Z",
+        "updated": "2026-06-11T17:33:50.969Z",
+        "image": "products/jt4rmffrow1r_7BGokdf.png",
+        "is_main": false,
+        "product": 7
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 27,
+    "fields": {
+        "created": "2026-06-11T17:33:50.971Z",
+        "updated": "2026-06-11T17:33:50.971Z",
+        "image": "products/w1z6o7osklf7_3oaJ2pO.jpg",
+        "is_main": false,
+        "product": 7
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 33,
+    "fields": {
+        "created": "2026-06-11T17:40:48.311Z",
+        "updated": "2026-06-11T17:41:21.795Z",
+        "image": "products/6j1r7dnphjoz.jpg",
+        "is_main": true,
+        "product": 10
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 34,
+    "fields": {
+        "created": "2026-06-11T17:41:21.796Z",
+        "updated": "2026-06-11T17:41:21.796Z",
+        "image": "products/m9cdkbfiguu8.jpg",
+        "is_main": false,
+        "product": 10
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 35,
+    "fields": {
+        "created": "2026-06-11T17:41:21.797Z",
+        "updated": "2026-06-11T17:41:21.797Z",
+        "image": "products/tefv3ix53f9k.jpg",
+        "is_main": false,
+        "product": 10
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 36,
+    "fields": {
+        "created": "2026-06-11T17:41:21.798Z",
+        "updated": "2026-06-11T17:41:21.798Z",
+        "image": "products/zex6qybspzac.jpg",
+        "is_main": false,
+        "product": 10
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 37,
+    "fields": {
+        "created": "2026-06-11T17:44:14.338Z",
+        "updated": "2026-06-11T17:44:14.338Z",
+        "image": "products/oihvwr7dagsv.jpg",
+        "is_main": false,
+        "product": 11
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 38,
+    "fields": {
+        "created": "2026-06-11T17:44:14.341Z",
+        "updated": "2026-06-11T17:44:14.341Z",
+        "image": "products/pixd8jqg6sdd.jpg",
+        "is_main": false,
+        "product": 11
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 39,
+    "fields": {
+        "created": "2026-06-11T17:44:14.346Z",
+        "updated": "2026-06-11T17:44:14.346Z",
+        "image": "products/w5q30talcwjh.jpg",
+        "is_main": true,
+        "product": 11
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 42,
+    "fields": {
+        "created": "2026-06-11T17:55:00.224Z",
+        "updated": "2026-06-11T17:55:22.008Z",
+        "image": "products/oaqvmchqmol2.jpg",
+        "is_main": true,
+        "product": 14
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 43,
+    "fields": {
+        "created": "2026-06-11T17:55:22.010Z",
+        "updated": "2026-06-11T17:55:22.010Z",
+        "image": "products/cxmqhqyj01fh.jpg",
+        "is_main": false,
+        "product": 14
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 44,
+    "fields": {
+        "created": "2026-06-11T17:59:22.050Z",
+        "updated": "2026-06-11T17:59:22.050Z",
+        "image": "products/bzoct7sgmwus.jpg",
+        "is_main": false,
+        "product": 15
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 45,
+    "fields": {
+        "created": "2026-06-11T17:59:22.052Z",
+        "updated": "2026-06-11T17:59:22.052Z",
+        "image": "products/t8pw8o80mvda.jpg",
+        "is_main": false,
+        "product": 15
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 46,
+    "fields": {
+        "created": "2026-06-11T17:59:22.055Z",
+        "updated": "2026-06-11T17:59:22.055Z",
+        "image": "products/y4pcfserymks.jpg",
+        "is_main": true,
+        "product": 15
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 62,
+    "fields": {
+        "created": "2026-06-11T18:26:52.215Z",
+        "updated": "2026-06-11T18:26:52.215Z",
+        "image": "products/ftcewdrai4pw.jpg",
+        "is_main": false,
+        "product": 24
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 63,
+    "fields": {
+        "created": "2026-06-11T18:26:52.217Z",
+        "updated": "2026-06-11T18:26:52.217Z",
+        "image": "products/joi9raiqcn2c.jpg",
+        "is_main": false,
+        "product": 24
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 64,
+    "fields": {
+        "created": "2026-06-11T18:26:52.218Z",
+        "updated": "2026-06-11T18:26:52.218Z",
+        "image": "products/rrnhweiaeymu.jpg",
+        "is_main": true,
+        "product": 24
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 65,
+    "fields": {
+        "created": "2026-06-11T18:29:00.327Z",
+        "updated": "2026-06-11T18:29:00.327Z",
+        "image": "products/c6dceyp7bbjp.jpg",
+        "is_main": true,
+        "product": 25
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 66,
+    "fields": {
+        "created": "2026-06-11T18:29:00.329Z",
+        "updated": "2026-06-11T18:29:00.329Z",
+        "image": "products/ic9mebqmoagb.jpg",
+        "is_main": false,
+        "product": 25
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 67,
+    "fields": {
+        "created": "2026-06-11T18:29:00.330Z",
+        "updated": "2026-06-11T18:29:00.330Z",
+        "image": "products/mmepu1syb9md.jpg",
+        "is_main": false,
+        "product": 25
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 68,
+    "fields": {
+        "created": "2026-06-11T18:31:00.021Z",
+        "updated": "2026-06-11T18:31:00.021Z",
+        "image": "products/juntvokdslo8.jpg",
+        "is_main": false,
+        "product": 26
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 69,
+    "fields": {
+        "created": "2026-06-11T18:31:00.024Z",
+        "updated": "2026-06-11T18:31:00.024Z",
+        "image": "products/ojidf0tgpsvv.jpg",
+        "is_main": false,
+        "product": 26
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 70,
+    "fields": {
+        "created": "2026-06-11T18:31:00.025Z",
+        "updated": "2026-06-11T18:31:00.025Z",
+        "image": "products/xy4zhop3btvl.jpg",
+        "is_main": false,
+        "product": 26
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 71,
+    "fields": {
+        "created": "2026-06-11T18:34:18.706Z",
+        "updated": "2026-06-11T18:34:18.706Z",
+        "image": "products/anglu3vix5gq.jpg",
+        "is_main": true,
+        "product": 27
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 72,
+    "fields": {
+        "created": "2026-06-11T18:34:18.708Z",
+        "updated": "2026-06-11T18:34:18.708Z",
+        "image": "products/bvcfm6em93dt.jpg",
+        "is_main": false,
+        "product": 27
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 73,
+    "fields": {
+        "created": "2026-06-11T18:34:18.710Z",
+        "updated": "2026-06-11T18:34:18.710Z",
+        "image": "products/dbsqaa1adktg.jpg",
+        "is_main": false,
+        "product": 27
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 74,
+    "fields": {
+        "created": "2026-06-11T18:34:18.711Z",
+        "updated": "2026-06-11T18:34:18.711Z",
+        "image": "products/zuzwu9aiqrcb.jpg",
+        "is_main": false,
+        "product": 27
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 75,
+    "fields": {
+        "created": "2026-06-11T18:36:03.778Z",
+        "updated": "2026-06-11T18:36:03.778Z",
+        "image": "products/aotpj3vlz0d7.jpg",
+        "is_main": true,
+        "product": 28
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 76,
+    "fields": {
+        "created": "2026-06-11T18:36:03.779Z",
+        "updated": "2026-06-11T18:36:03.779Z",
+        "image": "products/e1sgedqjazzm.jpg",
+        "is_main": false,
+        "product": 28
+    }
+},
+{
+    "model": "goods.foto",
+    "pk": 77,
+    "fields": {
+        "created": "2026-06-11T18:36:03.780Z",
+        "updated": "2026-06-11T18:36:03.780Z",
+        "image": "products/w5qlalblozgo.jpg",
+        "is_main": false,
+        "product": 28
+    }
+},
+{
+    "model": "order.deliverymethod",
+    "pk": 1,
+    "fields": {
+        "title": "Нова Пошта",
+        "short_description": "У відділення або поштомат",
+        "is_active": true
+    }
+},
+{
+    "model": "order.deliverymethod",
+    "pk": 2,
+    "fields": {
+        "title": "Укрпошта",
+        "short_description": "Доставка по всій Україні",
+        "is_active": true
+    }
+},
+{
+    "model": "order.paymentmethod",
+    "pk": 1,
+    "fields": {
+        "title": "Післяплата (накладений платіж)",
+        "short_description": "Оплата при отриманні у відділенні",
+        "is_active": true
+    }
+},
+{
+    "model": "order.order",
+    "pk": 2,
+    "fields": {
+        "created": "2026-06-23T12:49:27.072Z",
+        "updated": "2026-06-23T16:47:43.290Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 3,
+    "fields": {
+        "created": "2026-06-23T13:43:50.246Z",
+        "updated": "2026-06-23T16:31:57.950Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 4,
+    "fields": {
+        "created": "2026-06-25T12:08:35.374Z",
+        "updated": "2026-06-25T12:08:35.374Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": "Test 1"
+    }
+},
+{
+    "model": "order.order",
+    "pk": 8,
+    "fields": {
+        "created": "2026-06-25T12:38:20.878Z",
+        "updated": "2026-06-25T12:38:20.878Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": "тест 1"
+    }
+},
+{
+    "model": "order.order",
+    "pk": 9,
+    "fields": {
+        "created": "2026-06-25T12:38:53.694Z",
+        "updated": "2026-06-25T12:38:53.694Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (098) 888-88-88",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 10,
+    "fields": {
+        "created": "2026-06-25T15:06:23.804Z",
+        "updated": "2026-06-25T15:06:23.804Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-23",
+        "email": "gvs1991.vs@sdf.sdf",
+        "delivery_method": 2,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": "test 2"
+    }
+},
+{
+    "model": "order.order",
+    "pk": 11,
+    "fields": {
+        "created": "2026-06-25T15:12:42.841Z",
+        "updated": "2026-06-25T15:12:42.841Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": "test 3"
+    }
+},
+{
+    "model": "order.order",
+    "pk": 12,
+    "fields": {
+        "created": "2026-07-01T09:28:33.307Z",
+        "updated": "2026-07-01T09:28:33.307Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 13,
+    "fields": {
+        "created": "2026-07-01T09:31:16.994Z",
+        "updated": "2026-07-01T09:31:16.994Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 14,
+    "fields": {
+        "created": "2026-07-01T09:33:01.577Z",
+        "updated": "2026-07-01T09:33:01.577Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 15,
+    "fields": {
+        "created": "2026-07-01T09:37:24.710Z",
+        "updated": "2026-07-01T09:37:24.710Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 16,
+    "fields": {
+        "created": "2026-07-01T09:40:15.096Z",
+        "updated": "2026-07-01T09:40:15.096Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 17,
+    "fields": {
+        "created": "2026-07-01T09:43:03.040Z",
+        "updated": "2026-07-01T09:43:03.040Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 18,
+    "fields": {
+        "created": "2026-07-01T09:51:46.819Z",
+        "updated": "2026-07-01T09:51:46.819Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 2,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 19,
+    "fields": {
+        "created": "2026-07-01T10:35:13.995Z",
+        "updated": "2026-07-01T10:35:13.995Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@sdf.sdf",
+        "delivery_method": 2,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 20,
+    "fields": {
+        "created": "2026-07-01T11:24:06.750Z",
+        "updated": "2026-07-01T11:24:06.750Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 2,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 21,
+    "fields": {
+        "created": "2026-07-01T11:38:22.807Z",
+        "updated": "2026-07-01T11:38:22.807Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@sdf.sdf",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 22,
+    "fields": {
+        "created": "2026-07-01T11:42:28.136Z",
+        "updated": "2026-07-01T11:42:28.136Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 23,
+    "fields": {
+        "created": "2026-07-01T11:47:51.374Z",
+        "updated": "2026-07-01T11:47:51.374Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@sdf.sdf",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 24,
+    "fields": {
+        "created": "2026-07-01T11:52:57.051Z",
+        "updated": "2026-07-01T11:52:57.051Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 25,
+    "fields": {
+        "created": "2026-07-01T11:56:00.347Z",
+        "updated": "2026-07-01T11:56:00.347Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 26,
+    "fields": {
+        "created": "2026-07-01T13:58:32.530Z",
+        "updated": "2026-07-01T13:58:32.530Z",
+        "status": "new",
+        "first_name": "Виктор",
+        "last_name": "Герасимов",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 2,
+        "payment_method": 1,
+        "city": "Rivne",
+        "delivery_address": "ВУЛ КОРОЛЬОВА 5А",
+        "comment": "Test comment"
+    }
+},
+{
+    "model": "order.order",
+    "pk": 27,
+    "fields": {
+        "created": "2026-07-01T13:59:45.737Z",
+        "updated": "2026-07-01T13:59:45.737Z",
+        "status": "new",
+        "first_name": "Виктор",
+        "last_name": "Герасимов",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 2,
+        "payment_method": 1,
+        "city": "Rivne",
+        "delivery_address": "ВУЛ КОРОЛЬОВА 5А",
+        "comment": "Comment 1"
+    }
+},
+{
+    "model": "order.order",
+    "pk": 28,
+    "fields": {
+        "created": "2026-07-01T14:01:24.460Z",
+        "updated": "2026-07-01T14:01:24.460Z",
+        "status": "new",
+        "first_name": "Виктор",
+        "last_name": "Герасимов",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 2,
+        "payment_method": 1,
+        "city": "Rivne",
+        "delivery_address": "ВУЛ КОРОЛЬОВА 5А",
+        "comment": "comment"
+    }
+},
+{
+    "model": "order.order",
+    "pk": 29,
+    "fields": {
+        "created": "2026-07-01T14:07:34.539Z",
+        "updated": "2026-07-01T14:07:34.539Z",
+        "status": "new",
+        "first_name": "Виктор",
+        "last_name": "Герасимов",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 2,
+        "payment_method": 1,
+        "city": "Rivne",
+        "delivery_address": "ВУЛ КОРОЛЬОВА 5А",
+        "comment": "comment"
+    }
+},
+{
+    "model": "order.order",
+    "pk": 30,
+    "fields": {
+        "created": "2026-07-01T14:16:58.284Z",
+        "updated": "2026-07-01T14:16:58.284Z",
+        "status": "new",
+        "first_name": "Виктор",
+        "last_name": "Герасимов",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "Rivne",
+        "delivery_address": "ВУЛ КОРОЛЬОВА 5А",
+        "comment": "comment"
+    }
+},
+{
+    "model": "order.order",
+    "pk": 31,
+    "fields": {
+        "created": "2026-07-01T14:18:54.310Z",
+        "updated": "2026-07-01T14:18:54.310Z",
+        "status": "new",
+        "first_name": "Виктор",
+        "last_name": "Герасимов",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "Rivne",
+        "delivery_address": "ВУЛ КОРОЛЬОВА 5А",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 32,
+    "fields": {
+        "created": "2026-07-01T14:23:34.015Z",
+        "updated": "2026-07-01T14:23:34.015Z",
+        "status": "new",
+        "first_name": "Виктор",
+        "last_name": "Герасимов",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "Rivne",
+        "delivery_address": "ВУЛ КОРОЛЬОВА 5А",
+        "comment": "Comment 2"
+    }
+},
+{
+    "model": "order.order",
+    "pk": 33,
+    "fields": {
+        "created": "2026-07-01T14:29:01.575Z",
+        "updated": "2026-07-01T14:29:01.575Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 2,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": "Many comment Many comment Many comment Many comment Many comment Many comment Many comment"
+    }
+},
+{
+    "model": "order.order",
+    "pk": 34,
+    "fields": {
+        "created": "2026-07-01T14:33:58.291Z",
+        "updated": "2026-07-01T14:33:58.291Z",
+        "status": "new",
+        "first_name": "Виктор",
+        "last_name": "Герасимов",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "Rivne",
+        "delivery_address": "ВУЛ КОРОЛЬОВА 5А",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 35,
+    "fields": {
+        "created": "2026-07-01T14:37:37.493Z",
+        "updated": "2026-07-01T14:37:37.493Z",
+        "status": "new",
+        "first_name": "Виктор",
+        "last_name": "Герасимов",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "Rivne",
+        "delivery_address": "ВУЛ КОРОЛЬОВА 5А",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 36,
+    "fields": {
+        "created": "2026-07-01T14:44:04.543Z",
+        "updated": "2026-07-01T14:44:04.543Z",
+        "status": "new",
+        "first_name": "Виктор",
+        "last_name": "Герасимов",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "Rivne",
+        "delivery_address": "ВУЛ КОРОЛЬОВА 5А",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 37,
+    "fields": {
+        "created": "2026-07-01T14:46:37.015Z",
+        "updated": "2026-07-01T14:46:37.015Z",
+        "status": "new",
+        "first_name": "Виктор",
+        "last_name": "Герасимов",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "Rivne",
+        "delivery_address": "ВУЛ КОРОЛЬОВА 5А",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 38,
+    "fields": {
+        "created": "2026-07-01T14:48:03.140Z",
+        "updated": "2026-07-01T14:48:03.140Z",
+        "status": "new",
+        "first_name": "Виктор",
+        "last_name": "Герасимов",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "Rivne",
+        "delivery_address": "ВУЛ КОРОЛЬОВА 5А",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 71,
+    "fields": {
+        "created": "2026-07-01T18:12:47.890Z",
+        "updated": "2026-07-01T18:12:47.890Z",
+        "status": "new",
+        "first_name": "Виктор",
+        "last_name": "Герасимов",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "Rivne",
+        "delivery_address": "ВУЛ КОРОЛЬОВА 5А",
+        "comment": "Comment 1"
+    }
+},
+{
+    "model": "order.order",
+    "pk": 72,
+    "fields": {
+        "created": "2026-07-01T18:15:36.824Z",
+        "updated": "2026-07-01T18:15:36.824Z",
+        "status": "new",
+        "first_name": "Виктор",
+        "last_name": "Герасимов",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "Rivne",
+        "delivery_address": "ВУЛ КОРОЛЬОВА 5А",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 73,
+    "fields": {
+        "created": "2026-07-01T18:26:41.880Z",
+        "updated": "2026-07-01T18:26:41.880Z",
+        "status": "new",
+        "first_name": "Виктор",
+        "last_name": "Герасимов",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "Rivne",
+        "delivery_address": "ВУЛ КОРОЛЬОВА 5А",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 74,
+    "fields": {
+        "created": "2026-07-01T18:35:09.257Z",
+        "updated": "2026-07-01T18:35:09.257Z",
+        "status": "new",
+        "first_name": "Виктор",
+        "last_name": "Герасимов",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "Rivne",
+        "delivery_address": "ВУЛ КОРОЛЬОВА 5А",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 75,
+    "fields": {
+        "created": "2026-07-01T18:36:26.679Z",
+        "updated": "2026-07-01T18:36:26.679Z",
+        "status": "new",
+        "first_name": "Виктор",
+        "last_name": "Герасимов",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@sdf.sdf",
+        "delivery_method": 2,
+        "payment_method": 1,
+        "city": "Rivne",
+        "delivery_address": "ВУЛ КОРОЛЬОВА 5А",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 76,
+    "fields": {
+        "created": "2026-07-01T18:47:04.221Z",
+        "updated": "2026-07-01T18:47:04.221Z",
+        "status": "new",
+        "first_name": "Виктор",
+        "last_name": "Герасимов",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 2,
+        "payment_method": 1,
+        "city": "Rivne",
+        "delivery_address": "ВУЛ КОРОЛЬОВА 5А",
+        "comment": "comment 4"
+    }
+},
+{
+    "model": "order.order",
+    "pk": 109,
+    "fields": {
+        "created": "2026-07-02T08:46:28.558Z",
+        "updated": "2026-07-02T08:46:28.558Z",
+        "status": "new",
+        "first_name": "GERASIMOV",
+        "last_name": "VIKTOR",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@sdf.sdf",
+        "delivery_method": 1,
+        "payment_method": 1,
+        "city": "М. РІВНЕ",
+        "delivery_address": "ВУЛ. БУКОВИНСЬКА",
+        "comment": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 110,
+    "fields": {
+        "created": "2026-07-02T11:25:56.613Z",
+        "updated": "2026-07-02T11:25:56.613Z",
+        "status": "new",
+        "first_name": "Виктор",
+        "last_name": "Герасимов",
+        "phone": "+38 (096) 139-47-48",
+        "email": "gvs1991.vs@gmail.com",
+        "delivery_method": 2,
+        "payment_method": 1,
+        "city": "Rivne",
+        "delivery_address": "ВУЛ КОРОЛЬОВА 5А",
+        "comment": ""
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 4,
+    "fields": {
+        "order": 3,
+        "product": 28,
+        "price": "103.55",
+        "quantity": 4
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 5,
+    "fields": {
+        "order": 2,
+        "product": 14,
+        "price": "340.00",
+        "quantity": 5
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 6,
+    "fields": {
+        "order": 4,
+        "product": 7,
+        "price": "100.00",
+        "quantity": 3
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 10,
+    "fields": {
+        "order": 8,
+        "product": 11,
+        "price": "400.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 11,
+    "fields": {
+        "order": 9,
+        "product": 14,
+        "price": "340.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 12,
+    "fields": {
+        "order": 10,
+        "product": 11,
+        "price": "400.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 13,
+    "fields": {
+        "order": 11,
+        "product": 7,
+        "price": "100.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 14,
+    "fields": {
+        "order": 12,
+        "product": 28,
+        "price": "103.55",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 15,
+    "fields": {
+        "order": 13,
+        "product": 28,
+        "price": "103.55",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 16,
+    "fields": {
+        "order": 14,
+        "product": 28,
+        "price": "103.55",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 17,
+    "fields": {
+        "order": 15,
+        "product": 10,
+        "price": "300.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 18,
+    "fields": {
+        "order": 16,
+        "product": 14,
+        "price": "340.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 19,
+    "fields": {
+        "order": 17,
+        "product": 11,
+        "price": "400.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 20,
+    "fields": {
+        "order": 18,
+        "product": 28,
+        "price": "103.55",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 21,
+    "fields": {
+        "order": 18,
+        "product": 27,
+        "price": "123.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 22,
+    "fields": {
+        "order": 19,
+        "product": 28,
+        "price": "103.55",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 23,
+    "fields": {
+        "order": 19,
+        "product": 24,
+        "price": "234.00",
+        "quantity": 2
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 24,
+    "fields": {
+        "order": 20,
+        "product": 14,
+        "price": "340.00",
+        "quantity": 2
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 25,
+    "fields": {
+        "order": 21,
+        "product": 14,
+        "price": "340.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 26,
+    "fields": {
+        "order": 22,
+        "product": 14,
+        "price": "340.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 27,
+    "fields": {
+        "order": 22,
+        "product": 28,
+        "price": "103.55",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 28,
+    "fields": {
+        "order": 22,
+        "product": 11,
+        "price": "400.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 29,
+    "fields": {
+        "order": 22,
+        "product": 10,
+        "price": "300.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 30,
+    "fields": {
+        "order": 23,
+        "product": 26,
+        "price": "239.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 31,
+    "fields": {
+        "order": 24,
+        "product": 27,
+        "price": "123.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 32,
+    "fields": {
+        "order": 25,
+        "product": 7,
+        "price": "100.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 33,
+    "fields": {
+        "order": 26,
+        "product": 11,
+        "price": "400.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 34,
+    "fields": {
+        "order": 27,
+        "product": 28,
+        "price": "103.55",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 35,
+    "fields": {
+        "order": 28,
+        "product": 10,
+        "price": "300.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 36,
+    "fields": {
+        "order": 29,
+        "product": 14,
+        "price": "340.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 37,
+    "fields": {
+        "order": 29,
+        "product": 28,
+        "price": "103.55",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 38,
+    "fields": {
+        "order": 30,
+        "product": 25,
+        "price": "449.00",
+        "quantity": 2
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 39,
+    "fields": {
+        "order": 31,
+        "product": 11,
+        "price": "400.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 40,
+    "fields": {
+        "order": 32,
+        "product": 14,
+        "price": "340.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 41,
+    "fields": {
+        "order": 32,
+        "product": 28,
+        "price": "103.55",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 42,
+    "fields": {
+        "order": 32,
+        "product": 11,
+        "price": "400.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 43,
+    "fields": {
+        "order": 32,
+        "product": 10,
+        "price": "300.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 44,
+    "fields": {
+        "order": 33,
+        "product": 28,
+        "price": "103.55",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 45,
+    "fields": {
+        "order": 34,
+        "product": 14,
+        "price": "340.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 46,
+    "fields": {
+        "order": 35,
+        "product": 11,
+        "price": "400.00",
+        "quantity": 3
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 47,
+    "fields": {
+        "order": 36,
+        "product": 27,
+        "price": "123.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 48,
+    "fields": {
+        "order": 37,
+        "product": 14,
+        "price": "340.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 49,
+    "fields": {
+        "order": 38,
+        "product": 28,
+        "price": "103.55",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 82,
+    "fields": {
+        "order": 71,
+        "product": 27,
+        "price": "123.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 83,
+    "fields": {
+        "order": 72,
+        "product": 27,
+        "price": "123.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 84,
+    "fields": {
+        "order": 73,
+        "product": 28,
+        "price": "103.55",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 85,
+    "fields": {
+        "order": 74,
+        "product": 26,
+        "price": "239.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 86,
+    "fields": {
+        "order": 75,
+        "product": 7,
+        "price": "100.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 87,
+    "fields": {
+        "order": 76,
+        "product": 14,
+        "price": "340.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 88,
+    "fields": {
+        "order": 76,
+        "product": 28,
+        "price": "103.55",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 89,
+    "fields": {
+        "order": 76,
+        "product": 11,
+        "price": "400.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 120,
+    "fields": {
+        "order": 109,
+        "product": 14,
+        "price": "340.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "order.orderitem",
+    "pk": 121,
+    "fields": {
+        "order": 110,
+        "product": 14,
+        "price": "340.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "pages.privacypolicy",
+    "pk": 1,
+    "fields": {
+        "created": "2026-06-26T10:50:50.846Z",
+        "updated": "2026-06-26T10:53:36.616Z",
+        "title": "Політика конфіденційності",
+        "content": "<h2 style=\"margin-left:0px;\"><strong>1. Загальні положення</strong></h2><p style=\"margin-left:0px;\">Ця Політика конфіденційності визначає порядок збору, обробки, використання та захисту персональних даних користувачів інтернет-магазину <strong>MyBEAUTY</strong> (далі — Сайт), що знаходиться за адресою robeauty.me.</p><p style=\"margin-left:0px;\">Ми з великою повагою ставимося до конфіденційної інформації кожного клієнта та відвідувача нашого Сайту. Будь ласка, уважно прочитайте цей документ перед використанням Сайту чи оформленням замовлень. Використовуючи будь-яку частину Сайту, ви погоджуєтеся з умовами цієї Політики.</p><h2 style=\"margin-left:0px;\"><strong>2. Які дані ми збираємо</strong></h2><p style=\"margin-left:0px;\">Ми можемо збирати та обробляти такі категорії персональних даних:</p><ul><li data-list-item-id=\"e0cfd160b79c812502dcfd421fd645463\"><p style=\"margin-left:0px;\"><strong>Контактні дані:</strong> ваше ім'я, номер телефону, адреса електронної пошти.</p></li><li data-list-item-id=\"e2d87e3958f43a6a36987f5959181a325\"><p style=\"margin-left:0px;\"><strong>Дані доставки:</strong> поштова адреса, місто, номер відділення Нової Пошти чи Укрпошти, що вказуються під час оформлення замовлення.</p></li><li data-list-item-id=\"e6eb8440e6c67b6fc43d0790a71704a4e\"><p style=\"margin-left:0px;\"><strong>Технічні дані:</strong> IP-адреса, тип та версія браузера, налаштування часового поясу, операційна система, дані про ваші відвідування та поведінку на Сайті (через файли cookie).</p></li><li data-list-item-id=\"eb6fb441b205511d844961bb0792cef0f\"><p style=\"margin-left:0px;\"><strong>Інформація про замовлення:</strong> перелік придбаних товарів, історія покупок, застосовані промокоди та деталі оплати (за винятком повних реквізитів банківських карток, які обробляються платіжною системою).</p></li></ul><h2 style=\"margin-left:0px;\"><strong>3. Мета збору та обробки персональних даних</strong></h2><p style=\"margin-left:0px;\">Ми використовуємо отриману інформацію виключно для:</p><ul><li data-list-item-id=\"e882ee1dea1a8061aea150053d4784043\"><p style=\"margin-left:0px;\">Обробки та виконання ваших замовлень (включаючи підтвердження покупки, відправку товарів поштовою службою та надсилання фіскальних чеків).</p></li><li data-list-item-id=\"e6ea106b789cd782742b8c7d3a89e765d\"><p style=\"margin-left:0px;\">Надання клієнтської підтримки, консультування щодо підбору доглядової косметики та вирішення можливих питань із доставкою.</p></li><li data-list-item-id=\"e541971f075ca6fc062a986e7a36f42c7\"><p style=\"margin-left:0px;\">Надсилання повідомлень про статус замовлення та маркетингових пропозицій (промокоди, акції, новинки), якщо ви надали на це згоду.</p></li><li data-list-item-id=\"e0f2ea6034dac4dbe0de41a0282719a8f\"><p style=\"margin-left:0px;\">Аналітики та оптимізації роботи Сайту, покращення асортименту товарів та зручності користування інтерфейсом.</p></li></ul><h2 style=\"margin-left:0px;\"><strong>4. Термін зберігання та захист персональних даних</strong></h2><p style=\"margin-left:0px;\">Ми зберігаємо ваші дані протягом терміну, необхідного для виконання цілей, зазначених у цій Політиці, або протягом терміну, визначеного чинним законодавством України (зокрема, щодо бухгалтерського та податкового обліку).</p><p style=\"margin-left:0px;\">Ми вживаємо належних технічних, організаційних та адміністративних заходів безпеки для захисту персональних даних від випадкової чи незаконної втрати, несанкціонованого доступу, зміни або розголошення. Доступ до ваших даних мають лише уповноважені працівники Сайту, які зобов'язані зберігати їх конфіденційність.</p><h2 style=\"margin-left:0px;\"><strong>5. Передача даних третім особам</strong></h2><p style=\"margin-left:0px;\">Ми не продаємо та не передаємо ваші персональні дані третім особам в комерційних цілях. Передача персональних даних можлива виключно у таких випадках:</p><ul><li data-list-item-id=\"ea8d9cc2811cbfa16f506f02b31a57b72\"><p style=\"margin-left:0px;\"><strong>Поштовим та логістичним службам:</strong> (наприклад, Нова Пошта, Укрпошта) для організації безпосередньої доставки вашого замовлення.</p></li><li data-list-item-id=\"eaeb8e8c4f6228d21e644fb2b3c7222d1\"><p style=\"margin-left:0px;\"><strong>Платіжним системам:</strong> для проведення безпечної онлайн-оплати замовлення на Сайті.</p></li><li data-list-item-id=\"e4cf10c4ffb08b78f3d17b1ee09768cfb\"><p style=\"margin-left:0px;\"><strong>Державним органам:</strong> відповідно до законодавства України у разі отримання офіційного запиту.</p></li></ul><h2 style=\"margin-left:0px;\"><strong>6. Права користувача</strong></h2><p style=\"margin-left:0px;\">Ви, як суб'єкт персональних даних, маєте право:</p><ul><li data-list-item-id=\"eac8fbab8c045ac9272442d8d9376a5ab\"><p style=\"margin-left:0px;\">Знати, які саме ваші персональні дані ми обробляємо.</p></li><li data-list-item-id=\"e1f9e96e168e94ff82d032d525d0ddf18\"><p style=\"margin-left:0px;\">Вимагати виправлення, оновлення або видалення ваших персональних даних із нашої бази.</p></li><li data-list-item-id=\"e2dda01904ee96444c0f2b77c5e9a7e0b\"><p style=\"margin-left:0px;\">Відкликати свою згоду на обробку персональних даних у будь-який момент (наприклад, відмовитися від розсилки).</p></li><li data-list-item-id=\"e892f39dd7a67ea1b211ca26a992f5850\"><p style=\"margin-left:0px;\">Звернутися зі скаргою щодо обробки даних до уповноважених органів або суду.</p></li></ul><h2 style=\"margin-left:0px;\"><strong>7. Використання файлів cookie</strong></h2><p style=\"margin-left:0px;\">Наш Сайт використовує файли cookie (куки) для забезпечення коректної роботи кошика, збереження вибраних товарів, автозаповнення полів та аналізу поведінки користувачів за допомогою сервісів вебаналітики. Ви можете вимкнути збереження cookie в налаштуваннях свого браузера, проте це може вплинути на функціональність деяких розділів магазину.</p><h2 style=\"margin-left:0px;\"><strong>8. Зміни до цієї Політики</strong></h2><p style=\"margin-left:0px;\">Ми залишаємо за собою право вносити зміни до цієї Політики конфіденційності в будь-який час. Актуальна версія документа завжди публікується на цій сторінці. Рекомендуємо періодично переглядати Політику конфіденційності, щоб бути в курсі актуальних правил захисту інформації.</p>"
+    }
+},
+{
+    "model": "pages.deliveryandpaypolicy",
+    "pk": 1,
+    "fields": {
+        "created": "2026-06-26T10:24:09.911Z",
+        "updated": "2026-06-26T17:31:21.887Z",
+        "title": "Оплата і доставка",
+        "content": "<p style=\"margin-left:0px;\"><strong>Ми пропонуємо доставку «Новою Поштою» по всій Україні за тарифами перевізника</strong></p><p style=\"margin-left:0px;\">Відправка замовлень здійснюється з <u>понеділка по суботу</u>.</p><p style=\"margin-left:0px;\">Доставка відбувається протягом <u>1-4 днів</u>.</p><p style=\"margin-left:0px;\">Замовлення прийняті до 12:00 передаємо на відправку в той же день.</p><p style=\"margin-left:0px;\">Замовлення прийняті після 12:00 передаються на відправку на наступний день.&nbsp;</p><p style=\"margin-left:0px;\">Для замовлень на суму від <span style=\"color:rgb(0,0,0);\">5000 грн</span> діє <u>безкоштовна доставка</u>.</p><p style=\"margin-left:0px;\"><strong>У разі не оплати замовлення протягом 24 годин з моменту оформлення, замовлення автоматично скасовується.</strong></p><p style=\"margin-left:0px;\">&nbsp;</p><p style=\"margin-left:0px;\">Після отримання замовлення службою доставки Ви отримаєте повідомлення з номером ТТН.</p><p style=\"margin-left:0px;\">Після доставки замовлення посилка зберігається у відділенні 7 днів, після чого ми відправляємо повідомлення про те, що на наступний день буде здійснене повернення.</p><p style=\"margin-left:0px;\">&nbsp;</p><p style=\"margin-left:0px;\"><strong>Оплата здійснюється наступними способами:</strong></p><ul><li data-list-item-id=\"e6b1776944192fcf42d8b27cdcd94fce7\"><p style=\"margin-left:0px;\">Повна оплата на розрахунковий рахунок банку</p></li><li data-list-item-id=\"e3d1b0bdc50994b0577153240e1cc20f8\"><p style=\"margin-left:0px;\">Післяплата на Новій Пошті з передоплатою 300 грн</p></li></ul>"
+    }
+},
+{
+    "model": "pages.returnpolicy",
+    "pk": 1,
+    "fields": {
+        "created": "2026-06-26T17:29:46.541Z",
+        "updated": "2026-06-26T17:36:08.639Z",
+        "title": "Обмін та повернення",
+        "content": "<p style=\"margin-left:0px;\">Згідно статті 9 Закону України «Про захист прав споживачів» від 12.05.1991 р №1023-ХІІ та Додатки №3 до Постанови КМУ «Про реалізацію окремих положень Закону України« Про захист прав споживачів» від 19.03.1994 р №172, парфумерно-косметичні товари належної якості не підлягають поверненню або обміну.</p><p style=\"margin-left:0px;\">&nbsp;</p><p style=\"margin-left:0px;\"><strong>ВАЖЛИВО!</strong></p><p style=\"margin-left:0px;\">Перед відправкою ми оглядаємо всі засоби на наявність пошкоджень. При отриманні просимо вас оглянути вміст посилки на пошті. У разі виявлення пошкодження, зверніться до працівника відділення, щоб зареєструвати звернення для відшкодування вартості пошкодженого товару.</p>"
+    }
+},
+{
+    "model": "pages.publicoffer",
+    "pk": 1,
+    "fields": {
+        "created": "2026-06-28T15:06:50.316Z",
+        "updated": "2026-06-28T15:18:58.338Z",
+        "title": "Публічна оферта",
+        "content": "<h2 style=\"margin-left:0cm;text-align:center;\"><strong>Договір публічної оферти</strong>&nbsp;</h2><p style=\"margin-left:0cm;text-align:justify;\">Цей договір є офіційною та публічною пропозицією Продавця укласти договір купівлі-продажу Товару, представленого на сайті lavin. Даний договір є публічним, тобто відповідно до статті 633 Цивільного кодексу України, його умови є однаковими для всіх покупців незалежно від їх статусу (фізична особа, юридична особа, фізична особа-підприємець) без надання переваги одному покупцю перед іншим. Шляхом укладення цього Договору покупець в повному обсязі приймає умови та порядок оформлення замовлення, оплати товару, доставки товару, повернення товару, відповідальності за недобросовісне замовлення та усі інші умови договору. Договір вважається укладеним з моменту натискання кнопки «Підтвердити Замовлення» на сторінці оформлення замовлення в Розділі «Кошик» і отримання Покупцем від Продавця підтвердження замовлення в електронному вигляді.</p><p style=\"margin-left:0cm;text-align:center;\"><br><strong>1.</strong> <strong>Визначення термінів</strong></p><p style=\"margin-left:0cm;text-align:justify;\">1.1. Справжня публічна Оферта (надалі – Договір) є офіційною пропозицією Продавця на адресу будь-якої особи, що володіє дієздатністю і необхідним повноваженням укласти з Продавцем договір купівлі-продажу Товару на умовах, визначених у цій оферті і містить всі істотні умови договору.</p><p style=\"margin-left:0cm;text-align:justify;\">1.2. Товар – об'єкт угоди сторін, який був обраний покупцем на сайті Інтернет-магазину та поміщений у кошик.</p><p style=\"margin-left:0cm;text-align:justify;\">1.3. Покупець – &nbsp;будь-яка фізична особа, яка акцептувала публічну оферту на умовах справжньої оферти.</p><p style=\"margin-left:0cm;\">1.4. Продавець – інтернет-магазин косметики</p><p style=\"margin-left:0cm;text-align:center;\"><strong>2.</strong> <strong>Предмет Договору</strong></p><p style=\"margin-left:0px;text-align:justify;\">2.1. Продавець зобов’язується передати у власність Покупцю Товар, а Покупець зобов’язується оплатити і прийняти Товар на умовах цього Договору.</p><p style=\"margin-left:0px;text-align:justify;\">2.2. Датою укладення Договору-оферти (акцептом оферти) та моментом повного й беззаперечного прийняттям Покупцем умов Договору вважається дата заповнення Покупцем форми замовлення, розташованої на сайті Інтернет-магазину, за умови отримання Покупцем від Продавця підтвердження замовлення в електронному вигляді.</p><p style=\"margin-left:0px;text-align:justify;\">2.3. Супроводжуючі Товар фотографії можуть незначно відрізнятися від фактичного зовнішнього вигляду Товару, з огляду на особливості колірної передачі різних пристроїв, за допомогою яких проглядається Сайт. Супроводжуючі Товар описи/характеристики не претендують на вичерпну інформативність і можуть містити друкарські помилки. Оновлення інформації, представленої на Сайті, проводиться щодня.</p><p style=\"margin-left:0cm;text-align:center;\"><strong>3. Оформлення Замовлення</strong></p><p style=\"margin-left:0cm;text-align:justify;\">3.1. Покупець самостійно оформлює замовлення в Інтернет-магазину через форму «Кошика», або зробивши замовлення електронною поштою чи за номером телефону, вказаним в розділі контактів Інтернет-магазину.</p><p style=\"margin-left:0cm;text-align:justify;\">3.2. При оформленні замовлення на сайті Інтернет-магазину Покупець зобов'язується надати обов’язкову інформацію, необхідну Продавцю для виконання замовлення.<br>3.3. Найменування, кількість, артикул, ціна обраного Покупцем Товару вказуються в кошику Покупця на сайті Інтернет-магазину.<br>3.4. Якщо будь-якої із Сторін договору необхідна додаткова інформація, він має право запросити її у іншої Сторони. У разі ненадання необхідної інформації Покупцем, Продавець не несе відповідальності за надання якісної послуги Покупцю при покупці товару в інтернет-магазині.</p><p style=\"margin-left:0cm;text-align:justify;\">3.5. У разі відсутності замовлених Покупцем Товарів на складі Продавця, останній має право виключити вказаний Товар із Замовлення/анулювати Замовлення Покупця, повідомивши про це Покупця шляхом дзвінка або направлення відповідного електронного повідомлення на адресу, вказану Покупцем при реєстрації, або іншим способом.</p><p style=\"margin-left:0cm;\">3.6. Покупець несе відповідальність за достовірність наданої інформації при оформленні Замовлення.</p><p style=\"margin-left:0cm;text-align:center;\"><strong>4. Ціна і Доставка Товару</strong></p><p style=\"margin-left:0cm;\">4.1. Товар, представлений в каталозі через фото-зразки, є оригінальною продукцією.</p><p style=\"margin-left:0cm;text-align:justify;\">4.2 Ціни на Товари та послуги визначаються Продавцем самостійно та вказані на сайті Інтернет-магазину.</p><p style=\"margin-left:0cm;text-align:justify;\">4.3 У разі зміни ціни товару, замовленого Покупцем, менеджер Інтернет-магазину при першій можливості інформує про це Покупця (по телефону або за допомогою електронної пошти) для отримання підтвердження або анулювання замовлення. При неможливості зв'язатися з Покупцем дане замовлення вважається анульованим.</p><p style=\"margin-left:0cm;text-align:justify;\">4.4. Вартість Товару, яка вказана на сайті Інтернет-магазину не включає в себе вартість доставки Товару Покупцю. Вартість доставки Товару Покупець сплачує відповідно до діючих тарифів служб доставки (перевізників) безпосередньо обраній ним службі доставки (перевізнику).</p><p style=\"margin-left:0cm;text-align:justify;\">4.5. Зобов'язання Покупця по оплаті Товару вважаються виконаними з моменту надходження Продавцю коштів на його рахунок.<br>4.6. Оплата за товар здійснюється в національній валюті України – гривні на розрахунковий рахунок банку.</p><p style=\"margin-left:0cm;text-align:justify;\">4.7. При отриманні товару Покупець повинен у присутності представника служби доставки (перевізника) перевірити відповідність Товару якісним і кількісним характеристикам (найменування товару, кількість, комплектність, термін придатності).</p><p style=\"margin-left:0cm;text-align:justify;\">4.8. Покупець або його представник під час приймання Товару підтверджує своїм підписом в товарному чеку/ або в замовленні/ або в транспортній накладній на доставку товарів, що не має претензій до кількості товару, зовнішнім виглядом і комплектності товару.</p><p style=\"margin-left:0cm;text-align:justify;\">4.9. Право власності та ризик випадкової втрати або пошкодження Товару переходить до Покупця або його Представника з моменту отримання Товару Покупцем в місті поставки Товару при самостійній доставки Товару від Продавця, чи під час передачі Продавцем товару службі доставки (перевізнику) обраної Покупцем.&nbsp;</p><p style=\"margin-left:0cm;text-align:center;\"><strong>5. Права ті обов’язки Сторін</strong></p><p style=\"margin-left:0cm;text-align:justify;\">5.1. Продавець зобов’язаний:</p><p style=\"margin-left:0cm;text-align:justify;\">5.1.1. Передати Покупцеві товар у відповідності до умов цього Договору та замовлення Покупця.</p><p style=\"margin-left:0cm;text-align:justify;\">5.1.2. Не розголошувати будь-яку приватну інформацію про Покупця і не надавати доступ до цієї інформації третім особам, за винятком випадків, передбачених законодавством та під час виконання Замовлення Покупця.</p><p style=\"margin-left:0cm;text-align:justify;\">5.2. Продавець має право змінювати умови цього Договору, а також ціни на Товари в односторонньому порядку, розміщуючи їх на сайті Інтернет-магазину. Всі зміни набувають чинності з моменту їх публікації.</p><p style=\"margin-left:0cm;text-align:justify;\">5.3 Покупець зобов'язується:</p><p style=\"margin-left:0cm;text-align:justify;\">5.3.1 До моменту укладення Договору ознайомитися зі змістом Договору, умовами Договору і цінами, запропонованими Продавцем на сайті Інтернет-магазину.</p><p style=\"margin-left:0cm;text-align:justify;\">5.3.2 На виконання Продавцем своїх зобов'язань перед Покупцем останній повинен повідомити всі необхідні дані, що однозначно ідентифікують його як Покупця, і достатні для доставки Покупцеві замовленого Товару.</p><p style=\"margin-left:0cm;text-align:center;\"><strong>6. Повернення Товару</strong></p><p style=\"margin-left:0cm;text-align:justify;\">6.1. Повернення або обмін товару в Інтернет-магазин можливий в разі дотримання умов закону України \"Про захист прав споживачів\" - Розділ II, ст. 9 п. 1, і якщо збережено: його товарний вигляд, споживчі властивості, оригінальна фабрична упаковка, ярлики. Товар, який має сліди використання - поверненню не підлягає (сліди використання - будь-які зміни в товарі, що свідчать про його експлуатацію за призначенням). Повернення товару зазначеного в переліку товарів, які не підлягають поверненню неможливе.</p><p style=\"margin-left:0cm;text-align:justify;\">6.2. У разі, якщо упаковка товару була пошкоджена, інтернет-магазин залишає за собою право вирахувати вартість упаковки з грошових коштів, які повертаються, в розмірі до 10% від вартості товару, відповідно до закону України \"Про захист прав споживачів\" - Розділ II, ст. 12 п. 7.</p><p style=\"margin-left:0cm;text-align:justify;\">6.3. Вартість товару підлягає поверненню шляхом банківського переказу на рахунок Покупця.</p><p style=\"margin-left:0cm;text-align:justify;\">6.4. Повернення Товару належної якості за адресою Продавця, здійснюється за рахунок Покупця та Продавцем Покупцеві не відшкодовується.</p><p style=\"margin-left:0cm;text-align:justify;\"><span style=\"background-color:white;color:black;\">6.5 Повернення Товару неналежної якості:</span></p><p style=\"margin-left:0cm;\"><strong>6.5.1. Під товаром неналежної якості мається на увазі товар, який має явний дефект виробничого характеру. Отриманий Товар повинен відповідати опису на Сайті. Відмінність елементів дизайну або оформлення від заявленого на Сайті опису не є ознакою неналежної якості.</strong></p><p style=\"margin-left:0cm;\"><strong>6.5.2. Зовнішній вигляд Товару, а також комплектність усього Замовлення повинні бути перевірені Одержувачем в момент доставки Товару.</strong></p><p style=\"margin-left:0cm;\"><strong>6.5.3. При доставці Товару Покупець ставить свій підпис в квитанції про доставку. Після отримання Замовлення претензії до зовнішніх дефектів товару, його кількості, комплектності та товарного вигляду не приймаються. Сторони погодили, що в разі недотримання обов'язкових вимог зазначеної процедури, признається отримання Покупцем Товару в належному стані - без будь-яких механічних пошкоджень і в повній комплектності.</strong></p><p style=\"margin-left:0cm;\"><strong>6.5.4. Вимоги про повернення сплаченої за товар грошової суми підлягають задоволенню протягом 14 календарних днів з дня пред'явлення відповідної вимоги, згідно діючого законодавства.</strong></p><p style=\"margin-left:0cm;\"><strong>6.6 Повернення грошових коштів здійснюється шляхом повернення вартості оплаченого Товару на банківську картку або готівкою в залежності від способу оплати за замовлення.</strong></p><p style=\"margin-left:0cm;text-align:center;\"><strong>7. Відповідальність</strong></p><p style=\"margin-left:0cm;text-align:justify;\">7.1. Продавець не несе відповідальності за вибір Покупцем Товару, він лише гарантує відповідність замовлених позицій.<br>7.2. Продавець не несе відповідальності за неналежне, несвоєчасне виконання Замовлень і своїх зобов’язань у випадку надання Покупцем недостовірної або помилкової інформації.<br>7.3. Продавець не несе відповідальність за строк доставки Товару після передачі його транспортній компанії..</p><p style=\"margin-left:0cm;text-align:center;\"><strong>8. Конфіденційність і захист персональних даних.</strong></p><p style=\"margin-left:0cm;text-align:justify;\">8.1. Надаючи свої персональні дані на сайті Інтернет-магазину при реєстрації або оформленні Замовлення, Покупець надає Продавцеві свою добровільну згоду на обробку, використання (у тому числі і передачу) своїх персональних даних, а також вчинення інших дій, передбачених Законом України «Про захист персональних даних», без обмеження терміну дії такої згоди.</p><p style=\"margin-left:0cm;text-align:justify;\">8.2. Продавець зобов'язується не розголошувати отриману від Покупця інформацію. Не вважається порушенням надання Продавцем інформації контрагентам і третім особам, що діють на підставі договору з Продавцем, в тому числі і для виконання зобов'язань перед Покупцем, а також у випадках, коли розкриття такої інформації встановлено вимогами чинного законодавства України.</p><p style=\"margin-left:0cm;text-align:justify;\">8.3. Покупець несе відповідальність за підтримання своїх персональних даних в актуальному стані. Продавець не несе відповідальності за неякісне виконання або невиконання своїх зобов'язань у зв'язку з неактуальністю інформації про Покупця або невідповідністю її дійсності.</p>"
+    }
+},
+{
+    "model": "feedback.feedback",
+    "pk": 1,
+    "fields": {
+        "created": "2026-06-30T10:52:21.980Z",
+        "updated": "2026-06-30T10:52:54.487Z",
+        "name": "victor",
+        "email": "gvs1991.vs@gmail.com",
+        "phone": "+38 (032) 232-34-23",
+        "status": "resolved",
+        "subject": "other",
+        "body": "Subject 1"
+    }
+},
+{
+    "model": "feedback.feedback",
+    "pk": 2,
+    "fields": {
+        "created": "2026-06-30T10:59:44.145Z",
+        "updated": "2026-06-30T11:12:02.363Z",
+        "name": "Victor",
+        "email": "gvs1991.vs@sdf.sdf",
+        "phone": "+38 (023) 423-43-24",
+        "status": "spam",
+        "subject": "question",
+        "body": "Sbject 2"
+    }
+},
+{
+    "model": "feedback.feedback",
+    "pk": 3,
+    "fields": {
+        "created": "2026-06-30T11:11:10.198Z",
+        "updated": "2026-06-30T11:11:10.198Z",
+        "name": "Victor",
+        "email": "gvs1991.vs@sdf.sdf",
+        "phone": "+38 (096) 139-47-48",
+        "status": "new",
+        "subject": "suggestion",
+        "body": "Subject 1"
+    }
+},
+{
+    "model": "feedback.feedback",
+    "pk": 4,
+    "fields": {
+        "created": "2026-06-30T11:11:50.734Z",
+        "updated": "2026-06-30T11:11:50.734Z",
+        "name": "Vasia",
+        "email": "gvs1991.vs@sdf.sdf",
+        "phone": "+38 (096) 139-47-32",
+        "status": "new",
+        "subject": "question",
+        "body": "sadfasdf"
+    }
+},
+{
+    "model": "feedback.feedback",
+    "pk": 5,
+    "fields": {
+        "created": "2026-07-02T08:43:34.538Z",
+        "updated": "2026-07-02T08:43:34.538Z",
+        "name": "Виктор Герасимов",
+        "email": "gvs1991.vs@gmail.com",
+        "phone": "+38 (096) 139-47-48",
+        "status": "new",
+        "subject": "consultation",
+        "body": "Моє повідомлення"
+    }
+},
+{
+    "model": "feedback.feedback",
+    "pk": 6,
+    "fields": {
+        "created": "2026-07-02T08:45:46.295Z",
+        "updated": "2026-07-02T08:45:46.295Z",
+        "name": "Виктор Герасимов",
+        "email": "gvs1991.vs@gmail.com",
+        "phone": "+38 (096) 139-47-48",
+        "status": "new",
+        "subject": "consultation",
+        "body": "Повідомення 1"
+    }
+},
+{
+    "model": "feedback.feedback",
+    "pk": 7,
+    "fields": {
+        "created": "2026-07-02T08:55:40.769Z",
+        "updated": "2026-07-02T08:55:40.769Z",
+        "name": "Виктор Герасимов",
+        "email": "gvs1991.vs@gmail.com",
+        "phone": "+38 (096) 139-47-48",
+        "status": "new",
+        "subject": "consultation",
+        "body": "Test"
+    }
+},
+{
+    "model": "feedback.feedback",
+    "pk": 8,
+    "fields": {
+        "created": "2026-07-02T08:56:47.041Z",
+        "updated": "2026-07-02T08:56:47.041Z",
+        "name": "Виктор Герасимов",
+        "email": "gvs1991.vs@gmail.com",
+        "phone": "+38 (096) 139-47-48",
+        "status": "new",
+        "subject": "consultation",
+        "body": "test"
+    }
+},
+{
+    "model": "feedback.feedback",
+    "pk": 9,
+    "fields": {
+        "created": "2026-07-02T08:59:23.758Z",
+        "updated": "2026-07-02T08:59:23.758Z",
+        "name": "Виктор Герасимов",
+        "email": "gvs1991.vs@gmail.com",
+        "phone": "+38 (096) 139-47-48",
+        "status": "new",
+        "subject": "consultation",
+        "body": "test"
+    }
+},
+{
+    "model": "feedback.feedback",
+    "pk": 10,
+    "fields": {
+        "created": "2026-07-02T09:00:00.202Z",
+        "updated": "2026-07-02T09:00:00.202Z",
+        "name": "GERASIMOV VIKTOR",
+        "email": "gvs1991.vs@gmail.com",
+        "phone": "+38 (096) 139-47-48",
+        "status": "new",
+        "subject": "consultation",
+        "body": "tst"
+    }
+},
+{
+    "model": "feedback.feedback",
+    "pk": 11,
+    "fields": {
+        "created": "2026-07-02T09:04:05.574Z",
+        "updated": "2026-07-02T09:04:05.574Z",
+        "name": "Виктор Герасимов",
+        "email": "gvs1991.vs@gmail.com",
+        "phone": "+38 (096) 139-47-48",
+        "status": "new",
+        "subject": "consultation",
+        "body": "test"
+    }
+},
+{
+    "model": "feedback.feedback",
+    "pk": 12,
+    "fields": {
+        "created": "2026-07-02T11:26:33.963Z",
+        "updated": "2026-07-02T11:26:33.963Z",
+        "name": "Виктор Герасимов",
+        "email": "gvs1991.vs@gmail.com",
+        "phone": "+38 (096) 139-47-48",
+        "status": "new",
+        "subject": "consultation",
+        "body": "dsfsdf"
+    }
+},
+{
+    "model": "seo.seopage",
+    "pk": 1,
+    "fields": {
+        "page_type": "/catalog/",
+        "title": "Купити Косметику в Україні | Каталог Б’юті-Продукції | MyCosmetics",
+        "description": "Каталог професійної косметики для макіяжу та догляду за шкірою. Тільки оригінальна б’юті-продукція, світові бренди та вигідні ціни. Замовляйте з доставкою!",
+        "keywords": "купити косметику, інтернет магазин косметики, професійна косметика, декоративна косметика, догляд за шкірою, косметика для обличчя, косметика для макіяжу, оригінальна косметика",
+        "image": "seo_images/licensed-image.jpg"
+    }
+},
+{
+    "model": "seo.seopage",
+    "pk": 2,
+    "fields": {
+        "page_type": "/",
+        "title": "Інтернет-магазин Косметики",
+        "description": "Оригінальна косметика для макіяжу та професійного догляду за шкірою. Світові б’юті-бренди, актуальні новинки та вигідні ціни. Доставка по Україні!",
+        "keywords": "інтернет магазин косметики, купити косметику, професійна косметика, догляд за обличчям, декоративна косметика, б'юті бокси, косметичні новинки",
+        "image": "seo_images/depositphotos_263552778-stock-photo-makeup-professional-cosmetics-on-purple.jpg"
+    }
+},
+{
+    "model": "seo.seopage",
+    "pk": 3,
+    "fields": {
+        "page_type": "/pages/contact/",
+        "title": "Контакти Магазину Косметики My Cosmetics",
+        "description": "Зв’яжіться з нами! ☎️ Телефони, адреса шоуруму косметики, графік роботи та онлайн-підтримка. Залишилися питання щодо догляду чи замовлення? Ми завжди на зв’язку!",
+        "keywords": "контакти магазину косметики, телефон косметики, адреса б'юті шоуруму, підтримка клієнтів, де купити косметику, інтернет магазин контакти",
+        "image": "seo_images/Copilot_20260702_174306.png"
+    }
+},
+{
+    "model": "seo.seopage",
+    "pk": 4,
+    "fields": {
+        "page_type": "/pages/delivery/",
+        "title": "Умови Доставки та Оплати | My Cosmetics",
+        "description": "Швидка доставка косметики по всій Україні Новою Поштою та Укрпоштою. Зручні способи оплати: онлайн на сайті, на розрахунковий рахунок або при отриманні.",
+        "keywords": "доставка косметики, оплата замовлення, нова пошта косметика, купити косметику з доставкою, накладений платіж",
+        "image": "seo_images/Copilot_20260702_180834.png"
+    }
+},
+{
+    "model": "seo.seopage",
+    "pk": 5,
+    "fields": {
+        "page_type": "/pages/return/",
+        "title": "Обмін та Повернення Товарів | My Cosmetics",
+        "description": "Правила обміну та повернення косметичних засобів і парфумерії згідно з законодавством України. Дізнайтеся, як повернути товар або вирішити проблему із замовленням.",
+        "keywords": "повернення косметики, обмін товару, гарантія якості, захист прав споживачів, закон про повернення",
+        "image": "seo_images/Copilot_20260702_180834_itbNzNM.png"
+    }
+},
+{
+    "model": "seo.seopage",
+    "pk": 6,
+    "fields": {
+        "page_type": "/pages/privacy/",
+        "title": "Політика Приватності та Конфіденційності | My Cosmetics",
+        "description": "Політика конфіденційності інтернет-магазину косметики [Назва Бренду]. Дізнайтеся, як ми захищаємо та обробляємо ваші персональні дані відповідно до закону.",
+        "keywords": "політика приватності, персональні дані, конфіденційність, захист даних, безпека сайту",
+        "image": "seo_images/Copilot_20260702_180834_yzQGQLV.png"
+    }
+},
+{
+    "model": "seo.seopage",
+    "pk": 7,
+    "fields": {
+        "page_type": "/pages/public/",
+        "title": "Публічна Оферта — Договір Купівлі-Продажу | My Cosmetics",
+        "description": "Офіційний договір публічної оферти інтернет-магазину [Назва Бренду]. Регламент та умови здійснення покупок, права та обов'язки покупця і продавця.",
+        "keywords": "публічна оферта, договір купівлі продажу, умови використання сайту, угода користувача",
+        "image": "seo_images/Copilot_20260702_180834_Qq3lNWK.png"
+    }
+}
+]

@@ -41,7 +41,7 @@ class SiteConfig(SingletonModel):
         max_length=512,
         null=True,
         blank=True,
-        default=None,
+        default="",
         verbose_name="Гасло",
         help_text="Слоган відображаєсться в футері",
     )

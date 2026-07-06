@@ -28,7 +28,7 @@ class BaseLegalDocument(SingletonModel, DateMixin):
         config_name="extends",
         blank=True,
         null=True,
-        default=None,
+        default="",
     )
 
     class Meta:

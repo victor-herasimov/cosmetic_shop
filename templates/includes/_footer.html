@@ -4,7 +4,11 @@
     <div class="wrap">
         <div class="footer__grid">
             <div class="footer__about">
-                <a href="{% url "main:index" %}" class="logo"><img src="{{site_config.logo.url}}" alt="logo"> </a>
+                {% if site_config.logo %}
+                    <a href="{% url "main:index" %}" class="logo"><img src="{{site_config.logo.url}}" alt="logo"> </a>
+                {% else %}
+                     <a href="{% url "main:index" %}" class="logo">Logo </a>
+                {% endif %}
                 <p>
                     {{ site_config.slogan }}
                 </p>
