@@ -16,7 +16,7 @@
       hx-swap="outerHTML"
     >
       <div class="cart-item__qty">
-        {% csrf_token %}
+        {% comment %} {% csrf_token %} {% endcomment %}
         <input type="hidden" name="product_id" value="{{ cart_item.product.id }}">
         <input type="hidden" name="override" value="true">
         <input type="hidden" name="quantity" value="{{cart_item.quantity}}">
@@ -41,7 +41,7 @@
     hx-target="#cart-item-{{ cart_item.product.id }}" 
     hx-swap="outerHTML"
   >
-    {% csrf_token %}
+    {% comment %} {% csrf_token %} {% endcomment %}
     <input type="hidden" name="product_id" value="{{ cart_item.product.id }}">
     <button
       class="cart-item__remove"

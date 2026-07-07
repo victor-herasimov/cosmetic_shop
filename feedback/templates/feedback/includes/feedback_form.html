@@ -5,7 +5,7 @@ hx-post="{% url "feedback:create" %}"
 hx-target="#contactForm"
 hx-swap="outerHTML"
 >
-    {% csrf_token %}
+    {% comment %} {% csrf_token %} {% endcomment %}
     <h3 class="form-section__title" style="margin-bottom: 8px;">Напишіть нам</h3>
     <p style="color: var(--ink-soft); font-size: 14px; margin-bottom: 24px;">
         Заповніть форму, і ми надамо відповідь протягом 30 хвилин.

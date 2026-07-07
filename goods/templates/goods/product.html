@@ -63,7 +63,7 @@
                     hx-on::after-request="document.getElementById('qtyVal').innerHTML = '1';document.getElementById('qtyInput').value = '1';"
                 >
                     <div class="pdp__buy">
-                        {% csrf_token %}
+                        {% comment %} {% csrf_token %} {% endcomment %}
                         <input type="hidden" name="product_id" value="{{ product.id }}">
                         <input type="hidden" name="override" value="false">
                         <input type="hidden" name="quantity" id="qtyInput" value="1">

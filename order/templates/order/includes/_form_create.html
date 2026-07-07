@@ -2,7 +2,7 @@
 hx-post="{% url "checkout:create" %}"
 hx-swap="outerHTML">
 
-    {% csrf_token %}
+    {% comment %} {% csrf_token %} {% endcomment %}
     {% include "includes/_form_non_field_error.html" %}
     <div class="form-section">
         <h3 class="form-section__title">1. Контактні дані</h3>

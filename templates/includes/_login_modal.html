@@ -1,28 +1,21 @@
-<div class="modal auth-modal" id="loginModal">
-    <div class="modal__overlay" data-close-modal=""></div>
-    <div class="dialog" role="dialog" aria-modal="true" aria-label="Вхід">
-        <div class="dialog__head">
-            <h3>Вхід в кабінет</h3>
-            <button class="modal__close" data-close-modal="" aria-label="Закрити">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
+<div id="loginModalWrapper" hx-swap-oob="outerHTML">
+    {% if not request.user.is_authenticated %}
+        <div class="modal auth-modal" id="loginModal">
+            <div class="modal__overlay" data-close-modal=""></div>
+            <div class="dialog" role="dialog" aria-modal="true" aria-label="Вхід">
+                <div class="dialog__head">
+                    <h3>Вхід в кабінет</h3>
+                    <button class="modal__close" data-close-modal="" aria-label="Закрити">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            <div>
+                {% include "account/includes/login_form.html" with form=login_form %}
+            </div>
+            </div>
         </div>
-        <form class="auth-form" id="loginForm">
-            <div class="form-group">
-            <label for="loginEmail">Email</label>
-            <input type="email" id="loginEmail" placeholder="hello@example.com" required="" autocomplete="email">
-            </div>
-            <div class="form-group">
-            <label for="loginPassword">Пароль</label>
-            <input type="password" id="loginPassword" placeholder="••••••••" required="" autocomplete="current-password">
-            </div>
-            <button type="submit" class="btn btn--primary btn--block" style="margin-top: 10px;">Увійти</button>
-            <div class="auth-switch">
-            Немає акаунту? <button type="button" class="auth-switch-btn" data-switch-to-register="">Зареєструватися</button>
-            </div>
-        </form>
-    </div>
+    {% endif %}
 </div>

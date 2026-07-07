@@ -8,7 +8,6 @@
 from typing import Any
 
 from django.http import HttpResponse
-from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import FormView
 
@@ -49,5 +48,3 @@ class OrderView(FormView):
         response: HttpResponse = HttpResponse(status=200)
         response["HX-Redirect"] = reverse("checkout:order_success", args=[order.id])
         return response
-
-        # return redirect(reverse("checkout:order_success", args=[order.id]))

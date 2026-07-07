@@ -67,6 +67,11 @@ MIDDLEWARE: list[str] = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "account.backends.EmailOrPhoneBackend",
+]
+
 ROOT_URLCONF: str = "settings.urls"
 
 TEMPLATES: list[dict[str, Any]] = [
@@ -84,6 +89,7 @@ TEMPLATES: list[dict[str, Any]] = [
                 "main.context_processors.site_settings",
                 "seo.context_processors.seo_metadata",
                 "cart.context_processors.cart",
+                "account.context_processors.auth_forms",
             ],
         },
     },

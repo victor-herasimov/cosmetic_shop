@@ -1,0 +1,51 @@
+
+<form
+class="auth-form"
+id="loginForm"
+hx-post="{% url "account:login" %}"
+hx-target="#loginModalWrapper"
+hx-swap="outerHTML"
+>
+    {% comment %} {{form}} {% endcomment %}
+    {% comment %} {% csrf_token %} {% endcomment %}
+    {% include "includes/_form_non_field_error.html" %}
+    <div class="form-group">
+        <label for="id_username">Номер телефону або електронна пошта * </label>
+        <input 
+        type="text"
+        name="username"
+        id="id_username"
+        maxlength="254"
+        placeholder="Введіть номер або email"
+        value="{% if form.username.value %}{{ form.username.value }}{% endif %}"
+        >
+        {% if form.username.errors %}
+            <ul class="form-error">
+                {% for error in form.username.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="id_password">Пароль</label>
+        <input
+        type="password"
+        id="id_password"
+        placeholder="••••••••"
+        name="password"
+        value="{% if form.password.value %}{{ form.password.value }}{% endif %}"
+        >
+         {% if form.password.errors %}
+            <ul class="form-error">
+                {% for error in form.password.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div> 
+    <button type="submit" class="btn btn--primary btn--block" style="margin-top: 10px;">Увійти</button>
+    <div class="auth-switch">
+        Немає акаунту? <button type="button" class="auth-switch-btn" data-switch-to-register="">Зареєструватися</button>
+    </div>
+</form>

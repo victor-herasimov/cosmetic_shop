@@ -27,7 +27,7 @@
                 hx-target="#cartItems" 
                 hx-swap="innerHTML"
             >
-                {% csrf_token %}
+                {% comment %} {% csrf_token %} {% endcomment %}
                 <input type="hidden" name="product_id" value="{{ product.id }}">
                 
                 <input type="hidden" name="quantity" value="1">

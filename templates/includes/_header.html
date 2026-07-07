@@ -1,62 +1,27 @@
 <!-- Header -->
-    <header class="header">
-        <div class="wrap header__inner">
-            <button class="icon-btn burger" data-open-categories="" aria-label="Меню категорій" data-icon="menu"><svg
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg></button>
-            {% if site_config.logo %}
-            <a href="{% url "main:index" %}" class="logo"><img src="{{site_config.logo.url}}" alt="logo"> </a>
-            {% else %}
-            <a href="{% url "main:index" %}" class="logo">Logo </a>
-            {% endif %}
-            <nav class="nav">
-                <button class="nav__link" data-open-categories="">Категорії</button>
-                <a class="nav__link" href="{% url "goods:catalog" %}">Каталог</a>
+<header class="header">
+    <div class="wrap header__inner">
+        <button class="icon-btn burger" data-open-categories="" aria-label="Меню категорій" data-icon="menu"><svg
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg></button>
+        {% if site_config.logo %}
+        <a href="{% url "main:index" %}" class="logo"><img src="{{site_config.logo.url}}" alt="logo"> </a>
+        {% else %}
+        <a href="{% url "main:index" %}" class="logo">Logo </a>
+        {% endif %}
+        <nav class="nav">
+            <button class="nav__link" data-open-categories="">Категорії</button>
+            <a class="nav__link" href="{% url "goods:catalog" %}">Каталог</a>
 
-                {% for category in all_categories %}
-                    {% if category.visible %}
-                        <a class="nav__link" href="{% url "goods:catalog" %}?cat={{ category.slug }}">{{ category.name }}</a>
-                    {% endif %}
-                {% endfor %}
-            </nav>
-            <div class="header__actions">
-                <button class="icon-btn" aria-label="Пошук" data-icon="search" data-open-search="">
-                    <svg viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </button>
-
-                <button class="icon-btn" data-open-login="" aria-label="Особистий кабінет" data-icon="user">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                </button>
-
-                <button class="icon-btn" aria-label="Обране" data-icon="heart">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"></path>
-                    </svg>
-                </button>
-
-                {% url "checkout:create" as checkout_url %}
-                {% if not checkout_url == request.path %}
-                    <button class="icon-btn" data-open-cart="" aria-label="Кошик">
-                        <span data-icon="cart">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="9" cy="21" r="1"></circle>
-                                <circle cx="20" cy="21" r="1"></circle>
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                            </svg></span>
-                        {% include "cart/includes/_cart_count.html" %}
-                    </button>
+            {% for category in all_categories %}
+                {% if category.visible %}
+                    <a class="nav__link" href="{% url "goods:catalog" %}?cat={{ category.slug }}">{{ category.name }}</a>
                 {% endif %}
-            </div>
-        </div>
-    </header>
+            {% endfor %}
+        </nav>
+        {% include "includes/_header_actions.html" %}
+    </div>
+</header>

@@ -41,13 +41,12 @@ class EmailOrPhoneLoginForm(AuthenticationForm):
                              бути приведені до валідного українського номера телефону.
         """
         data: str = self.cleaned_data.get("username", "").strip()
-
         try:
             validate_email(data)
             return data.lower()
         except ValidationError:
             pass
-
+        print("Hi clean")
         digits: str = re.sub(r"\D", "", data)
 
         if len(digits) == 10 and digits.startswith("0"):

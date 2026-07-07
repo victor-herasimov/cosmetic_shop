@@ -42,6 +42,13 @@ function bindGlobalEvents() {
       return;
     }
 
+    const openProfile = t.closest("[data-open-profile]");
+    if (openProfile) {
+      e.preventDefault();
+      openModal("userModal");
+      return;
+    }
+
     const switchToRegister = t.closest("[data-switch-to-register]");
     if (switchToRegister) {
       e.preventDefault();
@@ -134,6 +141,7 @@ export function phoneNumberMask(selector, mask, parent = document) {
   };
   IMask(element, maskOptions);
 }
+
 document.addEventListener("htmx:load", (event) => {
   const target = event.detail.elt;
   const phoneInput = target.querySelector
@@ -141,6 +149,29 @@ document.addEventListener("htmx:load", (event) => {
     : null;
   if (phoneInput) {
     phoneNumberMask("#id_register_phone", "{+38 (\\0}00) 000-00-00", target);
+  }
+});
+
+// Закриваємо модальні вікна після Реєстрації/Логіна
+document.body.addEventListener("userLoggedIn", function (event) {
+  const loginModal = document.getElementById("loginModal");
+  const registerModal = document.getElementById("registerModal");
+  if (loginModal) closeModal(loginModal);
+  if (registerModal) closeModal(registerModal);
+});
+
+document.body.addEventListener("htmx:configRequest", (event) => {
+  const name = "csrftoken";
+  const matches = document.cookie.match(
+    new RegExp(
+      "(?:^|; )" +
+        name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
+        "=([^;]*)",
+    ),
+  );
+  const token = matches ? decodeURIComponent(matches[1]) : null;
+  if (token) {
+    event.detail.headers["X-CSRFToken"] = token;
   }
 });
 

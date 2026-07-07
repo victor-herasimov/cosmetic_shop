@@ -1,0 +1,41 @@
+<div class="header__actions" id="headerActions" hx-swap-oob="outerHTML">
+    <button class="icon-btn" aria-label="Пошук" data-icon="search" data-open-search="">
+        <svg viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+    </button>
+    {% if not request.user.is_authenticated %}
+        <button class="icon-btn" data-open-login="" aria-label="Особистий кабінет" data-icon="user">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+        </button>
+    {% else %}
+        <button class="icon-btn" data-open-profile="" aria-label="Відкрити профіль">
+            <div class="header-icon-user">{{request.user.first_name.0|upper}}{{request.user.last_name.0|upper}}</div>
+        </button>
+    {% endif %}
+
+    <button class="icon-btn" aria-label="Обране" data-icon="heart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+    </button>
+
+    {% url "checkout:create" as checkout_url %}
+    {% if not checkout_url == request.path %}
+        <button class="icon-btn" data-open-cart="" aria-label="Кошик">
+            <span data-icon="cart">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg></span>
+            {% include "cart/includes/_cart_count.html" %}
+        </button>
+    {% endif %}
+</div>
