@@ -9,7 +9,7 @@
 
 from django.http import HttpRequest
 
-from .forms import EmailOrPhoneLoginForm
+from .forms import EmailOrPhoneLoginForm, UserRegistrationForm
 
 
 def auth_forms(request: HttpRequest) -> dict[str, EmailOrPhoneLoginForm]:
@@ -30,4 +30,7 @@ def auth_forms(request: HttpRequest) -> dict[str, EmailOrPhoneLoginForm]:
     Returns:
         dict[str, EmailOrPhoneLoginForm]: Словник із формою входу для початкового рендерингу.
     """
-    return {"login_form": EmailOrPhoneLoginForm()}
+    return {
+        "login_form": EmailOrPhoneLoginForm(),
+        "register_form": UserRegistrationForm(),
+    }

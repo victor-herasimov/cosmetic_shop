@@ -46,7 +46,7 @@ class EmailOrPhoneLoginForm(AuthenticationForm):
             return data.lower()
         except ValidationError:
             pass
-        print("Hi clean")
+
         digits: str = re.sub(r"\D", "", data)
 
         if len(digits) == 10 and digits.startswith("0"):

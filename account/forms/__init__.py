@@ -6,5 +6,6 @@
 """
 
 from .login import EmailOrPhoneLoginForm
+from .register import UserRegistrationForm
 
-__all__ = ["EmailOrPhoneLoginForm"]
+__all__ = ["EmailOrPhoneLoginForm", "UserRegistrationForm"]

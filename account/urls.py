@@ -5,7 +5,7 @@
 """
 
 from django.urls import URLResolver, path
-from account.views import LoginView, LogoutView
+from account.views import LoginView, LogoutView, RegisterView
 
 
 app_name: str = "account"
@@ -13,4 +13,5 @@ app_name: str = "account"
 urlpatterns: list[URLResolver] = [
     path("login/", LoginView.as_view(), name="login"),
     path("logout/", LogoutView.as_view(), name="logout"),
+    path("register/", RegisterView.as_view(), name="register"),
 ]

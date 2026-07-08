@@ -12,36 +12,13 @@
                     </svg>
                 </button>
             </div>
-            <form class="auth-form" id="registerForm">
-                <div class="form-group">
-                    <label for="registerName">Ваше ім'я</label>
-                    <input type="text" id="registerName" placeholder="Іван Іванов" autocomplete="name">
-                </div>
-                <div class="form-group">
-                    <label for="registerName">Ваше прізвище</label>
-                    <input type="text" id="registerName" placeholder="Іван Іванов" autocomplete="name">
-                </div>
-                <div class="form-group">
-                    <label for="registerEmail">Email</label>
-                    <input type="email" id="registerEmail" placeholder="hello@example.com" autocomplete="email">
-                </div>
-                <div class="form-group">
-                    <label for="id_register_phone">Номер телефону</label>
-                    <input type="text" id="id_register_phone" placeholder="+38 (0__) ___-__-__" autocomplete="tel">
-                </div>
-                <div class="form-group">
-                    <label for="registerPassword">Пароль</label>
-                    <input type="password" id="registerPassword" placeholder="••••••••">
-                </div>
-                <div class="form-group">
-                    <label for="registerPassword">Повтор пароля</label>
-                    <input type="password" id="registerPassword" placeholder="••••••••">
-                </div>
-                <button type="submit" class="btn btn--primary btn--block" style="margin-top: 10px;">Зареєструватися</button>
-                <div class="auth-switch">
-                    Вже є акаунт? <button type="button" class="auth-switch-btn" data-switch-to-login="">Увійти</button>
-                </div>
-            </form>
+            {% comment %} <form action="#">
+                <p>test form</p>
+                {{ register_form }}
+            </form> {% endcomment %}
+
+            {% include "account/includes/register_form.html" with form=register_form %}
+            
         </div>
     </div>
     {% endif %}

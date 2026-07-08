@@ -1,0 +1,115 @@
+<form
+class="auth-form"
+id="registerForm"
+hx-post="{% url "account:register" %}"
+hx-target="#registerModalWrapper"
+hx-swap="outerHTML"
+>
+    {% include "includes/_form_non_field_error.html" %}
+    <div class="form-group">
+        <label for="id_first_name">Ваше ім'я</label>
+        <input 
+        type="text" 
+        name="first_name"
+        id="id_first_name"
+        placeholder="Іван Іванов"
+        value="{% if form.first_name.value %}{{ form.first_name.value }}{% endif %}"
+        >
+        {% if form.first_name.errors %}
+            <ul class="form-error">
+                {% for error in form.first_name.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="id_last_name">Ваше прізвище</label>
+        <input
+        type="text"
+        name="last_name"
+        id="id_last_name"
+        placeholder="Іван Іванов"
+        value="{% if form.last_name.value %}{{ form.last_name.value }}{% endif %}"
+        >
+        {% if form.last_name.errors %}
+            <ul class="form-error">
+                {% for error in form.last_name.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="id_email">Email</label>
+        <input
+        type="email"
+        name="email"
+        id="id_email"
+        placeholder="hello@example.com"
+        value="{% if form.email.value %}{{ form.email.value }}{% endif %}"
+        >
+        {% if form.email.errors %}
+            <ul class="form-error">
+                {% for error in form.email.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="id_register_phone">Номер телефону</label>
+        <input
+        type="text"
+        name="phone"
+        id="id_register_phone"
+        placeholder="+38 (0__) ___-__-__"
+        value="{% if form.phone.value %}{{ form.phone.value }}{% endif %}"
+        >
+        {% if form.phone.errors %}
+            <ul class="form-error">
+                {% for error in form.phone.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="id_password1">Пароль</label>
+        <input
+        type="password"
+        name="password1"
+        id="id_password1"
+        placeholder="••••••••"
+        value="{% if form.password1.value %}{{ form.password1.value }}{% endif %}"
+        >
+        {% if form.password1.errors %}
+            <ul class="form-error">
+                {% for error in form.password1.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="id_password2">Повтор пароля</label>
+        <input
+        type="password"
+        name="password2"
+        id="id_password2"
+        placeholder="••••••••"
+        value="{% if form.password2.value %}{{ form.password2.value }}{% endif %}"
+        >
+        {% if form.password2.errors %}
+            <ul class="form-error">
+                {% for error in form.password2.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <button type="submit" class="btn btn--primary btn--block" style="margin-top: 10px;">Зареєструватися</button>
+    <div class="auth-switch">
+        Вже є акаунт? <button type="button" class="auth-switch-btn" data-switch-to-login="">Увійти</button>
+    </div>
+</form>

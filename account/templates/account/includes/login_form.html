@@ -6,8 +6,6 @@ hx-post="{% url "account:login" %}"
 hx-target="#loginModalWrapper"
 hx-swap="outerHTML"
 >
-    {% comment %} {{form}} {% endcomment %}
-    {% comment %} {% csrf_token %} {% endcomment %}
     {% include "includes/_form_non_field_error.html" %}
     <div class="form-group">
         <label for="id_username">Номер телефону або електронна пошта * </label>

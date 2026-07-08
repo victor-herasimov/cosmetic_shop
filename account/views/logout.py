@@ -15,7 +15,7 @@ from django.contrib.auth import logout as user_logout
 from django.shortcuts import render
 
 from mixins import OnlyHtmxMixin
-from account.forms import EmailOrPhoneLoginForm
+from account.forms import EmailOrPhoneLoginForm, UserRegistrationForm
 
 
 class LogoutView(LoginRequiredMixin, OnlyHtmxMixin, View):
@@ -58,6 +58,7 @@ class LogoutView(LoginRequiredMixin, OnlyHtmxMixin, View):
             self.template_name,
             {
                 "login_form": EmailOrPhoneLoginForm(),
+                "logout_form": UserRegistrationForm(),
                 "action": "logout",
                 "time": int(time.time() * 1000),
                 "toast_text": "Ви успішно вийшли з особистого кабінету",
