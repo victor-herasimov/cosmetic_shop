@@ -68,8 +68,7 @@ class LoginView(View):
             response["HX-Trigger"] = "userLoggedIn"
             return response
         else:
-            print("form invalid")
-
             response: HttpResponse = render(request, self.template_name, {"form": form})
             response["HX-Retarget"] = "#loginForm"
+
             return response

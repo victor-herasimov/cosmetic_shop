@@ -160,6 +160,16 @@ document.body.addEventListener("userLoggedIn", function (event) {
   if (registerModal) closeModal(registerModal);
 });
 
+// Закриваємо модальні вікна після Логаута
+document.body.addEventListener("userLoggedOut", function (event) {
+  const modals = document.querySelectorAll(".modal.is-open");
+  if (modals) {
+    modals.forEach((modal) => {
+      closeModal(modal);
+    });
+  }
+});
+
 document.body.addEventListener("htmx:configRequest", (event) => {
   const name = "csrftoken";
   const matches = document.cookie.match(

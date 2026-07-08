@@ -5,11 +5,12 @@
 """
 
 from django.urls import URLResolver, path
-from account.views import LoginView
+from account.views import LoginView, LogoutView
 
 
 app_name: str = "account"
 
 urlpatterns: list[URLResolver] = [
-    path("create/", LoginView.as_view(), name="login"),
+    path("login/", LoginView.as_view(), name="login"),
+    path("logout/", LogoutView.as_view(), name="logout"),
 ]
