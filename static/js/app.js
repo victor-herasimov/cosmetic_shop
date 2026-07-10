@@ -106,7 +106,6 @@ function bindGlobalEvents() {
       const input = document.getElementById("searchInput");
       if (input) {
         input.value = "";
-        console.log("claer");
         input.focus();
         clearSearch.style.display = "none";
         document.querySelector(".search-suggest").classList.remove("hidden");
@@ -142,6 +141,15 @@ export function phoneNumberMask(selector, mask, parent = document) {
   IMask(element, maskOptions);
 }
 
+function closeAllModals() {
+  const modals = document.querySelectorAll(".modal.is-open");
+  if (modals) {
+    modals.forEach((modal) => {
+      closeModal(modal);
+    });
+  }
+}
+
 document.addEventListener("htmx:load", (event) => {
   const target = event.detail.elt;
   const phoneInput = target.querySelector
@@ -154,20 +162,17 @@ document.addEventListener("htmx:load", (event) => {
 
 // Закриваємо модальні вікна після Реєстрації/Логіна
 document.body.addEventListener("userLoggedIn", function (event) {
-  const loginModal = document.getElementById("loginModal");
-  const registerModal = document.getElementById("registerModal");
-  if (loginModal) closeModal(loginModal);
-  if (registerModal) closeModal(registerModal);
+  closeAllModals();
 });
 
 // Закриваємо модальні вікна після Логаута
 document.body.addEventListener("userLoggedOut", function (event) {
-  const modals = document.querySelectorAll(".modal.is-open");
-  if (modals) {
-    modals.forEach((modal) => {
-      closeModal(modal);
-    });
-  }
+  closeAllModals();
+});
+
+document.body.addEventListener("showPasswordResetModal", function (event) {
+  closeAllModals();
+  setTimeout(() => openModal("passwordResetModal"), 200);
 });
 
 document.body.addEventListener("htmx:configRequest", (event) => {

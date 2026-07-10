@@ -71,7 +71,7 @@ class User(DateMixin, AbstractBaseUser, PermissionsMixin):
     phone = models.CharField(
         max_length=20,
         verbose_name="Телефон",
-        unique=False,
+        unique=True,
         blank=True,
         null=True,
         validators=[PhoneNumberValidator()],

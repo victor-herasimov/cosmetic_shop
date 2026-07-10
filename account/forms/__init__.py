@@ -7,5 +7,6 @@
 
 from .login import EmailOrPhoneLoginForm
 from .register import UserRegistrationForm
+from .password_reset import PasswordResetForm
 
-__all__ = ["EmailOrPhoneLoginForm", "UserRegistrationForm"]
+__all__ = ["EmailOrPhoneLoginForm", "UserRegistrationForm", "PasswordResetForm"]

@@ -13,6 +13,10 @@ from typing import Any
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser
+from django.http import HttpRequest
+from django.contrib.sites.shortcuts import get_current_site
+
+from account.tasks import send_password_reset_email_task
 
 User: type[AbstractUser] = get_user_model()
 
@@ -58,3 +62,33 @@ class UserService:
 
         user.backend = "django.contrib.auth.backends.ModelBackend"
         return user
+
+    @classmethod
+    def send_password_reset_email(
+        cls,
+        request: HttpRequest,
+        user_email: str,
+        template_name_email_text: str,
+        template_name_email_html: str,
+    ) -> None:
+
+        user: type[AbstractUser] = User.objects.filter(
+            email__iexact=user_email, is_active=True
+        ).first()
+
+        if not user:
+            return
+
+        current_site = get_current_site(request)
+        domain: str = current_site.domain
+        protocol: str = "https" if request.is_secure() else "http"
+        base_url = f"{request.scheme}://{request.get_host()}"
+
+        send_password_reset_email_task.delay(
+            user_id=user.pk,
+            domain=domain,
+            protocol=protocol,
+            template_name_email_text=template_name_email_text,
+            template_name_email_html=template_name_email_html,
+            base_url=base_url,
+        )
