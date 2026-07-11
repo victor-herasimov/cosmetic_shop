@@ -1,0 +1,33 @@
+<!-- 2. Phone -->
+<div class="settings-card" id="cardPhone">
+    <div class="settings-card__header">
+        <div class="settings-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
+        </div>
+        <div>
+            <h2 class="settings-card__title">Номер телефону</h2>
+            <p class="settings-card__desc">Використовується для підтвердження замовлень та доставки</p>
+        </div>
+    </div>
+
+    <!-- Edit mode -->
+    <div class="settings-card__form" id="phoneForm">
+        <form id="phoneFormEl">
+        <div class="sform-group sform-group--single">
+            <label class="sform-label" for="phone">Номер телефону</label>
+            <div class="sform-input-wrap">
+            <span class="sform-prefix">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
+            </span>
+            <input class="sform-input sform-input--has-prefix" type="tel" id="phone" name="phone" placeholder="+38 (0__) ___-__-__" autocomplete="tel">
+            </div>
+            <span class="sform-hint">Введіть номер у форматі +38 (0XX) XXX-XX-XX</span>
+            <span class="sform-error" id="phoneError"></span>
+        </div>
+        <div class="sform-actions">
+            <button type="submit" class="btn btn--primary" id="savePhoneBtn">Зберегти зміни</button>
+            <button type="button" class="btn btn--ghost" id="cancelPhoneBtn">Скасувати</button>
+        </div>
+        </form>
+    </div>
+</div>

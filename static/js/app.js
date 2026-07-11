@@ -21,8 +21,15 @@ function bindGlobalEvents() {
     const openCart = t.closest("[data-open-cart]");
     if (openCart) {
       e.preventDefault();
-      // renderCart();
       openModal("cartModal");
+      return;
+    }
+
+    const openDeleteAccountModal = t.closest("[data-open-delete-account]");
+    if (openDeleteAccountModal) {
+      console.log("delete modal");
+      e.preventDefault();
+      openModal("accountDeleteModal");
       return;
     }
 
@@ -113,7 +120,6 @@ function bindGlobalEvents() {
       }
       return;
     }
-
     if (
       t.closest("[data-close-modal]") ||
       t.classList.contains("modal__overlay")

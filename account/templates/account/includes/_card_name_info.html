@@ -1,0 +1,30 @@
+<!-- 1. Name & Surname -->
+<div class="settings-card" id="cardName">
+    <div class="settings-card__header">
+        <div class="settings-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path></svg>
+        </div>
+        <div>
+            <h2 class="settings-card__title">Ім'я та прізвище</h2>
+            <p class="settings-card__desc">Ваше повне ім'я відображається у замовленнях та профілі</p>
+        </div>
+        <button class="btn btn--ghost settings-card__edit-btn" id="editNameBtn" aria-label="Редагувати ім'я та прізвище">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            Змінити
+        </button>
+    </div>
+
+    <!-- View mode -->
+    <div class="settings-card__view" id="nameView" style="">
+        <div class="settings-info-grid">
+        <div class="settings-info-item">
+            <span class="settings-info-item__label">Ім'я</span>
+            <span class="settings-info-item__value" id="displayFirstName">Олена</span>
+        </div>
+        <div class="settings-info-item">
+            <span class="settings-info-item__label">Прізвище</span>
+            <span class="settings-info-item__value" id="displayLastName">Андрієнко</span>
+        </div>
+        </div>
+    </div>
+</div>

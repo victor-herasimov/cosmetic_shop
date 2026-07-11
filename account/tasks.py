@@ -15,6 +15,10 @@ from notifications.services import NotificationService
 User: type[AbstractUser] = get_user_model()
 logger = logging.getLogger(__name__)
 
+from celery.utils.log import get_task_logger
+
+celery_logger = get_task_logger(__name__)
+
 
 @shared_task(bind=True, max_retries=3, default_retry_delay=60)
 def send_password_reset_email_task(
@@ -31,6 +35,9 @@ def send_password_reset_email_task(
     uid: str = urlsafe_base64_encode(force_bytes(user.pk))
     token: str = default_token_generator.make_token(user)
 
+    celery_logger.info(uid)
+    celery_logger.info(token)
+
     config: SiteConfig = SiteConfigService().get()
     schedules: list[str] = [str(item) for item in WorkScheduleService.get_all()]
     config: SiteConfig = SiteConfigService().get()
@@ -40,7 +47,7 @@ def send_password_reset_email_task(
         "first_name": user.first_name,
         "domain": domain,
         "site_name": domain,
-        "uid": uid,
+        "uidb64": uid,
         "token": token,
         "protocol": protocol,
         "config": config,

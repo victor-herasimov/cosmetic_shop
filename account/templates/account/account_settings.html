@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block seo_robots %}
+    <meta name="robots" content="noindex, nofollow, noarchive">
+{% endblock %}
+
+{% block title %}
+ - Налаштування акаунту
+{% endblock title %}
+
+{% block content %}
+
+{% include "account/includes/_delete_account_modal.html" %}
+
+<!-- Page Head -->
+<div class="page-head">
+  <div class="wrap">
+    <h1>Налаштування акаунту</h1>
+  </div>
+</div>
+
+<!-- Password reset confirm Content -->
+<section class="section settings-section">
+    <div class="wrap">
+        <div class="settings-layout">
+            <!-- Main content -->
+            <div class="settings-content">
+
+                {% include "account/includes/_card_name_info.html" %}
+
+                {% include "account/includes/_card_phone_info.html" %}
+
+                {% include "account/includes/_card_email_info.html" %}
+
+                {% include "account/includes/_card_password_info.html" %}
+
+                <!-- Danger Zone -->
+                <div class="settings-danger-zone">
+                    <div class="settings-danger-zone__inner">
+                        <div class="settings-danger-zone__text">
+                            <h3 class="settings-danger-zone__title">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                                Небезпечна зона
+                            </h3>
+                            <p>Видалення облікового запису є незворотною дією. Всі ваші дані буде видалено назавжди.</p>
+                        </div>
+                        <button class="btn settings-danger-zone__btn" data-open-delete-account="" id="deleteAccountBtn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"></path><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"></path></svg>
+                            Видалити обліковий запис
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block scripts %}
+    <script type="module" src="{% static "js/account-settings.js" %} "></script>
+    
+{% endblock scripts %}

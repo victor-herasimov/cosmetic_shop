@@ -1,0 +1,34 @@
+<!-- 1. Name & Surname -->
+<div class="settings-card" id="cardName">
+    <div class="settings-card__header">
+        <div class="settings-card__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path></svg>
+        </div>
+        <div>
+        <h2 class="settings-card__title">Ім'я та прізвище</h2>
+        <p class="settings-card__desc">Ваше повне ім'я відображається у замовленнях та профілі</p>
+        </div>
+    </div>
+
+    <!-- Edit mode -->
+    <div class="settings-card__form" id="nameForm">
+        <form id="nameFormEl" novalidate="">
+        <div class="sform-row">
+            <div class="sform-group">
+            <label class="sform-label" for="firstName">Ім'я</label>
+            <input class="sform-input" type="text" id="firstName" name="firstName" placeholder="Олена" autocomplete="given-name">
+            <span class="sform-error" id="firstNameError"></span>
+            </div>
+            <div class="sform-group">
+            <label class="sform-label" for="lastName">Прізвище</label>
+            <input class="sform-input" type="text" id="lastName" name="lastName" placeholder="Андрієнко" autocomplete="family-name">
+            <span class="sform-error" id="lastNameError"></span>
+            </div>
+        </div>
+        <div class="sform-actions">
+            <button type="submit" class="btn btn--primary" id="saveNameBtn">Зберегти зміни</button>
+            <button type="button" class="btn btn--ghost" id="cancelNameBtn">Скасувати</button>
+        </div>
+        </form>
+    </div>
+</div>
