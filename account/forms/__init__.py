@@ -10,6 +10,7 @@ from .register import UserRegistrationForm
 from .password_reset import PasswordResetForm
 from .change_name import ChangeUserNameForm
 from .change_email import ChangeUserEmailForm
+from .change_phone import ChangeUserPhoneForm
 
 __all__ = [
     "EmailOrPhoneLoginForm",
@@ -17,4 +18,5 @@ __all__ = [
     "PasswordResetForm",
     "ChangeUserNameForm",
     "ChangeUserEmailForm",
+    "ChangeUserPhoneForm",
 ]

@@ -14,6 +14,7 @@ from account.views import (
     AccountSettingsView,
     ChangeUserNameView,
     ChangeUserEmailView,
+    ChangeUserPhoneView,
 )
 
 
@@ -39,5 +40,10 @@ urlpatterns: list[URLResolver] = [
         "change_email",
         ChangeUserEmailView.as_view(),
         name="change_email",
+    ),
+    path(
+        "change_phone",
+        ChangeUserPhoneView.as_view(),
+        name="change_phone",
     ),
 ]

@@ -12,21 +12,47 @@
 
     <!-- Edit mode -->
     <div class="settings-card__form" id="phoneForm">
-        <form id="phoneFormEl">
+        <form
+        id="phoneFormEl"
+        hx-post="{% url "account:change_phone" %}"
+        hx-target="#cardPhone"
+        hx-swap="outerHTML"
+        >
+        {% include "includes/_form_non_field_error.html" %}
         <div class="sform-group sform-group--single">
-            <label class="sform-label" for="phone">Номер телефону</label>
+            <label class="sform-label" for="phone_change">Номер телефону</label>
             <div class="sform-input-wrap">
             <span class="sform-prefix">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
             </span>
-            <input class="sform-input sform-input--has-prefix" type="tel" id="phone" name="phone" placeholder="+38 (0__) ___-__-__" autocomplete="tel">
+            <input
+            class="sform-input sform-input--has-prefix"
+            type="tel"
+            id="phone_change"
+            name="phone"
+            placeholder="+38 (0__) ___-__-__"
+            value="{% if form.phone.value %}{{ form.phone.value }}{% endif %}"
+            >
             </div>
             <span class="sform-hint">Введіть номер у форматі +38 (0XX) XXX-XX-XX</span>
-            <span class="sform-error" id="phoneError"></span>
+            {% if form.phone.errors %}
+                <ul class="form-error">
+                    {% for error in form.phone.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </div>
         <div class="sform-actions">
             <button type="submit" class="btn btn--primary" id="savePhoneBtn">Зберегти зміни</button>
-            <button type="button" class="btn btn--ghost" id="cancelPhoneBtn">Скасувати</button>
+            <button
+            type="button"
+            class="btn btn--ghost"
+            id="cancelPhoneBtn"
+            hx-get="{% url "account:change_phone" %}?type=info"
+            hx-target="#cardPhone"
+            hx-swap="outerHTML"
+            >Скасувати</button>
         </div>
         </form>
     </div>

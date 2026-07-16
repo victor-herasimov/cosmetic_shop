@@ -1,4 +1,4 @@
-import { init } from "./app.js";
+import { init, phoneNumberMask } from "./app.js";
 init();
 
 function passwordVisibilityToggles() {
@@ -23,3 +23,13 @@ function passwordVisibilityToggles() {
 }
 
 passwordVisibilityToggles();
+document.addEventListener("htmx:load", (event) => {
+  const target = event.detail.elt;
+  const phoneInput = target.querySelector
+    ? target.querySelector("#phone_change")
+    : null;
+  console.log(phoneInput);
+  if (phoneInput) {
+    phoneNumberMask("#phone_change", "{+38 (\\0}00) 000-00-00", target);
+  }
+});
