@@ -9,6 +9,7 @@ import time
 from typing import Any
 
 from django.http import HttpRequest, HttpResponse
+from django.urls import reverse
 from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import logout as user_logout
@@ -65,5 +66,7 @@ class LogoutView(LoginRequiredMixin, OnlyHtmxMixin, View):
             },
         )
         response["HX-Trigger"] = "userLoggedOut"
+        if "account" in request.path:
+            response["HX-Redirect"] = reverse("main:index")
 
         return response

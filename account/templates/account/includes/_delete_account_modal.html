@@ -8,7 +8,11 @@
             <h3 class="delete-modal__title" id="deleteModalTitle">Видалити обліковий запис?</h3>
             <p class="delete-modal__text">Ця дія є незворотною. Всі ваші дані, замовлення, відгуки та накопичені бонуси буде видалено назавжди. Ви впевнені?</p>
             <div class="delete-modal__actions">
-            <button class="btn settings-danger-zone__btn" id="confirmDeleteBtn">Так, видалити</button>
+            <button
+            class="btn settings-danger-zone__btn"
+            id="confirmDeleteBtn"
+            hx-post="{% url "account:delete" %}"
+            >Так, видалити</button>
             <button class="btn btn--ghost" data-close-modal id="cancelDeleteBtn">Скасувати</button>
             </div>
         </div>

@@ -7,6 +7,7 @@
 для безшовної роботи з AJAX/HTMX запитами.
 """
 
+import time
 from typing import Any
 
 from django.http import HttpResponse
@@ -73,7 +74,11 @@ class ChangeUserEmailView(LoginRequiredMixin, FormView):
         return render(
             self.request,
             self.success_template_name,
-            context={"toast_text": "Дані змінено успішно!"},
+            context={
+                "action": "change-email",
+                "time": int(time.time() * 1000),
+                "toast_text": "Дані змінено успішно!",
+            },
         )
 
     def form_invalid(self, form) -> HttpResponse:

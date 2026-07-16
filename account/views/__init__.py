@@ -13,6 +13,8 @@ from .account_settings import AccountSettingsView
 from .change_name import ChangeUserNameView
 from .change_email import ChangeUserEmailView
 from .change_phone import ChangeUserPhoneView
+from .change_password import ChangeUserPasswordView
+from .delete import DeleteUserView
 
 __all__ = [
     "LoginView",
@@ -24,4 +26,6 @@ __all__ = [
     "ChangeUserNameView",
     "ChangeUserEmailView",
     "ChangeUserPhoneView",
+    "ChangeUserPasswordView",
+    "DeleteUserView",
 ]
