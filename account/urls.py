@@ -12,8 +12,9 @@ from account.views import (
     PasswordResetView,
     AsyncPasswordResetConfirmView,
     AccountSettingsView,
+    ChangeUserNameView,
+    ChangeUserEmailView,
 )
-from account.views.change_name import ChangeUserNameView
 
 
 app_name: str = "account"
@@ -33,5 +34,10 @@ urlpatterns: list[URLResolver] = [
         "change_name",
         ChangeUserNameView.as_view(),
         name="change_name",
+    ),
+    path(
+        "change_email",
+        ChangeUserEmailView.as_view(),
+        name="change_email",
     ),
 ]

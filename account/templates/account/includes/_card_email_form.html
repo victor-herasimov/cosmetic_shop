@@ -12,20 +12,46 @@
 
     <!-- Edit mode -->
     <div class="settings-card__form" id="emailForm">
-        <form id="emailFormEl" novalidate="">
+        <form id="emailFormEl"
+        hx-post="{% url "account:change_email" %}"
+        hx-target="#cardEmail"
+        hx-swap="outerHTML"
+        >
+        {% include "includes/_form_non_field_error.html" %}
             <div class="sform-group sform-group--single">
                 <label class="sform-label" for="email">Eлектронна пошта</label>
                 <div class="sform-input-wrap">
                     <span class="sform-prefix">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                     </span>
-                    <input class="sform-input sform-input--has-prefix" type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email">
+                    <input
+                    class="sform-input sform-input--has-prefix"
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    value="{% if form.email.value %}{{ form.email.value }}{% endif %}"
+                    >
+                    {% if form.email.errors %}
+                        <ul class="form-error">
+                            {% for error in form.email.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                 </div>
                 <span class="sform-error" id="emailError"></span>
             </div>
             <div class="sform-actions">
                 <button type="submit" class="btn btn--primary" id="saveEmailBtn">Зберегти зміни</button>
-                <button type="button" class="btn btn--ghost" id="cancelEmailBtn">Скасувати</button>
+                <button
+                type="button"
+                class="btn btn--ghost"
+                id="cancelEmailBtn"
+                hx-get="{% url "account:change_email" %}?type=info"
+                hx-target="#cardEmail"
+                hx-swap="outerHTML"
+                >Скасувати</button>
             </div>
         </form>
     </div>

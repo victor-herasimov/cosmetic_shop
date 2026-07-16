@@ -11,6 +11,7 @@ from .password_reset import PasswordResetView
 from .password_reset_confirm import AsyncPasswordResetConfirmView
 from .account_settings import AccountSettingsView
 from .change_name import ChangeUserNameView
+from .change_email import ChangeUserEmailView
 
 __all__ = [
     "LoginView",
@@ -20,4 +21,5 @@ __all__ = [
     "AsyncPasswordResetConfirmView",
     "AccountSettingsView",
     "ChangeUserNameView",
+    "ChangeUserEmailView",
 ]

@@ -8,7 +8,14 @@
             <h2 class="settings-card__title">Електронна пошта</h2>
             <p class="settings-card__desc">На цю адресу надсилаються підтвердження замовлень та акції</p>
         </div>
-        <button class="btn btn--ghost settings-card__edit-btn" id="editEmailBtn" aria-label="Редагувати email">
+        <button
+        class="btn btn--ghost settings-card__edit-btn"
+        id="editEmailBtn"
+        aria-label="Редагувати email"
+        hx-get="{% url "account:change_email" %}?type=form"
+        hx-target="#cardEmail"
+        hx-swap="outerHTML"
+        >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
             Змінити
         </button>
@@ -19,7 +26,7 @@
         <div class="settings-info-grid">
             <div class="settings-info-item">
                 <span class="settings-info-item__label">Email</span>
-                <span class="settings-info-item__value" id="displayEmail">olena@example.com</span>
+                <span class="settings-info-item__value" id="displayEmail">{{ request.user.email }}</span>
             </div>
         </div>
     </div>

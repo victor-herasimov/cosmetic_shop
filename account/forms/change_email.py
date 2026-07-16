@@ -13,9 +13,9 @@ from account.models import User as CustomUser
 User: type[CustomUser] = get_user_model()
 
 
-class ChangeUserNameForm(forms.ModelForm):
+class ChangeUserEmailForm(forms.ModelForm):
     """
-    Форма для безпечної зміни імені та прізвища користувача.
+    Форма для безпечної зміни email користувача.
     """
 
     class Meta:
@@ -24,7 +24,4 @@ class ChangeUserNameForm(forms.ModelForm):
         """
 
         model = User
-        fields = (
-            "first_name",
-            "last_name",
-        )
+        fields = ("email",)
