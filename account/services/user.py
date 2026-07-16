@@ -12,13 +12,13 @@
 from typing import Any
 
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import AbstractUser
-from django.http import HttpRequest
+from django.http import Http404, HttpRequest
 from django.contrib.sites.shortcuts import get_current_site
 
 from account.tasks import send_password_reset_email_task
+from account.models import User as CustomUser
 
-User: type[AbstractUser] = get_user_model()
+User: type[CustomUser] = get_user_model()
 
 
 class UserService:
@@ -29,7 +29,15 @@ class UserService:
     """
 
     @classmethod
-    def create(cls, data: dict[str, Any]) -> AbstractUser:
+    def get_by_pk(cls, pk: int) -> CustomUser:
+        """Повертає користувача по його ідентифікатору."""
+        try:
+            return User.objects.get(pk=pk)
+        except User.DoesNotExist as e:
+            raise Http404(f"Користувача з id {pk} не знайдено") from e
+
+    @classmethod
+    def create(cls, data: dict[str, Any]) -> CustomUser:
         """Створює нового користувача в системі із захешованим паролем.
 
         Метод копіює вхідні дані, очищає їх від технічних полів форми реєстрації
@@ -43,7 +51,7 @@ class UserService:
                 (наприклад, `username`) та технічні поля `password1` і `password2`.
 
         Returns:
-            AbstractUser: Екземпляр створеної моделі користувача (актуальної для
+            CustomUser: Екземпляр створеної моделі користувача (актуальної для
                 поточного Django-проєкту).
 
         Raises:
@@ -56,9 +64,7 @@ class UserService:
         user_data.pop("password1", None)
         raw_password: str = user_data.pop("password2", None)
 
-        user: AbstractUser = User.objects.create_user(
-            password=raw_password, **user_data
-        )
+        user: CustomUser = User.objects.create_user(password=raw_password, **user_data)
 
         user.backend = "django.contrib.auth.backends.ModelBackend"
         return user
@@ -72,7 +78,7 @@ class UserService:
         template_name_email_html: str,
     ) -> None:
 
-        user: type[AbstractUser] = User.objects.filter(
+        user: type[CustomUser] = User.objects.filter(
             email__iexact=user_email, is_active=True
         ).first()
 

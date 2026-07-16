@@ -13,6 +13,7 @@ from account.views import (
     AsyncPasswordResetConfirmView,
     AccountSettingsView,
 )
+from account.views.change_name import ChangeUserNameView
 
 
 app_name: str = "account"
@@ -27,5 +28,10 @@ urlpatterns: list[URLResolver] = [
         "reset/<uidb64>/<token>/",
         AsyncPasswordResetConfirmView.as_view(),
         name="password_reset_confirm",
+    ),
+    path(
+        "change_name",
+        ChangeUserNameView.as_view(),
+        name="change_name",
     ),
 ]

@@ -12,22 +12,60 @@
 
     <!-- Edit mode -->
     <div class="settings-card__form" id="nameForm">
-        <form id="nameFormEl" novalidate="">
+
+        <form
+        id="nameFormEl"
+        hx-post="{% url "account:change_name" %}"
+        hx-target="#cardName"
+        hx-swap="outerHTML"
+        >
+        {% include "includes/_form_non_field_error.html" %}
         <div class="sform-row">
             <div class="sform-group">
-            <label class="sform-label" for="firstName">Ім'я</label>
-            <input class="sform-input" type="text" id="firstName" name="firstName" placeholder="Олена" autocomplete="given-name">
-            <span class="sform-error" id="firstNameError"></span>
+            <label class="sform-label" for="first_name">Ім'я</label>
+            <input
+            class="sform-input"
+            type="text"
+            id="firstName"
+            name="first_name"
+            value="{% if form.first_name.value %}{{ form.first_name.value }}{% endif %}"
+            >
+            {% if form.first_name.errors %}
+                <ul class="form-error">
+                    {% for error in form.first_name.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
             </div>
             <div class="sform-group">
             <label class="sform-label" for="lastName">Прізвище</label>
-            <input class="sform-input" type="text" id="lastName" name="lastName" placeholder="Андрієнко" autocomplete="family-name">
-            <span class="sform-error" id="lastNameError"></span>
+            <input
+            class="sform-input"
+            type="text"
+            id="lastName"
+            name="last_name"
+            value="{% if form.last_name.value %}{{ form.last_name.value }}{% endif %}"
+            >
+            {% if form.last_name.errors %}
+                <ul class="form-error">
+                    {% for error in form.last_name.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
             </div>
         </div>
         <div class="sform-actions">
             <button type="submit" class="btn btn--primary" id="saveNameBtn">Зберегти зміни</button>
-            <button type="button" class="btn btn--ghost" id="cancelNameBtn">Скасувати</button>
+            <button
+            type="button"
+            class="btn btn--ghost"
+            id="cancelNameBtn"
+            hx-get="{% url "account:change_name" %}?type=info"
+            hx-target="#cardName"
+            hx-swap="outerHTML"
+            >Скасувати</button>
         </div>
         </form>
     </div>
