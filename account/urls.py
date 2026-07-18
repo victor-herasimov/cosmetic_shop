@@ -17,6 +17,7 @@ from account.views import (
     ChangeUserPhoneView,
     ChangeUserPasswordView,
     DeleteUserView,
+    UserOrderList,
 )
 
 
@@ -34,28 +35,33 @@ urlpatterns: list[URLResolver] = [
         name="password_reset_confirm",
     ),
     path(
-        "change_name",
+        "change_name/",
         ChangeUserNameView.as_view(),
         name="change_name",
     ),
     path(
-        "change_email",
+        "change_email/",
         ChangeUserEmailView.as_view(),
         name="change_email",
     ),
     path(
-        "change_phone",
+        "change_phone/",
         ChangeUserPhoneView.as_view(),
         name="change_phone",
     ),
     path(
-        "change_password",
+        "change_password/",
         ChangeUserPasswordView.as_view(),
         name="change_password",
     ),
     path(
-        "delete",
+        "delete/",
         DeleteUserView.as_view(),
         name="delete",
+    ),
+    path(
+        "orders/",
+        UserOrderList.as_view(),
+        name="orders",
     ),
 ]

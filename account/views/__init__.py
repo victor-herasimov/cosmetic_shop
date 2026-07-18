@@ -15,6 +15,7 @@ from .change_email import ChangeUserEmailView
 from .change_phone import ChangeUserPhoneView
 from .change_password import ChangeUserPasswordView
 from .delete import DeleteUserView
+from .orders import UserOrderList
 
 __all__ = [
     "LoginView",
@@ -28,4 +29,5 @@ __all__ = [
     "ChangeUserPhoneView",
     "ChangeUserPasswordView",
     "DeleteUserView",
+    "UserOrderList",
 ]
