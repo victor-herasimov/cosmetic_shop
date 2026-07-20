@@ -16,7 +16,9 @@ class ProductService:
         Повертає кверісет з усіма продуктами
         """
         result = (
-            Product.objects.select_related("cateogry").prefetch_related("fotos").all()
+            Product.objects.select_related("cateogry")
+            .prefetch_related("fotos", "characteristics")
+            .all()
         )
         if order:
             result = result.order_by(order)

@@ -1,0 +1,18 @@
+<aside class="filters" id="desktopFilters">
+  <div class="filters__header">
+    <h4>Фільтри</h4>
+    <button class="filters__clear-all" id="clearAllFilters" style="display: none;">Очистити все</button>
+  </div>
+  <div class="filters__body" id="filtersContainer">
+    <form
+    hx-get="{% url 'goods:catalog' %}" 
+    hx-trigger="change delay:500ms" 
+    hx-target="#products" 
+    hx-swap="innerHTML"
+    hx-push-url="true"
+    >
+    
+      {% include "goods/includes/_filters.html" %}
+    </form>
+  </div>
+</aside>

@@ -1,19 +1,119 @@
-<aside class="filters">
-    <h4>Категорії</h4>
-    <ul class="filters__list" id="filterList">
-        <li>
-            <a class="filter-btn {% if not active_category %}is-active{% endif %}" href="{% url "goods:catalog" %}">
-                <span>Всі товари</span><small>{{ total_products }}</small>
-            </a>
-        </li>
-        {% for category in category_with_count_products %}
-            <li>
-                <a class="filter-btn {% if active_category.slug == category.slug %}is-active{% endif %}"
-                href="{% url "goods:catalog" %}?cat={{ category.slug }}"
+<!-- Категорії -->
+<div class="accordion-group">
+    <button class="accordion-header">
+        <span>Категорія</span>
+        <span class="accordion-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </span>
+    </button>
+    <div class="accordion-content">
+        <div class="accordion-content__inner">
+            {% for cat in categories %}
+                <label class="filter-checkbox {% if cat.count == 0 and not cat.is_selected %}opacity-40 pointer-events-none{% endif %}">
+                    <input
+                    type="checkbox"
+                    name="category" 
+                    value="{{ cat.id }}"
+                    {% if cat.is_selected %}checked{% endif %}
+                    {% if cat.count == 0 and not cat.is_selected %}disabled{% endif %}
+                    >
+                    <span class="checkbox-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </span>
+                    <span class="checkbox-label">{{ cat.name }}</span>
+                    <span class="checkbox-count">{{ cat.count }}</span>
+                </label>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+<!-- Ціна -->
+<div class="accordion-group" data-accordion="price">
+    <button class="accordion-header">
+        <span>Ціна, ₴</span>
+        <span class="accordion-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+        </span>
+    </button>
+    <div class="accordion-content">
+        <div class="accordion-content__inner">
+        <div class="price-filter">
+            <div class="price-filter__inputs">
+                <input
+                type="number"
+                id="priceMinInput"
+                placeholder="від"
+                value="{{ price_min }}"
+                min="0"
+                hx-trigger="none"
+                name="price_min"
                 >
-                    <span>{{ category.name }}</span><small>{{ category.product_count }}</small>
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
-</aside>
+                <span>—</span>
+                <input
+                type="number"
+                id="priceMaxInput"
+                placeholder="до"
+                value="{{ price_max }}"
+                min="0"
+                hx-trigger="none"
+                name="price_max"
+                >
+                <button
+                class="btn btn--primary btn--sm"
+                id="applyPriceBtn"
+                hx-get="{% url 'goods:catalog' %}"
+                hx-include="closest form"
+                hx-target="#products"
+                hx-swap="innerHTML"
+                type="button"
+                >
+                ОК</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+{% for group in grouped_characteristics %}
+<div class="accordion-group" data-accordion="tags">
+    <button class="accordion-header">
+        <span>{{ group.name }}</span>
+        <span class="accordion-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </span>
+    </button>
+    <div class="accordion-content">
+        <div class="accordion-content__inner">
+            {% for char_val in group.values %}
+                <label class="filter-checkbox {% if char_val.count == 0 and not char_val.is_selected %}opacity-40 pointer-events-none{% endif %}">
+                    <input
+                    type="checkbox"
+                    name="char_{{ group.id }}"
+                    value="{{ char_val.value }}"
+                    {% if char_val.is_selected %}checked{% endif %}
+                    {% if char_val.count == 0 and not char_val.is_selected %}disabled{% endif %}
+                    >
+                    <span class="checkbox-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </span>
+                    <span class="checkbox-label">{{ char_val.value }}</span>
+                    <span class="checkbox-count">{{ char_val.count }}</span>
+                </label>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endfor %}

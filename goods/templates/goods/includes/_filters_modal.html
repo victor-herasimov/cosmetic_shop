@@ -1,0 +1,23 @@
+<div class="modal" id="filtersModal">
+  <div class="modal__overlay" data-close-modal=""></div>
+  <div class="drawer filters-dravler">
+    <div class="filters-drawer__header">
+      <h3>Фільтри</h3>
+      <button class="icon-btn" id="closeDrawerBtn" aria-label="Закрити фільтри" data-close-modal="">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="filters-drawer__body" id="mobileFiltersContainer">
+      <form>
+        {% include "goods/includes/_filters.html" %}
+      </form>
+    </div>
+    <div class="filters-drawer__footer">
+      <button class="btn btn--ghost" id="drawerClearBtn">Скинути все</button>
+      <button class="btn btn--primary" id="drawerApplyBtn">Показати 12 товарів</button>
+    </div>
+  </div>
+</div>

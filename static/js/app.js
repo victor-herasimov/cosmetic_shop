@@ -56,6 +56,13 @@ function bindGlobalEvents() {
       return;
     }
 
+    const openFilters = t.closest("[data-open-filters]");
+    if (openFilters) {
+      e.preventDefault();
+      openModal("filtersModal");
+      return;
+    }
+
     const switchToRegister = t.closest("[data-switch-to-register]");
     if (switchToRegister) {
       e.preventDefault();

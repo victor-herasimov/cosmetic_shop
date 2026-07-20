@@ -14,6 +14,7 @@ from meta.models import ModelMeta
 from mixins import DateMixin, SlugMixin
 from .category import Category
 from .characteristic import Characteristic
+from .brand import Brand
 
 
 class Product(ModelMeta, DateMixin, SlugMixin):
@@ -27,6 +28,14 @@ class Product(ModelMeta, DateMixin, SlugMixin):
         on_delete=models.CASCADE,
         related_name="products",
         verbose_name="Категорія",
+    )
+    brand = models.ForeignKey(
+        Brand,
+        on_delete=models.SET_DEFAULT,
+        related_name="products",
+        verbose_name="Бренд",
+        null=True,
+        default=None,
     )
 
     description = CKEditor5Field("Опис", config_name="extends")
@@ -69,7 +78,7 @@ class Product(ModelMeta, DateMixin, SlugMixin):
         Characteristic,
         blank=True,
         default=None,
-        related_name="books",
+        related_name="products",
         verbose_name="Характеристики",
     )
 

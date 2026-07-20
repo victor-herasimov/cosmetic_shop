@@ -1,0 +1,26 @@
+{% include "goods/includes/products.html" %}
+
+<div class="filters__body" id="filtersContainer" hx-swap-oob="true">
+    <form
+    hx-get="{% url 'goods:catalog' %}" 
+    hx-trigger="change delay:500ms" 
+    hx-target="#products" 
+    hx-swap="innerHTML"
+    hx-push-url="true"
+    >
+    
+      {% include "goods/includes/_filters.html" %}
+    </form>
+</div>
+
+<div class="filters-drawer__body" id="mobileFiltersContainer" hx-swap-oob="true">
+    <form
+    hx-get="{% url 'goods:catalog' %}" 
+    hx-trigger="change delay:500ms" 
+    hx-target="#products" 
+    hx-swap="innerHTML"
+    hx-push-url="true"
+    >
+        {% include "goods/includes/_filters.html" %}
+    </form>
+</div>

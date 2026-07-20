@@ -7,6 +7,7 @@
 {% endblock title %}
 
 {% block content %}
+{% include "goods/includes/_filters_modal.html" %}
 
 {% include "includes/_breadcrumbs.html" %}
 
@@ -15,7 +16,7 @@
     <div class="wrap">
         {% include "goods/includes/_catalog_head.html" %}
         <div class="catalog-layout">
-            {% include "goods/includes/_filters.html" %}
+            {% include "goods/includes/_aside.html" %}
             <div class="products-container" style="position: relative; min-height: 200px;">
                 
                 <div class="products-spinner" id="productsSpinner">
