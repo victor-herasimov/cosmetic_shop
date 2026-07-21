@@ -20,6 +20,7 @@ class Cart:
         """
         Ініціалізувати корзину.
         """
+        self.request = request
         self.session = request.session
         cart: CartType = self.session.get(settings.CART_SESSION_ID)
         if not cart:
@@ -77,7 +78,9 @@ class Cart:
         Прокрутити товарні позиції в циклі і отримати продукти з бази даних.
         """
         product_ids: Iterable[str] = self.cart.keys()
-        products: QuerySet[Product] = ProductService.get_products_by_ids(product_ids)
+        products: QuerySet[Product] = ProductService(
+            self.request.GET
+        ).get_products_by_ids(product_ids)
         cart: CartType = copy.deepcopy(self.cart)
         for product in products:
             cart[str(product.id)]["product"] = product

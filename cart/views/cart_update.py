@@ -48,7 +48,7 @@ class CartUpdateView(OnlyHtmxMixin, View):
 
         cd: dict[str, Any] = form.cleaned_data
         try:
-            product: Product = ProductService.get_by_id(cd["product_id"])
+            product: Product = ProductService(request.GET).get_by_id(cd["product_id"])
         except Product.DoesNotExist as exc:
             raise Http404("Товару не знайдено") from exc
 

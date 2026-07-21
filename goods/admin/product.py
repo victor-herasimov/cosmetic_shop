@@ -95,7 +95,17 @@ class ProductAdmin(admin.ModelAdmin):
     fieldsets = [
         (
             None,
-            {"fields": ["id", "title", "slug", "cateogry", "is_bestseller", "is_new"]},
+            {
+                "fields": [
+                    "id",
+                    "title",
+                    "slug",
+                    "cateogry",
+                    "brand",
+                    "is_bestseller",
+                    "is_new",
+                ]
+            },
         ),
         (
             "Ціна - Залишки",

@@ -3,10 +3,13 @@
     hx-trigger="change" 
     hx-target="#products" 
     hx-push-url="true"
-    hx-indicator="#productsSpinner">
+    hx-indicator="#productsSpinner"
+    hx-include="#filter-form"
+    id="sort-form"
+    >
     
     {% if request.GET.cat %}
-        <input type="hidden" name="cat" value="{{ request.GET.cat }}">
+        <input type="hidden" name="category" value="{{ request.GET.category }}">
     {% endif %}
      {% if request.GET.search %}
         <input type="hidden" name="search" value="{{ request.GET.search }}">

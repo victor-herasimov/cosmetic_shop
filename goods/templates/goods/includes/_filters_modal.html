@@ -11,13 +11,16 @@
       </button>
     </div>
     <div class="filters-drawer__body" id="mobileFiltersContainer">
-      <form>
+      <form
+      hx-get="{% url 'goods:catalog' %}" 
+      hx-trigger="change delay:500ms" 
+      hx-target="#products" 
+      hx-swap="innerHTML"
+      hx-push-url="true"
+      id="mobile-filter-form"
+      >
         {% include "goods/includes/_filters.html" %}
       </form>
-    </div>
-    <div class="filters-drawer__footer">
-      <button class="btn btn--ghost" id="drawerClearBtn">Скинути все</button>
-      <button class="btn btn--primary" id="drawerApplyBtn">Показати 12 товарів</button>
     </div>
   </div>
 </div>

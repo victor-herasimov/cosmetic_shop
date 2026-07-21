@@ -1,16 +1,12 @@
 {% load uk_pluralize %}
-<div class="catalog-head">
+<div class="catalog-head" id="catalog-head">
   <div>
     <h1 class="section-title" id="catalogTitle">
-      {% if not active_category %} Всі товари {% else %} {{ active_category.name }} {% endif %}
+      Всі товари
     </h1>
-    {% with p_count=active_category.products.count %} {% if active_category %}
-    <p id="catalogCount">{{ p_count }} {{ p_count|uk_pluralize }}</p>
-    {% else %}
     <p id="catalogCount">
-      {{ total_products }} {{ total_products|uk_pluralize }}
+      {{ paginator.count }} {{ paginator.count|uk_pluralize }}
     </p>
-    {% endif %} {% endwith %}
   </div>
   {% url "goods:catalog" as url_catalog %}
   {% include "goods/includes/_catalog_tools.html" with url=url_catalog %}
