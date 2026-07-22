@@ -163,7 +163,7 @@ else:
     STATIC_ROOT: Path = BASE_DIR / STATIC_URL
 
 # Paginate settings
-ITEMS_PER_PAGE: int = 1
+ITEMS_PER_PAGE: int = 4
 
 # Account
 AUTH_USER_MODEL = "account.User"

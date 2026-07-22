@@ -88,6 +88,7 @@ class OrderAdmin(admin.ModelAdmin):
                     "last_name",
                     "phone",
                     "email",
+                    "user",
                     "payment_method",
                     "delivery_method",
                     "city",

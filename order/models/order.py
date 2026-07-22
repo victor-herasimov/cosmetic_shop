@@ -9,6 +9,7 @@
 from decimal import Decimal
 import re
 
+from django.contrib.auth import get_user_model
 from django.db import models, transaction
 from django.core.validators import ValidationError
 from goods.models.product import Product
@@ -16,6 +17,10 @@ from mixins import DateMixin
 from validators import PhoneNumberValidator
 from .delivery_method import DeliveryMethod
 from .payment_method import PaymentMethod
+from account.models import User as CustomUser
+
+
+User: type[CustomUser] = get_user_model()
 
 
 class Order(DateMixin):
@@ -48,6 +53,15 @@ class Order(DateMixin):
         validators=[PhoneNumberValidator()],
     )
     email = models.EmailField(verbose_name="Email", unique=False)
+
+    user = models.ForeignKey(
+        User,
+        on_delete=models.SET_DEFAULT,
+        null=True,
+        blank=True,
+        default=None,
+        verbose_name="Користувач",
+    )
 
     delivery_method = models.ForeignKey(
         DeliveryMethod,
