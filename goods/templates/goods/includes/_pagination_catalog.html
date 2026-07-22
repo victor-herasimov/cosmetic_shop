@@ -42,7 +42,8 @@
                 class="pagination__btn"
                 href="?{% change_params page=page_num %}"
                 hx-get="?page={{ page_num }}"
-                >{{ page_num }}</a>
+                >
+                {{ page_num }}</a>
             {% endif %}
         {% endfor %}
         <a 

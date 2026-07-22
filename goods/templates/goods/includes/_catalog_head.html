@@ -8,6 +8,5 @@
       {{ paginator.count }} {{ paginator.count|uk_pluralize }}
     </p>
   </div>
-  {% url "goods:catalog" as url_catalog %}
-  {% include "goods/includes/_catalog_tools.html" with url=url_catalog %}
+  {% include "goods/includes/_catalog_tools.html"%}
 </div>

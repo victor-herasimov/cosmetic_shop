@@ -1,4 +1,4 @@
-import { init } from "./app.js";
+import { init, scrollToElement } from "./app.js";
 
 function accordionEvents(filterForm) {
   filterForm.querySelectorAll(".accordion-header").forEach((header) => {
@@ -65,18 +65,6 @@ function restoreAccordions() {
   document.body.classList.remove("no-transitions");
 }
 
-// Прокрутка до початку блока з продуктами
-function scrollToProducts(eventInitId) {
-  document
-    .getElementById(eventInitId)
-    .addEventListener("htmx:afterRequest", (e) => {
-      const catalogHead = document.getElementById("catalog-head");
-      if (catalogHead) {
-        catalogHead.scrollIntoView({ behavior: "smooth" });
-      }
-    });
-}
-
 // Перед тим як HTMX замінить контент — фіксуємо, що закрив/відкрив користувач
 document.addEventListener("htmx:beforeSwap", function () {
   saveCurrentState();
@@ -101,8 +89,9 @@ document.addEventListener("htmx:load", (event) => {
     // Якщо вже є дані — відновлюємо їх на новому/старому HTML
     restoreAccordions();
   }
-
-  scrollToProducts("filter-form");
-  scrollToProducts("pagination");
-  scrollToProducts("mobile-filter-form");
+  if (target.id === "catalogGrid") {
+    scrollToElement("filter-form", "catalog-head");
+    scrollToElement("pagination", "catalog-head");
+    scrollToElement("mobile-filter-form", "catalog-head");
+  }
 });

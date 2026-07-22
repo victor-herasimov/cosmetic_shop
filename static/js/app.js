@@ -154,6 +154,20 @@ export function phoneNumberMask(selector, mask, parent = document) {
   IMask(element, maskOptions);
 }
 
+// Прокрутка до певногоблока блока
+export function scrollToElement(eventInitId, toScrollEl) {
+  const initialEl = document.getElementById(eventInitId);
+  if (initialEl) {
+    initialEl.addEventListener("htmx:afterRequest", (e) => {
+      const targetElement = document.getElementById(toScrollEl);
+      console.log(targetElement);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  }
+}
+
 function closeAllModals() {
   const modals = document.querySelectorAll(".modal.is-open");
   if (modals) {

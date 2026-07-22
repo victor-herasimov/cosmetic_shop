@@ -1439,7 +1439,7 @@ body.no-scroll {
 
 @media(max-width: 576px) {
   .select select {
-    max-width: 175px;
+    max-width: 215px;
   }
   .select span {
     display: none;
