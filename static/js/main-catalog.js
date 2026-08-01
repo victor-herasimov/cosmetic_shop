@@ -89,9 +89,10 @@ document.addEventListener("htmx:load", (event) => {
     // Якщо вже є дані — відновлюємо їх на новому/старому HTML
     restoreAccordions();
   }
-  if (target.id === "catalogGrid") {
-    scrollToElement("filter-form", "catalog-head");
-    scrollToElement("pagination", "catalog-head");
-    scrollToElement("mobile-filter-form", "catalog-head");
+});
+
+document.addEventListener("htmx:afterSwap", (event) => {
+  if (event.detail.target.id === "products") {
+    scrollToElement("catalog-head-wrapper");
   }
 });

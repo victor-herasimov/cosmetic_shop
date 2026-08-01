@@ -1,0 +1,6 @@
+{% load order_pluralize %}
+<span class="orders-head__count" id="ordersCount" hx-swap-oob="true">{{ paginator.count }} {{ paginator.count|order_pluralize }}</span>
+
+<div class="orders-container" id="ordersContainer">
+    {% include "account/includes/_orders_content.html" %}
+</div>

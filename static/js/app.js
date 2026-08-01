@@ -155,16 +155,25 @@ export function phoneNumberMask(selector, mask, parent = document) {
 }
 
 // Прокрутка до певногоблока блока
-export function scrollToElement(eventInitId, toScrollEl) {
-  const initialEl = document.getElementById(eventInitId);
-  if (initialEl) {
-    initialEl.addEventListener("htmx:afterRequest", (e) => {
-      const targetElement = document.getElementById(toScrollEl);
-      console.log(targetElement);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: "smooth" });
-      }
-    });
+// export function scrollToElement(eventInitId, toScrollEl) {
+//   const initialEl = document.getElementById(eventInitId);
+//   if (initialEl) {
+//     initialEl.addEventListener("htmx:afterRequest", (e) => {
+//       const targetElement = document.getElementById(toScrollEl);
+//       console.log(targetElement);
+//       if (targetElement) {
+//         targetElement.scrollIntoView({ behavior: "smooth" });
+//       }
+//     });
+//   }
+// }
+
+export function scrollToElement(toScrollEl) {
+  const targetElement = document.getElementById(toScrollEl);
+  if (targetElement) {
+    targetElement.scrollIntoView({ behavior: "smooth" });
+  } else {
+    console.warn(`[Scroll] Елемент #${toScrollEl} не знайдено`);
   }
 }
 

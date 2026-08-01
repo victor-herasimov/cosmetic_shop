@@ -11,6 +11,7 @@ from .password_reset import PasswordResetForm
 from .change_name import ChangeUserNameForm
 from .change_email import ChangeUserEmailForm
 from .change_phone import ChangeUserPhoneForm
+from .order_filter_form import OrderFilterForm
 
 __all__ = [
     "EmailOrPhoneLoginForm",
@@ -19,4 +20,5 @@ __all__ = [
     "ChangeUserNameForm",
     "ChangeUserEmailForm",
     "ChangeUserPhoneForm",
+    "OrderFilterForm",
 ]

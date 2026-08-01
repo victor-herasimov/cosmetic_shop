@@ -15,9 +15,9 @@ from django.core.validators import ValidationError
 from goods.models.product import Product
 from mixins import DateMixin
 from validators import PhoneNumberValidator
+from account.models import User as CustomUser
 from .delivery_method import DeliveryMethod
 from .payment_method import PaymentMethod
-from account.models import User as CustomUser
 
 
 User: type[CustomUser] = get_user_model()

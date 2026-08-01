@@ -1,0 +1,12 @@
+{% load order_pluralize %}
+
+<!-- Orders Head Bar (Count and Filter Select) -->
+<div class="orders-head" id="orders-head" hx-swap-oob="true">
+    <div class="orders-head__title-wrap">
+        <h2 class="orders-head__title">Історія замовлень</h2>
+        <span class="orders-head__count" id="ordersCount">{{ paginator.count }} {{ paginator.count|order_pluralize }}</span>
+    </div>
+    <div class="orders-head__filter">
+        {% include "account/includes/_order_status_form.html" %}
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<form
+    hx-get="{% url 'account:orders' %}"
+    hx-trigger="change" 
+    hx-target="#ordersContainer"
+    hx-push-url="true"
+    {% comment %} hx-indicator="#productsSpinner" {% endcomment %}
+    id="status-form"
+    >
+    <label class="select">
+        <span>{{status_form.filter.label}}</span>
+        
+        <select id="statusFilterSelect" name="{{ status_form.filter.name }}">
+            {% for value, text in status_form.filter.field.choices %}
+                <option value="{{ value }}" {% if status_form.filter.value == value %}selected{% endif %}>{{ text }}</option>
+            {% endfor %}
+        </select>
+    </label>
+</form>

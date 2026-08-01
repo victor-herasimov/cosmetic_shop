@@ -27,48 +27,15 @@
 
         <!-- Main content area -->
         <div class="orders-content">
-
-            <!-- Orders Head Bar (Count and Filter Select) -->
-            <div class="orders-head">
-                <div class="orders-head__title-wrap">
-                <h2 class="orders-head__title">Історія замовлень</h2>
-                <span class="orders-head__count" id="ordersCount">7 замовлень</span>
-                </div>
-                <div class="orders-head__filter">
-                <label class="select">
-                    <span>Статус замовлення:</span>
-                    <select id="statusFilterSelect">
-                    <option value="all">Всі замовлення</option>
-                    <option value="processing">В обробці</option>
-                    <option value="shipped">Відправлено</option>
-                    <option value="delivered">Виконано</option>
-                    <option value="cancelled">Скасовано</option>
-                    </select>
-                </label>
-                </div>
+            <div class="orders-head-wrapper" id="orders-head-wrapper">
+                {% include "account/includes/_orders_head.html" %}
             </div>
 
             <!-- Orders List Container -->
-            <div class="orders-list" id="ordersGrid">
-                {% include "account/includes/_card_order.html" %}
-                {% include "account/includes/_card_order.html" %}
-                {% include "account/includes/_card_order.html" %}
-            </div>
+             <div class="orders-container" id="ordersContainer">
+                {% include "account/includes/_orders_content.html" %}
+             </div>
 
-            <!-- Empty Orders State -->
-            <div class="orders-empty" id="ordersEmpty" style="display: none;">
-                <div class="orders-empty__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                </div>
-                <h3 class="orders-empty__title">Замовлень не знайдено</h3>
-                <p class="orders-empty__text">У вас немає замовлень із вибраним статусом.</p>
-            </div>
-            {%  with is_paginated=True %}
-                
-                    {% include "account/includes/_pagination_user_orders.html" %}
-                
-            {% endwith %}
-    
         </div>
         </div>
     </div>
@@ -77,6 +44,6 @@
 {% endblock content %}
 
 {% block scripts %}
-    <script type="module" src="{% static "js/account-settings.js" %} "></script>
+    <script type="module" src="{% static "js/account-orders.js" %} "></script>
     
 {% endblock scripts %}

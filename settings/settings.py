@@ -164,6 +164,7 @@ else:
 
 # Paginate settings
 ITEMS_PER_PAGE: int = 4
+ORDERS_PER_PAGE: int = 2
 
 # Account
 AUTH_USER_MODEL = "account.User"

@@ -28,7 +28,7 @@ class SearchView(ListView):
 
     def get_template_names(self) -> list[str]:
         if self.request.headers.get("HX-Request"):
-            return ["goods/includes/search_products.html"]
+            return ["goods/includes/_ajax_search_products.html"]
         return ["goods/search.html"]
 
     def get_queryset(self):

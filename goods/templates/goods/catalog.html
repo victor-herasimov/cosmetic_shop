@@ -14,7 +14,9 @@
 <!-- Catalog -->
 <section class="section section--catalog">
     <div class="wrap">
-        {% include "goods/includes/_catalog_head.html" %}
+        <div class="catalog-head-wrapper" id="catalog-head-wrapper">
+            {% include "goods/includes/_catalog_head.html" %}
+        </div>
         <div class="catalog-layout">
             {% include "goods/includes/_aside.html" %}
             <div class="products-container" style="position: relative; min-height: 200px;">

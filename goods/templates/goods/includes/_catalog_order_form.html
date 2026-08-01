@@ -7,19 +7,15 @@
     hx-include="#filter-form"
     id="sort-form"
     >
-    
-    {% if request.GET.cat %}
-        <input type="hidden" name="category" value="{{ request.GET.category }}">
-    {% endif %}
      {% if request.GET.search %}
         <input type="hidden" name="search" value="{{ request.GET.search }}">
     {% endif %}
     <label class="select">
-    <span>{{order_form.sort.label}}</span>
-    <select id="sortSelect" name="{{order_form.sort.name}}">
-        {% for value, text in order_form.sort.field.choices %}
-            <option value="{{ value }}" {% if order_form.sort.value == value %}selected{% endif %}>{{ text }}</option>
-        {% endfor %}
-    </select>
+        <span>{{order_form.sort.label}}</span>
+        <select id="sortSelect" name="{{order_form.sort.name}}">
+            {% for value, text in order_form.sort.field.choices %}
+                <option value="{{ value }}" {% if order_form.sort.value == value %}selected{% endif %}>{{ text }}</option>
+            {% endfor %}
+        </select>
     </label>
 </form>

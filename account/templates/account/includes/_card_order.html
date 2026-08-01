@@ -1,49 +1,48 @@
+{% load order_status %}
+
 <div class="order-card" data-order-id="RO-10947">
     <div class="order-card__header">
         <div class="order-card__meta">
-            <span class="order-card__number">Замовлення RO-10947</span>
-            <span class="order-card__date">16 липня 2026</span>
+            <span class="order-card__number">Замовлення №{{ order.id }}</span>
+            <span class="order-card__date">{{ order.created | date:"j E Y \р\."}}</span>
         </div>
-        <span class="order-badge order-badge--processing">В обробці</span>
+        <span class="order-badge {{ order.status|get_css_status }}">{{ order.get_status_display }}</span>
     </div>
     <div class="order-card__body">
         <div class="order-card__items">
-            <div class="order-item">
-                <div class="order-item__img">
-                    <img src="/images/product-1.png" alt="Сироватка-замінник ботоксу 2% — ARGIRELINE®">
+            {% for item in order.items.all %}
+                <div class="order-item">
+                    
+                    <div class="order-item__img">
+                        {% with first_foto=item.product.fotos.first %}
+                            <img src="{{ first_foto.image.url }}" alt="{{ item.product.title }}">
+                        {% endwith %}
+                    </div>
+                    
+                    <div class="order-item__info">
+                        <span class="order-item__name">{{ item.product.title }}</span>
+                        <span class="order-item__meta">{{ item.quantity}} × {{ item.price }} ₴</span>
+                    </div>
+                    <span class="order-item__price">{{ item.get_cost }} ₴</span>
                 </div>
-                <div class="order-item__info">
-                    <span class="order-item__name">Сироватка-замінник ботоксу 2% — ARGIRELINE®</span>
-                    <span class="order-item__meta">1 × 490 ₴</span>
-                </div>
-                <span class="order-item__price">490 ₴</span>
-            </div>
-            <div class="order-item">
-                <div class="order-item__img">
-                    <img src="/images/product-2.png" alt="Зволожувальний аква-гель з гіалуроном">
-                </div>
-                <div class="order-item__info">
-                    <span class="order-item__name">Зволожувальний аква-гель з гіалуроном</span>
-                    <span class="order-item__meta">2 × 450 ₴</span>
-                </div>
-                <span class="order-item__price">900 ₴</span>
-            </div>
+            {% endfor %}
+            
         </div>
         <div class="order-card__details">
             <div class="order-detail-group">
                 <span class="order-detail-group__label">Адреса доставки</span>
-                <span class="order-detail-group__value">Нова Пошта, Відділення №15, м. Київ</span>
+                <span class="order-detail-group__value">{{ order.delivery_method }}, {{ order.delivery_address }}</span>
             </div>
             <div class="order-detail-group">
                 <span class="order-detail-group__label">Спосіб оплати та статус</span>
-                <span class="order-detail-group__value">Оплата при отриманні</span>
+                <span class="order-detail-group__value">{{ order.payment_method }}</span>
             </div>
         </div>
     </div>
     <div class="order-card__footer">
         <div class="order-card__total">
             <span>Сума замовлення:</span>
-            <span class="order-card__total-price">1&nbsp;390 ₴</span>
+            <span class="order-card__total-price">{{ order.get_total_cost }} ₴</span>
         </div>
     </div>
 </div>

@@ -2,8 +2,11 @@ import { init, scrollToElement } from "./app.js";
 
 document.addEventListener("htmx:load", (event) => {
   init();
-  const target = event.detail.elt;
-  if (target.id === "catalogGrid") {
-    scrollToElement("pagination", "catalog-head");
+});
+
+document.addEventListener("htmx:afterSwap", (event) => {
+  console.log(event.detail.target);
+  if (event.detail.target.id === "products") {
+    scrollToElement("search-head-wrapper");
   }
 });

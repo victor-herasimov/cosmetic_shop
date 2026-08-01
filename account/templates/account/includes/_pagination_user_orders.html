@@ -2,10 +2,20 @@
 
 <!-- Pagination -->
 {% if is_paginated %}
-    <div class="pagination" id="pagination">
+    <div
+    class="pagination"
+    id="pagination"
+    hx-target="#ordersContainer"
+    {% comment %} hx-swap="innerHTML" {% endcomment %}
+    hx-push-url="true"
+    hx-include="#status-form"
+    >
         <a
             class="pagination__btn {% if not page_obj.has_previous %}disabled{% endif %}"
             href="{% if page_obj.has_previous %}?{% change_params page=page_obj.previous_page_number %}{% endif %}"
+            {% if page_obj.has_previous %}
+                hx-get="?page={{ page_obj.previous_page_number }}"
+            {% endif %}
             aria-label="Попередня сторінка"
         >
             <svg
@@ -26,12 +36,21 @@
             {% elif page_num == page_obj.number %}
                 <a class="pagination__btn is-active" >{{page_num}}</a>
             {% else %}
-                <a class="pagination__btn" href="?{% change_params page=page_num %}">{{ page_num }}</a>
+                <a 
+                class="pagination__btn" 
+                href="?{% change_params page=page_num %}"
+                hx-get="?page={{ page_num }}"
+                >
+                {{ page_num }}
+                </a>
             {% endif %}
         {% endfor %}
         <a 
         class="pagination__btn {% if not page_obj.has_next %}disabled{% endif %}" aria-label="Наступна сторінка"
         href="{% if page_obj.has_next %}?{% change_params page=page_obj.next_page_number %}{% endif %}"
+        {% if page_obj.has_next %}
+            hx-get="?page={{ page_obj.next_page_number }}"
+        {% endif %}
         >
             <svg
             viewBox="0 0 24 24"

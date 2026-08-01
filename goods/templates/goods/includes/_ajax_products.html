@@ -32,6 +32,8 @@
 </div>
 
 
-<p id="catalogCount" hx-swap-oob="true">
+{% comment %} <p id="catalogCount" hx-swap-oob="true">
     {{ paginator.count }} {{ paginator.count|uk_pluralize }}
-</p>
+</p> {% endcomment %}
+
+{% include "goods/includes/_catalog_head.html" %}
