@@ -52,6 +52,7 @@ CREATED_APPS: list[str] = [
     "notifications.apps.NotificationsConfig",
     "seo.apps.SeoConfig",
     "account.apps.AccountConfig",
+    "wishlist.apps.WishlistConfig",
 ]
 
 INSTALLED_APPS: list[str] = INTERNAL_APPS + OUTHER_APPS + CREATED_APPS

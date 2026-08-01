@@ -563,6 +563,67 @@ ul {
   flex: 1
 }
 
+/* ===== Wishlist button (card) ===== */
+.card__wishlist {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--ink-soft);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  z-index: 2;
+  padding: 0;
+}
+
+.card__wishlist svg {
+  width: 17px;
+  height: 17px;
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+.card__wishlist:hover {
+  transform: scale(1.12);
+  color: #e05a7a;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(224, 90, 122, 0.2);
+}
+
+.card__wishlist.is-wishlisted {
+  color: #e05a7a;
+  background: #fff0f3;
+}
+
+.card__wishlist.is-wishlisted svg {
+  fill: #e05a7a;
+  stroke: #e05a7a;
+}
+
+.card__wishlist.is-wishlisted:hover {
+  background: #ffe0e8;
+  box-shadow: 0 4px 14px rgba(224, 90, 122, 0.25);
+}
+
+@keyframes wishlist-pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.35); }
+  70%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+.card__wishlist.is-wishlisted {
+  animation: wishlist-pop 0.35s ease;
+}
+
 /* ===== Promo banner ===== */
 .promo {
   background: var(--accent-deep);
@@ -1576,7 +1637,7 @@ body.no-scroll {
   display: flex;
   gap: 12px;
   align-items: center;
-  margin-bottom: 28px;
+  
   flex-wrap: wrap;
 }
 
@@ -1584,6 +1645,85 @@ body.no-scroll {
   flex: 1;
   min-width: 200px;
 }
+
+.pdp__action {
+  margin-bottom: 28px;
+  display: flex;
+  gap: 12px;
+}
+
+@media (max-width: 1150px) {
+  .pdp__action {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 760px) {
+  .pdp__action {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 571px) {
+  .pdp__action {
+    flex-direction: column;
+  }
+}
+
+/* ===== Wishlist button (PDP) ===== */
+.pdp__wishlist {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 20px;
+  height: 52px;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--line);
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease, transform 0.18s ease, box-shadow 0.2s ease;
+}
+
+.pdp__wishlist svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+.pdp__wishlist:hover {
+  border-color: #e05a7a;
+  color: #e05a7a;
+  background: #fff0f3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(224, 90, 122, 0.15);
+}
+
+.pdp__wishlist.is-wishlisted {
+  border-color: #e05a7a;
+  color: #e05a7a;
+  background: #fff0f3;
+}
+
+.pdp__wishlist.is-wishlisted svg {
+  fill: #e05a7a;
+  stroke: #e05a7a;
+}
+
+.pdp__wishlist.is-wishlisted:hover {
+  background: #ffe0e8;
+  box-shadow: 0 4px 16px rgba(224, 90, 122, 0.22);
+}
+
+.pdp__wishlist.is-wishlisted {
+  animation: wishlist-pop 0.35s ease;
+}
+
 
 .pdp__benefits {
   list-style: none;
