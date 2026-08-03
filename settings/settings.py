@@ -91,6 +91,7 @@ TEMPLATES: list[dict[str, Any]] = [
                 "seo.context_processors.seo_metadata",
                 "cart.context_processors.cart",
                 "account.context_processors.auth_forms",
+                "wishlist.context_processors.user_has_favorite",
             ],
         },
     },

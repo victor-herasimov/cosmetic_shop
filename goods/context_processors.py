@@ -13,4 +13,4 @@ def all_categories(request: HttpRequest) -> dict[str, QuerySet[Category]]:
 
 
 def product_bestsellers(request: HttpRequest) -> QuerySet[Product]:
-    return {"product_bestsellers": ProductService(request.GET).get_bestsellers()}
+    return {"product_bestsellers": ProductService(request).get_bestsellers()}

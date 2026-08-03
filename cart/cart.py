@@ -79,7 +79,7 @@ class Cart:
         """
         product_ids: Iterable[str] = self.cart.keys()
         products: QuerySet[Product] = ProductService(
-            self.request.GET
+            self.request
         ).get_products_by_ids(product_ids)
         cart: CartType = copy.deepcopy(self.cart)
         for product in products:

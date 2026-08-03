@@ -26,7 +26,7 @@ class CatalogView(ListView):
         """
         Повертає відфільтрований список товарів для каталогу.
         """
-        self.product_service = ProductService(self.request.GET)
+        self.product_service = ProductService(self.request)
         return self.product_service.get_filtered_products()
 
     def get_context_data(self, **kwargs):

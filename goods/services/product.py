@@ -1,18 +1,22 @@
 from collections.abc import Iterable
 from typing import Any
+from urllib import request
 
 from django.db.models import (
     F,
     Q,
     Count,
+    Exists,
     ExpressionWrapper,
     FloatField,
+    OuterRef,
     TextField,
     Value,
 )
 from django.db.models.functions import Concat
 from django.contrib.postgres.search import TrigramSimilarity
 from django.db.models import QuerySet
+from django.http import HttpRequest
 
 from goods.forms import ProductSortForm
 from goods.models import Product
@@ -20,6 +24,7 @@ from goods.models.brand import Brand
 from goods.models.category import Category
 from goods.models.characteristic import Characteristic
 from goods.models.characteristic_item import CharacteristicItem
+from wishlist.models import Favorite
 
 
 class ProductService:
@@ -34,12 +39,13 @@ class ProductService:
         "bestsellers_desc": "-is_bestseller",
     }
 
-    def __init__(self, request_get_params: dict[str, str]) -> None:
+    def __init__(self, request: HttpRequest) -> None:
         """
         Приймає request.GET або будь-який аналогічний словник параметрів.
         Це робить сервіс повністю незалежним від самого об'єкта request.
         """
-        self.params: dict[str, str] = request_get_params
+        self.request = request
+        self.params: dict[str, str] = self.request.GET
         self.sort_form: ProductSortForm = ProductSortForm(self.params)
 
         self.selected_categories: str = self.params.getlist("category")
@@ -64,6 +70,11 @@ class ProductService:
                 F("price") * (1.0 - (F("discount") / 100.0)),
                 output_field=FloatField(),
             )
+        )
+
+    def _get_favorite_subquery(self) -> QuerySet[Favorite]:
+        return Favorite.objects.filter(
+            user=self.request.user, product_id=OuterRef("pk")
         )
 
     def _get_price_q_object(self) -> Q:
@@ -241,34 +252,36 @@ class ProductService:
         )
         if order:
             result = result.order_by(order)
+
+        if self.request.user.is_authenticated:
+            result = result.annotate(is_favorite=Exists(self._get_favorite_subquery()))
         return result
 
     def get_by_id(self, product_id: int) -> Product:
         """
         Повертає товар по йго ID.
         """
-        return Product.objects.get(id=product_id)
+        if self.request.user.is_authenticated:
+            return Product.objects.annotate(
+                is_favorite=Exists(self._get_favorite_subquery())
+            ).get(id=product_id)
 
-    def get_products_by_category(
-        self, category: Category, order: str | None = None
-    ) -> QuerySet[Product]:
-        """
-        Повертає кверісет з усіма продуктами за категорією.
-        """
-        result = (
-            Product.objects.select_related("cateogry")
-            .prefetch_related("fotos")
-            .filter(cateogry=category)
-        )
-        if order:
-            result = result.order_by(order)
-        return result
+        return Product.objects.get(id=product_id)
 
     def get_bestsellers(self) -> QuerySet[Product]:
         """
         Повертає кверісет з першими 4-ма продуктами, що є хітом продаж. Якщо таких менше 4-х
         то добавляє іншими продуктами.
         """
+        if self.request.user.is_authenticated:
+            return (
+                Product.objects.annotate(
+                    is_favorite=Exists(self._get_favorite_subquery())
+                )
+                .select_related("cateogry")
+                .prefetch_related("fotos")
+                .order_by("-is_bestseller", "-updated")[:4]
+            )
         return (
             Product.objects.select_related("cateogry")
             .prefetch_related("fotos")
@@ -279,6 +292,15 @@ class ProductService:
         """
         Повертає кверісет з першими 4-ма новими продуктами.
         """
+        if self.request.user.is_authenticated:
+            return (
+                Product.objects.annotate(
+                    is_favorite=Exists(self._get_favorite_subquery())
+                )
+                .select_related("cateogry")
+                .prefetch_related("fotos")
+                .order_by("-is_new", "-created")[:4]
+            )
         return (
             Product.objects.select_related("cateogry")
             .prefetch_related("fotos")
@@ -289,6 +311,15 @@ class ProductService:
         """
         Повертає Продукт, що відповідє слагу. Якщо такого не має то викидає виключення Product.DoesNotExist.
         """
+        if self.request.user.is_authenticated:
+            return (
+                Product.objects.annotate(
+                    is_favorite=Exists(self._get_favorite_subquery())
+                )
+                .select_related("cateogry")
+                .prefetch_related("fotos", "characteristics__item")
+                .get(slug=slug)
+            )
         return (
             Product.objects.select_related("cateogry")
             .prefetch_related("fotos", "characteristics__item")
@@ -312,6 +343,11 @@ class ProductService:
             )
             if order:
                 results = results.order_by(order)
+
+            if self.request.user.is_authenticated:
+                results = results.annotate(
+                    is_favorite=Exists(self._get_favorite_subquery())
+                )
             return results
 
         return Product.objects.none()
@@ -329,10 +365,22 @@ class ProductService:
             .select_related("cateogry")
             .prefetch_related("characteristics__item", "fotos")[:4]
         )
+        if self.request.user.is_authenticated:
+            similar_products = similar_products.annotate(
+                is_favorite=Exists(self._get_favorite_subquery())
+            )
         return similar_products
 
     def get_products_by_ids(self, ids: Iterable[int]) -> QuerySet[Product]:
         """
         Повертає кверісет з продуктів id яких міститься в списку ids.
         """
+        if self.request.user.is_authenticated:
+            return (
+                Product.objects.annotate(
+                    is_favorite=Exists(self._get_favorite_subquery())
+                )
+                .prefetch_related("fotos")
+                .filter(id__in=ids)
+            )
         return Product.objects.prefetch_related("fotos").filter(id__in=ids)

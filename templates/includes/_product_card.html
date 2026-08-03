@@ -1,6 +1,6 @@
 
 <!-- Product card -->
-<article class="card">
+<article class="card" id="product-{{ product.id }}" >
     <a class="card__media" href="{% url "goods:product" slug=product.slug %}">
         <div class="card__tags">
             {% if product.is_new %}<span class="card__tag ">Новинка</span>{% endif %}
@@ -12,16 +12,20 @@
                 <img src="{{ image.image.url }}" alt="{{ product.title }}">
             {% endif %}
         {% endwith %}
-        <button class="card__wishlist" aria-label="Додати в обране" aria-pressed="false">
+        
+        <button
+        class="card__wishlist {% if product.is_favorite %}is-wishlisted{% endif %}"
+        aria-label="{% if product.is_favorite %}Видалити з обраного{% else %}Додати в обране{% endif %}"
+        aria-pressed="{% if product.is_favorite %}true{% else %}false{% endif %}"
+        id="product-wishlist-btn-{{product.id}}"
+        hx-post="{% url "wishlist:toggle" product.id %}"
+        hx-target="#product-{{ product.id }}"
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"></path>
           </svg>
         </button>
-        {% comment %} <button class="card__wishlist is-wishlisted" aria-label="Видалити з обраного" aria-pressed="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"></path>
-          </svg>
-        </button> {% endcomment %}
+        
     </a>
     <div class="card__body">
         <span class="card__cat">{{ product.cateogry }}</span>

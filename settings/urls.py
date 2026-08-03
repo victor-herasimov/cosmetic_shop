@@ -15,6 +15,7 @@ urlpatterns: list[URLResolver] = [
     path("pages/", include("pages.urls", namespace="pages")),
     path("feedback/", include("feedback.urls", namespace="feedback")),
     path("account/", include("account.urls", namespace="account")),
+    path("wishlist/", include("wishlist.urls", namespace="wishlist")),
 ]
 
 

@@ -598,12 +598,14 @@ ul {
   box-shadow: 0 4px 14px rgba(224, 90, 122, 0.2);
 }
 
-.card__wishlist.is-wishlisted {
+.card__wishlist.is-wishlisted,
+.favorites-btn.is-wishlisted {
   color: #e05a7a;
   background: #fff0f3;
 }
 
-.card__wishlist.is-wishlisted svg {
+.card__wishlist.is-wishlisted svg,
+.favorites-btn.is-wishlisted svg {
   fill: #e05a7a;
   stroke: #e05a7a;
 }
