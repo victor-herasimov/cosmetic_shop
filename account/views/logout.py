@@ -7,19 +7,19 @@
 
 import time
 from typing import Any
+from urllib.parse import urlparse
 
 from django.http import HttpRequest, HttpResponse
 from django.urls import reverse
 from django.views.generic import View
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import logout as user_logout
 from django.shortcuts import render
 
-from mixins import OnlyHtmxMixin
+from mixins import OnlyHtmxMixin, HTMXLoginRequiredMixin
 from account.forms import EmailOrPhoneLoginForm, UserRegistrationForm
 
 
-class LogoutView(LoginRequiredMixin, OnlyHtmxMixin, View):
+class LogoutView(HTMXLoginRequiredMixin, OnlyHtmxMixin, View):
     """
     Представлення для виходу користувача з системи через HTMX-запит.
 
@@ -66,7 +66,9 @@ class LogoutView(LoginRequiredMixin, OnlyHtmxMixin, View):
             },
         )
         response["HX-Trigger"] = "userLoggedOut"
-        if "account" in request.path:
+        current_url = request.headers.get("HX-Current-Url", "")
+        current_path = urlparse(current_url).path if current_url else ""
+        if "account" in current_path:
             response["HX-Redirect"] = reverse("main:index")
 
         return response

@@ -196,9 +196,24 @@ document.addEventListener("htmx:load", (event) => {
   }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const urlParams = new URLSearchParams(window.location.search);
+
+  // Якщо прийшли після редіректу без HTMX
+  if (urlParams.get("login_required") === "1") {
+    openModal("loginModal");
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+});
+
 // Закриваємо модальні вікна після Реєстрації/Логіна
 document.body.addEventListener("userLoggedIn", function (event) {
   closeAllModals();
+});
+
+// Відкриваємо Модальне вікно логіну
+document.body.addEventListener("openLoginModal", function (event) {
+  openModal("loginModal");
 });
 
 // Закриваємо модальні вікна після Логаута

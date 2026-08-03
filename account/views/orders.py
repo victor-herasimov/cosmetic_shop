@@ -5,10 +5,11 @@ from django.core.paginator import Page, Paginator
 from django.views.generic import ListView
 
 from account.forms import OrderFilterForm
+from mixins import HTMXLoginRequiredMixin
 from order.services import OrderService
 
 
-class UserOrderList(ListView):
+class UserOrderList(HTMXLoginRequiredMixin, ListView):
 
     context_object_name = "orders"
     paginate_by = settings.ORDERS_PER_PAGE

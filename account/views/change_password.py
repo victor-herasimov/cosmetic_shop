@@ -14,11 +14,12 @@ from django.http import HttpResponse
 from django.contrib.auth import update_session_auth_hash
 from django.shortcuts import render
 from django.views.generic import FormView
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import PasswordChangeForm
 
+from mixins import HTMXLoginRequiredMixin, OnlyHtmxMixin
 
-class ChangeUserPasswordView(LoginRequiredMixin, FormView):
+
+class ChangeUserPasswordView(HTMXLoginRequiredMixin, OnlyHtmxMixin, FormView):
     """
     Представлення для зміни пароля авторизованого користувача.
 

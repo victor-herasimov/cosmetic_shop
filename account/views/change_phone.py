@@ -14,12 +14,12 @@ from django.http import HttpResponse
 from django.contrib.auth import update_session_auth_hash
 from django.shortcuts import render
 from django.views.generic import FormView
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 from account.forms import ChangeUserPhoneForm
+from mixins import HTMXLoginRequiredMixin, OnlyHtmxMixin
 
 
-class ChangeUserPhoneView(LoginRequiredMixin, FormView):
+class ChangeUserPhoneView(HTMXLoginRequiredMixin, OnlyHtmxMixin, FormView):
     """
     Представлення для зміни номера телефону авторизованого користувача.
 

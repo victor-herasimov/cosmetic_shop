@@ -11,13 +11,13 @@ from django.db import transaction
 from django.http import HttpRequest, HttpResponse
 from django.urls import reverse
 from django.views.generic import View
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import logout
 
 from account.models import User as CustomUser
+from mixins import HTMXLoginRequiredMixin, OnlyHtmxMixin
 
 
-class DeleteUserView(LoginRequiredMixin, View):
+class DeleteUserView(HTMXLoginRequiredMixin, OnlyHtmxMixin, View):
     """
     Представлення для видалення профілю поточного користувача.
 

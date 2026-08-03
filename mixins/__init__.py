@@ -9,6 +9,7 @@
 from .date import DateMixin
 from .slug import SlugMixin
 from .only_htmx_mixin import OnlyHtmxMixin
+from .htmx_login_required_mixin import HTMXLoginRequiredMixin
 
 
-__all__ = ["DateMixin", "SlugMixin", "OnlyHtmxMixin"]
+__all__ = ["DateMixin", "SlugMixin", "OnlyHtmxMixin", "HTMXLoginRequiredMixin"]

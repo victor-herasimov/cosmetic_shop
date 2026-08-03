@@ -6,11 +6,12 @@ from django.views.generic import View
 
 from goods.models.product import Product
 from goods.services.product import ProductService
+from mixins.htmx_login_required_mixin import HTMXLoginRequiredMixin
 from mixins.only_htmx_mixin import OnlyHtmxMixin
 from wishlist.services import FavoriteService
 
 
-class ToggleFavoriteView(OnlyHtmxMixin, View):
+class ToggleFavoriteView(OnlyHtmxMixin, HTMXLoginRequiredMixin, View):
     template_name = "wishlist/toggle.html"
 
     def post(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:

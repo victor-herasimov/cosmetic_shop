@@ -14,12 +14,13 @@ from django.http import HttpResponse
 from django.contrib.auth import update_session_auth_hash
 from django.shortcuts import render
 from django.views.generic import FormView
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 from account.forms import ChangeUserEmailForm
+from mixins import HTMXLoginRequiredMixin
+from mixins.only_htmx_mixin import OnlyHtmxMixin
 
 
-class ChangeUserEmailView(LoginRequiredMixin, FormView):
+class ChangeUserEmailView(HTMXLoginRequiredMixin, OnlyHtmxMixin, FormView):
     """
     Представлення для зміни email авторизованого користувача.
 
