@@ -6,11 +6,15 @@
 """
 
 from django.urls import URLResolver, path
-from wishlist.views import ToggleFavoriteView
+from wishlist.views import ToggleFavoriteView, FavoriteListView, FavoriteRedirectView
 
 
 app_name: str = "wishlist"
 
 urlpatterns: list[URLResolver] = [
+    path("favorites/", FavoriteListView.as_view(), name="favorite"),
+    path(
+        "favorites-redirect/", FavoriteRedirectView.as_view(), name="favorite_redirect"
+    ),
     path("toggle/<int:product_id>/", ToggleFavoriteView.as_view(), name="toggle"),
 ]

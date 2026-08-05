@@ -1,0 +1,12 @@
+{% load uk_pluralize %}
+
+<div class="whshlist-head" id="wishlist-head">
+  <div>
+    <h1 class="section-title" id="wishlistTitle">
+      Список бажаних товарів
+    </h1>
+    {% if products %}
+        <p id="catalogCount">У вас <b>{{ favorites_count }}</b> {{ favorites_count|uk_pluralize }}.</p>
+    {% endif %}
+  </div>
+</div>

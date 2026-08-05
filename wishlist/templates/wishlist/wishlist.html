@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block seo_robots %}
+    <meta name="robots" content="noindex, nofollow, noarchive">
+{% endblock %}
+
+{% block title %}
+ - Список бажаних товарів
+{% endblock title %}
+
+
+{% block content %}
+
+{% include "includes/_breadcrumbs.html" %}
+
+<!-- Search -->
+<section class="section .section--wishlist">
+    <div class="wrap">
+        <div class="wishlist-head-wrapper" id="wishlist-head-wrapper">
+            {% include "wishlist/includes/_wishlist_head.html" %}
+        </div>
+        <div class="wishlist-layout">
+            <div class="products-container" style="position: relative; min-height: 200px;">
+                <div id="products" >
+                    {% if products %}
+                        <div
+                        class="wishlist-grid"
+                        id="wishlistGrid"
+                        hx-vals='{"page": {{ page_obj.number|default:1 }}, "from_wishlist": "true"}'
+                        >
+                            {% include "wishlist/includes/_wishlist_products.html" %}
+                        </div>
+                        {% else %}
+                        <div class="catalog-empty" id="catalogEmpty">
+                            <p>У Вас не має вибраних бажаних товарів.</p>
+                            <a class="btn btn--primary" href="{% url "goods:catalog" %}">Показати всі товари</a>
+                        </div>
+                    {% endif %}
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block scripts %}
+    <script type="module" src="{% static "js/main-wishlist.js" %} "></script>
+{% endblock scripts %}

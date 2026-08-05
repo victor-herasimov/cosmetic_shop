@@ -268,6 +268,16 @@ class ProductService:
 
         return Product.objects.get(id=product_id)
 
+    def get_favorites(self) -> QuerySet[Product]:
+        """Повертає кверісет з бажаними товарами для користувача"""
+        return (
+            Product.objects.filter(favorites__user=self.request.user)
+            .annotate(is_favorite=Exists(self._get_favorite_subquery()))
+            .select_related("cateogry", "brand")
+            .prefetch_related("fotos")
+            .order_by("-updated")
+        )
+
     def get_bestsellers(self) -> QuerySet[Product]:
         """
         Повертає кверісет з першими 4-ма продуктами, що є хітом продаж. Якщо таких менше 4-х
@@ -278,7 +288,7 @@ class ProductService:
                 Product.objects.annotate(
                     is_favorite=Exists(self._get_favorite_subquery())
                 )
-                .select_related("cateogry")
+                .select_related("cateogry", "brand")
                 .prefetch_related("fotos")
                 .order_by("-is_bestseller", "-updated")[:4]
             )

@@ -446,10 +446,16 @@ ul {
   gap: 22px;
 }
 
-.search-grid {
+.search-grid,
+.wishlist-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 22px;
+}
+
+.wishlist-grid .card:not(:has(.card__wishlist.is-wishlisted)) {
+  opacity: 0.4; /* Напівпрозорість */
+  transition: opacity 0.3s ease; /* Плавний перехід при додаванні/видаленні */
 }
 
 .card {
@@ -1359,16 +1365,19 @@ body.no-scroll {
 }
 
 /* ===== Catalog page ===== */
-.section--catalog {
+.section--catalog,
+.section--wishlist {
   padding-top: 8px;
 }
 
 .search-head-wrapper,
+.wishlist-head-wrapper,
 .catalog-head-wrapper {
   scroll-margin-top: 75px;
 }
 
-.catalog-head {
+.catalog-head,
+.whshlist-head {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -1424,7 +1433,8 @@ body.no-scroll {
   align-items: start;
 }
 
-.search-layout {
+.search-layout,
+.wishlist-layout {
   display: grid;
   grid-template-columns: 1fr;
   gap: 32px;
@@ -1676,6 +1686,7 @@ body.no-scroll {
 .pdp__wishlist {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 0 20px;
   height: 52px;
@@ -1793,13 +1804,13 @@ body.no-scroll {
 
 /* ===== Responsive ===== */
 @media (max-width: 1220px) {
-  .search-grid { grid-template-columns: repeat(4, 1fr); }
+  .search-grid, .wishlist-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 
 @media (max-width: 1130px) {
   .product-grid { grid-template-columns: repeat(3, 1fr); }
-  .search-grid { grid-template-columns: repeat(3, 1fr); }
+  .search-grid, .wishlist-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 1024px) {
   .cat-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1822,7 +1833,7 @@ body.no-scroll {
   .product__inner { grid-template-columns: 1fr; gap: 28px; }
   .pdp { grid-template-columns: 1fr; gap: 28px; }
   .product-grid { grid-template-columns: repeat(2, 1fr); }
-  .search-grid { grid-template-columns: repeat(2, 1fr); }
+  .search-grid, .wishlist-grid { grid-template-columns: repeat(2, 1fr); }
   .promo { grid-template-columns: 1fr; padding: 32px; }
   .cat-modal-grid { grid-template-columns: repeat(2, 1fr); }
   .footer__grid { grid-template-columns: 1fr; gap: 24px; }
@@ -1831,7 +1842,7 @@ body.no-scroll {
 
 @media (max-width: 460px) {
   .product-grid { grid-template-columns: 1fr; gap: 14px; }
-  .search-grid { grid-template-columns: 1fr; gap: 14px; }
+  .search-grid, .wishlist-grid { grid-template-columns: 1fr; gap: 14px; }
   /* .product-grid { grid-template-columns: 1fr 1fr; gap: 14px; } */
   .cat-grid { grid-template-columns: 1fr; }
   .cat-modal-grid { grid-template-columns: 1fr; }

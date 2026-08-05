@@ -7,6 +7,7 @@
 та забезпечуючи динамічну взаємодію з інтерфейсом (модальними вікнами, тостами тощо).
 """
 
+import json
 import time
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
@@ -56,6 +57,12 @@ class LoginView(View):
         if form.is_valid():
             user: User = form.get_user()
             user_login(request, user)
+
+            favorite_product_ids: list[int] = list(
+                user.favorites.values_list("product_id", flat=True)
+            )
+            print(favorite_product_ids)
+
             response: HttpResponse = render(
                 request,
                 "account/includes/_success_auth.html",
@@ -65,7 +72,9 @@ class LoginView(View):
                     "toast_text": "Вхід виконано успішно",
                 },
             )
-            response["HX-Trigger"] = "userLoggedIn"
+            trigger_data = {"userLoggedIn": {"favoriteIds": favorite_product_ids}}
+
+            response["HX-Trigger"] = json.dumps(trigger_data)
             return response
         else:
             response: HttpResponse = render(request, self.template_name, {"form": form})

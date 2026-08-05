@@ -209,6 +209,25 @@ document.addEventListener("DOMContentLoaded", function () {
 // Закриваємо модальні вікна після Реєстрації/Логіна
 document.body.addEventListener("userLoggedIn", function (event) {
   closeAllModals();
+  const favoriteIds = event.detail.favoriteIds || [];
+
+  if (favoriteIds) {
+    favoriteIds.forEach((id) => {
+      const productCard = document.getElementById(`product-${id}`);
+      if (productCard) {
+        const productCardWishlistBtn =
+          productCard.querySelector(".card__wishlist");
+        if (productCardWishlistBtn) {
+          productCardWishlistBtn.classList.add("is-wishlisted");
+          productCardWishlistBtn.setAttribute(
+            "aria-label",
+            "Видалити з обраного",
+          );
+          productCardWishlistBtn.setAttribute("aria-pressed", "true");
+        }
+      }
+    });
+  }
 });
 
 // Відкриваємо Модальне вікно логіну
@@ -219,6 +238,16 @@ document.body.addEventListener("openLoginModal", function (event) {
 // Закриваємо модальні вікна після Логаута
 document.body.addEventListener("userLoggedOut", function (event) {
   closeAllModals();
+  const productCardWishlistBtn = document.querySelectorAll(
+    ".card__wishlist.is-wishlisted",
+  );
+  if (productCardWishlistBtn) {
+    productCardWishlistBtn.forEach((wishlistBtn) => {
+      wishlistBtn.classList.remove("is-wishlisted");
+      wishlistBtn.setAttribute("aria-label", "Додати в обране");
+      wishlistBtn.setAttribute("aria-pressed", "false");
+    });
+  }
 });
 
 document.body.addEventListener("showPasswordResetModal", function (event) {

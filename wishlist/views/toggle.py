@@ -1,3 +1,9 @@
+"""
+Модуль для обробки HTMX-запитів, пов'язаних із списком обраного (wishlist).
+
+Містить представлення для додавання та видалення товарів з обраного.
+"""
+
 import time
 
 from django.http import HttpRequest, HttpResponse
@@ -12,12 +18,21 @@ from wishlist.services import FavoriteService
 
 
 class ToggleFavoriteView(OnlyHtmxMixin, HTMXLoginRequiredMixin, View):
+    """
+    Представлення для перемикання стану товару в списку обраного (додавання/видалення).
+
+    Працює виключно з HTMX-запитами та вимагає аутентифікації користувача.
+    """
+
     template_name = "wishlist/toggle.html"
 
     def post(self, request: HttpRequest, *args, **kwargs) -> HttpResponse:
+        """
+        Обробляє POST-запит для додавання або видалення товару з обраного.
+        """
         favorite_service: FavoriteService = FavoriteService(request)
         product_id: int | None = self.kwargs.get("product_id")
-        print(product_id)
+
         if not product_id:
             message: str = "Не вдалося виконати дію"
             return render(
@@ -32,6 +47,7 @@ class ToggleFavoriteView(OnlyHtmxMixin, HTMXLoginRequiredMixin, View):
             )
         is_favorite: bool = favorite_service.toggle(product_id)
         has_favorite: bool = favorite_service.has_favorite()
+        from_detail: bool = request.POST.get("from_detail") == "true"
         message: str = (
             "Товар успішно добавлено до улюблених"
             if is_favorite
@@ -46,7 +62,8 @@ class ToggleFavoriteView(OnlyHtmxMixin, HTMXLoginRequiredMixin, View):
             context={
                 "error": False,
                 "toast_text": message,
-                "action": "error",
+                "from_detail": from_detail,
+                "action": "success",
                 "time": int(time.time() * 1000),
                 "user_has_favorite": has_favorite,
                 "product": product,

@@ -68,7 +68,7 @@ class LogoutView(HTMXLoginRequiredMixin, OnlyHtmxMixin, View):
         response["HX-Trigger"] = "userLoggedOut"
         current_url = request.headers.get("HX-Current-Url", "")
         current_path = urlparse(current_url).path if current_url else ""
-        if "account" in current_path:
+        if "account" in current_path or "wishlist" in current_path:
             response["HX-Redirect"] = reverse("main:index")
 
         return response
