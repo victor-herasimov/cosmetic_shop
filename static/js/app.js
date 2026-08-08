@@ -213,6 +213,7 @@ document.body.addEventListener("userLoggedIn", function (event) {
 
   if (favoriteIds) {
     favoriteIds.forEach((id) => {
+      // Wishlist button on product card
       const productCard = document.getElementById(`product-${id}`);
       if (productCard) {
         const productCardWishlistBtn =
@@ -226,6 +227,14 @@ document.body.addEventListener("userLoggedIn", function (event) {
           productCardWishlistBtn.setAttribute("aria-pressed", "true");
         }
       }
+
+      // Wishlist button on detail page
+      const wishlistBtn = document.getElementById(`product-wishlist-btn-${id}`);
+      if (wishlistBtn) {
+        wishlistBtn.classList.add("is-wishlisted");
+        wishlistBtn.setAttribute("aria-label", "Видалити з обраного");
+        wishlistBtn.setAttribute("aria-pressed", "true");
+      }
     });
   }
 });
@@ -238,6 +247,15 @@ document.body.addEventListener("openLoginModal", function (event) {
 // Закриваємо модальні вікна після Логаута
 document.body.addEventListener("userLoggedOut", function (event) {
   closeAllModals();
+  const productDetailWishlistBtn = document.querySelector(
+    ".pdp__wishlist.is-wishlisted",
+  );
+  if (productDetailWishlistBtn) {
+    productDetailWishlistBtn.classList.remove("is-wishlisted");
+    productDetailWishlistBtn.setAttribute("aria-label", "Додати в обране");
+    productDetailWishlistBtn.setAttribute("aria-pressed", "false");
+  }
+
   const productCardWishlistBtn = document.querySelectorAll(
     ".card__wishlist.is-wishlisted",
   );
