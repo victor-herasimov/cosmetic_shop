@@ -1,6 +1,5 @@
 from collections.abc import Iterable
 from typing import Any
-from urllib import request
 
 from django.db.models import (
     F,
@@ -262,11 +261,15 @@ class ProductService:
         Повертає товар по йго ID.
         """
         if self.request.user.is_authenticated:
-            return Product.objects.annotate(
-                is_favorite=Exists(self._get_favorite_subquery())
-            ).get(id=product_id)
+            return (
+                Product.objects.annotate(
+                    is_favorite=Exists(self._get_favorite_subquery())
+                )
+                .prefetch_related("reviews__user")
+                .get(id=product_id)
+            )
 
-        return Product.objects.get(id=product_id)
+        return Product.objects.prefetch_related("reviews__user").get(id=product_id)
 
     def get_favorites(self) -> QuerySet[Product]:
         """Повертає кверісет з бажаними товарами для користувача"""
@@ -327,12 +330,12 @@ class ProductService:
                     is_favorite=Exists(self._get_favorite_subquery())
                 )
                 .select_related("cateogry")
-                .prefetch_related("fotos", "characteristics__item")
+                .prefetch_related("fotos", "characteristics__item", "reviews__user")
                 .get(slug=slug)
             )
         return (
             Product.objects.select_related("cateogry")
-            .prefetch_related("fotos", "characteristics__item")
+            .prefetch_related("fotos", "characteristics__item", "reviews__user")
             .get(slug=slug)
         )
 

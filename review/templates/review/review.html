@@ -1,0 +1,26 @@
+<section class="section section--reviews" id="reviewsSection">
+  <div class="wrap" id="reviewsRoot">
+    <div class="reviews-container">
+
+      {% include "review/includes/_reviews_summary.html" %}
+
+      <!-- Right side: Form and List -->
+      <div>
+        {% include "review/includes/_review_form.html" %}
+        <!-- Reviews List -->
+        <div class="reviews-list-wrap">
+          <div class="reviews-list__head">
+            <h3 class="reviews-list__title">Відгуки покупців</h3>
+          </div>
+
+          <div id="reviewsList">
+            {% include "review/includes/_review_list.html" %}
+          </div>
+          {{ page_obj.has_next }}
+          {% include "review/includes/_next_page_button.html" %}
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

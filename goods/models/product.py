@@ -6,6 +6,7 @@ from decimal import Decimal
 
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.db.models.functions import Round
 from django.contrib.postgres.indexes import GinIndex
 from django.urls import reverse
 from django.utils.html import strip_tags
@@ -130,6 +131,53 @@ class Product(ModelMeta, DateMixin, SlugMixin):
         "image": "get_image_url",
         "og_type": "product",
     }
+
+    def get_rating_distribution(self):
+        """
+        Повертає словник із кількістю відгуків для кожної зірки від 1 до 5.
+        Робить всього ОДИН ефективний запит до БД (агрегація з фільтрацією).
+        """
+        distribution = self.reviews.aggregate(
+            stars_5=models.Count("id", filter=models.Q(rating=5)),
+            stars_4=models.Count("id", filter=models.Q(rating=4)),
+            stars_3=models.Count("id", filter=models.Q(rating=3)),
+            stars_2=models.Count("id", filter=models.Q(rating=2)),
+            stars_1=models.Count("id", filter=models.Q(rating=1)),
+            total=models.Count("id"),
+            average=Round(models.Avg("rating"), 1),
+            average_round=Round(models.Avg("rating")),
+        )
+
+        # Вираховуємо відсотки для прогрес-барів (уникнення ділення на нуль)
+        total = distribution["total"] or 1
+        average = distribution["average"] or 0.0
+        average_round = distribution["average_round"] or 0
+
+        return {
+            5: {
+                "count": distribution["stars_5"],
+                "percentage": int((distribution["stars_5"] / total) * 100),
+            },
+            4: {
+                "count": distribution["stars_4"],
+                "percentage": int((distribution["stars_4"] / total) * 100),
+            },
+            3: {
+                "count": distribution["stars_3"],
+                "percentage": int((distribution["stars_3"] / total) * 100),
+            },
+            2: {
+                "count": distribution["stars_2"],
+                "percentage": int((distribution["stars_2"] / total) * 100),
+            },
+            1: {
+                "count": distribution["stars_1"],
+                "percentage": int((distribution["stars_1"] / total) * 100),
+            },
+            "total": distribution["total"],
+            "average": average,
+            "average_round": int(average_round),
+        }
 
     def get_seo_description(self) -> str:
         """Повертає перші 150 символів опису для SEO"""

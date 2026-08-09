@@ -1,0 +1,8 @@
+
+{% for review in review_page_obj %}
+    {% include "review/includes/_review_card.html" with review=review %}
+    
+{% empty %}
+    {% include "review/includes/_reviews_list_empty.html" %}
+{% endfor %}
+
