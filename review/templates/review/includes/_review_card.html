@@ -1,26 +1,33 @@
-<div class="review-card" style="animation-delay: 0s">
-    <div class="review-card__left">
-        <div class="review-avatar" style="background: linear-gradient(135deg, #8a6f5f, #6d5349); text-transform: uppercase;">{{ review.user.first_name|slice:":2" }}</div>
-    </div>
-    <div class="review-card__right">
-        <div class="review-card__header">
-        <div class="review-card__user-info">
-            <span class="review-card__name">{{ review.user.first_name }}</span>
+<div class="review-card" style="animation-delay: 0.1s">
+    <div class="review-card__top">
+        <div class="review-card__left">
+            <div class="review-avatar" style="background: linear-gradient(135deg, #8a6f5f, #6d5349); text-transform: uppercase;">{{ review.user.first_name|slice:":2" }}</div>
+            <div class="review-card__user-info">
+                <span class="review-card__name">{{ review.user.first_name }}</span>
+            </div>
+        </div>
+        <div class="review-card__right">
+            {% comment %} <div class="review-card__header"> {% endcomment %}
             
+            <div class="review-card__meta">
+                <span class="review-card__stars stars">
+                    {% for star in "12345" %}
+                        <span class="star {% if forloop.counter <= review.rating %} is-on {% endif %} ">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"></path>
+                            </svg>
+                        </span>
+                    {% endfor %}
+                </span>
+                <span class="review-card__date">{{ review.updated|date:"j E Y"}}</span>
+            </div>
+            {% comment %} </div> {% endcomment %}
+           
         </div>
-        <div class="review-card__meta">
-            <span class="review-card__stars stars">
-                {% for star in "12345" %}
-                    <span class="star {% if forloop.counter <= review.rating %} is-on {% endif %} ">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"></path>
-                        </svg>
-                    </span>
-                {% endfor %}
-            </span>
-            <span class="review-card__date">{{ review.updated|date:"j E Y"}}</span>
-        </div>
-        </div>
+        
+    </div>
+    <div class="review-card__bottom">
         <p class="review-card__text">{{review.text }}</p>
     </div>
+   
 </div>

@@ -1,0 +1,14 @@
+{% include "review/includes/_review_form_empty_container.html" %}
+
+{% include "review/includes/_reviews_summary.html" %}
+
+<div id="reviewsList" hx-swap-oob="outerHTML">
+    {% include "review/includes/_review_list.html" %}
+</div>
+
+{% include "goods/includes/_pdp_rating.html" %}
+
+{% include "review/includes/_next_page_button.html" %}
+
+{% include "review/includes/_toast.html" %}
+

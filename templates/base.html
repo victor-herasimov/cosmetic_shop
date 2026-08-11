@@ -31,7 +31,7 @@
     {% include "includes/_styles.html" %}
 </head>
 
-<body>
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     
     {% include "includes/_cart_modal.html" %}
     {% include "includes/_categories_modal.html" %}

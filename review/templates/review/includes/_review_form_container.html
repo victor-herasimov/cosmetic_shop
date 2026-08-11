@@ -1,0 +1,57 @@
+<!-- Form Container -->
+<div class="review-form-container is-open" id="reviewFormContainer" hx-swap-oob="outerHTML">
+    <div class="review-form-card">
+    <h3 class="review-form__title">Ваш відгук про товар</h3>
+    <form
+    id="reviewForm"
+    hx-post="{% url "review:create" product_id=product_id %}"
+    hx-target="#reviewFormContainer"
+    >
+         {% include "includes/_form_non_field_error.html" %}
+        <div class="review-form__group">
+            <span class="review-form__label">Оберіть оцінку</span>
+        <div class="rating-selector">
+            
+            {% for radio in form.rating reversed %}
+                <input
+                type="radio"
+                id="{{ radio.id_for_label }}"
+                name="{{ radio.data.name }}"
+                value="{{ radio.data.value }}"
+                class="rating-selector__input"
+                {% if radio.data.selected %}checked{% endif %}
+                >
+                <label
+                for="{{ radio.id_for_label }}" class="rating-selector__star" title="{{ forloop.revcounter }} зірок">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"></path>
+                    </svg>
+                </label>
+            {% endfor %}
+        </div>
+        {% if form.rating.errors %}
+            <ul class="form-error">
+                {% for error in form.rating.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <div class="review-form__group">
+        <label for="id_text" class="review-form__label">Коментар</label>
+        <textarea id="id_text" name="text" class="review-form__input" placeholder="Поділіться вашими враженнями від використання засобу..." >{{ form.text.value|default:"" }}</textarea>
+        {% if form.text.errors %}
+            <ul class="form-error">
+                {% for error in form.text.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+        <button type="submit" class="btn btn--primary" id="submitReviewBtn">
+        Надіслати відгук
+        </button>
+    </form>
+    </div>
+</div>

@@ -64,6 +64,7 @@ MIDDLEWARE: list[str] = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
+    "middlewares.htmx_csrf_token.HtmxCsrfTokenMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -157,6 +158,7 @@ MEDIA_ROOT: Path = BASE_DIR / MEDIA_URL
 INTERNAL_IPS = [
     # ...
     "127.0.0.1",
+    "192.168.0.166",
     # ...
 ]
 

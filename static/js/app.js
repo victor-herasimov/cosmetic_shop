@@ -273,18 +273,30 @@ document.body.addEventListener("showPasswordResetModal", function (event) {
   setTimeout(() => openModal("passwordResetModal"), 200);
 });
 
-document.body.addEventListener("htmx:configRequest", (event) => {
-  const name = "csrftoken";
-  const matches = document.cookie.match(
-    new RegExp(
-      "(?:^|; )" +
-        name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
-        "=([^;]*)",
-    ),
-  );
-  const token = matches ? decodeURIComponent(matches[1]) : null;
-  if (token) {
-    event.detail.headers["X-CSRFToken"] = token;
+// document.body.addEventListener("htmx:configRequest", (event) => {
+//   const name = "csrftoken";
+//   const matches = document.cookie.match(
+//     new RegExp(
+//       "(?:^|; )" +
+//         name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
+//         "=([^;]*)",
+//     ),
+//   );
+//   const token = matches ? decodeURIComponent(matches[1]) : null;
+//   if (token) {
+//     event.detail.headers["X-CSRFToken"] = token;
+//   }
+// });
+
+document.addEventListener("htmx:afterRequest", (event) => {
+  // Перевіряємо, чи повернув сервер новий токен у заголовку
+  const newToken = event.detail.xhr.getResponseHeader("X-CSRFToken");
+  if (newToken) {
+    // Оновлюємо атрибут hx-headers у body для всіх наступних HTMX-запитів
+    document.body.setAttribute(
+      "hx-headers",
+      JSON.stringify({ "X-CSRFToken": newToken }),
+    );
   }
 });
 

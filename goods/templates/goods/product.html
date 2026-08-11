@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load uk_pluralize %}
 
 
 {% block title %}
@@ -31,25 +32,7 @@
             <div class="pdp__info">
                 <span class="card__cat">{{ product.cateogry }}</span>
                 <h1 class="pdp__title">{{ product.title }}</h1>
-                <div class="pdp__rating">
-                    <span class="stars"><span class="star is-on"><svg viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"></path>
-                            </svg></span><span class="star is-on"><svg viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"></path>
-                            </svg></span><span class="star is-on"><svg viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"></path>
-                            </svg></span><span class="star is-on"><svg viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"></path>
-                            </svg></span><span class="star is-on"><svg viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"></path>
-                            </svg></span></span>
-                    <span>4.7 · 189 відгуків</span>
-                </div>
+                {% include "goods/includes/_pdp_rating.html" %}
                 <p class="pdp__desc">{{ product.description|safe|truncatechars:140 }}</p>
                 {% if product.is_discount %}
                     <div class="pdp__price"><b>{{ product.get_price_with_discount|floatformat:2 }} ₴</b><s>{{ product.price|floatformat:2 }} ₴</s></div>

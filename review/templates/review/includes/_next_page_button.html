@@ -1,5 +1,5 @@
 {% if review_page_obj.has_next %}
-    <div class="reviews-load-more" id="loadMoreContainer" style="display: flex;">
+    <div class="reviews-load-more" id="loadMoreContainer" style="display: flex;" hx-swap-oob="outerHTML">
         <button
         class="btn btn--ghost"
         id="loadMoreBtn"

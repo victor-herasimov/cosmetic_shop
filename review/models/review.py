@@ -44,6 +44,12 @@ class Review(DateMixin):
         verbose_name = "Відгук"
         verbose_name_plural = "Відгуки"
         ordering = ["-created"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "product"],
+                name="unique_user_product_review",
+            )
+        ]
 
     def __str__(self) -> str:
         """

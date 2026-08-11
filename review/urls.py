@@ -5,11 +5,12 @@
 """
 
 from django.urls import URLResolver, path
-from review.views import GetReviewPageView
+from review.views import GetReviewPageView, ReviewCreateView
 
 
 app_name: str = "review"
 
 urlpatterns: list[URLResolver] = [
+    path("<int:product_id>/create/", ReviewCreateView.as_view(), name="create"),
     path("<int:product_id>/", GetReviewPageView.as_view(), name="page"),
 ]

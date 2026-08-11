@@ -1,0 +1,13 @@
+# middleware.py
+from django.middleware.csrf import get_token
+
+
+class HtmxCsrfTokenMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        response = self.get_response(request)
+        if request.headers.get("HX-Request"):
+            response["X-CSRFToken"] = get_token(request)
+        return response

@@ -6,7 +6,9 @@
 
       <!-- Right side: Form and List -->
       <div>
-        {% include "review/includes/_review_form.html" %}
+        <div class="review-form-wrpper" id="reviewFormWrapper" style="scroll-margin-top: 120px;">
+        {% include "review/includes/_review_form_empty_container.html" %}
+        </div>
         <!-- Reviews List -->
         <div class="reviews-list-wrap">
           <div class="reviews-list__head">
@@ -16,7 +18,7 @@
           <div id="reviewsList">
             {% include "review/includes/_review_list.html" %}
           </div>
-          {{ page_obj.has_next }}
+    
           {% include "review/includes/_next_page_button.html" %}
           
         </div>

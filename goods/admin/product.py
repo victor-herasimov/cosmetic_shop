@@ -13,6 +13,7 @@ from goods.models import Product
 from goods.models import Foto
 from goods.models import Characteristic
 from goods.models.characteristic_item import CharacteristicItem
+from review.models import Review
 
 from .actions import duplicate_product_action
 
@@ -38,6 +39,23 @@ class CharacteristicAdmin(admin.ModelAdmin):
     list_display = ["item", "value"]
     list_display_links = ["item", "value"]
     fields = ["item", "value"]
+
+
+class ReviewInline(admin.TabularInline):
+    """
+    Дозволяє переглядати та редагувати відгуки
+    безпосередньо на сторінці відповідного товару.
+    """
+
+    model = Review
+    extra = 0
+    fields = (
+        ("user", "rating", "text", "created")
+        if hasattr(Review, "created")
+        else ("user", "rating", "text")
+    )
+    readonly_fields = ("created",) if hasattr(Review, "created") else ()
+    show_change_link = True
 
 
 class CharacteristicInline(admin.TabularInline):
@@ -91,7 +109,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = [
         "cateogry",
     ]
-    inlines = [FotoInline, CharacteristicInline]
+    inlines = [FotoInline, CharacteristicInline, ReviewInline]
     fieldsets = [
         (
             None,

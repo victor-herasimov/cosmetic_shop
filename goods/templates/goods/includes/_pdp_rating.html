@@ -1,0 +1,16 @@
+{% load uk_pluralize %}
+<div class="pdp__rating" id="pdpRating" hx-swap-oob="outerHTML">
+    {% with rating_data=product.get_rating_distribution %}
+    <span class="stars">
+        {% for i in "12345" %}
+        <span class="star {% if forloop.counter <= rating_data.average_round %} is-on {% endif %}">
+            <svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"></path>
+            </svg>
+        </span>
+        {% endfor %}
+    </span>
+    <span>{{ rating_data.average }} · {{ rating_data.total }} {{ rating_data.total|uk_pluralize_reviews }}</span>
+    {% endwith %}
+</div>
