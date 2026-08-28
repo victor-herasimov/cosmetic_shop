@@ -7,5 +7,6 @@
 
 from .get_page import GetReviewPageView
 from .create import ReviewCreateView
+from .delete import ReviewDeleteView
 
-__all__ = ["GetReviewPageView", "ReviewCreateView"]
+__all__ = ["GetReviewPageView", "ReviewCreateView", "ReviewDeleteView"]

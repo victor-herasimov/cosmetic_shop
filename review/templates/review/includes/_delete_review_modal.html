@@ -1,0 +1,41 @@
+<div class="modal delete-modal" id="reviewDeleteModal">
+    <div class="modal__overlay" data-close-modal=""></div>
+    <div class="dialog delete-modal__dialog" role="dialog" aria-modal="true" aria-label="Видалення відгуку">
+        <div class="delete-modal__content">
+            <div class="delete-modal__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"></path>
+                    <path d="M10 11v6"></path>
+                    <path d="M14 11v6"></path>
+                    <path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"></path>
+                </svg>
+            </div>
+                <h3 class="delete-modal__title" id="deleteReviewModalTitle">Видалити відгук?</h3>
+                <p class="delete-modal__text" id="deleteReviewText">Ви дійсно хочете видалити відгук?</p>
+                <div class="delete-modal__actions">
+                    <button class="btn settings-danger-zone__btn" id="confirmDeleteReviewBtn" hx-post="">Так, видалити</button>
+                    <button class="btn btn--ghost" data-close-modal id="cancelDeleteReviewBtn">Скасувати</button>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+{% comment %} <div class="rv-modal rv-modal--sm" id="deleteReviewModal" role="dialog" aria-modal="true" aria-labelledby="deleteReviewModalTitle">
+    <div class="rv-modal__icon rv-modal__icon--danger">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"></path>
+            <path d="M10 11v6"></path>
+            <path d="M14 11v6"></path>
+            <path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"></path>
+        </svg>
+    </div>
+    <h3 class="rv-modal__title" id="deleteReviewModalTitle">Видалити відгук?</h3>
+    <p class="rv-modal__text" id="deleteReviewText">Ви дійсно хочете видалити відгук?</p>
+    <div class="rv-modal__actions rv-modal__actions--col">
+        <button class="btn settings-danger-zone__btn" id="confirmDeleteReviewBtn">Так, видалити</button>
+        <button class="btn btn--ghost" id="cancelDeleteReviewBtn">Скасувати</button>
+    </div>
+</div> {% endcomment %}

@@ -7,6 +7,8 @@
 
 from typing import Any
 
+from django.db import DatabaseError
+
 from review.models import Review
 from account.models import User as CustomUser
 
@@ -23,6 +25,26 @@ class ReviewService:
             return review
         except Review.DoesNotExist:
             return None
+
+    @classmethod
+    def delete(cls, review_id: int, user: CustomUser) -> bool:
+        """
+        Видаляє відгук за його ID, якщо він належить вказаному користувачу.
+
+        Args:
+            review_id (int): Унікальний ідентифікатор відгуку.
+            user (CustomUser): Об'єкт користувача, який намагається видалити відгук.
+
+        Returns:
+            bool: True, якщо відгук успішно знайдено та видалено.
+                  False, якщо відгук не існує, не належить користувачу або виникла помилка.
+        """
+        try:
+            review: Review = cls.model.objects.get(id=review_id, user=user)
+            review.delete()
+            return True
+        except (cls.model.DoesNotExist, DatabaseError):
+            return False
 
     @classmethod
     def update_or_create(

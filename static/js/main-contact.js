@@ -1,4 +1,4 @@
-import { init, phoneNumberMask } from "./app.js";
+import { init, phoneNumberMask, closeModal } from "./app.js";
 init();
 
 window.phoneNumberMask = phoneNumberMask;
@@ -16,6 +16,6 @@ document.addEventListener("htmx:load", (event) => {
 document.addEventListener("successFeedback", () => {
   const successModal = document.getElementById("successModal");
   if (successModal) {
-    successModal.classList.toggle("is-open");
+    closeModal(successModal);
   }
 });

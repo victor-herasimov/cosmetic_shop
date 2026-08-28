@@ -1,4 +1,4 @@
-import { init, scrollToElement } from "./app.js";
+import { init, scrollToElement, closeModal } from "./app.js";
 
 init();
 
@@ -41,5 +41,12 @@ document.addEventListener("htmx:oobAfterSwap", (event) => {
     !target.classList.contains("is-open")
   ) {
     scrollToElement("reviewFormWrapper");
+  }
+});
+
+document.addEventListener("closeDeleteReviewModal", () => {
+  const reviewDeleteModal = document.getElementById("reviewDeleteModal");
+  if (reviewDeleteModal) {
+    closeModal(reviewDeleteModal);
   }
 });

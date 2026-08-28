@@ -6,7 +6,7 @@ function openModal(id) {
   document.body.classList.add("no-scroll");
 }
 
-function closeModal(modal) {
+export function closeModal(modal) {
   modal.classList.remove("is-open");
   if (!document.querySelector(".modal.is-open")) {
     document.body.classList.remove("no-scroll");
@@ -27,9 +27,24 @@ function bindGlobalEvents() {
 
     const openDeleteAccountModal = t.closest("[data-open-delete-account]");
     if (openDeleteAccountModal) {
-      console.log("delete modal");
       e.preventDefault();
       openModal("accountDeleteModal");
+      return;
+    }
+
+    const openDeleteReviewModal = t.closest("[data-open-delete-review]");
+    if (openDeleteReviewModal) {
+      e.preventDefault();
+      openModal("reviewDeleteModal");
+      const deleteUrl = t.dataset.url;
+      const confirmDeleteBtn = document.getElementById(
+        "confirmDeleteReviewBtn",
+      );
+      if (confirmDeleteBtn) {
+        confirmDeleteBtn.setAttribute("hx-post", deleteUrl);
+        htmx.process(confirmDeleteBtn);
+      }
+
       return;
     }
 

@@ -5132,7 +5132,6 @@ textarea.review-form__input {
 .review-card__right {
   display: flex;
   
-  /* flex: 1; */
 }
 
 .review-avatar {
@@ -5148,14 +5147,6 @@ textarea.review-form__input {
   background: linear-gradient(135deg, var(--accent), var(--accent-deep));
 }
 
-/* .review-card__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 8px;
-} */
 
 .review-card__user-info {
   display: flex;
@@ -5203,14 +5194,6 @@ textarea.review-form__input {
   .review-card__left {
     flex-direction: column;
   }
-  /* .review-card__header {
-    flex-direction: column;
-    align-items: center;
-  } */
-  /* .review-card__meta {
-    align-items: flex-start;
-    margin-top: 4px;
-  } */
 }
 
 .review-card__stars svg {
@@ -5234,6 +5217,7 @@ textarea.review-form__input {
 /* Feedback Buttons */
 .review-card__footer {
   display: flex;
+  justify-content: end;
   align-items: center;
   gap: 16px;
   font-size: 12px;
@@ -5242,7 +5226,57 @@ textarea.review-form__input {
   padding-top: 14px;
 }
 
-.review-feedback-btn {
+.review-btn-edit {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  color: var(--accent-deep);
+  background: var(--accent-soft);
+  border: 1.5px solid rgba(95, 109, 73, 0.22);
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
+}
+
+.review-btn-edit:hover {
+  background: rgba(122, 138, 95, 0.18);
+  border-color: rgba(95, 109, 73, 0.4);
+}
+
+.review-btn-edit:active {
+  transform: scale(0.97);
+}
+
+.review-btn-delete {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  color: var(--sale);
+  background: rgba(192, 86, 63, 0.07);
+  border: 1.5px solid rgba(192, 86, 63, 0.2);
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
+}
+
+.review-btn-delete:hover {
+  background: rgba(192, 86, 63, 0.14);
+  border-color: rgba(192, 86, 63, 0.5);
+}
+
+.review-btn-delete:active {
+  transform: scale(0.97);
+}
+
+/* .review-feedback-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -5276,7 +5310,7 @@ textarea.review-form__input {
 
 .review-feedback-btn.is-active svg {
   fill: currentColor;
-}
+} */
 
 /* More reviews button */
 .reviews-load-more {
