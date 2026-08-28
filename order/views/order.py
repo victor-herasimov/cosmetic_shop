@@ -10,13 +10,14 @@ from typing import Any
 from django.http import HttpResponse
 from django.urls import reverse
 from django.views.generic import FormView
+from view_breadcrumbs import BaseBreadcrumbMixin
 
 from order.forms import CreateOrderForm
 from order.models.order import Order
 from order.services import DeliveryMethodService, PaymentMethodService, OrderService
 
 
-class OrderView(FormView):
+class OrderView(BaseBreadcrumbMixin, FormView):
     """
     Представлення для відображення сторінки оформлення замовлення (Checkout).
 
@@ -27,6 +28,10 @@ class OrderView(FormView):
     form_class = CreateOrderForm
 
     template_name = "order/checkout.html"
+
+    crumbs = [
+        ("Оформити", ""),
+    ]
 
     def get_template_names(self) -> list[str]:
         if self.request.headers.get("HX-Request"):

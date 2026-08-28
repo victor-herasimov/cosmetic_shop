@@ -2,6 +2,7 @@
 {% load static %}
 
 
+
 {% block title %}
  - {% if not active_category %} Всі товари {% else %} {{ active_category.name }} {% endif %}
 {% endblock title %}
@@ -9,7 +10,8 @@
 {% block content %}
 {% include "goods/includes/_filters_modal.html" %}
 
-{% include "includes/_breadcrumbs.html" %}
+{% comment %} {% include "includes/_breadcrumbs.html" %} {% endcomment %}
+
 
 <!-- Catalog -->
 <section class="section section--catalog">

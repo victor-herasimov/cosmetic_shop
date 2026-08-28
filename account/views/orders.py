@@ -3,16 +3,21 @@ from typing import Any
 from django.conf import settings
 from django.core.paginator import Page, Paginator
 from django.views.generic import ListView
+from view_breadcrumbs import BaseBreadcrumbMixin
 
 from account.forms import OrderFilterForm
 from mixins import HTMXLoginRequiredMixin
 from order.services import OrderService
 
 
-class UserOrderList(HTMXLoginRequiredMixin, ListView):
+class UserOrderList(BaseBreadcrumbMixin, HTMXLoginRequiredMixin, ListView):
 
     context_object_name = "orders"
     paginate_by = settings.ORDERS_PER_PAGE
+
+    crumbs = [
+        ("Мої замовлення", ""),
+    ]
 
     def get_queryset(self):
         """

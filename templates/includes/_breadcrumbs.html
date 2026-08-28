@@ -1,6 +1,18 @@
- <!-- Breadcrumbs -->
-    <div class="wrap">
-        <nav class="breadcrumbs">
-            <a href="/index.html">Головна</a><span>/</span><span id="crumbCat">Всі товари</span>
-        </nav>
-    </div>
+
+<div class="wrap">
+    <nav class="breadcrumbs">
+        {% for url, label in breadcrumbs %}
+            {% if not url or forloop.counter == breadcrumbs_total %}
+                <span >{{ label|safe }}</span>
+            {% else %}
+                <a href="{{ url }}">{{ label|safe }}</a>
+            {% endif %}
+
+            {% if forloop.counter != breadcrumbs_total %}
+                <span>/</span>
+            {% endif %}
+
+        {% endfor %}
+    </nav>
+</div>
+

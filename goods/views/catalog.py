@@ -1,14 +1,16 @@
 from typing import Any
 
 from django.core.paginator import Page, Paginator
+from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView
 from django.conf import settings
+from view_breadcrumbs import BaseBreadcrumbMixin
 
 from goods.services import ProductService
 from goods.forms import ProductSortForm
 
 
-class CatalogView(ListView):
+class CatalogView(BaseBreadcrumbMixin, ListView):
     """
     Представлення для відображення каталогу товарів.
     """
@@ -16,6 +18,10 @@ class CatalogView(ListView):
     # template_name = "goods/catalog.html"
     context_object_name = "products"
     paginate_by = settings.ITEMS_PER_PAGE
+
+    crumbs = [
+        ("Всі товари", reverse_lazy("goods:catalog")),
+    ]
 
     def get_template_names(self) -> list[str]:
         if self.request.headers.get("HX-Request"):

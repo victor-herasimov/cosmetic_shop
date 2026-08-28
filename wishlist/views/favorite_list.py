@@ -5,19 +5,26 @@
 from typing import Any
 
 from django.db.models import QuerySet
+from django.urls import reverse_lazy
 from django.views.generic import ListView
+from view_breadcrumbs import BaseBreadcrumbMixin
 
 from goods.services import ProductService
 from mixins.htmx_login_required_mixin import HTMXLoginRequiredMixin
 
 
-class FavoriteListView(HTMXLoginRequiredMixin, ListView):
+class FavoriteListView(BaseBreadcrumbMixin, HTMXLoginRequiredMixin, ListView):
     """
     Представлення для відображення списку улюблених товарів.
     """
 
     template_name = "wishlist/wishlist.html"
     context_object_name = "products"
+
+    crumbs = [
+        ("Всі товари", reverse_lazy("goods:catalog")),
+        ("Бажані товари", reverse_lazy("wishlist:favorite")),
+    ]
 
     def get_queryset(self):
         """

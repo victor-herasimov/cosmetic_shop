@@ -2,13 +2,15 @@ from typing import Any
 
 from django.conf import settings
 from django.core.paginator import Page, Paginator
+from django.urls import reverse_lazy
 from django.views.generic import ListView
+from view_breadcrumbs import BaseBreadcrumbMixin
 
 from goods.services import ProductService
 from goods.forms import ProductSortForm
 
 
-class SearchView(ListView):
+class SearchView(BaseBreadcrumbMixin, ListView):
     """
     Представлення для відображення пошуку.
     """
@@ -25,6 +27,11 @@ class SearchView(ListView):
         "bestsellers_asc": "is_bestseller",
         "bestsellers_desc": "-is_bestseller",
     }
+
+    crumbs = [
+        ("Всі товари", reverse_lazy("goods:catalog")),
+        ("Пошук", reverse_lazy("goods:search")),
+    ]
 
     def get_template_names(self) -> list[str]:
         if self.request.headers.get("HX-Request"):

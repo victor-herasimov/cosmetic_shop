@@ -753,6 +753,13 @@ ul {
   color: var(--ink);
 }
 
+.breadcrumbs > * {
+  max-width: 108px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .page-head h1 {
   font-family: var(--font-serif);
   font-size: clamp(24px, 5vw, 48px);

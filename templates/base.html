@@ -1,6 +1,7 @@
 {% load static %}
 {% load solo_tags %}
 {% load meta %}
+{% load view_breadcrumbs %}
 {% get_solo 'main.SiteConfig' as site_config %}
 
 <html lang="uk" class="bg-background">
@@ -42,6 +43,9 @@
     <div id="passwordResetModalWrapper"></div>
     {% include "includes/_header.html" %}
 
+    {% block breadcrumbs %}
+        {% render_breadcrumbs %} {# Optionally provide a custom template e.g {% render_breadcrumbs "view_breadcrumbs/bootstrap5.html" %} #}
+    {% endblock %}
    {% block content %}
    {% endblock content %}
 

@@ -2,12 +2,14 @@ from typing import Any
 
 from django.core.paginator import Page, Paginator
 from django.http import Http404
+from django.urls import reverse
 from django.views.generic import DetailView
+from view_breadcrumbs import BaseBreadcrumbMixin
 from goods.models.product import Product
 from goods.services import ProductService
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(BaseBreadcrumbMixin, DetailView):
     """
     Представлення для відображення детальної інформації про товар.
     """
@@ -16,6 +18,14 @@ class ProductDetailView(DetailView):
     context_object_name = "product"
     slug_url_kwarg = "slug"
     paginate_by: int = 1
+
+    @property
+    def crumbs(self):
+        product = self.object
+        return [
+            ("Всі товари", reverse("goods:catalog")),
+            (product.title, product.get_absolute_url()),
+        ]
 
     def get_object(self, queryset=None) -> Product:
         """

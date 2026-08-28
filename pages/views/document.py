@@ -5,11 +5,12 @@
 from django.http import Http404
 from django.views.generic import DetailView
 from solo.models import SingletonModel
+from view_breadcrumbs import BaseBreadcrumbMixin
 from pages.models import PrivacyPolicy, ReturnPolicy, DeliveryAndPayPolicy, PublicOffer
 from pages.services import DocumentService
 
 
-class DocumentView(DetailView):
+class DocumentView(BaseBreadcrumbMixin, DetailView):
     """
     Представлення для динамічного відображення синглтон-документів (політик).
 
@@ -27,6 +28,13 @@ class DocumentView(DetailView):
     }
     template_name = "pages/document.html"
     context_object_name = "document"
+
+    @property
+    def crumbs(self):
+        document = self.object
+        return [
+            (document.title, ""),
+        ]
 
     def get_object(self, queryset=None) -> SingletonModel:
         """

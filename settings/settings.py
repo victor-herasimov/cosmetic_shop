@@ -40,6 +40,7 @@ OUTHER_APPS: list[str] = [
     "django_ckeditor_5",
     "debug_toolbar",
     "meta",
+    "view_breadcrumbs",
 ]
 
 CREATED_APPS: list[str] = [
@@ -191,6 +192,11 @@ META_USE_OG_PROPERTIES = True
 META_DEFAULT_KEYWORDS = [
     item.strip() for item in os.environ.get("META_DEFAULT_KEYWORDS").split(",")
 ]
+
+# Breadcrumbs
+BREADCRUMBS_HOME_LABEL = "Головна"
+BREADCRUMBS_TEMPLATE = "includes/_breadcrumbs.html"
+
 
 # CK EDITOR 5 START --------------------------------------------------------------------------------------------------
 customColorPalette = [
