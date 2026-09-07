@@ -11,7 +11,7 @@ RUN apt update && apt install -y --no-install-recommends \
     netcat-openbsd \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir media
+RUN mkdir media static_prod
 
 RUN pip install --upgrade pip
 
@@ -22,7 +22,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY --chown=appuser:appuser . .
 
 RUN chmod +x /usr/src/app/entrypoint.sh
-RUN chown -R appuser:appuser /usr/src/app/media
+RUN chown -R appuser:appuser /usr/src/app/media /usr/src/app/static_prod
 
 USER appuser
 

@@ -22,6 +22,7 @@ SECRET_KEY: str = os.environ.get(
 
 # Application definition
 INTERNAL_APPS: list[str] = [
+    "jazzmin",  # Custom admin panel
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
