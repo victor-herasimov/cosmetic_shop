@@ -1,0 +1,75 @@
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile 
+    image: web:1.0.0
+    command: gunicorn settings.wsgi:application --bind 0.0.0.0:8000 --access-logfile '-'
+    expose:
+      - 8000
+    volumes:
+      - static_volume:/usr/src/app/static_prod
+      - ./media:/usr/src/app/media
+    restart: unless-stopped
+    env_file:
+      - .env.prod
+    secrets:
+      - postgres_pass
+      - email_host_pass
+      - celery_broker_url
+    depends_on:
+      - db
+      - rabbit_mq
+  db:
+    image: postgres:18.0-alpine
+    restart: always
+    env_file:
+      - .env.prod
+    secrets:
+      - postgres_pass
+    volumes:
+      - db_data:/var/lib/postgresql/18/docker/
+  rabbit_mq:
+    image: rabbitmq:4.2-management
+    restart: always
+  celery:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: celery:1.0.0
+    command: celery -A settings worker -l info
+    env_file:
+      - .env.prod
+
+    secrets:
+      - postgres_pass
+      - email_host_pass
+      - celery_broker_url
+    depends_on:
+      - rabbit_mq
+      - db
+  nginx:
+    image: nginx:1.29-alpine
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+      - ./ssl:/app/ssl
+      - ./media:/app/media
+      - static_volume:/app/static
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - web
+
+secrets:
+  postgres_pass:
+    file: ./sets/postgres_pass.txt
+  email_host_pass:
+    file: ./sets/email_host_pass.txt
+  celery_broker_url:
+    file: ./sets/celery_brocker_url.txt
+
+volumes:
+  db_data:
+  static_volume:

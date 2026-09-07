@@ -4,6 +4,7 @@
 
 import os
 from django.db import models
+from django.db.models.fields.files import FieldFile
 from solo.models import SingletonModel
 
 
@@ -89,9 +90,7 @@ class SiteConfig(SingletonModel):
         """Повертає текстове представлення — поточну назву сайту."""
         return f"{self.title}"
 
-    def _remove_media(
-        self, old_file: models.FieldFile, new_file: models.FieldFile
-    ) -> None:
+    def _remove_media(self, old_file: FieldFile, new_file: FieldFile) -> None:
         """
         Допоміжний метод для видалення старого медіафайлу з диска.
         """

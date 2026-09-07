@@ -1,5 +1,32 @@
 
 services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile 
+    image: web:1.0.0
+    container_name: web
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - 8000:8000
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /usr/src/app
+          ignore:
+            - venv/
+            - db_data/
+            - db_data/**
+        - action: rebuild
+          path: ./requirements.txt
+        - action: rebuild
+          path: ./entrypoint.sh
+    restart: unless-stopped
+    env_file:
+      - .env
+    depends_on:
+      - db
   db:
     container_name: cosmetic_db
     image: postgres:18.0-alpine
@@ -9,7 +36,7 @@ services:
     env_file:
       - ./.env
     volumes:
-      - ./db_data:/var/lib/postgresql/18/docker/
+      - db_data:/var/lib/postgresql/18/docker/
   rabbit_mq:
     image: rabbitmq:4.2-management
     container_name: rabbitmq
@@ -34,8 +61,33 @@ services:
       - MAILDEV_SMTP_PORT=1025
     ports:
       - "8080:1080"
-      - "8025:1025"
     logging:
       driver: "json-file"
       options:
         max-size: "1m"
+  celery:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: celery:1.0.0
+    container_name: celery
+    command: celery -A settings worker -l info
+    env_file:
+      - .env
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /usr/src/app
+          ignore:
+            - venv/
+            - db_data/
+        - action: rebuild
+          path: ./requirements.txt
+        - action: rebuild
+          path: ./entrypoint.sh
+    depends_on:
+      - rabbit_mq
+
+volumes:
+  db_data:

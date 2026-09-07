@@ -3,10 +3,12 @@ from pathlib import Path
 from typing import Any
 from dotenv import load_dotenv
 
+from settings.utils import read_secret
+
 
 load_dotenv()
 
-BASE_DIR: Path = Path(__file__).resolve().parent.parent
+BASE_DIR: Path = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -16,12 +18,6 @@ BASE_DIR: Path = Path(__file__).resolve().parent.parent
 SECRET_KEY: str = os.environ.get(
     "SECRET_KEY", "django-insecure-=qj+x7kug7uv&97u=3h0^#rjv7!d9zlt12(-wjq_v&2xiy2i!%"
 )
-
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG: bool = bool(int(os.environ.get("DEBUG", 1)))
-
-ALLOWED_HOSTS: list[str] = ["*"]
 
 
 # Application definition
@@ -38,7 +34,6 @@ INTERNAL_APPS: list[str] = [
 OUTHER_APPS: list[str] = [
     "solo",
     "django_ckeditor_5",
-    "debug_toolbar",
     "meta",
     "view_breadcrumbs",
 ]
@@ -57,10 +52,7 @@ CREATED_APPS: list[str] = [
     "review.apps.ReviewConfig",
 ]
 
-INSTALLED_APPS: list[str] = INTERNAL_APPS + OUTHER_APPS + CREATED_APPS
-
 MIDDLEWARE: list[str] = [
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -70,6 +62,7 @@ MIDDLEWARE: list[str] = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
 
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
@@ -111,11 +104,12 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": os.environ.get("POSTGRES_DB"),
         "USER": os.environ.get("POSTGRES_USER"),
-        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+        "PASSWORD": read_secret("postgres_pass") or os.environ.get("POSTGRES_PASSWORD"),
         "HOST": os.environ.get("DATABASE_HOST"),
         "PORT": os.environ.get("DATABASE_PORT"),
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -152,21 +146,11 @@ USE_TZ: bool = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL: str = "static/"
+STATICFILES_DIRS: list[Path] = [BASE_DIR / "static"]
 
 MEDIA_URL: str = "media/"
 MEDIA_ROOT: Path = BASE_DIR / MEDIA_URL
 
-INTERNAL_IPS = [
-    # ...
-    "127.0.0.1",
-    "192.168.0.166",
-    # ...
-]
-
-if DEBUG:
-    STATICFILES_DIRS: list[Path] = [BASE_DIR / STATIC_URL]
-else:
-    STATIC_ROOT: Path = BASE_DIR / STATIC_URL
 
 # Paginate settings
 ITEMS_PER_PAGE: int = 4
@@ -178,10 +162,6 @@ AUTH_USER_MODEL = "account.User"
 # Cart
 CART_SESSION_ID: str = "cart"
 
-# Email
-EMAIL_HOST: str | None = os.environ.get("EMAIL_HOST")
-EMAIL_PORT: str | None = os.environ.get("EMAIL_PORT")
-DEFAULT_FROM_EMAIL: str | None = os.environ.get("DEFAULT_FROM_EMAIL")
 
 # DJANGO-META OG TAGS
 META_SITE_PROTOCOL = os.environ.get("META_SITE_PROTOCOL")
@@ -192,6 +172,11 @@ META_USE_OG_PROPERTIES = True
 META_DEFAULT_KEYWORDS = [
     item.strip() for item in os.environ.get("META_DEFAULT_KEYWORDS").split(",")
 ]
+
+# Celery settings
+CELERY_BROKER_URL = read_secret("celery_broker_url") or os.environ.get(
+    "CELERY_BROKER_URL"
+)
 
 # Breadcrumbs
 BREADCRUMBS_HOME_LABEL = "Головна"
