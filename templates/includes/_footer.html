@@ -19,7 +19,7 @@
                     <li><a href="{% url "goods:catalog" %}">Каталог</a></li>
                     {% for category in all_categories %}
                         {% if category.visible %}
-                            <li><a href="{% url "goods:catalog" %}?cat={{ category.slug }}">{{ category.name }}</a></li>
+                            <li><a href="{% url "goods:catalog" %}?category={{ category.id }}">{{ category.name }}</a></li>
                         {% endif %}
                     {% endfor %}
                     <li><button class="footer__cat" data-open-categories=""

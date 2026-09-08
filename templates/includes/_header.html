@@ -18,7 +18,7 @@
 
             {% for category in all_categories %}
                 {% if category.visible %}
-                    <a class="nav__link" href="{% url "goods:catalog" %}?cat={{ category.slug }}">{{ category.name }}</a>
+                    <a class="nav__link" href="{% url "goods:catalog" %}?category={{ category.id }}">{{ category.name }}</a>
                 {% endif %}
             {% endfor %}
         </nav>

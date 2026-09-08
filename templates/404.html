@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+ - 404 Сторінку не знайдено
+{% endblock title %}
+
+{% block content %}
+<main>
+      <section class="not-found">
+        <div class="not-found__code" aria-hidden="true">404</div>
+
+        <span class="eyebrow not-found__eyebrow">Сторінку не знайдено</span>
+        <h1 class="not-found__title">Щось пішло не так</h1>
+        <p class="not-found__text">
+          Схоже, ця сторінка переїхала або її більше не існує.<br>
+          Не засмучуйтесь — у нас є багато чудових засобів для вашої шкіри!
+        </p>
+
+        <div class="not-found__actions">
+          <a class="btn btn--primary" href="{% url "main:index" %}">На головну</a>
+          <a class="btn btn--ghost" href="{% url "goods:catalog" %}">До каталогу</a>
+        </div>
+
+        <div class="not-found__divider"></div>
+
+        <p class="not-found__links-title">Або перейдіть до популярних розділів</p>
+        <div class="not-found__quick-links">
+          {% for category in all_categories %}
+                {% if category.visible %}
+                    <a href="{% url "goods:catalog" %}?category={{ category.id }}" class="not-found__quick-link">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"></path>
+                      </svg>
+                      {{ category.name }}
+                    </a>
+                {% endif %}
+          {% endfor %}
+          
+          <a href="{% url "pages:contact" %}" class="not-found__quick-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            Контакти
+          </a>
+        </div>
+      </section>
+    </main>
+{% endblock content %}
+
+{% block scripts %}
+    <script type="module" src="{% static "js/main-404.js" %}"></script>
+{% endblock scripts %}
